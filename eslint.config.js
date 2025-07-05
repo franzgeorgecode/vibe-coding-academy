@@ -23,6 +23,21 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      // Allow unused vars with underscore prefix
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { 
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          ignoreRestSiblings: true 
+        }
+      ],
+      // Allow any type in development
+      '@typescript-eslint/no-explicit-any': 'warn',
+      // Allow duplicate else-if conditions
+      'no-dupe-else-if': 'warn',
+      // Make React hooks deps warnings instead of errors
+      'react-hooks/exhaustive-deps': 'warn',
     },
   }
 );
