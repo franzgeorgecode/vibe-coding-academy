@@ -82,7 +82,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/vibe-coding-academy.git
+git clone https://github.com/franzgeorgecode/vibe-coding-academy.git
 cd vibe-coding-academy
 
 # Install dependencies
