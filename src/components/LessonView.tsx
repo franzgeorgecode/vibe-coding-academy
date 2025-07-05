@@ -109,35 +109,70 @@ export default function LessonView() {
     try {
       const isCompleted = quizScore >= 85;
 
-      const upsertData: Partial<UserProgress> = {
-        user_id: user.id,
-        lesson_id: currentLesson.id,
-        completed: isCompleted,
-        score: quizScore,
-        attempts: (userProgress?.attempts || 0) + 1,
-        completed_at: isCompleted ? new Date().toISOString() : userProgress?.completed_at || null
-      };
-
-      console.log('Upserting progress data:', upsertData);
-
-      const { data: progressDataArray, error: progressError } = await supabase
+      // First, try to update existing progress
+      const { data: existingProgress } = await supabase
         .from('user_progress')
-        .upsert(upsertData, {
-          onConflict: 'user_id,lesson_id'
-        })
-        .select();
+        .select('*')
+        .eq('user_id', user.id)
+        .eq('lesson_id', currentLesson.id)
+        .single();
 
-      if (progressError) {
-        console.error('Progress update failed:', progressError);
-        alert(t('common.error') + `: ${progressError.message}`);
-        throw progressError;
+      let progressData;
+      
+      if (existingProgress) {
+        // Update existing record
+        const { data: updatedProgress, error: updateError } = await supabase
+          .from('user_progress')
+          .update({
+            completed: isCompleted,
+            score: quizScore,
+            attempts: (existingProgress.attempts || 0) + 1,
+            completed_at: isCompleted ? new Date().toISOString() : existingProgress.completed_at,
+            time_spent: 0, // You can track this if needed
+            hints_used: 0, // You can track this if needed
+            updated_at: new Date().toISOString()
+          })
+          .eq('user_id', user.id)
+          .eq('lesson_id', currentLesson.id)
+          .select()
+          .single();
+
+        if (updateError) {
+          console.error('Update progress failed:', updateError);
+          throw updateError;
+        }
+        progressData = updatedProgress;
+      } else {
+        // Insert new record
+        const { data: newProgress, error: insertError } = await supabase
+          .from('user_progress')
+          .insert({
+            user_id: user.id,
+            lesson_id: currentLesson.id,
+            completed: isCompleted,
+            score: quizScore,
+            attempts: 1,
+            completed_at: isCompleted ? new Date().toISOString() : null,
+            time_spent: 0,
+            hints_used: 0,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+          })
+          .select()
+          .single();
+
+        if (insertError) {
+          console.error('Insert progress failed:', insertError);
+          throw insertError;
+        }
+        progressData = newProgress;
       }
 
-      const progressData = progressDataArray?.[0];
-      console.log('Progress updated successfully:', progressData);
+      console.log('Progress saved successfully:', progressData);
+      
       if (progressData) {
-          setUserProgress(progressData as UserProgress);
-          setLessonCompleted(progressData.completed);
+        setUserProgress(progressData as UserProgress);
+        setLessonCompleted(progressData.completed);
       }
 
       if (isCompleted) {
