@@ -29,6 +29,16 @@ export const translations = {
       logout: 'Logout'
     },
 
+    // Language Selector
+    languageSelector: {
+      selectLanguage: 'Select Language'
+    },
+
+    // Language Selector
+    languageSelector: {
+      selectLanguage: 'Select Language'
+    },
+
     // Authentication
     auth: {
       login: 'Login',
@@ -62,7 +72,11 @@ export const translations = {
         completedLessons: 'Completed Lessons',
         totalXP: 'Total XP',
         badgesEarned: 'Badges Earned',
-        progress: 'Progress'
+        progress: 'Progress',
+        learningStreak: 'Learning Streak',
+        days: 'days',
+        learningStreak: 'Learning Streak',
+        days: 'days'
       },
       tabs: {
         lessons: 'Lessons',
@@ -9378,6 +9392,16 @@ Remember {{name}}, future-proofing is not about predicting the future perfectly 
       logout: 'Cerrar Sesión'
     },
 
+    // Language Selector
+    languageSelector: {
+      selectLanguage: 'Sprache auswählen'
+    },
+
+    // Language Selector
+    languageSelector: {
+      selectLanguage: 'Seleccionar Idioma'
+    },
+
     // Authentication
     auth: {
       login: 'Iniciar Sesión',
@@ -9411,7 +9435,11 @@ Remember {{name}}, future-proofing is not about predicting the future perfectly 
         completedLessons: 'Lecciones Completadas',
         totalXP: 'XP Total',
         badgesEarned: 'Insignias Ganadas',
-        progress: 'Progreso'
+        progress: 'Progreso',
+        learningStreak: 'Lernstreak',
+        days: 'Tage',
+        learningStreak: 'Racha de Aprendizaje',
+        days: 'días'
       },
       tabs: {
         lessons: 'Lecciones',

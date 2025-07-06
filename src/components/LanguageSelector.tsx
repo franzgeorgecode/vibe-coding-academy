@@ -34,7 +34,7 @@ export default function LanguageSelector({ variant = 'dropdown', className = '' 
             <div className="absolute top-full right-0 mt-2 w-64 bg-slate-800 rounded-xl shadow-2xl border border-white/10 z-50 overflow-hidden">
               <div className="p-2">
                 <div className="text-xs font-medium text-gray-400 uppercase tracking-wide px-3 py-2">
-                  Select Language
+                  {t('languageSelector.selectLanguage')}
                 </div>
                 {supportedLanguages.map((lang) => (
                   <button
@@ -71,7 +71,7 @@ if (variant === 'settings') {
 return (
 <div className={`space-y-3 ${className}`}>
 <label className="block text-sm font-medium text-gray-700">
-Language / Idioma / Langue
+{t('languageSelector.selectLanguage')}
 </label>
 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
 {supportedLanguages.map((lang) => (

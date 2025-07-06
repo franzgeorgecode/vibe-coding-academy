@@ -39,7 +39,7 @@ export default function SrCodeChat({ lessonContext, isOpen, onToggle }: SrCodeCh
         type: 'srcode',
         content: lessonContext 
           ? t('srcode.welcomeMessage', { lessonTitle: lessonContext.title })
-          : "¡Hola! 👋 Soy SrCode, tu mentor de IA. ¿En qué puedo ayudarte hoy?",
+          : t('srcode.defaultWelcome'),
         timestamp: new Date()
       };
       setMessages([welcomeMessage]);
@@ -100,7 +100,7 @@ export default function SrCodeChat({ lessonContext, isOpen, onToggle }: SrCodeCh
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         type: 'srcode',
-        content: t('srcode.errorMessage') || "¡Ups! Algo salió mal. ¿Puedes intentarlo de nuevo?",
+        content: t('srcode.errorMessage'),
         timestamp: new Date()
       };
       setMessages(prev => [...prev, errorMessage]);

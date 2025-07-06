@@ -10,7 +10,6 @@ import CertificateTab from './CertificateTab';
 import ProfileTab from './ProfileTab';
 import ProgressRing from './ProgressRing';
 import AchievementNotification from './AchievementNotification';
-import DatabaseStatus from './DatabaseStatus';
 import { motion } from 'framer-motion';
 
 interface UserProgress {
@@ -206,8 +205,7 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
-      {/* Database Status - Development Only */}
-      <DatabaseStatus />
+      {/* Database Status removed for production */}
       
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
@@ -320,9 +318,9 @@ export default function Dashboard() {
             <Zap className="h-8 w-8" />
             <div className="ml-4">
               <p className="text-sm font-medium text-orange-100">
-                Learning Streak
+                {t('dashboard.stats.learningStreak')}
               </p>
-              <p className="text-2xl font-bold">{streakDays} days</p>
+              <p className="text-2xl font-bold">{streakDays} {t('dashboard.stats.days')}</p>
             </div>
           </div>
         </motion.div>
