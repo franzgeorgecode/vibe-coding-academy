@@ -107,124 +107,5558 @@ export const translations = {
       srCodeSays: 'SrCode Says',
       practiceExercise: 'Practice Exercise',
       requiredScore: 'Required: {{score}}%',
-      continueNext: 'Congratulations on completing {{currentLessonTitle}}! Would you like to continue to {{nextLessonTitle}}?',
+      continueNext: 'Congratulations {{name}} on completing {{currentLessonTitle}}! Would you like to continue to {{nextLessonTitle}}?',
       status: {
         completed: 'Completed',
         locked: 'Locked',
         score: 'Score: {{score}}%'
       },
       levels: {
-        foundations: 'Foundations',
-        databases: 'Databases & Storage',
-        authentication: 'Authentication & Security',
+        foundations: 'bolt.new Foundations',
+        databases: 'Database Integration',
+        authentication: 'Authentication Systems',
         deployment: 'Deployment & Hosting',
-        integrations: 'Integrations & APIs',
-        mastery: 'Mastery & Advanced'
+        integrations: 'Third-Party Integrations',
+        mastery: 'Advanced Mastery'
       },
       descriptions: {
-        foundations: 'Master the fundamentals of bolt.new development',
-        databases: 'Learn to work with databases and data storage',
-        authentication: 'Implement secure user authentication systems',
-        deployment: 'Deploy your applications to the cloud',
-        integrations: 'Connect with external APIs and services',
-        mastery: 'Advanced techniques and best practices'
+        foundations: 'Master the fundamentals of bolt.new AI-powered development',
+        databases: 'Learn database integration with Supabase and other providers',
+        authentication: 'Implement secure user authentication and authorization',
+        deployment: 'Deploy your applications to production environments',
+        integrations: 'Connect with Figma, GitHub, Stripe, and other services',
+        mastery: 'Advanced techniques and professional development patterns'
       },
 
-      // Lesson 1-1
+      // Level 1: Foundations
       'lesson-1-1': {
         title: 'Introduction to bolt.new: Your AI Development Partner',
         objective: 'Master the fundamentals of bolt.new and understand how AI-powered development transforms the coding experience',
-        content: 'Welcome to bolt.new: The Future of Web Development\\n\\nbolt.new is a revolutionary AI-powered web development agent that runs directly in your browser, enabling you to build full-stack applications through natural language conversations. Built on StackBlitz WebContainers, it represents the next evolution in development tools.\\n\\nWhat is bolt.new?\\n\\nbolt.new is described as "an in-browser AI web development agent for full stack web application development." But what does this really mean?\\n\\nAI-First Development Philosophy\\n- Natural Language Interface: Instead of writing code line by line, you describe what you want to build\\n- Contextual Understanding: bolt.new understands your project context and maintains state across conversations\\n- Intelligent Code Generation: Produces production-ready code that follows best practices\\n- Real-time Collaboration: Like having a senior developer as your pair programming partner 24/7',
+        content: `# Welcome to bolt.new: The Future of Web Development
+
+Hello {{name}}! Welcome to your personalized journey into bolt.new mastery. As your dedicated AI mentor, I'm excited to guide you through this revolutionary platform.
+
+## What is bolt.new?
+
+bolt.new is an **in-browser AI web development agent** designed for full-stack web application development. Think of it as having a senior developer as your coding partner, available 24/7, who understands your project context and can generate production-ready code through natural language conversations.
+
+## Core Capabilities
+
+### 🤖 AI-First Development Philosophy
+- **Natural Language Interface**: Describe what you want to build instead of writing code line by line
+- **Contextual Understanding**: bolt.new maintains state across conversations and understands your project structure
+- **Intelligent Code Generation**: Produces clean, production-ready code following industry best practices
+- **Real-time Collaboration**: Interactive development environment with instant feedback
+
+### 🚀 Full-Stack Development
+bolt.new supports complete application development including:
+- **Frontend**: React, Vue, Angular, and modern JavaScript frameworks
+- **Backend**: Node.js, Express, API development, and serverless functions
+- **Databases**: SQL, NoSQL, and cloud database integrations
+- **Styling**: CSS, Tailwind, styled-components, and modern styling solutions
+
+### 🔧 Technical Infrastructure
+Built on **StackBlitz WebContainers**, bolt.new provides:
+- **Browser-based Environment**: No local setup required
+- **Instant Development**: Full development environment in seconds
+- **Real-time Preview**: See changes immediately as you build
+- **Secure Sandboxing**: Safe execution environment for all code
+
+## Integration Ecosystem
+
+bolt.new seamlessly integrates with industry-leading tools:
+
+### Design & Prototyping
+- **Figma**: Convert designs directly to functional code
+- Design-to-code workflow automation
+
+### Database & Backend
+- **Supabase**: PostgreSQL database with real-time features
+- **Authentication**: User management and secure login systems
+- **Edge Functions**: Serverless backend functionality
+
+### Version Control & Deployment
+- **GitHub**: Automatic repository creation and version control
+- **Netlify**: One-click deployment to production
+- **Custom Domains**: Professional hosting solutions
+
+### E-commerce & Payments
+- **Stripe**: Complete payment processing integration
+- **Shopping Carts**: E-commerce functionality out of the box
+
+### Mobile Development
+- **Expo**: React Native mobile app development
+- Cross-platform mobile applications
+
+## Who Should Use bolt.new?
+
+### Perfect for {{name}} if you're:
+- **Experienced Developer**: Accelerate your development workflow
+- **Learning to Code**: AI guidance helps you understand best practices
+- **Entrepreneur**: Quickly prototype and build your startup ideas
+- **Designer**: Bridge the gap between design and development
+- **Student**: Learn modern web development with personalized assistance
+
+## Key Success Skills
+
+To maximize your bolt.new experience, focus on:
+
+### 1. Clear Communication
+- Define your project goals specifically
+- Describe user requirements and use cases
+- Explain your target audience and their needs
+
+### 2. Understanding User Experience
+- Think about user journeys and workflows
+- Consider accessibility and usability principles
+- Plan for different devices and screen sizes
+
+### 3. Iterative Development
+- Start with a minimum viable product (MVP)
+- Add features incrementally
+- Test and refine continuously
+
+## Your Learning Journey
+
+{{name}}, throughout this course you'll master:
+- **Foundation Skills**: Platform navigation and core concepts
+- **Advanced Prompting**: Effective AI communication techniques
+- **Database Integration**: Working with modern data solutions
+- **Authentication Systems**: Secure user management
+- **Deployment Strategies**: Taking applications to production
+- **Third-Party Integrations**: Connecting external services
+- **Professional Workflows**: Industry-standard development practices
+
+## Token-Based Economy
+
+bolt.new uses a token-based pricing model where costs depend on:
+- Complexity of AI interactions
+- Amount of code generated
+- Project size and scope
+- Integration requirements
+
+Understanding token usage helps you develop efficiently and cost-effectively.
+
+Ready to transform how you build applications? Let's begin your bolt.new mastery journey!`,
         learningObjectives: {
-          0: 'Understand what bolt.new is and its core AI-powered capabilities',
-          1: 'Navigate the bolt.new interface and WebContainer environment',
-          2: 'Recognize the technical foundation built on StackBlitz',
-          3: 'Identify key skills needed for successful AI-assisted development',
-          4: 'Appreciate the full-stack development possibilities with bolt.new'
+          0: 'Understand bolt.new as an AI-powered development platform',
+          1: 'Navigate the browser-based development environment',
+          2: 'Recognize integration capabilities with modern tools',
+          3: 'Identify key skills for successful AI-assisted development',
+          4: 'Plan effective learning strategies for bolt.new mastery'
         },
         badgeName: 'bolt.new Pioneer',
-        srcodeCommentary: 'Welcome to the future of coding! bolt.new is like having a coding genie, but instead of three wishes, you get unlimited prompts. The secret sauce? It\'s not just about asking for code - it\'s about having a conversation with your AI development partner. Think of me as your prompt whisperer and sarcasm provider!'
+        srcodeCommentary: 'Welcome to the future, {{name}}! bolt.new is like having a coding genie, but instead of three wishes, you get unlimited prompts. The secret? It\'s not just about asking for code - it\'s about having intelligent conversations with your AI development partner. Think of me as your prompt whisperer and occasional source of programming wisdom (with a dash of sarcasm)! 🧞‍♂️✨',
+        quizQuestions: {
+          'q1-1-1': {
+            question: 'What is the primary infrastructure technology that powers bolt.new?',
+            options: [
+              'Docker containers',
+              'StackBlitz WebContainers',
+              'AWS Lambda',
+              'Google Cloud Run'
+            ],
+            correctAnswer: 1,
+            explanation: 'bolt.new is built on StackBlitz WebContainers, which provides a browser-based development environment that can run full-stack applications entirely in the browser without any local setup.'
+          },
+          'q1-1-2': {
+            question: 'Which of the following best describes bolt.new\'s development philosophy?',
+            options: [
+              'Code-first with manual configuration',
+              'AI-first with natural language interface',
+              'Template-based with predefined structures',
+              'Visual drag-and-drop development'
+            ],
+            correctAnswer: 1,
+            explanation: 'bolt.new follows an AI-first development philosophy where you can describe what you want to build using natural language, and the AI generates production-ready code based on your requirements.'
+          },
+          'q1-1-3': {
+            question: 'What database service does bolt.new integrate with for backend functionality?',
+            options: [
+              'MongoDB Atlas',
+              'Firebase',
+              'Supabase',
+              'PlanetScale'
+            ],
+            correctAnswer: 2,
+            explanation: 'bolt.new integrates with Supabase, which provides PostgreSQL database with real-time features, authentication, and edge functions for comprehensive backend functionality.'
+          },
+          'q1-1-4': {
+            question: 'Which design tool can bolt.new convert directly to functional code?',
+            options: [
+              'Adobe XD',
+              'Sketch',
+              'Figma',
+              'InVision'
+            ],
+            correctAnswer: 2,
+            explanation: 'bolt.new has direct integration with Figma, allowing you to convert designs directly to functional code, streamlining the design-to-development workflow.'
+          },
+          'q1-1-5': {
+            question: 'What pricing model does bolt.new use?',
+            options: [
+              'Fixed monthly subscription',
+              'Pay-per-project',
+              'Token-based usage',
+              'Completely free'
+            ],
+            correctAnswer: 2,
+            explanation: 'bolt.new uses a token-based pricing model where costs depend on the complexity of AI interactions, amount of code generated, project size, and integration requirements.'
+          }
+        }
       },
 
-      // Lesson 1-2
       'lesson-1-2': {
-        title: 'Writing Effective Prompts',
-        objective: 'Master the art of prompt engineering for optimal bolt.new results',
-        content: 'The Art of Prompt Engineering\\n\\nWriting effective prompts is like learning a new language - the language of AI collaboration. The better you communicate your ideas, the better bolt.new can bring them to life.\\n\\nThe CLEAR Method\\n\\nC - Context: Always provide context about what you\'re building\\nL - List Requirements: Be specific about features and functionality\\nE - Examples: Provide examples when helpful\\nA - Aesthetics: Describe the visual style\\nR - Requirements: Technical specifications',
+        title: 'Mastering Effective Prompts',
+        objective: 'Learn the art of prompt engineering for optimal bolt.new results and efficient development',
+        content: `# The Art of Prompt Engineering
+
+{{name}}, mastering bolt.new is fundamentally about communication. The quality of your prompts directly determines the quality of your results. Let's dive deep into professional prompt engineering techniques.
+
+## The CLEAR Framework
+
+### C - Context
+Always establish the big picture:
+- **Project Type**: "I'm building a task management app for remote teams"
+- **User Base**: "Target audience is small startups with 5-15 employees"
+- **Purpose**: "Helping distributed teams stay organized and productive"
+- **Industry**: "SaaS productivity tool for technology companies"
+
+### L - List Requirements
+Be specific about functionality:
+- **Core Features**: "Users need to create, assign, prioritize, and track tasks"
+- **User Roles**: "Team members, project managers, and administrators"
+- **Data Requirements**: "Task titles, descriptions, due dates, priority levels, assignment history"
+- **Business Rules**: "Only project managers can assign tasks to others"
+
+### E - Examples and References
+Provide clear comparisons:
+- **Similar Apps**: "Like Trello but with more detailed task tracking"
+- **UI Inspiration**: "Clean interface similar to Linear or Notion"
+- **Functionality**: "Task creation flow similar to GitHub Issues"
+- **User Experience**: "As intuitive as Slack for team communication"
+
+### A - Aesthetics and Design
+Describe the visual direction:
+- **Design Style**: "Modern, minimalist design with clean typography"
+- **Color Scheme**: "Professional blue and white theme with accent colors"
+- **Layout**: "Sidebar navigation with main content area and right panel for details"
+- **Responsive**: "Mobile-first design that works seamlessly on all devices"
+
+### R - Requirements and Constraints
+Technical specifications:
+- **Technology Stack**: "React with TypeScript for type safety"
+- **Database**: "Supabase for real-time collaboration features"
+- **Authentication**: "Social login with Google and GitHub"
+- **Deployment**: "Deploy to Netlify with custom domain"
+- **Performance**: "Load times under 2 seconds on 3G connections"
+
+## Advanced Prompting Strategies
+
+### Progressive Enhancement
+Start simple, then add complexity:
+
+**Step 1**: "Create a basic todo list with add, complete, and delete functionality"
+**Step 2**: "Add user authentication so each person has their own todos"
+**Step 3**: "Include team collaboration features for shared task lists"
+**Step 4**: "Add real-time updates so team members see changes instantly"
+**Step 5**: "Implement task assignment and priority management"
+
+### Contextual Refinement
+Build on existing work:
+- "Modify the task creation form to include priority selection dropdown"
+- "Update the task list component to show assignment information"
+- "Change the color scheme to use our brand colors: #2563eb for primary"
+- "Add a filter sidebar to show tasks by status, priority, or assignee"
+
+### Specific Feature Requests
+Focus on one enhancement at a time:
+- "Add a search function that filters tasks by title and description with real-time results"
+- "Implement drag-and-drop functionality to reorder tasks by priority"
+- "Create a dashboard showing task completion statistics for the last 30 days"
+- "Add email notifications when tasks are assigned or completed"
+
+## Professional Prompt Patterns
+
+### The Problem-Solution Pattern
+{{name}}, when you encounter issues, structure your prompts like this:
+
+**Current State**: "The task list loads slowly when there are more than 100 tasks"
+**Desired Outcome**: "Fast loading regardless of task count"
+**Specific Request**: "Implement pagination with 20 tasks per page and infinite scroll"
+**Success Criteria**: "Page load time under 1 second even with 1000+ tasks"
+
+### The User Story Pattern
+Frame requests from the user's perspective:
+- "As a project manager, I want to see team productivity metrics so I can identify bottlenecks"
+- "As a team member, I want to receive notifications about task updates so I stay informed"
+- "As an administrator, I want to manage user permissions so I can control access levels"
+
+### The Technical Specification Pattern
+For complex technical requirements:
+- "Implement JWT-based authentication with refresh tokens"
+- "Set up real-time WebSocket connections for live task updates"
+- "Create REST API endpoints following OpenAPI 3.0 specification"
+- "Add database migrations for schema versioning"
+
+## Common Prompt Pitfalls to Avoid
+
+### ❌ Too Vague
+**Bad**: "Make a website"
+**Good**: "Create a portfolio website for a UX designer showcasing 6 projects with case studies, about page, and contact form using a modern, minimal design"
+
+### ❌ Overwhelming Complexity
+**Bad**: "Build a complete social media platform with messaging, posts, stories, live streaming, marketplace, AI recommendations, and crypto payments"
+**Good**: "Create a simple photo-sharing app where users can post images with captions and follow other users"
+
+### ❌ Unclear Success Criteria
+**Bad**: "Make it look better"
+**Good**: "Update the design to use a card-based layout with subtle shadows, increase font size to 16px for better readability, and add more whitespace between sections"
+
+### ❌ Missing Context
+**Bad**: "Add a login button"
+**Good**: "Add a login button in the top-right corner of the navigation bar that opens a modal with email/password fields and social login options"
+
+## Token Optimization Strategies
+
+{{name}}, understanding token usage helps you develop efficiently:
+
+### Efficient Communication
+- **Be Specific Early**: Detailed initial prompts prevent back-and-forth iterations
+- **Reference Previous Work**: "Update the user profile component we created earlier"
+- **Batch Related Changes**: "Make these three styling updates to the header component..."
+
+### Smart Iteration
+- **Incremental Updates**: Small, focused changes rather than complete rewrites
+- **Reuse Components**: "Use the same card design pattern for the new feature"
+- **Build on Success**: "Apply the same responsive design approach to other pages"
+
+## Advanced Techniques for {{name}}
+
+### Conditional Logic Prompts
+"If the user is logged in, show the dashboard; otherwise, display the landing page with sign-up call-to-action"
+
+### Multi-Step Workflows
+"Create a three-step onboarding process: 1) Account setup, 2) Profile creation, 3) Team invitation"
+
+### Error Handling Specifications
+"Add proper error handling for network failures with user-friendly messages and retry options"
+
+### Performance Optimization Requests
+"Implement lazy loading for images and code splitting for better performance on slower connections"
+
+Remember {{name}}, great prompts lead to great results. The time you invest in crafting clear, specific prompts will save hours of development time and produce higher-quality applications.`,
         learningObjectives: {
-          0: 'Apply the CLEAR method to write effective prompts',
-          1: 'Identify and avoid common prompt pitfalls',
-          2: 'Use progressive prompting for complex projects',
-          3: 'Craft specific, actionable requests for bolt.new'
+          0: 'Apply the CLEAR framework for structured prompt development',
+          1: 'Use progressive enhancement strategies for complex projects',
+          2: 'Implement professional prompt patterns for specific use cases',
+          3: 'Optimize token usage through efficient communication',
+          4: 'Avoid common prompting pitfalls that lead to poor results'
         },
         badgeName: 'AI Whisperer',
-        srcodeCommentary: 'Think of prompts like ordering at a restaurant. You wouldn\'t just say "food please" - you\'d specify what you want, how you want it prepared, and any special requirements. Same with bolt.new!'
+        srcodeCommentary: '{{name}}, think of prompts like ordering at a fancy restaurant. You wouldn\'t just grunt "food" at the waiter - you\'d specify the dish, cooking preferences, and dietary restrictions. Same principle with bolt.new! The more specific and thoughtful your "order," the more delicious your code will be. And trust me, nobody wants undercooked spaghetti code! 🍝✨',
+        quizQuestions: {
+          'q1-2-1': {
+            question: 'What does the "C" in the CLEAR framework stand for?',
+            options: [
+              'Code requirements',
+              'Context',
+              'Completion criteria',
+              'Conditional logic'
+            ],
+            correctAnswer: 1,
+            explanation: 'The "C" in the CLEAR framework stands for "Context" - always establish the big picture including project type, user base, purpose, and industry before making specific requests.'
+          },
+          'q1-2-2': {
+            question: 'Which prompting strategy involves breaking down complex requests into smaller, manageable parts?',
+            options: [
+              'Contextual prompting',
+              'Iterative development',
+              'Comparative analysis',
+              'Technical specification'
+            ],
+            correctAnswer: 1,
+            explanation: 'Iterative development involves breaking down complex requests into smaller, manageable parts, allowing for better results and easier debugging when issues arise.'
+          },
+          'q1-2-3': {
+            question: 'What is the most effective way to provide design direction in your prompts?',
+            options: [
+              'Use technical CSS specifications only',
+              'Provide vague artistic descriptions',
+              'Describe visual direction with specific examples and references',
+              'Let the AI choose the design automatically'
+            ],
+            correctAnswer: 2,
+            explanation: 'The most effective approach is to describe the visual direction with specific examples and references, including design style, color scheme, layout preferences, and responsive requirements.'
+          },
+          'q1-2-4': {
+            question: 'Which of these is a common prompting mistake that leads to poor results?',
+            options: [
+              'Being too specific about requirements',
+              'Providing too much context',
+              'Asking for vague generic solutions',
+              'Including technical constraints'
+            ],
+            correctAnswer: 2,
+            explanation: 'Asking for vague generic solutions is a common mistake. Specific, detailed prompts with clear requirements and constraints produce much better results than generic requests.'
+          },
+          'q1-2-5': {
+            question: 'What is the purpose of the "R" (Requirements and Constraints) in the CLEAR framework?',
+            options: [
+              'To limit the AI\'s creativity',
+              'To specify technical stack, performance needs, and deployment requirements',
+              'To reduce development time',
+              'To avoid using modern technologies'
+            ],
+            correctAnswer: 1,
+            explanation: 'Requirements and Constraints specify technical specifications like technology stack, database choice, authentication methods, deployment targets, and performance requirements to ensure the solution meets your specific needs.'
+          }
+        }
       },
 
-      // Lesson 1-3
       'lesson-1-3': {
-        title: 'Understanding the bolt.new Interface',
-        objective: 'Navigate and utilize all features of the bolt.new development environment',
-        content: 'Mastering the bolt.new Interface\\n\\nThe bolt.new interface is your command center for AI-powered development. Understanding each component will make you more efficient and help you build better applications.\\n\\nThe Main Components\\n\\n1. The Prompt Input: This is where the magic happens!\\n2. The Preview Window: See your application come to life in real-time\\n3. The File Explorer: Navigate your project structure\\n4. The Code Editor: When you need to make manual adjustments\\n5. The Terminal: Monitor your application',
+        title: 'Navigating the bolt.new Interface',
+        objective: 'Master every component of the bolt.new development environment for maximum productivity',
+        content: `# Mastering the bolt.new Interface
+
+{{name}}, the bolt.new interface is your command center for AI-powered development. Understanding each component deeply will transform your development efficiency. Let's explore every feature systematically.
+
+## Core Interface Components
+
+### 1. The Chat Interface - Your AI Communication Hub
+Located at the bottom of the screen, this is where all the magic happens:
+
+**Features:**
+- **Multi-line Input**: Use Shift+Enter for complex, detailed prompts
+- **Prompt History**: Access and modify previous instructions
+- **Real-time Typing**: See AI responses generate in real-time
+- **Message Threading**: Maintain context across long development sessions
+
+**Pro Tips for {{name}}:**
+- Keep chat history organized by using clear, descriptive prompts
+- Reference previous messages: "Update the component we created in message #15"
+- Use the history to learn from successful prompt patterns
+- Clear chat when starting new, unrelated features to maintain focus
+
+### 2. Live Preview Window - Real-time Application View
+Your application comes alive here:
+
+**Capabilities:**
+- **Instant Updates**: See changes immediately as code generates
+- **Interactive Testing**: Click, type, and navigate your app in real-time
+- **Responsive Preview**: Test different screen sizes and orientations
+- **Console Integration**: View runtime errors and debug information
+- **Network Monitoring**: Watch API calls and data flow
+
+**Advanced Usage:**
+- **Mobile Testing**: Use browser dev tools for device simulation
+- **Performance Monitoring**: Check load times and resource usage
+- **Accessibility Testing**: Verify keyboard navigation and screen reader compatibility
+- **Cross-browser Validation**: Test compatibility across different browsers
+
+### 3. File Explorer - Project Structure Navigation
+Understand your project architecture:
+
+**Organization:**
+- **Folder Structure**: Logical organization following framework conventions
+- **File Types**: Recognize different file extensions and their purposes
+- **Quick Access**: Jump directly to any file with one click
+- **Search Functionality**: Find files quickly in large projects
+
+**File System Patterns:**
+- **src/**: Main application source code
+- **public/**: Static assets and index.html
+- **components/**: Reusable UI components
+- **pages/**: Route-based page components
+- **utils/**: Helper functions and utilities
+- **styles/**: CSS and styling files
+- **api/**: Backend endpoints and server logic
+
+### 4. Integrated Code Editor - Manual Fine-tuning
+When you need direct control:
+
+**Editor Features:**
+- **Syntax Highlighting**: Color-coded for different languages
+- **Auto-completion**: Smart suggestions as you type
+- **Error Detection**: Real-time linting and error highlighting
+- **Code Formatting**: Automatic indentation and style consistency
+- **Search and Replace**: Powerful text manipulation tools
+
+**Best Practices for {{name}}:**
+- Use the editor for small tweaks rather than major changes
+- Leverage auto-completion to learn framework patterns
+- Pay attention to error highlighting for debugging
+- Format code regularly for better readability
+
+### 5. Terminal Output - Development Monitoring
+Monitor your application's health:
+
+**Information Displayed:**
+- **Build Status**: Compilation progress and completion
+- **Error Messages**: Detailed debugging information
+- **Package Installation**: Dependency management progress
+- **Hot Reload Status**: Live update confirmations
+- **Performance Metrics**: Build times and optimization details
+
+**Debugging Strategies:**
+- **Error Analysis**: Read error messages carefully for specific issues
+- **Build Monitoring**: Watch for successful compilation confirmations
+- **Dependency Tracking**: Monitor package installation progress
+- **Performance Awareness**: Notice build time patterns for optimization
+
+## Advanced Interface Features
+
+### Version Control Integration
+bolt.new automatically manages your code history:
+
+**Automatic Versioning:**
+- Every significant change creates a checkpoint
+- Access previous versions through the history panel
+- Rollback to earlier states if needed
+- Compare different versions side-by-side
+
+**Collaboration Features:**
+- **Project Sharing**: Share your project with a simple link
+- **Real-time Collaboration**: Multiple developers can work simultaneously
+- **Comment System**: Add notes and feedback directly in the interface
+- **Export Options**: Download code or push to GitHub
+
+### Deployment Integration
+One-click deployment to production:
+
+**Supported Platforms:**
+- **Netlify**: Automatic deployments with custom domains
+- **Vercel**: Optimized for React and Next.js applications
+- **GitHub Pages**: Free hosting for static sites
+- **Custom Servers**: Export and deploy anywhere
+
+**Deployment Process:**
+1. **Build Optimization**: Automatic production-ready builds
+2. **Asset Optimization**: Image compression and code minification
+3. **CDN Integration**: Global content delivery for fast loading
+4. **SSL Certificates**: Automatic HTTPS security
+5. **Custom Domains**: Professional branding with your domain
+
+## Workflow Optimization for {{name}}
+
+### Efficient Development Patterns
+
+#### 1. Start with Structure
+- Begin with overall layout and navigation
+- Establish your component hierarchy
+- Set up routing and page structure
+- Define your data flow patterns
+
+#### 2. Iterative Development
+- Build one feature completely before starting the next
+- Test thoroughly at each stage
+- Refine user experience continuously
+- Gather feedback and iterate
+
+#### 3. Use Preview Strategically
+- Test every new feature immediately
+- Verify responsive design across devices
+- Check accessibility and usability
+- Validate performance on slower connections
+
+#### 4. Monitor Terminal Output
+- Watch for build errors early
+- Pay attention to performance warnings
+- Monitor dependency installation
+- Check for security vulnerabilities
+
+### Keyboard Shortcuts for Power Users
+
+Essential shortcuts for {{name}}:
+- **Ctrl/Cmd + Enter**: Submit chat prompt quickly
+- **Ctrl/Cmd + /**: Toggle file explorer visibility
+- **Ctrl/Cmd + \\**: Show/hide terminal output
+- **Ctrl/Cmd + Shift + P**: Access command palette
+- **Ctrl/Cmd + F**: Search within current file
+- **Ctrl/Cmd + D**: Duplicate current line
+- **Ctrl/Cmd + Z**: Undo last action
+- **Ctrl/Cmd + Y**: Redo action
+
+### Project Organization Best Practices
+
+#### Folder Structure Strategy
+```
+src/
+├── components/          # Reusable UI components
+│   ├── common/         # Shared components
+│   ├── forms/          # Form-specific components
+│   └── layout/         # Layout components
+├── pages/              # Route-based pages
+├── hooks/              # Custom React hooks
+├── utils/              # Helper functions
+├── styles/             # CSS and styling
+├── types/              # TypeScript definitions
+└── api/                # API integration
+```
+
+#### Component Naming Conventions
+- **PascalCase**: Component names (UserProfile, TaskList)
+- **camelCase**: Function names (getUserData, handleSubmit)
+- **kebab-case**: File names (user-profile.tsx, task-list.css)
+- **UPPER_CASE**: Constants (API_BASE_URL, MAX_RETRIES)
+
+### Troubleshooting Common Interface Issues
+
+#### Performance Optimization
+- **Large Projects**: Use file search instead of browsing
+- **Slow Previews**: Clear browser cache and reload
+- **Memory Issues**: Close unused tabs and restart browser
+- **Build Errors**: Check terminal for specific error messages
+
+#### Collaboration Solutions
+- **Sync Issues**: Refresh the page to get latest changes
+- **Permission Problems**: Verify sharing settings
+- **Version Conflicts**: Use version history to resolve differences
+- **Communication**: Use comment system for team coordination
+
+{{name}}, mastering the bolt.new interface is like learning to drive a high-performance car. Once you understand every control and feature, you'll develop at speeds you never thought possible!`,
         learningObjectives: {
-          0: 'Navigate all major components of the bolt.new interface',
-          1: 'Utilize the preview window for testing and debugging',
-          2: 'Understand the file explorer and code editor features',
-          3: 'Apply workflow best practices for efficient development'
+          0: 'Navigate all major interface components with confidence',
+          1: 'Utilize the preview window for comprehensive testing',
+          2: 'Manage project structure through the file explorer',
+          3: 'Apply keyboard shortcuts for efficient development',
+          4: 'Implement professional workflow optimization strategies'
         },
-        badgeName: 'Tech Detective',
-        srcodeCommentary: 'The bolt.new interface is like a Swiss Army knife for developers - it has everything you need, and once you know where each tool is, you\'ll wonder how you ever coded without it!'
+        badgeName: 'Interface Master',
+        srcodeCommentary: '{{name}}, the bolt.new interface is like a Swiss Army knife designed by developers, for developers. Every tool has its place, and once you know where everything is, you\'ll wonder how you ever coded with anything else. Just remember: with great interface power comes great responsibility... to build amazing things! 🛠️✨',
+        quizQuestions: {
+          'q1-3-1': {
+            question: 'What are the three main panels in the bolt.new interface?',
+            options: [
+              'Code editor, terminal, and settings',
+              'Chat interface, code editor, and preview window',
+              'File explorer, chat interface, and terminal',
+              'Preview window, settings, and file manager'
+            ],
+            correctAnswer: 1,
+            explanation: 'The three main panels in bolt.new are the Chat interface (where you communicate with the AI), the Code editor (where you can review and edit generated code), and the Preview window (where you see your application running in real-time).'
+          },
+          'q1-3-2': {
+            question: 'What keyboard shortcut opens the command palette in bolt.new?',
+            options: [
+              'Ctrl+Shift+P',
+              'Ctrl+P',
+              'Ctrl+K',
+              'Ctrl+Shift+K'
+            ],
+            correctAnswer: 0,
+            explanation: 'Ctrl+Shift+P (or Cmd+Shift+P on Mac) opens the command palette, which provides quick access to all available commands and actions within the bolt.new interface.'
+          },
+          'q1-3-3': {
+            question: 'Which panel allows you to see your application running in real-time?',
+            options: [
+              'Code editor',
+              'Chat interface',
+              'Preview window',
+              'File explorer'
+            ],
+            correctAnswer: 2,
+            explanation: 'The Preview window shows your application running in real-time, allowing you to test functionality, see visual changes, and interact with your application as users would.'
+          },
+          'q1-3-4': {
+            question: 'What is the primary purpose of the chat interface in bolt.new?',
+            options: [
+              'To view application logs',
+              'To communicate with the AI and request changes',
+              'To manage project settings',
+              'To browse file contents'
+            ],
+            correctAnswer: 1,
+            explanation: 'The chat interface is where you communicate with the AI, make requests for new features, ask for modifications, and engage in natural language conversations about your project development.'
+          }
+        }
       },
 
-      // Lesson 2-1
+      // Level 2: Database Integration
       'lesson-2-1': {
-        title: 'Database Fundamentals',
-        objective: 'Learn how to work with databases in bolt.new applications',
-        content: 'Database Fundamentals in bolt.new\\n\\nDatabases are the backbone of modern applications. In bolt.new, you can create and manage databases using simple natural language prompts.\\n\\nTypes of Databases\\n\\nRelational Databases (SQL):\\n- PostgreSQL: Robust, feature-rich\\n- MySQL: Popular, well-supported\\n- SQLite: Lightweight, file-based\\n\\nNoSQL Databases:\\n- MongoDB: Document-based\\n- Firebase: Real-time capabilities\\n- Supabase: PostgreSQL with real-time features',
-        learningObjectives: {
-          0: 'Understand different types of databases available in bolt.new',
-          1: 'Create database schemas using natural language prompts',
-          2: 'Implement CRUD operations for data management',
-          3: 'Apply database best practices for performance and integrity'
-        },
-        badgeName: 'Supreme Connector',
-        srcodeCommentary: 'Databases are like digital filing cabinets, except they never get messy and you can find anything instantly. Well, unless you design them poorly - then they become like that junk drawer everyone has!'
-      },
+        title: 'Database Fundamentals with Supabase',
+        objective: 'Master database integration, schema design, and CRUD operations using Supabase in bolt.new',
+        content: `# Database Fundamentals with Supabase
 
-      // Lesson 2-2
-      'lesson-2-2': {
-        title: 'Advanced Database Operations',
-        objective: 'Master complex database queries and relationships',
-        content: 'Advanced Database Operations\\n\\nNow that you understand the basics, let\'s dive into more sophisticated database operations that will make your applications truly powerful.\\n\\nDatabase Relationships\\n\\nOne-to-One: Each record in one table relates to exactly one record in another\\nOne-to-Many: One record relates to multiple records in another table\\nMany-to-Many: Multiple records in one table relate to multiple records in another',
-        learningObjectives: {
-          0: 'Implement different types of database relationships',
-          1: 'Write complex queries with joins and aggregations',
-          2: 'Optimize database performance with proper indexing',
-          3: 'Apply security best practices to database design'
-        },
-        badgeName: 'Data Architect',
-        srcodeCommentary: 'Advanced database operations are like learning to cook gourmet meals after mastering scrambled eggs. Sure, you could survive on basic queries, but why settle for fast food when you can create a five-star data experience?'
-      },
+{{name}}, databases are the foundation of modern web applications. With bolt.new and Supabase, you can create powerful, scalable database solutions using simple prompts. Let's dive deep into professional database development.
 
-      // Lesson 2-3
-      'lesson-2-3': {
-        title: 'Real-time Data with Supabase',
-        objective: 'Implement real-time features using Supabase in bolt.new',
-        content: 'Real-time Data with Supabase\\n\\nReal-time features make applications feel alive and responsive. With Supabase and bolt.new, you can add real-time capabilities with simple prompts.\\n\\nWhat is Real-time Data?\\n\\nReal-time data updates your application instantly when changes occur in the database, without requiring page refreshes or manual updates.',
-        learningObjectives: {
-          0: 'Understand real-time data concepts and use cases',
-          1: 'Implement real-time subscriptions with Supabase',
-          2: 'Add presence tracking and live notifications',
-          3: 'Apply real-time best practices for performance and security'
-        },
-        badgeName: 'Edge Lord',
-        srcodeCommentary: 'Real-time data is like having a crystal ball for your app - you can see changes as they happen! It\'s the difference between checking your phone every 5 minutes for messages and getting instant notifications.'
-      },
+## Understanding Supabase in bolt.new
 
-      // Add more lessons as needed with similar structure...
+### What is Supabase?
+Supabase is a **PostgreSQL-based** backend-as-a-service that provides:
+- **Real-time Database**: Instant updates across all connected clients
+- **Authentication**: Built-in user management and security
+- **Edge Functions**: Serverless backend logic
+- **Storage**: File and media management
+- **Row Level Security (RLS)**: Granular access control
+
+### Why Supabase with bolt.new?
+Perfect integration for {{name}} because:
+- **No Backend Setup**: Focus on frontend development
+- **Real-time Features**: Live data updates without complex WebSocket management
+- **Automatic APIs**: Generated REST and GraphQL endpoints
+- **Type Safety**: TypeScript integration for better development experience
+- **Scalability**: Handles growth from prototype to production
+
+## Database Types and Use Cases
+
+### Relational Databases (SQL)
+**PostgreSQL** (Supabase's foundation):
+- **Strengths**: ACID compliance, complex queries, data integrity
+- **Best For**: Financial applications, e-commerce, content management
+- **When to Use**: When you need strict data consistency and complex relationships
+
+**MySQL**:
+- **Strengths**: Wide adoption, excellent performance, large community
+- **Best For**: Web applications, content management systems
+- **When to Use**: Traditional web applications with proven patterns
+
+**SQLite**:
+- **Strengths**: Lightweight, file-based, no server required
+- **Best For**: Prototypes, local development, mobile apps
+- **When to Use**: Simple applications or development environments
+
+### NoSQL Databases
+**MongoDB**:
+- **Strengths**: Flexible schema, document-based, horizontal scaling
+- **Best For**: Content management, catalogs, real-time analytics
+- **When to Use**: Rapidly evolving data structures
+
+**Firebase Firestore**:
+- **Strengths**: Real-time updates, offline support, easy setup
+- **Best For**: Mobile apps, real-time collaboration
+- **When to Use**: Mobile-first applications with real-time requirements
+
+## Creating Your First Database in bolt.new
+
+### Basic Setup Prompt
+"{{name}}, let's create a comprehensive task management database with Supabase integration for our team collaboration app"
+
+bolt.new will automatically:
+1. **Initialize Supabase Project**: Set up database connection
+2. **Create Database Schema**: Design tables and relationships
+3. **Generate API Endpoints**: CRUD operations for all tables
+4. **Set up Authentication**: User management system
+5. **Configure Real-time**: Live data synchronization
+
+### Advanced Schema Design
+
+#### Users Table
+```sql
+CREATE TABLE users (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  email VARCHAR(255) UNIQUE NOT NULL,
+  full_name VARCHAR(255),
+  avatar_url TEXT,
+  role VARCHAR(50) DEFAULT 'member',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+```
+
+#### Projects Table
+```sql
+CREATE TABLE projects (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name VARCHAR(255) NOT NULL,
+  description TEXT,
+  owner_id UUID REFERENCES users(id) ON DELETE CASCADE,
+  status VARCHAR(50) DEFAULT 'active',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+```
+
+#### Tasks Table
+```sql
+CREATE TABLE tasks (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title VARCHAR(255) NOT NULL,
+  description TEXT,
+  project_id UUID REFERENCES projects(id) ON DELETE CASCADE,
+  assigned_to UUID REFERENCES users(id) ON DELETE SET NULL,
+  status VARCHAR(50) DEFAULT 'todo',
+  priority VARCHAR(20) DEFAULT 'medium',
+  due_date TIMESTAMP WITH TIME ZONE,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+```
+
+## CRUD Operations Mastery
+
+### Create Operations
+**Adding New Records:**
+
+```javascript
+// Create a new project
+const { data: project, error } = await supabase
+  .from('projects')
+  .insert({
+    name: 'Website Redesign',
+    description: 'Complete overhaul of company website',
+    owner_id: user.id
+  })
+  .select()
+  .single();
+
+// Create multiple tasks at once
+const { data: tasks, error } = await supabase
+  .from('tasks')
+  .insert([
+    {
+      title: 'Design mockups',
+      project_id: project.id,
+      priority: 'high'
     },
+    {
+      title: 'Develop frontend',
+      project_id: project.id,
+      priority: 'medium'
+    }
+  ]);
+```
 
-    // Badges
+### Read Operations
+**Querying Data:**
+
+```javascript
+// Get all projects for current user
+const { data: projects } = await supabase
+  .from('projects')
+  .select(`
+    *,
+    tasks (
+      id,
+      title,
+      status,
+      assigned_to (
+        full_name,
+        email
+      )
+    )
+  `)
+  .eq('owner_id', user.id)
+  .order('created_at', { ascending: false });
+
+// Advanced filtering and pagination
+const { data: tasks, count } = await supabase
+  .from('tasks')
+  .select('*, projects(name), users(full_name)', { count: 'exact' })
+  .eq('status', 'in_progress')
+  .gte('due_date', new Date().toISOString())
+  .order('priority', { ascending: false })
+  .range(0, 9); // First 10 results
+```
+
+### Update Operations
+**Modifying Existing Data:**
+
+```javascript
+// Update task status
+const { data, error } = await supabase
+  .from('tasks')
+  .update({ 
+    status: 'completed',
+    completed_at: new Date().toISOString()
+  })
+  .eq('id', taskId)
+  .select();
+
+// Bulk update multiple records
+const { data, error } = await supabase
+  .from('tasks')
+  .update({ status: 'archived' })
+  .eq('project_id', projectId)
+  .eq('status', 'completed');
+```
+
+### Delete Operations
+**Removing Data:**
+
+```javascript
+// Soft delete (recommended)
+const { error } = await supabase
+  .from('tasks')
+  .update({ deleted_at: new Date().toISOString() })
+  .eq('id', taskId);
+
+// Hard delete (permanent)
+const { error } = await supabase
+  .from('tasks')
+  .delete()
+  .eq('id', taskId);
+```
+
+## Database Best Practices for {{name}}
+
+### Schema Design Principles
+
+#### 1. Normalization
+- **Avoid Data Duplication**: Store information in one place
+- **Use Foreign Keys**: Maintain referential integrity
+- **Separate Concerns**: Different types of data in different tables
+
+#### 2. Indexing Strategy
+```sql
+-- Index frequently queried columns
+CREATE INDEX idx_tasks_project_id ON tasks(project_id);
+CREATE INDEX idx_tasks_status ON tasks(status);
+CREATE INDEX idx_tasks_assigned_to ON tasks(assigned_to);
+
+-- Composite indexes for complex queries
+CREATE INDEX idx_tasks_project_status ON tasks(project_id, status);
+```
+
+#### 3. Data Types Optimization
+- **Use Appropriate Types**: UUID for IDs, VARCHAR with limits for text
+- **Consider Storage**: Use smaller types when possible
+- **Plan for Growth**: Design for future scalability
+
+### Security Implementation
+
+#### Row Level Security (RLS)
+```sql
+-- Enable RLS on all tables
+ALTER TABLE projects ENABLE ROW LEVEL SECURITY;
+ALTER TABLE tasks ENABLE ROW LEVEL SECURITY;
+
+-- Users can only see their own projects
+CREATE POLICY "Users can view own projects" ON projects
+  FOR SELECT USING (owner_id = auth.uid());
+
+-- Users can view tasks from their projects
+CREATE POLICY "Users can view project tasks" ON tasks
+  FOR SELECT USING (
+    EXISTS (
+      SELECT 1 FROM projects 
+      WHERE projects.id = tasks.project_id 
+      AND projects.owner_id = auth.uid()
+    )
+  );
+```
+
+#### Data Validation
+```sql
+-- Add constraints for data integrity
+ALTER TABLE tasks ADD CONSTRAINT valid_status 
+  CHECK (status IN ('todo', 'in_progress', 'review', 'completed'));
+
+ALTER TABLE tasks ADD CONSTRAINT valid_priority 
+  CHECK (priority IN ('low', 'medium', 'high', 'urgent'));
+```
+
+### Performance Optimization
+
+#### Query Optimization
+- **Use Indexes**: Index frequently queried columns
+- **Limit Results**: Always use pagination for large datasets
+- **Select Specific Columns**: Avoid SELECT * in production
+- **Use Joins Wisely**: Understand when to use joins vs separate queries
+
+#### Connection Management
+- **Connection Pooling**: Let Supabase handle connections efficiently
+- **Query Batching**: Group related operations together
+- **Caching Strategy**: Cache frequently accessed, rarely changed data
+
+## Real-time Features
+
+### Live Data Synchronization
+```javascript
+// Subscribe to real-time task updates
+const subscription = supabase
+  .channel('tasks_channel')
+  .on('postgres_changes', {
+    event: '*',
+    schema: 'public',
+    table: 'tasks',
+    filter: `project_id=eq.${projectId}`
+  }, (payload) => {
+    console.log('Task updated:', payload);
+    // Update your UI state here
+  })
+  .subscribe();
+
+// Cleanup subscription
+useEffect(() => {
+  return () => {
+    subscription.unsubscribe();
+  };
+}, []);
+```
+
+### Presence Tracking
+```javascript
+// Track who's online in the project
+const presence = supabase.channel(`project:${projectId}`)
+  .on('presence', { event: 'sync' }, () => {
+    const state = presence.presenceState();
+    console.log('Online users:', state);
+  })
+  .on('presence', { event: 'join' }, ({ key, newPresences }) => {
+    console.log('User joined:', newPresences);
+  })
+  .on('presence', { event: 'leave' }, ({ key, leftPresences }) => {
+    console.log('User left:', leftPresences);
+  })
+  .subscribe(async (status) => {
+    if (status === 'SUBSCRIBED') {
+      await presence.track({
+        user_id: user.id,
+        username: user.full_name,
+        online_at: new Date().toISOString()
+      });
+    }
+  });
+```
+
+## Advanced Database Prompts for {{name}}
+
+### Schema Creation
+"Create a comprehensive e-commerce database schema with products, categories, orders, customers, and inventory tracking, including proper relationships and constraints"
+
+### Performance Optimization
+"Add appropriate indexes to the tasks table for optimal query performance, focusing on status, project_id, and assigned_to columns"
+
+### Security Implementation
+"Implement row-level security policies ensuring users can only access their own data and shared team projects"
+
+### Real-time Features
+"Set up real-time subscriptions for the task management app so all team members see updates instantly"
+
+{{name}}, mastering databases is about understanding not just the technical implementation, but also the business logic and user experience implications. Great database design makes everything else easier!`,
+        learningObjectives: {
+          0: 'Design efficient database schemas using Supabase and PostgreSQL',
+          1: 'Implement comprehensive CRUD operations with proper error handling',
+          2: 'Apply security best practices including RLS and data validation',
+          3: 'Optimize database performance with indexing and query strategies',
+          4: 'Integrate real-time features for collaborative applications'
+        },
+        badgeName: 'Database Architect',
+        srcodeCommentary: '{{name}}, databases are like digital filing cabinets, but way cooler! Instead of dusty folders, you get lightning-fast queries and real-time updates. The secret is organization - design your schema like you\'re Marie Kondo for data. Does this table spark joy? Does this relationship make sense? Trust me, future you will thank present you for good database design! 📊✨',
+        quizQuestions: {
+          'q2-1-1': {
+            question: 'What type of database does Supabase provide?',
+            options: [
+              'MongoDB (NoSQL)',
+              'PostgreSQL (SQL)',
+              'SQLite (Embedded)',
+              'Redis (Key-Value)'
+            ],
+            correctAnswer: 1,
+            explanation: 'Supabase provides PostgreSQL, a powerful open-source SQL database that supports advanced features like JSON operations, full-text search, and complex queries.'
+          },
+          'q2-1-2': {
+            question: 'What is Row Level Security (RLS) in Supabase?',
+            options: [
+              'A way to encrypt database rows',
+              'A security feature that controls access to specific rows based on user permissions',
+              'A method to backup database rows',
+              'A tool for monitoring database performance'
+            ],
+            correctAnswer: 1,
+            explanation: 'Row Level Security (RLS) is a PostgreSQL feature that allows you to control which rows users can see and modify based on their authentication and authorization rules, providing fine-grained access control.'
+          },
+          'q2-1-3': {
+            question: 'Which Supabase feature enables real-time data synchronization?',
+            options: [
+              'Edge Functions',
+              'Storage',
+              'Realtime subscriptions',
+              'Database triggers'
+            ],
+            correctAnswer: 2,
+            explanation: 'Supabase Realtime subscriptions allow you to listen to database changes in real-time, enabling features like live chat, collaborative editing, and instant data updates across connected clients.'
+          },
+          'q2-1-4': {
+            question: 'What is the primary advantage of using Supabase with bolt.new?',
+            options: [
+              'It\'s completely free forever',
+              'It requires no SQL knowledge',
+              'It provides instant database setup with built-in authentication and real-time features',
+              'It only works with React applications'
+            ],
+            correctAnswer: 2,
+            explanation: 'Supabase integrates seamlessly with bolt.new by providing instant database setup, built-in authentication, real-time subscriptions, and Edge Functions, eliminating the need for complex backend configuration.'
+          }
+        }
+      },
+
+      'lesson-2-2': {
+        title: 'Advanced Supabase Features',
+        objective: 'Master advanced Supabase capabilities including Edge Functions, Storage, and complex queries',
+        content: `# Advanced Supabase Features
+
+{{name}}, now that you understand the fundamentals, let's explore Supabase's advanced capabilities that make it a complete backend solution. These features will transform your applications from simple CRUD apps to sophisticated, production-ready systems.
+
+## Edge Functions - Serverless Backend Logic
+
+### What are Edge Functions?
+Edge Functions are serverless TypeScript functions that run close to your users for optimal performance:
+- **Global Distribution**: Execute at edge locations worldwide
+- **TypeScript Support**: Full type safety and modern JavaScript features
+- **Supabase Integration**: Direct access to your database and auth
+- **Cost Efficient**: Pay only for execution time
+- **Auto-scaling**: Handle traffic spikes automatically
+
+### Creating Your First Edge Function
+
+#### Setup in bolt.new
+"{{name}}, create a Supabase Edge Function for processing webhook payments from Stripe with proper error handling and database updates"
+
+#### Example Function Structure
+```typescript
+// supabase/functions/process-payment/index.ts
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+}
+
+serve(async (req) => {
+  // Handle CORS preflight requests
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders })
+  }
+
+  try {
+    // Initialize Supabase client
+    const supabase = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_ANON_KEY') ?? '',
+      {
+        global: {
+          headers: { Authorization: req.headers.get('Authorization')! },
+        },
+      }
+    )
+
+    // Parse request body
+    const { payment_intent_id, amount, customer_email } = await req.json()
+
+    // Process payment logic
+    const { data, error } = await supabase
+      .from('payments')
+      .insert({
+        payment_intent_id,
+        amount,
+        customer_email,
+        status: 'completed',
+        processed_at: new Date().toISOString()
+      })
+
+    if (error) throw error
+
+    // Return success response
+    return new Response(
+      JSON.stringify({ success: true, payment: data }),
+      {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        status: 200,
+      }
+    )
+
+  } catch (error) {
+    return new Response(
+      JSON.stringify({ error: error.message }),
+      {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        status: 400,
+      }
+    )
+  }
+})
+```
+
+### Advanced Edge Function Patterns
+
+#### Background Job Processing
+```typescript
+// Process large datasets asynchronously
+serve(async (req) => {
+  const { dataset_id } = await req.json()
+  
+  // Queue background job
+  const { data } = await supabase
+    .from('job_queue')
+    .insert({
+      type: 'process_dataset',
+      payload: { dataset_id },
+      status: 'pending'
+    })
+  
+  // Return immediately while processing continues
+  return new Response(JSON.stringify({ job_id: data.id }))
+})
+```
+
+#### Email Notifications
+```typescript
+// Send transactional emails
+import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts"
+
+serve(async (req) => {
+  const { to, subject, template, data } = await req.json()
+  
+  const client = new SMTPClient({
+    connection: {
+      hostname: Deno.env.get('SMTP_HOSTNAME'),
+      port: 587,
+      tls: true,
+      auth: {
+        username: Deno.env.get('SMTP_USERNAME'),
+        password: Deno.env.get('SMTP_PASSWORD'),
+      },
+    },
+  })
+
+  await client.send({
+    from: "noreply@yourapp.com",
+    to,
+    subject,
+    html: renderTemplate(template, data),
+  })
+
+  await client.close()
+  
+  return new Response(JSON.stringify({ sent: true }))
+})
+```
+
+## Storage Management
+
+### File Upload and Management
+Supabase Storage provides secure file handling with automatic CDN distribution:
+
+#### Basic File Upload
+```javascript
+// Upload user avatar
+const uploadAvatar = async (file, userId) => {
+  const fileExt = file.name.split('.').pop()
+  const fileName = `${userId}.${fileExt}`
+  const filePath = `avatars/${fileName}`
+
+  const { data, error } = await supabase.storage
+    .from('user-content')
+    .upload(filePath, file, {
+      cacheControl: '3600',
+      upsert: true
+    })
+
+  if (error) throw error
+
+  // Get public URL
+  const { data: { publicUrl } } = supabase.storage
+    .from('user-content')
+    .getPublicUrl(filePath)
+
+  return publicUrl
+}
+```
+
+#### Advanced Storage Patterns
+```javascript
+// Multi-file upload with progress tracking
+const uploadProjectFiles = async (files, projectId, onProgress) => {
+  const uploads = files.map(async (file, index) => {
+    const filePath = `projects/${projectId}/${file.name}`
+    
+    const { data, error } = await supabase.storage
+      .from('project-files')
+      .upload(filePath, file, {
+        cacheControl: '3600',
+        onUploadProgress: (progress) => {
+          onProgress(index, (progress.loaded / progress.total) * 100)
+        }
+      })
+
+    if (error) throw error
+    return data
+  })
+
+  return Promise.all(uploads)
+}
+
+// Image processing and optimization
+const processImage = async (file, options = {}) => {
+  const {
+    width = 800,
+    height = 600,
+    quality = 0.8,
+    format = 'webp'
+  } = options
+
+  // Create canvas for image processing
+  const canvas = document.createElement('canvas')
+  const ctx = canvas.getContext('2d')
+  
+  // Load and resize image
+  const img = new Image()
+  img.src = URL.createObjectURL(file)
+  
+  await new Promise(resolve => img.onload = resolve)
+  
+  canvas.width = width
+  canvas.height = height
+  ctx.drawImage(img, 0, 0, width, height)
+  
+  // Convert to optimized format
+  return new Promise(resolve => {
+    canvas.toBlob(resolve, `image/${format}`, quality)
+  })
+}
+```
+
+### Storage Security and Policies
+```sql
+-- Create storage bucket with RLS
+INSERT INTO storage.buckets (id, name, public) 
+VALUES ('user-content', 'user-content', true);
+
+-- Allow authenticated users to upload their own files
+CREATE POLICY "Users can upload own files" ON storage.objects
+  FOR INSERT TO authenticated 
+  WITH CHECK (bucket_id = 'user-content' AND auth.uid()::text = (storage.foldername(name))[1]);
+
+-- Allow public read access
+CREATE POLICY "Public read access" ON storage.objects
+  FOR SELECT TO public 
+  USING (bucket_id = 'user-content');
+```
+
+## Complex Queries and Data Relationships
+
+### Advanced Query Patterns
+
+#### Nested Relationships
+```javascript
+// Get projects with all related data
+const getProjectDetails = async (projectId) => {
+  const { data, error } = await supabase
+    .from('projects')
+    .select(`
+      *,
+      owner:users!owner_id (
+        id,
+        full_name,
+        avatar_url
+      ),
+      tasks (
+        *,
+        assigned_user:users!assigned_to (
+          full_name,
+          avatar_url
+        ),
+        comments (
+          *,
+          author:users!author_id (
+            full_name,
+            avatar_url
+          )
+        )
+      ),
+      team_members:project_members (
+        user:users (
+          id,
+          full_name,
+          email,
+          avatar_url
+        ),
+        role,
+        joined_at
+      )
+    `)
+    .eq('id', projectId)
+    .single()
+
+  return { data, error }
+}
+```
+
+#### Aggregations and Analytics
+```javascript
+// Project analytics dashboard
+const getProjectAnalytics = async (projectId) => {
+  // Task completion statistics
+  const { data: taskStats } = await supabase
+    .from('tasks')
+    .select('status')
+    .eq('project_id', projectId)
+
+  // Activity timeline
+  const { data: activity } = await supabase
+    .from('task_activities')
+    .select(`
+      *,
+      task:tasks (title),
+      user:users (full_name)
+    `)
+    .eq('project_id', projectId)
+    .order('created_at', { ascending: false })
+    .limit(20)
+
+  // Performance metrics
+  const { data: metrics } = await supabase
+    .rpc('get_project_metrics', { project_id: projectId })
+
+  return {
+    taskStats: processTaskStats(taskStats),
+    activity,
+    metrics
+  }
+}
+
+// Custom SQL function for complex calculations
+CREATE OR REPLACE FUNCTION get_project_metrics(project_id UUID)
+RETURNS JSON AS $$
+DECLARE
+  result JSON;
+BEGIN
+  SELECT json_build_object(
+    'total_tasks', COUNT(*),
+    'completed_tasks', COUNT(*) FILTER (WHERE status = 'completed'),
+    'avg_completion_time', AVG(
+      EXTRACT(EPOCH FROM (completed_at - created_at)) / 3600
+    ) FILTER (WHERE status = 'completed'),
+    'team_productivity', (
+      COUNT(*) FILTER (WHERE status = 'completed')::FLOAT / 
+      NULLIF(COUNT(*), 0) * 100
+    )
+  ) INTO result
+  FROM tasks
+  WHERE tasks.project_id = get_project_metrics.project_id;
+  
+  RETURN result;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+#### Full-Text Search
+```sql
+-- Add search index
+ALTER TABLE tasks ADD COLUMN search_vector tsvector;
+
+-- Create search index
+CREATE INDEX tasks_search_idx ON tasks USING GIN(search_vector);
+
+-- Update search vector trigger
+CREATE OR REPLACE FUNCTION update_task_search_vector()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.search_vector := to_tsvector('english', 
+    COALESCE(NEW.title, '') || ' ' || 
+    COALESCE(NEW.description, '')
+  );
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_task_search_trigger
+  BEFORE INSERT OR UPDATE ON tasks
+  FOR EACH ROW EXECUTE FUNCTION update_task_search_vector();
+```
+
+```javascript
+// Implement search functionality
+const searchTasks = async (query, projectId, filters = {}) => {
+  let queryBuilder = supabase
+    .from('tasks')
+    .select(`
+      *,
+      project:projects (name),
+      assigned_user:users (full_name, avatar_url)
+    `)
+    .textSearch('search_vector', query)
+
+  if (projectId) {
+    queryBuilder = queryBuilder.eq('project_id', projectId)
+  }
+
+  if (filters.status) {
+    queryBuilder = queryBuilder.eq('status', filters.status)
+  }
+
+  if (filters.priority) {
+    queryBuilder = queryBuilder.eq('priority', filters.priority)
+  }
+
+  const { data, error } = await queryBuilder
+    .order('created_at', { ascending: false })
+
+  return { data, error }
+}
+```
+
+## Real-time Collaboration Features
+
+### Advanced Real-time Patterns
+
+#### Collaborative Editing
+```javascript
+// Real-time collaborative document editing
+const setupCollaborativeEditor = (documentId, userId) => {
+  const channel = supabase.channel(`document:${documentId}`)
+
+  // Listen for document changes
+  channel
+    .on('postgres_changes', {
+      event: 'UPDATE',
+      schema: 'public',
+      table: 'documents',
+      filter: `id=eq.${documentId}`
+    }, (payload) => {
+      // Update document content
+      updateEditorContent(payload.new.content)
+    })
+    .on('broadcast', { event: 'cursor_move' }, (payload) => {
+      // Update other users' cursor positions
+      updateCursorPosition(payload.user_id, payload.position)
+    })
+    .on('broadcast', { event: 'selection_change' }, (payload) => {
+      // Show other users' text selections
+      updateUserSelection(payload.user_id, payload.selection)
+    })
+    .subscribe()
+
+  // Broadcast cursor movements
+  const broadcastCursorPosition = (position) => {
+    channel.send({
+      type: 'broadcast',
+      event: 'cursor_move',
+      payload: { user_id: userId, position }
+    })
+  }
+
+  return { channel, broadcastCursorPosition }
+}
+```
+
+#### Live Activity Feeds
+```javascript
+// Real-time activity tracking
+const setupActivityFeed = (projectId) => {
+  const subscription = supabase
+    .channel('project_activity')
+    .on('postgres_changes', {
+      event: '*',
+      schema: 'public',
+      table: 'activities',
+      filter: `project_id=eq.${projectId}`
+    }, (payload) => {
+      if (payload.eventType === 'INSERT') {
+        addActivityToFeed(payload.new)
+      }
+    })
+    .subscribe()
+
+  return subscription
+}
+
+// Track user activities automatically
+const trackActivity = async (type, details, projectId) => {
+  const { error } = await supabase
+    .from('activities')
+    .insert({
+      type,
+      details,
+      project_id: projectId,
+      user_id: getCurrentUser().id,
+      created_at: new Date().toISOString()
+    })
+
+  if (error) console.error('Activity tracking failed:', error)
+}
+```
+
+## Production Optimization for {{name}}
+
+### Performance Best Practices
+
+#### Connection Pooling
+```javascript
+// Optimize connection management
+const createSupabaseClient = () => {
+  return createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_ANON_KEY,
+    {
+      db: {
+        schema: 'public',
+      },
+      auth: {
+        autoRefreshToken: true,
+        persistSession: true,
+        detectSessionInUrl: true
+      },
+      global: {
+        headers: {
+          'X-Client-Info': 'vibe-coding-academy'
+        }
+      }
+    }
+  )
+}
+```
+
+#### Query Optimization
+```javascript
+// Efficient data fetching patterns
+const optimizedDataFetching = {
+  // Use specific selects
+  getTaskList: () => supabase
+    .from('tasks')
+    .select('id, title, status, priority, due_date')
+    .order('created_at', { ascending: false }),
+
+  // Implement pagination
+  getTasksPaginated: (page = 0, limit = 20) => supabase
+    .from('tasks')
+    .select('*', { count: 'exact' })
+    .range(page * limit, (page + 1) * limit - 1),
+
+  // Use RPC for complex operations
+  getProjectSummary: (projectId) => supabase
+    .rpc('get_project_summary', { project_id: projectId })
+}
+```
+
+### Error Handling and Resilience
+```javascript
+// Comprehensive error handling
+const withErrorHandling = async (operation, retries = 3) => {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const result = await operation()
+      return { data: result.data, error: null }
+    } catch (error) {
+      if (attempt === retries) {
+        return { data: null, error }
+      }
+      
+      // Exponential backoff
+      await new Promise(resolve => 
+        setTimeout(resolve, Math.pow(2, attempt) * 1000)
+      )
+    }
+  }
+}
+
+// Usage example
+const safeCreateTask = async (taskData) => {
+  return withErrorHandling(async () => {
+    return await supabase
+      .from('tasks')
+      .insert(taskData)
+      .select()
+      .single()
+  })
+}
+```
+
+{{name}}, these advanced Supabase features transform your applications from simple databases into sophisticated, real-time, collaborative platforms. The key is to start simple and gradually add complexity as your needs grow!`,
+        learningObjectives: {
+          0: 'Implement serverless Edge Functions for complex backend logic',
+          1: 'Master file storage with security policies and optimization',
+          2: 'Build complex queries with nested relationships and aggregations',
+          3: 'Create real-time collaborative features with presence tracking',
+          4: 'Apply production optimization patterns for performance and reliability'
+        },
+        badgeName: 'Supabase Expert',
+        srcodeCommentary: '{{name}}, you\'ve just unlocked the secret levels of Supabase! Edge Functions are like having a personal assistant who works at the speed of light, Storage is your unlimited digital attic (but organized), and real-time features make your app feel like magic. Remember: with great Supabase power comes great responsibility... to build amazing things! 🚀⚡',
+        quizQuestions: {
+          'q2-2-1': {
+            question: 'What are Supabase Edge Functions?',
+            options: [
+              'Database triggers that run on data changes',
+              'Server-side TypeScript functions that run on the edge',
+              'Client-side JavaScript functions',
+              'Database optimization tools'
+            ],
+            correctAnswer: 1,
+            explanation: 'Supabase Edge Functions are server-side TypeScript functions that run on the edge (close to users) using Deno runtime, providing low-latency serverless compute for custom business logic.'
+          },
+          'q2-2-2': {
+            question: 'Which feature allows you to store and manage files in Supabase?',
+            options: [
+              'Database Storage',
+              'Edge Functions',
+              'Supabase Storage',
+              'Realtime Storage'
+            ],
+            correctAnswer: 2,
+            explanation: 'Supabase Storage is a S3-compatible object storage solution that allows you to store and manage files with features like automatic image optimization, CDN distribution, and access control.'
+          },
+          'q2-2-3': {
+            question: 'What is the purpose of presence tracking in Supabase Realtime?',
+            options: [
+              'To track database performance',
+              'To monitor user activity and show who is currently online',
+              'To backup user data',
+              'To optimize database queries'
+            ],
+            correctAnswer: 1,
+            explanation: 'Presence tracking allows you to monitor user activity and show who is currently online in your application, enabling features like "user is typing" indicators, online status, and collaborative cursor tracking.'
+          },
+          'q2-2-4': {
+            question: 'What is the main advantage of using Supabase\'s built-in image optimization?',
+            options: [
+              'It reduces database storage usage',
+              'It automatically resizes and optimizes images for different devices and formats',
+              'It encrypts images for security',
+              'It converts all images to vector format'
+            ],
+            correctAnswer: 1,
+            explanation: 'Supabase\'s built-in image optimization automatically resizes and optimizes images for different devices and formats, reducing bandwidth usage and improving loading times without requiring manual image processing.'
+          }
+        }
+      },
+
+      // Level 3: Authentication Systems
+      'lesson-3-1': {
+        title: 'Authentication Fundamentals',
+        objective: 'Master user authentication, authorization, and security best practices in bolt.new applications',
+        content: `# Authentication Fundamentals
+
+{{name}}, authentication is the cornerstone of secure web applications. In this comprehensive lesson, we'll master user authentication, authorization, and security best practices using modern approaches in bolt.new. Security isn't just a feature—it's a fundamental requirement.
+
+## Understanding Authentication vs Authorization
+
+### Authentication (Who are you?)
+**Authentication** verifies the identity of users:
+- **Username/Password**: Traditional credential verification
+- **Multi-Factor Authentication (MFA)**: Additional security layers
+- **Social Login**: OAuth with Google, GitHub, Twitter, etc.
+- **Passwordless**: Magic links, SMS codes, or biometric authentication
+- **SSO (Single Sign-On)**: Enterprise identity provider integration
+
+### Authorization (What can you do?)
+**Authorization** determines what authenticated users can access:
+- **Role-Based Access Control (RBAC)**: Predefined roles with specific permissions
+- **Attribute-Based Access Control (ABAC)**: Dynamic permissions based on attributes
+- **Resource-Based Permissions**: Fine-grained control over specific resources
+- **Hierarchical Permissions**: Nested permission structures
+
+## Authentication Methods in bolt.new
+
+### 1. Email/Password Authentication
+The foundation of most applications:
+
+#### Secure Implementation
+```javascript
+// User registration with validation
+const registerUser = async (email, password, userData) => {
+  // Client-side validation
+  const validation = validateUserData({ email, password, ...userData })
+  if (!validation.isValid) {
+    throw new Error(validation.errors.join(', '))
+  }
+
+  // Hash password (handled by Supabase)
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        full_name: userData.fullName,
+        avatar_url: userData.avatarUrl,
+        role: 'user'
+      }
+    }
+  })
+
+  if (error) throw error
+  return data
+}
+
+// Secure login with rate limiting
+const loginUser = async (email, password) => {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  })
+
+  if (error) {
+    // Log failed attempt for security monitoring
+    await logFailedLoginAttempt(email, getClientIP())
+    throw error
+  }
+
+  // Update last login timestamp
+  await updateUserActivity(data.user.id, 'login')
+  return data
+}
+```
+
+#### Password Security Best Practices
+```javascript
+// Password strength validation
+const validatePassword = (password) => {
+  const requirements = {
+    minLength: password.length >= 8,
+    hasUppercase: /[A-Z]/.test(password),
+    hasLowercase: /[a-z]/.test(password),
+    hasNumbers: /\\d/.test(password),
+    hasSpecialChars: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+    noCommonPatterns: !isCommonPassword(password)
+  }
+
+  const passed = Object.values(requirements).every(req => req)
+  return { isValid: passed, requirements }
+}
+
+// Secure password reset flow
+const resetPassword = async (email) => {
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${window.location.origin}/reset-password`
+  })
+
+  if (error) throw error
+  
+  // Log password reset request for security
+  await logSecurityEvent('password_reset_requested', { email })
+}
+```
+
+### 2. Social Authentication (OAuth)
+Streamlined user experience with trusted providers:
+
+#### Google OAuth Implementation
+```javascript
+// Google Sign-In setup
+const signInWithGoogle = async () => {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      scopes: 'email profile',
+      redirectTo: `${window.location.origin}/auth/callback`,
+      queryParams: {
+        access_type: 'offline',
+        prompt: 'consent'
+      }
+    }
+  })
+
+  if (error) throw error
+  return data
+}
+
+// Handle OAuth callback
+const handleAuthCallback = async () => {
+  const { data, error } = await supabase.auth.getSession()
+  
+  if (error) throw error
+  
+  if (data.session) {
+    // Create or update user profile
+    await upsertUserProfile(data.session.user)
+    
+    // Redirect to dashboard
+    window.location.href = '/dashboard'
+  }
+}
+```
+
+#### GitHub OAuth for Developers
+```javascript
+// GitHub authentication for developer-focused apps
+const signInWithGitHub = async () => {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'github',
+    options: {
+      scopes: 'user:email',
+      redirectTo: `${window.location.origin}/auth/callback`
+    }
+  })
+
+  if (error) throw error
+  return data
+}
+
+// Sync GitHub profile data
+const syncGitHubProfile = async (user) => {
+  const githubData = user.user_metadata
+  
+  await supabase
+    .from('user_profiles')
+    .upsert({
+      id: user.id,
+      github_username: githubData.user_name,
+      github_avatar: githubData.avatar_url,
+      github_bio: githubData.bio,
+      github_company: githubData.company,
+      github_location: githubData.location,
+      updated_at: new Date().toISOString()
+    })
+}
+```
+
+### 3. Passwordless Authentication
+Modern, user-friendly approach:
+
+#### Magic Link Implementation
+```javascript
+// Send magic link
+const sendMagicLink = async (email) => {
+  const { error } = await supabase.auth.signInWithOtp({
+    email,
+    options: {
+      emailRedirectTo: `${window.location.origin}/auth/verify`
+    }
+  })
+
+  if (error) throw error
+  
+  // Show success message
+  showNotification('Check your email for a sign-in link!')
+}
+
+// Verify magic link
+const verifyMagicLink = async (token, type) => {
+  const { data, error } = await supabase.auth.verifyOtp({
+    token,
+    type: 'magiclink'
+  })
+
+  if (error) throw error
+  return data
+}
+```
+
+#### SMS Authentication
+```javascript
+// Send SMS verification
+const sendSMSCode = async (phone) => {
+  const { error } = await supabase.auth.signInWithOtp({
+    phone,
+    options: {
+      channel: 'sms'
+    }
+  })
+
+  if (error) throw error
+}
+
+// Verify SMS code
+const verifySMSCode = async (phone, token) => {
+  const { data, error } = await supabase.auth.verifyOtp({
+    phone,
+    token,
+    type: 'sms'
+  })
+
+  if (error) throw error
+  return data
+}
+```
+
+## User Session Management
+
+### Secure Session Handling
+```javascript
+// Session management utilities
+const SessionManager = {
+  // Get current session
+  getCurrentSession: async () => {
+    const { data: { session } } = await supabase.auth.getSession()
+    return session
+  },
+
+  // Refresh session before expiry
+  refreshSession: async () => {
+    const { data, error } = await supabase.auth.refreshSession()
+    if (error) throw error
+    return data
+  },
+
+  // Secure logout
+  logout: async () => {
+    // Clear local storage
+    localStorage.removeItem('user_preferences')
+    sessionStorage.clear()
+    
+    // Sign out from Supabase
+    const { error } = await supabase.auth.signOut()
+    if (error) throw error
+    
+    // Redirect to login
+    window.location.href = '/login'
+  },
+
+  // Session validation
+  validateSession: async () => {
+    const session = await SessionManager.getCurrentSession()
+    
+    if (!session) {
+      throw new Error('No active session')
+    }
+
+    // Check if session is expired
+    const expiresAt = new Date(session.expires_at * 1000)
+    const now = new Date()
+    
+    if (expiresAt <= now) {
+      await SessionManager.refreshSession()
+    }
+
+    return session
+  }
+}
+```
+
+### Token Security
+```javascript
+// Secure token handling
+const TokenManager = {
+  // Store tokens securely
+  storeTokens: (session) => {
+    // Never store in localStorage for sensitive data
+    // Use secure HTTP-only cookies in production
+    const secureCookie = {
+      name: 'auth_token',
+      value: session.access_token,
+      httpOnly: true,
+      secure: true,
+      sameSite: 'strict',
+      maxAge: session.expires_in
+    }
+    
+    // Set cookie via server-side API
+    fetch('/api/auth/set-cookie', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(secureCookie)
+    })
+  },
+
+  // Validate token integrity
+  validateToken: async (token) => {
+    try {
+      const { data, error } = await supabase.auth.getUser(token)
+      if (error) throw error
+      return data.user
+    } catch (error) {
+      // Token is invalid, clear and redirect
+      await SessionManager.logout()
+      throw new Error('Invalid token')
+    }
+  }
+}
+```
+
+## Role-Based Access Control (RBAC)
+
+### Permission System Design
+```sql
+-- Users table with role
+CREATE TABLE users (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  email VARCHAR(255) UNIQUE NOT NULL,
+  full_name VARCHAR(255),
+  role VARCHAR(50) DEFAULT 'user',
+  status VARCHAR(20) DEFAULT 'active',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Roles and permissions
+CREATE TABLE roles (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name VARCHAR(50) UNIQUE NOT NULL,
+  description TEXT,
+  permissions JSONB DEFAULT '[]'::jsonb
+);
+
+CREATE TABLE user_roles (
+  user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+  role_id UUID REFERENCES roles(id) ON DELETE CASCADE,
+  granted_by UUID REFERENCES users(id),
+  granted_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  PRIMARY KEY (user_id, role_id)
+);
+
+-- Resource-based permissions
+CREATE TABLE resource_permissions (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+  resource_type VARCHAR(50) NOT NULL,
+  resource_id UUID NOT NULL,
+  permissions JSONB DEFAULT '[]'::jsonb,
+  granted_by UUID REFERENCES users(id),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+```
+
+### Permission Checking
+```javascript
+// Permission management system
+const PermissionManager = {
+  // Check if user has specific permission
+  hasPermission: async (userId, permission, resourceType = null, resourceId = null) => {
+    // Check role-based permissions
+    const { data: userRoles } = await supabase
+      .from('user_roles')
+      .select(`
+        roles (
+          name,
+          permissions
+        )
+      `)
+      .eq('user_id', userId)
+
+    // Check role permissions
+    for (const userRole of userRoles) {
+      const rolePermissions = userRole.roles.permissions || []
+      if (rolePermissions.includes(permission)) {
+        return true
+      }
+    }
+
+    // Check resource-specific permissions
+    if (resourceType && resourceId) {
+      const { data: resourcePerms } = await supabase
+        .from('resource_permissions')
+        .select('permissions')
+        .eq('user_id', userId)
+        .eq('resource_type', resourceType)
+        .eq('resource_id', resourceId)
+
+      for (const resourcePerm of resourcePerms) {
+        const permissions = resourcePerm.permissions || []
+        if (permissions.includes(permission)) {
+          return true
+        }
+      }
+    }
+
+    return false
+  },
+
+  // Grant permission to user
+  grantPermission: async (userId, permission, resourceType, resourceId, grantedBy) => {
+    const { error } = await supabase
+      .from('resource_permissions')
+      .upsert({
+        user_id: userId,
+        resource_type: resourceType,
+        resource_id: resourceId,
+        permissions: [permission],
+        granted_by: grantedBy
+      })
+
+    if (error) throw error
+  },
+
+  // Revoke permission
+  revokePermission: async (userId, permission, resourceType, resourceId) => {
+    // Implementation for removing specific permissions
+    const { data: existing } = await supabase
+      .from('resource_permissions')
+      .select('permissions')
+      .eq('user_id', userId)
+      .eq('resource_type', resourceType)
+      .eq('resource_id', resourceId)
+      .single()
+
+    if (existing) {
+      const updatedPermissions = existing.permissions.filter(p => p !== permission)
+      
+      if (updatedPermissions.length > 0) {
+        await supabase
+          .from('resource_permissions')
+          .update({ permissions: updatedPermissions })
+          .eq('user_id', userId)
+          .eq('resource_type', resourceType)
+          .eq('resource_id', resourceId)
+      } else {
+        await supabase
+          .from('resource_permissions')
+          .delete()
+          .eq('user_id', userId)
+          .eq('resource_type', resourceType)
+          .eq('resource_id', resourceId)
+      }
+    }
+  }
+}
+```
+
+## Security Best Practices for {{name}}
+
+### Input Validation and Sanitization
+```javascript
+// Comprehensive input validation
+const ValidationRules = {
+  email: (email) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/
+    return emailRegex.test(email) && email.length <= 254
+  },
+
+  password: (password) => {
+    return password.length >= 8 && 
+           password.length <= 128 &&
+           /[A-Z]/.test(password) &&
+           /[a-z]/.test(password) &&
+           /\\d/.test(password) &&
+           /[!@#$%^&*(),.?":{}|<>]/.test(password)
+  },
+
+  username: (username) => {
+    const usernameRegex = /^[a-zA-Z0-9_-]{3,20}$/
+    return usernameRegex.test(username)
+  },
+
+  sanitizeInput: (input) => {
+    // Remove potential XSS vectors
+    return input
+      .replace(/<script[^>]*>.*?<\\/script>/gi, '')
+      .replace(/<[^>]+>/g, '')
+      .trim()
+  }
+}
+
+// Secure form handling
+const handleSecureForm = async (formData) => {
+  // Validate all inputs
+  const validatedData = {}
+  
+  for (const [key, value] of Object.entries(formData)) {
+    if (ValidationRules[key]) {
+      if (!ValidationRules[key](value)) {
+        throw new Error(`Invalid ${key} format`)
+      }
+    }
+    validatedData[key] = ValidationRules.sanitizeInput(value)
+  }
+
+  return validatedData
+}
+```
+
+### Rate Limiting and Brute Force Protection
+```javascript
+// Rate limiting implementation
+const RateLimiter = {
+  attempts: new Map(),
+
+  checkRateLimit: (identifier, maxAttempts = 5, windowMs = 15 * 60 * 1000) => {
+    const now = Date.now()
+    const windowStart = now - windowMs
+    
+    // Get existing attempts
+    let attempts = RateLimiter.attempts.get(identifier) || []
+    
+    // Remove old attempts outside the window
+    attempts = attempts.filter(timestamp => timestamp > windowStart)
+    
+    // Check if limit exceeded
+    if (attempts.length >= maxAttempts) {
+      const oldestAttempt = Math.min(...attempts)
+      const resetTime = oldestAttempt + windowMs
+      throw new Error(`Rate limit exceeded. Try again at ${new Date(resetTime).toISOString()}`)
+    }
+
+    // Record this attempt
+    attempts.push(now)
+    RateLimiter.attempts.set(identifier, attempts)
+    
+    return true
+  },
+
+  clearAttempts: (identifier) => {
+    RateLimiter.attempts.delete(identifier)
+  }
+}
+
+// Protected login with rate limiting
+const protectedLogin = async (email, password, clientIP) => {
+  const identifier = `${email}:${clientIP}`
+  
+  try {
+    // Check rate limit
+    RateLimiter.checkRateLimit(identifier)
+    
+    // Attempt login
+    const result = await loginUser(email, password)
+    
+    // Clear attempts on successful login
+    RateLimiter.clearAttempts(identifier)
+    
+    return result
+  } catch (error) {
+    // Log failed attempt
+    await logFailedLoginAttempt(email, clientIP, error.message)
+    throw error
+  }
+}
+```
+
+### Security Headers and HTTPS
+```javascript
+// Security middleware for production
+const securityMiddleware = {
+  // Content Security Policy
+  setCspHeaders: (req, res, next) => {
+    res.setHeader('Content-Security-Policy', 
+      "default-src 'self'; " +
+      "script-src 'self' 'unsafe-inline' https://accounts.google.com; " +
+      "style-src 'self' 'unsafe-inline'; " +
+      "img-src 'self' data: https:; " +
+      "connect-src 'self' https://api.supabase.co; " +
+      "frame-src 'self' https://accounts.google.com;"
+    )
+    next()
+  },
+
+  // Additional security headers
+  setSecurityHeaders: (req, res, next) => {
+    res.setHeader('X-Content-Type-Options', 'nosniff')
+    res.setHeader('X-Frame-Options', 'DENY')
+    res.setHeader('X-XSS-Protection', '1; mode=block')
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains')
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin')
+    next()
+  }
+}
+```
+
+## Advanced Authentication Patterns
+
+### Multi-Factor Authentication (MFA)
+```javascript
+// MFA implementation
+const MFAManager = {
+  // Enable TOTP (Time-based One-Time Password)
+  enableTOTP: async (userId) => {
+    const { data, error } = await supabase.auth.mfa.enroll({
+      factorType: 'totp'
+    })
+
+    if (error) throw error
+
+    // Store recovery codes securely
+    await supabase
+      .from('user_security')
+      .upsert({
+        user_id: userId,
+        mfa_enabled: true,
+        recovery_codes: data.recovery_codes,
+        updated_at: new Date().toISOString()
+      })
+
+    return data
+  },
+
+  // Verify TOTP code
+  verifyTOTP: async (code) => {
+    const { data, error } = await supabase.auth.mfa.verify({
+      factorId: 'factor_id',
+      challengeId: 'challenge_id',
+      code
+    })
+
+    if (error) throw error
+    return data
+  }
+}
+```
+
+### Single Sign-On (SSO) for Enterprise
+```javascript
+// SAML SSO implementation
+const SSOManager = {
+  // Initiate SSO login
+  initiateSSOLogin: async (domain) => {
+    const { data, error } = await supabase.auth.signInWithSSO({
+      domain,
+      options: {
+        redirectTo: `${window.location.origin}/auth/sso/callback`
+      }
+    })
+
+    if (error) throw error
+    
+    // Redirect to IdP
+    window.location.href = data.url
+  },
+
+  // Handle SSO callback
+  handleSSOCallback: async () => {
+    const { data, error } = await supabase.auth.getSession()
+    
+    if (error) throw error
+    
+    if (data.session) {
+      // Sync enterprise user data
+      await syncEnterpriseUserData(data.session.user)
+      
+      // Apply enterprise policies
+      await applyEnterprisePolicies(data.session.user)
+      
+      return data.session
+    }
+  }
+}
+```
+
+{{name}}, authentication is the foundation of application security. Build it right from the start, and everything else becomes easier. Remember: security is not a feature you add later—it's a principle you build into every decision!`,
+        learningObjectives: {
+          0: 'Implement secure authentication with multiple methods (email, OAuth, passwordless)',
+          1: 'Design and enforce role-based access control (RBAC) systems',
+          2: 'Apply security best practices including input validation and rate limiting',
+          3: 'Manage user sessions and tokens securely',
+          4: 'Integrate advanced features like MFA and SSO for enterprise applications'
+        },
+        badgeName: 'Security Guardian',
+        srcodeCommentary: '{{name}}, authentication is like being a bouncer for your app, but way cooler! You\'re not just checking IDs at the door - you\'re building an entire security ecosystem. Think of passwords as keys, OAuth as VIP access cards, and MFA as that extra-secure vault lock. Remember: a secure app is a happy app, and happy apps don\'t get hacked! 🔐✨',
+        quizQuestions: {
+          'q3-1-1': {
+            question: 'What is the main difference between authentication and authorization?',
+            options: [
+              'They are the same thing',
+              'Authentication verifies who you are, authorization determines what you can do',
+              'Authorization verifies who you are, authentication determines what you can do',
+              'Authentication is for passwords, authorization is for OAuth'
+            ],
+            correctAnswer: 1,
+            explanation: 'Authentication verifies the identity of a user (who you are), while authorization determines what actions that authenticated user is allowed to perform (what you can do).'
+          },
+          'q3-1-2': {
+            question: 'Which authentication method provides the highest security?',
+            options: [
+              'Simple password authentication',
+              'OAuth with social providers',
+              'Multi-factor authentication (MFA)',
+              'Email-based authentication'
+            ],
+            correctAnswer: 2,
+            explanation: 'Multi-factor authentication (MFA) provides the highest security by requiring multiple forms of verification, typically combining something you know (password), something you have (phone/token), and/or something you are (biometrics).'
+          },
+          'q3-1-3': {
+            question: 'What is the primary advantage of using OAuth for authentication?',
+            options: [
+              'It eliminates the need for passwords completely',
+              'It allows users to authenticate using existing accounts from trusted providers',
+              'It makes authentication faster',
+              'It works only with social media platforms'
+            ],
+            correctAnswer: 1,
+            explanation: 'OAuth allows users to authenticate using existing accounts from trusted providers (like Google, GitHub, Facebook) without sharing their passwords with your application, improving both security and user experience.'
+          },
+          'q3-1-4': {
+            question: 'What is a JWT (JSON Web Token) primarily used for?',
+            options: [
+              'Storing user passwords',
+              'Encrypting database connections',
+              'Securely transmitting user identity and claims between parties',
+              'Managing file uploads'
+            ],
+            correctAnswer: 2,
+            explanation: 'JWT (JSON Web Token) is used for securely transmitting user identity and claims between parties. It contains encoded user information and can be verified without requiring server-side session storage.'
+          }
+        }
+      },
+
+      // Level 2: Database Integration (Continued)
+      'lesson-2-3': {
+        title: 'Database Optimization & Performance',
+        objective: 'Master database performance optimization, indexing strategies, and query optimization for production applications',
+        content: `# Database Optimization & Performance
+
+{{name}}, now that you've mastered the fundamentals of Supabase, it's time to optimize your database for production-level performance. This lesson covers advanced optimization techniques that separate amateur projects from professional applications.
+
+## Query Optimization Fundamentals
+
+### Understanding Query Execution Plans
+Every database query goes through an execution plan that determines how the database engine will retrieve your data:
+
+\`\`\`sql
+-- Always use EXPLAIN to analyze query performance
+EXPLAIN ANALYZE SELECT * FROM users WHERE email = 'user@example.com';
+
+-- Look for Sequential Scans (bad) vs Index Scans (good)
+-- Monitor execution time and rows examined
+\`\`\`
+
+### Indexing Strategies
+
+#### Primary Indexes
+- **B-Tree Indexes**: Default for most columns, excellent for equality and range queries
+- **Unique Indexes**: Enforce uniqueness while providing fast lookups
+- **Composite Indexes**: Cover multiple columns for complex queries
+
+\`\`\`sql
+-- Create strategic indexes for common queries
+CREATE INDEX idx_users_email ON users(email);
+CREATE INDEX idx_posts_user_created ON posts(user_id, created_at DESC);
+CREATE INDEX idx_posts_status_category ON posts(status, category) WHERE status = 'published';
+\`\`\`
+
+#### Advanced Index Types
+- **Partial Indexes**: Index only specific rows that match conditions
+- **Expression Indexes**: Index computed values or function results
+- **GIN Indexes**: For full-text search and JSON operations
+
+\`\`\`sql
+-- Partial index for active users only
+CREATE INDEX idx_active_users ON users(last_login) WHERE status = 'active';
+
+-- Expression index for case-insensitive searches
+CREATE INDEX idx_users_email_lower ON users(LOWER(email));
+
+-- GIN index for full-text search
+CREATE INDEX idx_posts_content_search ON posts USING GIN(to_tsvector('english', title || ' ' || content));
+\`\`\`
+
+## Advanced Query Patterns
+
+### Efficient Joins and Relationships
+\`\`\`sql
+-- Use EXISTS instead of IN for better performance
+SELECT * FROM users u 
+WHERE EXISTS (SELECT 1 FROM posts p WHERE p.user_id = u.id);
+
+-- Optimize N+1 queries with proper JOINs
+SELECT u.*, p.title, p.created_at
+FROM users u
+LEFT JOIN posts p ON u.id = p.user_id
+WHERE u.status = 'active'
+ORDER BY u.created_at DESC;
+\`\`\`
+
+### Pagination Best Practices
+\`\`\`sql
+-- Use cursor-based pagination for large datasets
+SELECT * FROM posts 
+WHERE created_at < '2024-01-01T00:00:00Z'
+ORDER BY created_at DESC 
+LIMIT 20;
+
+-- Avoid OFFSET for large page numbers
+-- BAD: SELECT * FROM posts ORDER BY id LIMIT 20 OFFSET 10000;
+-- GOOD: SELECT * FROM posts WHERE id < last_seen_id ORDER BY id DESC LIMIT 20;
+\`\`\`
+
+## Performance Monitoring
+
+### Key Metrics to Track
+- **Query execution time**: Identify slow queries
+- **Index usage**: Ensure indexes are being utilized
+- **Connection pool usage**: Monitor concurrent connections
+- **Cache hit ratios**: Optimize frequently accessed data
+
+### Supabase Performance Tools
+\`\`\`javascript
+// Monitor query performance in your application
+const { data, error } = await supabase
+  .from('posts')
+  .select('*')
+  .eq('status', 'published')
+  .order('created_at', { ascending: false })
+  .limit(10);
+
+// Log slow queries for analysis
+if (performance.now() - startTime > 1000) {
+  console.warn('Slow query detected:', query);
+}
+\`\`\`
+
+## Real-time Performance Optimization
+
+### Efficient Real-time Subscriptions
+\`\`\`javascript
+// Optimize real-time subscriptions with filters
+const subscription = supabase
+  .channel('posts')
+  .on('postgres_changes', {
+    event: 'INSERT',
+    schema: 'public',
+    table: 'posts',
+    filter: 'status=eq.published'
+  }, payload => {
+    // Handle new published posts only
+    updatePostsList(payload.new);
+  })
+  .subscribe();
+
+// Use presence for user activity tracking
+const presence = supabase.channel('room-1')
+  .on('presence', { event: 'sync' }, () => {
+    const state = presence.presenceState();
+    updateOnlineUsers(state);
+  })
+  .subscribe();
+\`\`\`
+
+### Optimizing Storage Operations
+\`\`\`javascript
+// Optimize file uploads with compression
+const compressedFile = await compressImage(file);
+const { data, error } = await supabase.storage
+  .from('images')
+  .upload(\`optimized/\${Date.now()}-\${file.name}\`, compressedFile, {
+    cacheControl: '3600',
+    upsert: false
+  });
+
+// Use signed URLs for secure, fast access
+const { data: signedUrl } = await supabase.storage
+  .from('images')
+  .createSignedUrl('image.jpg', 3600);
+\`\`\`
+
+## Production Optimization Strategies
+
+### Database Configuration
+- **Connection pooling**: Optimize concurrent connections
+- **Query timeout settings**: Prevent long-running queries
+- **Memory allocation**: Configure shared buffers and work memory
+- **Autovacuum settings**: Maintain table statistics and performance
+
+### Application-Level Optimizations
+\`\`\`javascript
+// Implement intelligent caching
+const cache = new Map();
+
+async function getCachedData(key, fetchFunction, ttl = 300000) {
+  const cached = cache.get(key);
+  if (cached && Date.now() - cached.timestamp < ttl) {
+    return cached.data;
+  }
+  
+  const data = await fetchFunction();
+  cache.set(key, { data, timestamp: Date.now() });
+  return data;
+}
+
+// Use connection pooling
+const supabase = createClient(url, key, {
+  db: {
+    schema: 'public',
+  },
+  auth: {
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: true
+  },
+  global: {
+    headers: { 'x-my-custom-header': 'optimization' },
+  },
+});
+\`\`\`
+
+## Monitoring and Alerting
+
+### Performance Metrics Dashboard
+Create comprehensive monitoring for:
+- Query performance trends
+- Database connection usage
+- Storage usage and costs
+- Real-time subscription load
+- Error rates and patterns
+
+### Automated Optimization
+\`\`\`sql
+-- Create functions for automatic maintenance
+CREATE OR REPLACE FUNCTION optimize_database()
+RETURNS void AS $$
+BEGIN
+  -- Analyze table statistics
+  ANALYZE;
+  
+  -- Reindex if necessary
+  REINDEX DATABASE current_database();
+  
+  -- Log optimization completion
+  INSERT INTO maintenance_log (action, completed_at) 
+  VALUES ('optimization', NOW());
+END;
+$$ LANGUAGE plpgsql;
+
+-- Schedule regular optimization
+SELECT cron.schedule('optimize-db', '0 2 * * *', 'SELECT optimize_database();');
+\`\`\`
+
+Remember {{name}}, optimization is an ongoing process. Start with measuring current performance, identify bottlenecks, implement targeted improvements, and continuously monitor results. A well-optimized database is the foundation of a scalable application!`,
+        learningObjectives: {
+          0: 'Analyze and optimize database query performance using execution plans',
+          1: 'Implement strategic indexing for improved query speed',
+          2: 'Apply advanced query patterns for efficient data retrieval',
+          3: 'Monitor and troubleshoot database performance issues',
+          4: 'Design scalable database architectures for production applications'
+        },
+        badgeName: 'Performance Optimizer',
+        srcodeCommentary: '{{name}}, database optimization is like tuning a race car - every millisecond counts! You\'ve learned to make your queries purr like a well-oiled engine. Remember: premature optimization is the root of all evil, but timely optimization is the root of all awesome! Now your database will be faster than a developer reaching for coffee on Monday morning! 🏎️⚡',
+        quizQuestions: {
+          'q2-3-1': {
+            question: 'What is the primary purpose of using EXPLAIN ANALYZE in PostgreSQL?',
+            options: [
+              'To create database backups',
+              'To analyze and understand query execution plans and performance',
+              'To manage user permissions',
+              'To optimize database storage'
+            ],
+            correctAnswer: 1,
+            explanation: 'EXPLAIN ANALYZE shows the actual execution plan of a query, including execution time, rows processed, and index usage, helping identify performance bottlenecks.'
+          },
+          'q2-3-2': {
+            question: 'Which type of index is most effective for full-text search operations?',
+            options: [
+              'B-Tree index',
+              'Unique index',
+              'GIN index',
+              'Partial index'
+            ],
+            correctAnswer: 2,
+            explanation: 'GIN (Generalized Inverted Index) indexes are specifically designed for full-text search operations and complex data types like JSON, providing efficient text search capabilities.'
+          },
+          'q2-3-3': {
+            question: 'What is the main advantage of cursor-based pagination over offset-based pagination?',
+            options: [
+              'It\'s easier to implement',
+              'It performs consistently well even with large datasets',
+              'It requires fewer database connections',
+              'It works better with real-time data'
+            ],
+            correctAnswer: 1,
+            explanation: 'Cursor-based pagination maintains consistent performance regardless of dataset size, while offset-based pagination becomes slower with large offsets as the database must skip many rows.'
+          },
+          'q2-3-4': {
+            question: 'When should you use a partial index in PostgreSQL?',
+            options: [
+              'For all columns in a table',
+              'Only for primary key columns',
+              'When you need to index only specific rows that match certain conditions',
+              'For foreign key relationships only'
+            ],
+            correctAnswer: 2,
+            explanation: 'Partial indexes are useful when you frequently query only a subset of rows (e.g., active users, published posts), reducing index size and improving performance for specific conditions.'
+          }
+        }
+      },
+
+      // Level 3: Authentication Systems (Continued)
+      'lesson-3-2': {
+        title: 'Advanced Authentication Patterns',
+        objective: 'Implement sophisticated authentication strategies including role-based access control, session management, and security best practices',
+        content: `# Advanced Authentication Patterns
+
+{{name}}, you've mastered the fundamentals of authentication. Now let's explore advanced patterns that enable enterprise-grade security and sophisticated user management systems.
+
+## Role-Based Access Control (RBAC)
+
+### Designing User Roles and Permissions
+\`\`\`sql
+-- Create roles table
+CREATE TABLE roles (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name VARCHAR(50) UNIQUE NOT NULL,
+  description TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Create permissions table
+CREATE TABLE permissions (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name VARCHAR(100) UNIQUE NOT NULL,
+  resource VARCHAR(50) NOT NULL,
+  action VARCHAR(50) NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Create role-permission junction table
+CREATE TABLE role_permissions (
+  role_id UUID REFERENCES roles(id) ON DELETE CASCADE,
+  permission_id UUID REFERENCES permissions(id) ON DELETE CASCADE,
+  PRIMARY KEY (role_id, permission_id)
+);
+
+-- Create user-role assignments
+CREATE TABLE user_roles (
+  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  role_id UUID REFERENCES roles(id) ON DELETE CASCADE,
+  assigned_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  PRIMARY KEY (user_id, role_id)
+);
+\`\`\`
+
+### Implementing RLS Policies
+\`\`\`sql
+-- Enable RLS on sensitive tables
+ALTER TABLE posts ENABLE ROW LEVEL SECURITY;
+ALTER TABLE user_profiles ENABLE ROW LEVEL SECURITY;
+
+-- Create policies for different roles
+CREATE POLICY "Users can view published posts" ON posts
+  FOR SELECT USING (status = 'published');
+
+CREATE POLICY "Authors can manage their own posts" ON posts
+  FOR ALL USING (auth.uid() = user_id);
+
+CREATE POLICY "Admins can manage all posts" ON posts
+  FOR ALL USING (
+    EXISTS (
+      SELECT 1 FROM user_roles ur
+      JOIN roles r ON ur.role_id = r.id
+      WHERE ur.user_id = auth.uid() AND r.name = 'admin'
+    )
+  );
+
+-- Function to check user permissions
+CREATE OR REPLACE FUNCTION has_permission(user_id UUID, permission_name TEXT)
+RETURNS BOOLEAN AS $$
+BEGIN
+  RETURN EXISTS (
+    SELECT 1 
+    FROM user_roles ur
+    JOIN role_permissions rp ON ur.role_id = rp.role_id
+    JOIN permissions p ON rp.permission_id = p.id
+    WHERE ur.user_id = user_id AND p.name = permission_name
+  );
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+\`\`\`
+
+## Advanced Session Management
+
+### JWT Token Strategies
+\`\`\`javascript
+// Custom JWT claims for role-based access
+const customClaims = {
+  roles: ['user', 'premium'],
+  permissions: ['read:posts', 'write:comments'],
+  subscription: 'premium',
+  tenant: 'organization-123'
+};
+
+// Server-side token validation
+async function validateTokenWithRoles(token) {
+  try {
+    const { data: { user }, error } = await supabase.auth.getUser(token);
+    
+    if (error) throw error;
+    
+    // Get user roles from database
+    const { data: userRoles } = await supabase
+      .from('user_roles')
+      .select(\`
+        roles (
+          name,
+          role_permissions (
+            permissions (name, resource, action)
+          )
+        )
+      \`)
+      .eq('user_id', user.id);
+    
+    return {
+      user,
+      roles: userRoles.map(ur => ur.roles),
+      permissions: userRoles.flatMap(ur => 
+        ur.roles.role_permissions.map(rp => rp.permissions)
+      )
+    };
+  } catch (error) {
+    console.error('Token validation failed:', error);
+    return null;
+  }
+}
+\`\`\`
+
+### Session Security Best Practices
+\`\`\`javascript
+// Implement session timeout and refresh
+class SessionManager {
+  constructor(supabase) {
+    this.supabase = supabase;
+    this.refreshThreshold = 5 * 60 * 1000; // 5 minutes
+    this.setupAutoRefresh();
+  }
+  
+  setupAutoRefresh() {
+    // Monitor session expiration
+    this.supabase.auth.onAuthStateChange(async (event, session) => {
+      if (event === 'SIGNED_IN' && session) {
+        this.scheduleRefresh(session);
+      }
+    });
+  }
+  
+  scheduleRefresh(session) {
+    const expiresAt = new Date(session.expires_at * 1000);
+    const refreshTime = expiresAt.getTime() - Date.now() - this.refreshThreshold;
+    
+    setTimeout(async () => {
+      const { data, error } = await this.supabase.auth.refreshSession();
+      if (error) {
+        console.error('Session refresh failed:', error);
+        // Redirect to login
+        window.location.href = '/login';
+      }
+    }, refreshTime);
+  }
+  
+  async validateSession() {
+    const { data: { session }, error } = await this.supabase.auth.getSession();
+    
+    if (!session || error) {
+      throw new Error('Invalid session');
+    }
+    
+    // Check if session is about to expire
+    const expiresAt = new Date(session.expires_at * 1000);
+    if (expiresAt.getTime() - Date.now() < this.refreshThreshold) {
+      await this.supabase.auth.refreshSession();
+    }
+    
+    return session;
+  }
+}
+\`\`\`
+
+## Multi-Factor Authentication (MFA)
+
+### Implementing TOTP (Time-based One-Time Password)
+\`\`\`javascript
+// Enable MFA for user accounts
+async function enableMFA(userId) {
+  // Generate TOTP secret
+  const { data, error } = await supabase.auth.mfa.enroll({
+    factorType: 'totp',
+    friendlyName: 'Authenticator App'
+  });
+  
+  if (error) throw error;
+  
+  // Display QR code for user to scan
+  const qrCodeData = data.totp.qr_code;
+  const secret = data.totp.secret;
+  
+  return { qrCodeData, secret, id: data.id };
+}
+
+// Verify MFA challenge
+async function verifyMFA(factorId, code) {
+  const { data, error } = await supabase.auth.mfa.verify({
+    factorId,
+    challengeId: 'current-challenge-id',
+    code
+  });
+  
+  if (error) throw error;
+  
+  return data;
+}
+
+// MFA-protected route middleware
+async function requireMFA(req, res, next) {
+  const session = await validateSession(req.headers.authorization);
+  
+  if (!session) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  
+  // Check if user has MFA enabled
+  const { data: factors } = await supabase.auth.mfa.listFactors();
+  const hasMFA = factors.some(factor => factor.status === 'verified');
+  
+  if (!hasMFA) {
+    return res.status(403).json({ error: 'MFA required' });
+  }
+  
+  next();
+}
+\`\`\`
+
+## Advanced Security Patterns
+
+### API Rate Limiting
+\`\`\`javascript
+// Implement rate limiting for authentication endpoints
+const rateLimit = require('express-rate-limit');
+
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // limit each IP to 5 requests per windowMs
+  message: 'Too many authentication attempts, please try again later',
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: (req, res) => {
+    res.status(429).json({
+      error: 'Too many attempts',
+      retryAfter: Math.round(req.rateLimit.msBeforeNext / 1000)
+    });
+  }
+});
+
+// Apply to authentication routes
+app.use('/auth/login', authLimiter);
+app.use('/auth/register', authLimiter);
+\`\`\`
+
+### Account Security Monitoring
+\`\`\`javascript
+// Track suspicious login activities
+async function logSecurityEvent(userId, eventType, details) {
+  const { error } = await supabase
+    .from('security_events')
+    .insert({
+      user_id: userId,
+      event_type: eventType,
+      details: details,
+      ip_address: req.ip,
+      user_agent: req.headers['user-agent'],
+      timestamp: new Date().toISOString()
+    });
+  
+  if (error) console.error('Failed to log security event:', error);
+}
+
+// Detect unusual login patterns
+async function detectSuspiciousActivity(userId, loginDetails) {
+  const { data: recentLogins } = await supabase
+    .from('security_events')
+    .select('*')
+    .eq('user_id', userId)
+    .eq('event_type', 'login')
+    .gte('timestamp', new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString())
+    .order('timestamp', { ascending: false });
+  
+  // Check for geographic anomalies
+  const currentLocation = loginDetails.location;
+  const hasLocationAnomaly = recentLogins.some(login => 
+    calculateDistance(login.details.location, currentLocation) > 1000 // km
+  );
+  
+  // Check for unusual timing patterns
+  const hasTimingAnomaly = recentLogins.length > 0 && 
+    Math.abs(new Date() - new Date(recentLogins[0].timestamp)) < 5 * 60 * 1000; // 5 minutes
+  
+  if (hasLocationAnomaly || hasTimingAnomaly) {
+    await logSecurityEvent(userId, 'suspicious_login', {
+      reason: hasLocationAnomaly ? 'geographic_anomaly' : 'timing_anomaly',
+      details: loginDetails
+    });
+    
+    // Send security alert email
+    await sendSecurityAlert(userId, 'Unusual login detected');
+  }
+}
+\`\`\`
+
+## Enterprise Authentication Integration
+
+### Single Sign-On (SSO) Implementation
+\`\`\`javascript
+// SAML SSO integration
+const saml = require('passport-saml');
+
+const samlStrategy = new saml.Strategy({
+  entryPoint: 'https://identity-provider.com/sso',
+  issuer: 'your-app-identifier',
+  callbackUrl: 'https://your-app.com/auth/saml/callback',
+  cert: process.env.SAML_CERT
+}, async (profile, done) => {
+  try {
+    // Create or update user from SAML response
+    const { data: user, error } = await supabase.auth.admin.createUser({
+      email: profile.email,
+      email_confirmed: true,
+      user_metadata: {
+        name: profile.displayName,
+        department: profile.department,
+        employee_id: profile.employeeId
+      }
+    });
+    
+    if (error && error.message !== 'User already registered') {
+      throw error;
+    }
+    
+    return done(null, user);
+  } catch (error) {
+    return done(error);
+  }
+});
+\`\`\`
+
+Remember {{name}}, advanced authentication is about building trust through multiple layers of security. Each pattern serves a specific purpose in creating a robust, scalable authentication system that protects both users and your application!`,
+        learningObjectives: {
+          0: 'Design and implement role-based access control systems',
+          1: 'Manage complex user sessions with automatic refresh and security monitoring',
+          2: 'Integrate multi-factor authentication for enhanced security',
+          3: 'Apply advanced security patterns including rate limiting and anomaly detection',
+          4: 'Implement enterprise-grade authentication with SSO integration'
+        },
+        badgeName: 'Security Architect',
+        srcodeCommentary: '{{name}}, you\'ve just graduated from security basics to becoming a digital Fort Knox architect! You\'ve mastered the art of keeping the bad guys out while making the good guys feel welcome. Remember: security is like an onion - it has many layers, and sometimes it makes you cry (especially when debugging authentication flows). But hey, better tears of security than tears of regret! 🔒👑',
+        quizQuestions: {
+          'q3-2-1': {
+            question: 'What is the primary benefit of Role-Based Access Control (RBAC)?',
+            options: [
+              'It eliminates the need for passwords',
+              'It provides granular permissions management through role assignments',
+              'It makes authentication faster',
+              'It reduces database storage requirements'
+            ],
+            correctAnswer: 1,
+            explanation: 'RBAC provides granular permissions management by allowing you to assign specific roles to users and define permissions for each role, making it easier to manage access control at scale.'
+          },
+          'q3-2-2': {
+            question: 'When should you implement automatic session refresh?',
+            options: [
+              'Only when users request it',
+              'Before sessions expire to maintain seamless user experience',
+              'After users log out',
+              'Only for admin users'
+            ],
+            correctAnswer: 1,
+            explanation: 'Automatic session refresh should be implemented before sessions expire to maintain seamless user experience, preventing users from being logged out unexpectedly during active use.'
+          },
+          'q3-2-3': {
+            question: 'What does TOTP stand for in multi-factor authentication?',
+            options: [
+              'Time-based One-Time Password',
+              'Token-based Online Transfer Protocol',
+              'Trusted OAuth Token Provider',
+              'Two-factor Online Transaction Protocol'
+            ],
+            correctAnswer: 0,
+            explanation: 'TOTP stands for Time-based One-Time Password, which generates unique codes that change every 30 seconds, commonly used in authenticator apps for multi-factor authentication.'
+          },
+          'q3-2-4': {
+            question: 'What is the purpose of rate limiting in authentication systems?',
+            options: [
+              'To make authentication faster',
+              'To prevent brute force attacks and abuse',
+              'To reduce server costs',
+              'To improve user experience'
+            ],
+            correctAnswer: 1,
+            explanation: 'Rate limiting prevents brute force attacks and abuse by limiting the number of authentication attempts from a single IP address or user within a specified time window.'
+          }
+        }
+      },
+
+      'lesson-3-3': {
+        title: 'Security Best Practices & Compliance',
+        objective: 'Master security best practices, compliance requirements, and advanced threat mitigation strategies for production applications',
+        content: `# Security Best Practices & Compliance
+
+{{name}}, security isn't just about authentication - it's about creating a comprehensive security posture that protects your application, your users, and your business. Let's explore enterprise-level security practices and compliance requirements.
+
+## Security-First Architecture
+
+### Defense in Depth Strategy
+\`\`\`javascript
+// Implement multiple security layers
+class SecurityLayer {
+  constructor() {
+    this.layers = [
+      new InputValidationLayer(),
+      new AuthenticationLayer(),
+      new AuthorizationLayer(),
+      new DataEncryptionLayer(),
+      new AuditLoggingLayer(),
+      new MonitoringLayer()
+    ];
+  }
+  
+  async processRequest(request) {
+    for (const layer of this.layers) {
+      const result = await layer.process(request);
+      if (!result.allowed) {
+        await this.logSecurityEvent(layer.name, result.reason, request);
+        throw new SecurityError(result.reason);
+      }
+      request = result.modifiedRequest || request;
+    }
+    return request;
+  }
+}
+\`\`\`
+
+### Input Validation and Sanitization
+\`\`\`javascript
+// Comprehensive input validation
+const joi = require('joi');
+
+const userSchema = joi.object({
+  email: joi.string().email().required(),
+  password: joi.string().min(8).pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])')).required(),
+  name: joi.string().min(2).max(50).pattern(/^[a-zA-Z\s]+$/).required(),
+  phone: joi.string().pattern(/^\+?[1-9]\d{1,14}$/).optional()
+});
+
+// SQL injection prevention
+async function sanitizeQuery(query, params) {
+  // Use parameterized queries
+  const { data, error } = await supabase
+    .from('users')
+    .select('*')
+    .eq('email', params.email) // Parameterized
+    .textSearch('name', params.searchTerm, { config: 'english' });
+  
+  return { data, error };
+}
+
+// XSS prevention
+function sanitizeOutput(content) {
+  const createDOMPurify = require('dompurify');
+  const { JSDOM } = require('jsdom');
+  
+  const window = new JSDOM('').window;
+  const DOMPurify = createDOMPurify(window);
+  
+  return DOMPurify.sanitize(content, {
+    ALLOWED_TAGS: ['b', 'i', 'u', 'strong', 'em', 'p', 'br'],
+    ALLOWED_ATTR: []
+  });
+}
+\`\`\`
+
+## Data Protection & Privacy
+
+### Encryption at Rest and in Transit
+\`\`\`javascript
+// Client-side encryption for sensitive data
+const crypto = require('crypto');
+
+class DataEncryption {
+  constructor(encryptionKey) {
+    this.algorithm = 'aes-256-gcm';
+    this.key = crypto.scryptSync(encryptionKey, 'salt', 32);
+  }
+  
+  encrypt(data) {
+    const iv = crypto.randomBytes(16);
+    const cipher = crypto.createCipher(this.algorithm, this.key, iv);
+    
+    let encrypted = cipher.update(JSON.stringify(data), 'utf8', 'hex');
+    encrypted += cipher.final('hex');
+    
+    const authTag = cipher.getAuthTag();
+    
+    return {
+      iv: iv.toString('hex'),
+      authTag: authTag.toString('hex'),
+      encrypted: encrypted
+    };
+  }
+  
+  decrypt(encryptedData) {
+    const decipher = crypto.createDecipher(
+      this.algorithm, 
+      this.key, 
+      Buffer.from(encryptedData.iv, 'hex')
+    );
+    
+    decipher.setAuthTag(Buffer.from(encryptedData.authTag, 'hex'));
+    
+    let decrypted = decipher.update(encryptedData.encrypted, 'hex', 'utf8');
+    decrypted += decipher.final('utf8');
+    
+    return JSON.parse(decrypted);
+  }
+}
+
+// PII encryption for database storage
+async function storeSensitiveData(userId, sensitiveData) {
+  const encryption = new DataEncryption(process.env.ENCRYPTION_KEY);
+  const encryptedData = encryption.encrypt(sensitiveData);
+  
+  const { error } = await supabase
+    .from('encrypted_user_data')
+    .insert({
+      user_id: userId,
+      encrypted_data: encryptedData,
+      created_at: new Date().toISOString()
+    });
+  
+  if (error) throw error;
+}
+\`\`\`
+
+### GDPR Compliance Implementation
+\`\`\`javascript
+// GDPR data management
+class GDPRManager {
+  constructor(supabase) {
+    this.supabase = supabase;
+  }
+  
+  // Right to be forgotten
+  async deleteUserData(userId) {
+    const deletionLog = {
+      user_id: userId,
+      deletion_started: new Date().toISOString(),
+      status: 'in_progress'
+    };
+    
+    try {
+      // Delete from all tables
+      const tablesToCleanup = [
+        'user_profiles',
+        'user_posts',
+        'user_comments',
+        'user_sessions',
+        'user_activities',
+        'encrypted_user_data'
+      ];
+      
+      for (const table of tablesToCleanup) {
+        await this.supabase.from(table).delete().eq('user_id', userId);
+      }
+      
+      // Anonymize audit logs (keep for compliance)
+      await this.supabase
+        .from('audit_logs')
+        .update({ user_id: null, anonymized: true })
+        .eq('user_id', userId);
+      
+      deletionLog.status = 'completed';
+      deletionLog.deletion_completed = new Date().toISOString();
+      
+    } catch (error) {
+      deletionLog.status = 'failed';
+      deletionLog.error = error.message;
+      throw error;
+    } finally {
+      await this.supabase.from('deletion_logs').insert(deletionLog);
+    }
+  }
+  
+  // Data export for portability
+  async exportUserData(userId) {
+    const userData = {};
+    
+    // Collect all user data
+    const { data: profile } = await this.supabase
+      .from('user_profiles')
+      .select('*')
+      .eq('user_id', userId)
+      .single();
+    
+    const { data: posts } = await this.supabase
+      .from('user_posts')
+      .select('*')
+      .eq('user_id', userId);
+    
+    const { data: comments } = await this.supabase
+      .from('user_comments')
+      .select('*')
+      .eq('user_id', userId);
+    
+    userData.profile = profile;
+    userData.posts = posts;
+    userData.comments = comments;
+    userData.exported_at = new Date().toISOString();
+    
+    return userData;
+  }
+  
+  // Consent management
+  async updateConsent(userId, consentType, granted) {
+    const { error } = await this.supabase
+      .from('user_consents')
+      .upsert({
+        user_id: userId,
+        consent_type: consentType,
+        granted: granted,
+        updated_at: new Date().toISOString()
+      });
+    
+    if (error) throw error;
+    
+    // Log consent change
+    await this.supabase
+      .from('consent_logs')
+      .insert({
+        user_id: userId,
+        consent_type: consentType,
+        action: granted ? 'granted' : 'revoked',
+        timestamp: new Date().toISOString()
+      });
+  }
+}
+\`\`\`
+
+## Compliance & Auditing
+
+### SOC 2 Compliance
+\`\`\`javascript
+// Audit logging for compliance
+class ComplianceAuditor {
+  constructor(supabase) {
+    this.supabase = supabase;
+  }
+  
+  async logAccess(userId, resource, action, result) {
+    const auditEntry = {
+      user_id: userId,
+      resource_type: resource.type,
+      resource_id: resource.id,
+      action: action,
+      result: result,
+      timestamp: new Date().toISOString(),
+      ip_address: this.getClientIP(),
+      user_agent: this.getUserAgent(),
+      session_id: this.getSessionId()
+    };
+    
+    await this.supabase.from('audit_logs').insert(auditEntry);
+  }
+  
+  async generateComplianceReport(startDate, endDate) {
+    const { data: logs } = await this.supabase
+      .from('audit_logs')
+      .select('*')
+      .gte('timestamp', startDate)
+      .lte('timestamp', endDate)
+      .order('timestamp', { ascending: false });
+    
+    return {
+      total_events: logs.length,
+      unique_users: new Set(logs.map(log => log.user_id)).size,
+      failed_attempts: logs.filter(log => log.result === 'failed').length,
+      privileged_access: logs.filter(log => log.action.includes('admin')).length,
+      data_access: logs.filter(log => log.resource_type === 'sensitive_data').length
+    };
+  }
+}
+\`\`\`
+
+### PCI DSS Compliance (for payment processing)
+\`\`\`javascript
+// PCI DSS compliant payment handling
+class SecurePaymentProcessor {
+  constructor() {
+    this.stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+  }
+  
+  // Never store card details - use tokenization
+  async createPaymentIntent(amount, currency, customerId) {
+    try {
+      const paymentIntent = await this.stripe.paymentIntents.create({
+        amount: amount * 100, // Convert to cents
+        currency: currency,
+        customer: customerId,
+        automatic_payment_methods: {
+          enabled: true,
+        },
+        metadata: {
+          order_id: this.generateOrderId(),
+          timestamp: new Date().toISOString()
+        }
+      });
+      
+      // Log payment attempt (no sensitive data)
+      await this.logPaymentEvent('payment_intent_created', {
+        payment_intent_id: paymentIntent.id,
+        amount: amount,
+        currency: currency,
+        status: paymentIntent.status
+      });
+      
+      return {
+        client_secret: paymentIntent.client_secret,
+        payment_intent_id: paymentIntent.id
+      };
+      
+    } catch (error) {
+      await this.logPaymentEvent('payment_intent_failed', {
+        error: error.message,
+        amount: amount,
+        currency: currency
+      });
+      throw error;
+    }
+  }
+  
+  async logPaymentEvent(eventType, details) {
+    await supabase.from('payment_audit_logs').insert({
+      event_type: eventType,
+      details: details,
+      timestamp: new Date().toISOString()
+    });
+  }
+}
+\`\`\`
+
+## Threat Detection & Response
+
+### Real-time Security Monitoring
+\`\`\`javascript
+// Security monitoring and alerting
+class SecurityMonitor {
+  constructor() {
+    this.thresholds = {
+      failed_logins: 5,
+      api_requests: 1000,
+      data_access: 100
+    };
+    
+    this.alertChannels = [
+      new SlackAlertChannel(),
+      new EmailAlertChannel(),
+      new SMSAlertChannel()
+    ];
+  }
+  
+  async monitorSecurityEvents() {
+    setInterval(async () => {
+      await this.checkFailedLogins();
+      await this.checkAPIAbuse();
+      await this.checkDataAccess();
+      await this.checkMaliciousPatterns();
+    }, 60000); // Check every minute
+  }
+  
+  async checkFailedLogins() {
+    const { data: failedLogins } = await supabase
+      .from('audit_logs')
+      .select('*')
+      .eq('action', 'login')
+      .eq('result', 'failed')
+      .gte('timestamp', new Date(Date.now() - 5 * 60 * 1000).toISOString());
+    
+    const ipCounts = {};
+    failedLogins.forEach(log => {
+      ipCounts[log.ip_address] = (ipCounts[log.ip_address] || 0) + 1;
+    });
+    
+    for (const [ip, count] of Object.entries(ipCounts)) {
+      if (count >= this.thresholds.failed_logins) {
+        await this.sendAlert('SECURITY_ALERT', {
+          type: 'brute_force_attempt',
+          ip_address: ip,
+          failed_attempts: count,
+          action: 'IP temporarily blocked'
+        });
+        
+        // Implement IP blocking logic
+        await this.blockIP(ip, 'brute_force_attempt');
+      }
+    }
+  }
+  
+  async sendAlert(level, details) {
+    const alert = {
+      level: level,
+      details: details,
+      timestamp: new Date().toISOString(),
+      status: 'sent'
+    };
+    
+    for (const channel of this.alertChannels) {
+      await channel.send(alert);
+    }
+    
+    await supabase.from('security_alerts').insert(alert);
+  }
+}
+\`\`\`
+
+## Security Testing & Validation
+
+### Automated Security Testing
+\`\`\`javascript
+// Security test suite
+const securityTests = {
+  async testSQLInjection() {
+    const maliciousInputs = [
+      "'; DROP TABLE users; --",
+      "1' OR '1'='1",
+      "admin'--",
+      "'; SELECT * FROM users WHERE '1'='1"
+    ];
+    
+    for (const input of maliciousInputs) {
+      try {
+        await supabase.from('users').select('*').eq('email', input);
+        // Should not reach here if properly protected
+        console.warn('SQL injection vulnerability detected!');
+      } catch (error) {
+        // Expected to fail due to parameterized queries
+        console.log('SQL injection protection working:', error.message);
+      }
+    }
+  },
+  
+  async testXSS() {
+    const xssPayloads = [
+      '<script>alert("XSS")</script>',
+      '<img src="x" onerror="alert(1)">',
+      'javascript:alert("XSS")',
+      '<svg onload="alert(1)">'
+    ];
+    
+    for (const payload of xssPayloads) {
+      const sanitized = sanitizeOutput(payload);
+      if (sanitized.includes('<script>') || sanitized.includes('javascript:')) {
+        console.warn('XSS vulnerability detected!');
+      } else {
+        console.log('XSS protection working');
+      }
+    }
+  }
+};
+\`\`\`
+
+Remember {{name}}, security is not a destination but a journey. Stay informed about emerging threats, regularly update your security measures, and always assume that someone is trying to break into your system. Paranoia in security is not a bug - it's a feature! 🛡️🔒`,
+        learningObjectives: {
+          0: 'Implement comprehensive security architecture with defense-in-depth strategies',
+          1: 'Apply data protection and privacy compliance requirements (GDPR, SOC 2, PCI DSS)',
+          2: 'Design real-time threat detection and response systems',
+          3: 'Integrate automated security testing and validation processes',
+          4: 'Manage security incidents and maintain compliance documentation'
+        },
+        badgeName: 'Security Master',
+        srcodeCommentary: '{{name}}, congratulations! You\'ve just earned your black belt in digital security! You\'ve learned to think like both a protector and an attacker - the ultimate security mindset. Remember: security is like flossing - nobody wants to do it, but the consequences of not doing it are really, really bad. Now go forth and secure the digital world! 🥋🔐',
+        quizQuestions: {
+          'q3-3-1': {
+            question: 'What does "defense in depth" mean in security architecture?',
+            options: [
+              'Using only one strong security measure',
+              'Implementing multiple layers of security controls',
+              'Focusing only on perimeter security',
+              'Relying on third-party security services'
+            ],
+            correctAnswer: 1,
+            explanation: 'Defense in depth means implementing multiple layers of security controls so that if one layer fails, other layers continue to provide protection, creating a comprehensive security posture.'
+          },
+          'q3-3-2': {
+            question: 'What is the "Right to be Forgotten" in GDPR compliance?',
+            options: [
+              'The right to use anonymous accounts',
+              'The right to have personal data deleted upon request',
+              'The right to forget passwords',
+              'The right to hide user activity'
+            ],
+            correctAnswer: 1,
+            explanation: 'The "Right to be Forgotten" is a GDPR provision that allows individuals to request the deletion of their personal data from an organization\'s systems, requiring comprehensive data removal procedures.'
+          },
+          'q3-3-3': {
+            question: 'Why should payment card details never be stored in your application database?',
+            options: [
+              'It takes too much storage space',
+              'It violates PCI DSS compliance requirements',
+              'It makes the application slower',
+              'It\'s not useful for business purposes'
+            ],
+            correctAnswer: 1,
+            explanation: 'Storing payment card details violates PCI DSS compliance requirements and creates significant security and legal risks. Instead, use tokenization services provided by payment processors.'
+          },
+          'q3-3-4': {
+            question: 'What is the primary purpose of security audit logs?',
+            options: [
+              'To improve application performance',
+              'To track user behavior for marketing',
+              'To provide compliance evidence and incident investigation capabilities',
+              'To reduce database storage costs'
+            ],
+            correctAnswer: 2,
+            explanation: 'Security audit logs provide evidence of compliance with regulations and enable investigation of security incidents by tracking who accessed what resources, when, and with what result.'
+          }
+        }
+      },
+
+      // Level 4: Deployment & Hosting
+      'lesson-4-1': {
+        title: 'Production Deployment Strategies',
+        objective: 'Master deployment patterns, environment management, and production-ready configurations for bolt.new applications',
+        content: `# Production Deployment Strategies
+
+{{name}}, deploying to production is where your application meets the real world. This lesson covers professional deployment strategies that ensure reliability, scalability, and maintainability in production environments.
+
+## Deployment Environment Architecture
+
+### Environment Hierarchy
+\`\`\`javascript
+// Environment configuration management
+const environments = {
+  development: {
+    database: process.env.DEV_DATABASE_URL,
+    api: 'https://dev-api.yourapp.com',
+    debug: true,
+    logging: 'debug',
+    analytics: false
+  },
+  staging: {
+    database: process.env.STAGING_DATABASE_URL,
+    api: 'https://staging-api.yourapp.com',
+    debug: false,
+    logging: 'info',
+    analytics: true
+  },
+  production: {
+    database: process.env.PROD_DATABASE_URL,
+    api: 'https://api.yourapp.com',
+    debug: false,
+    logging: 'error',
+    analytics: true,
+    monitoring: true
+  }
+};
+
+// Environment-specific configuration
+export const config = environments[process.env.NODE_ENV] || environments.development;
+\`\`\`
+
+### Infrastructure as Code
+\`\`\`yaml
+# docker-compose.yml for consistent deployments
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=\${DATABASE_URL}
+      - SUPABASE_URL=\${SUPABASE_URL}
+      - SUPABASE_ANON_KEY=\${SUPABASE_ANON_KEY}
+    depends_on:
+      - redis
+      - postgres
+    restart: unless-stopped
+
+  redis:
+    image: redis:alpine
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=\${POSTGRES_DB}
+      - POSTGRES_USER=\${POSTGRES_USER}
+      - POSTGRES_PASSWORD=\${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+\`\`\`
+
+## CI/CD Pipeline Implementation
+
+### GitHub Actions Workflow
+\`\`\`yaml
+# .github/workflows/deploy.yml
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - run: npm ci
+      - run: npm run test
+      - run: npm run build
+      
+      - name: Run security audit
+        run: npm audit --audit-level moderate
+
+  deploy-staging:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to Staging
+        run: |
+          npm run deploy:staging
+        env:
+          STAGING_URL: \${{ secrets.STAGING_URL }}
+          STAGING_TOKEN: \${{ secrets.STAGING_TOKEN }}
+
+  deploy-production:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to Production
+        run: |
+          npm run deploy:production
+        env:
+          PRODUCTION_URL: \${{ secrets.PRODUCTION_URL }}
+          PRODUCTION_TOKEN: \${{ secrets.PRODUCTION_TOKEN }}
+\`\`\`
+
+### Automated Database Migrations
+\`\`\`javascript
+// Migration management system
+class MigrationManager {
+  constructor(supabase) {
+    this.supabase = supabase;
+  }
+  
+  async runMigrations() {
+    const { data: appliedMigrations } = await this.supabase
+      .from('migrations')
+      .select('version')
+      .order('version', { ascending: true });
+    
+    const appliedVersions = appliedMigrations.map(m => m.version);
+    const availableMigrations = this.getAvailableMigrations();
+    
+    for (const migration of availableMigrations) {
+      if (!appliedVersions.includes(migration.version)) {
+        console.log(\`Running migration \${migration.version}\`);
+        
+        try {
+          await this.executeMigration(migration);
+          await this.recordMigration(migration.version);
+          console.log(\`Migration \${migration.version} completed\`);
+        } catch (error) {
+          console.error(\`Migration \${migration.version} failed:`, error);
+          throw error;
+        }
+      }
+    }
+  }
+  
+  async executeMigration(migration) {
+    // Execute SQL migration
+    const { error } = await this.supabase.rpc('execute_sql', {
+      sql_query: migration.sql
+    });
+    
+    if (error) throw error;
+  }
+  
+  async recordMigration(version) {
+    const { error } = await this.supabase
+      .from('migrations')
+      .insert({
+        version: version,
+        applied_at: new Date().toISOString()
+      });
+    
+    if (error) throw error;
+  }
+}
+\`\`\`
+
+## Performance Optimization for Production
+
+### Build Optimization
+\`\`\`javascript
+// vite.config.js - Production optimizations
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { visualizer } from 'rollup-plugin-visualizer';
+
+export default defineConfig({
+  plugins: [
+    react(),
+    visualizer({
+      filename: 'dist/stats.html',
+      open: true,
+      gzipSize: true
+    })
+  ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          auth: ['@supabase/supabase-js'],
+          ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu']
+        }
+      }
+    },
+    minify: 'esbuild',
+    sourcemap: true,
+    chunkSizeWarningLimit: 1000
+  },
+  define: {
+    'process.env.NODE_ENV': JSON.stringify('production')
+  }
+});
+\`\`\`
+
+### CDN and Caching Strategy
+\`\`\`javascript
+// Service Worker for aggressive caching
+const CACHE_NAME = 'app-v1';
+const STATIC_ASSETS = [
+  '/',
+  '/static/js/main.js',
+  '/static/css/main.css',
+  '/manifest.json'
+];
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(STATIC_ASSETS))
+  );
+});
+
+self.addEventListener('fetch', (event) => {
+  if (event.request.destination === 'image') {
+    event.respondWith(
+      caches.match(event.request)
+        .then((response) => {
+          if (response) {
+            return response;
+          }
+          
+          return fetch(event.request)
+            .then((response) => {
+              const responseClone = response.clone();
+              caches.open(CACHE_NAME)
+                .then((cache) => {
+                  cache.put(event.request, responseClone);
+                });
+              return response;
+            });
+        })
+    );
+  }
+});
+\`\`\`
+
+## Monitoring and Observability
+
+### Application Performance Monitoring
+\`\`\`javascript
+// Performance monitoring setup
+class PerformanceMonitor {
+  constructor() {
+    this.metrics = {
+      pageLoads: new Map(),
+      apiCalls: new Map(),
+      errors: []
+    };
+  }
+  
+  trackPageLoad(pageName) {
+    const startTime = performance.now();
+    
+    return {
+      finish: () => {
+        const loadTime = performance.now() - startTime;
+        this.metrics.pageLoads.set(pageName, loadTime);
+        
+        // Send to analytics
+        this.sendMetric('page_load', {
+          page: pageName,
+          load_time: loadTime,
+          timestamp: new Date().toISOString()
+        });
+      }
+    };
+  }
+  
+  trackAPICall(endpoint) {
+    const startTime = performance.now();
+    
+    return {
+      success: () => {
+        const duration = performance.now() - startTime;
+        this.sendMetric('api_success', {
+          endpoint,
+          duration,
+          timestamp: new Date().toISOString()
+        });
+      },
+      error: (error) => {
+        const duration = performance.now() - startTime;
+        this.sendMetric('api_error', {
+          endpoint,
+          duration,
+          error: error.message,
+          timestamp: new Date().toISOString()
+        });
+      }
+    };
+  }
+  
+  async sendMetric(type, data) {
+    try {
+      await fetch('/api/metrics', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type, data })
+      });
+    } catch (error) {
+      console.error('Failed to send metric:', error);
+    }
+  }
+}
+
+// Initialize monitoring
+const monitor = new PerformanceMonitor();
+
+// Track page navigation
+const pageTracker = monitor.trackPageLoad('dashboard');
+// ... page load logic
+pageTracker.finish();
+\`\`\`
+
+### Health Checks and Uptime Monitoring
+\`\`\`javascript
+// Health check endpoint
+app.get('/health', async (req, res) => {
+  const health = {
+    status: 'healthy',
+    timestamp: new Date().toISOString(),
+    services: {}
+  };
+  
+  try {
+    // Check database connectivity
+    const { data, error } = await supabase
+      .from('health_check')
+      .select('1')
+      .limit(1);
+    
+    health.services.database = error ? 'unhealthy' : 'healthy';
+    
+    // Check external API dependencies
+    try {
+      const response = await fetch('https://api.stripe.com/v1/ping', {
+        headers: { 'Authorization': \`Bearer \${process.env.STRIPE_SECRET_KEY}\` }
+      });
+      health.services.stripe = response.ok ? 'healthy' : 'unhealthy';
+    } catch {
+      health.services.stripe = 'unhealthy';
+    }
+    
+    // Overall health status
+    const allHealthy = Object.values(health.services).every(status => status === 'healthy');
+    health.status = allHealthy ? 'healthy' : 'degraded';
+    
+    res.status(allHealthy ? 200 : 503).json(health);
+    
+  } catch (error) {
+    res.status(500).json({
+      status: 'unhealthy',
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+\`\`\`
+
+## Scaling and Load Management
+
+### Horizontal Scaling Strategy
+\`\`\`javascript
+// Load balancer configuration
+const cluster = require('cluster');
+const numCPUs = require('os').cpus().length;
+
+if (cluster.isMaster) {
+  console.log(\`Master \${process.pid} is running\`);
+  
+  // Fork workers
+  for (let i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
+  
+  cluster.on('exit', (worker, code, signal) => {
+    console.log(\`Worker \${worker.process.pid} died\`);
+    cluster.fork(); // Replace dead worker
+  });
+} else {
+  // Worker process
+  const app = require('./app');
+  const PORT = process.env.PORT || 3000;
+  
+  app.listen(PORT, () => {
+    console.log(\`Worker \${process.pid} started on port \${PORT}\`);
+  });
+}
+\`\`\`
+
+### Database Connection Pooling
+\`\`\`javascript
+// Optimized Supabase client for production
+const { createClient } = require('@supabase/supabase-js');
+
+const supabaseConfig = {
+  auth: {
+    autoRefreshToken: true,
+    persistSession: false, // Disable for server-side
+    detectSessionInUrl: false
+  },
+  db: {
+    schema: 'public'
+  },
+  global: {
+    headers: {
+      'x-my-custom-header': 'production-app'
+    }
+  },
+  realtime: {
+    params: {
+      eventsPerSecond: 10
+    }
+  }
+};
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_ROLE_KEY,
+  supabaseConfig
+);
+
+module.exports = supabase;
+\`\`\`
+
+Remember {{name}}, successful deployment is not just about getting your code live - it's about creating a reliable, scalable, and maintainable system that serves your users effectively. Plan for success, but prepare for failure!`,
+        learningObjectives: {
+          0: 'Design and implement robust deployment pipelines with CI/CD automation',
+          1: 'Configure production environments with proper security and performance optimizations',
+          2: 'Implement comprehensive monitoring and observability for production systems',
+          3: 'Apply scaling strategies for handling increased traffic and load',
+          4: 'Manage database migrations and environment configurations safely'
+        },
+        badgeName: 'Deployment Engineer',
+        srcodeCommentary: '{{name}}, you\'ve just leveled up from "works on my machine" to "works everywhere, all the time!" Deployment is like launching a rocket - you need multiple backup systems, thorough testing, and the ability to abort mission if things go wrong. Remember: the best deployment is the one your users never notice happened! 🚀🛠️',
+        quizQuestions: {
+          'q4-1-1': {
+            question: 'What is the primary benefit of using Infrastructure as Code (IaC)?',
+            options: [
+              'It makes deployments faster',
+              'It ensures consistent, reproducible infrastructure across environments',
+              'It reduces server costs',
+              'It eliminates the need for monitoring'
+            ],
+            correctAnswer: 1,
+            explanation: 'Infrastructure as Code ensures consistent, reproducible infrastructure across different environments by defining infrastructure requirements in version-controlled code rather than manual configuration.'
+          },
+          'q4-1-2': {
+            question: 'In a CI/CD pipeline, when should database migrations be executed?',
+            options: [
+              'Before running tests',
+              'After deploying to production',
+              'During the deployment process, before starting the new application version',
+              'Only when manually triggered'
+            ],
+            correctAnswer: 2,
+            explanation: 'Database migrations should be executed during the deployment process, before starting the new application version, to ensure the database schema is compatible with the new code.'
+          },
+          'q4-1-3': {
+            question: 'What is the purpose of a health check endpoint?',
+            options: [
+              'To test user authentication',
+              'To monitor application and dependency status for load balancers and monitoring systems',
+              'To backup the database',
+              'To update application configuration'
+            ],
+            correctAnswer: 1,
+            explanation: 'Health check endpoints monitor application and dependency status, allowing load balancers, monitoring systems, and orchestrators to determine if an instance is healthy and ready to serve traffic.'
+          },
+          'q4-1-4': {
+            question: 'Why is horizontal scaling generally preferred over vertical scaling?',
+            options: [
+              'It\'s always cheaper',
+              'It provides better fault tolerance and can handle larger scale increases',
+              'It requires less configuration',
+              'It uses less memory'
+            ],
+            correctAnswer: 1,
+            explanation: 'Horizontal scaling provides better fault tolerance (if one instance fails, others continue running) and can handle larger scale increases by adding more instances rather than being limited by the maximum capacity of a single machine.'
+          }
+        }
+      },
+
+      'lesson-4-2': {
+        title: 'Cloud Platforms & Serverless Architecture',
+        objective: 'Master cloud deployment strategies, serverless functions, and modern hosting platforms for scalable applications',
+        content: `# Cloud Platforms & Serverless Architecture
+
+{{name}}, the cloud has revolutionized how we deploy and scale applications. This lesson explores modern cloud platforms, serverless architectures, and deployment strategies that enable massive scale with minimal infrastructure management.
+
+## Cloud Platform Comparison
+
+### Platform Overview
+\`\`\`javascript
+// Platform-specific deployment configurations
+const platformConfigs = {
+  netlify: {
+    buildCommand: 'npm run build',
+    publishDirectory: 'dist',
+    functions: 'netlify/functions',
+    redirects: '_redirects',
+    headers: '_headers',
+    environmentVariables: {
+      NODE_VERSION: '18',
+      NPM_VERSION: '8'
+    }
+  },
+  
+  vercel: {
+    buildCommand: 'npm run build',
+    outputDirectory: 'dist',
+    serverlessFunctions: 'api',
+    framework: 'vite',
+    installCommand: 'npm install',
+    nodeVersion: '18.x'
+  },
+  
+  cloudflare: {
+    compatibilityDate: '2023-05-18',
+    nodeCompatibility: true,
+    buildCommand: 'npm run build',
+    buildOutputDirectory: 'dist',
+    functionsDirectory: 'functions'
+  }
+};
+\`\`\`
+
+### Netlify Deployment Configuration
+\`\`\`toml
+# netlify.toml
+[build]
+  publish = "dist"
+  command = "npm run build"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "8"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+\`\`\`
+
+## Serverless Functions Architecture
+
+### Netlify Functions
+\`\`\`javascript
+// netlify/functions/api.js
+exports.handler = async (event, context) => {
+  const { httpMethod, path, queryStringParameters, body } = event;
+  
+  // CORS headers for all responses
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
+  };
+  
+  // Handle CORS preflight
+  if (httpMethod === 'OPTIONS') {
+    return { statusCode: 200, headers, body: '' };
+  }
+  
+  try {
+    // Route handling
+    if (path.startsWith('/api/users')) {
+      return await handleUsers(httpMethod, queryStringParameters, body);
+    } else if (path.startsWith('/api/posts')) {
+      return await handlePosts(httpMethod, queryStringParameters, body);
+    }
+    
+    return {
+      statusCode: 404,
+      headers,
+      body: JSON.stringify({ error: 'Endpoint not found' })
+    };
+    
+  } catch (error) {
+    console.error('Function error:', error);
+    
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({ error: 'Internal server error' })
+    };
+  }
+};
+
+async function handleUsers(method, params, body) {
+  switch (method) {
+    case 'GET':
+      return getUsersHandler(params);
+    case 'POST':
+      return createUserHandler(JSON.parse(body));
+    default:
+      return { statusCode: 405, body: 'Method not allowed' };
+  }
+}
+\`\`\`
+
+### Vercel API Routes
+\`\`\`javascript
+// api/users/[id].js
+import { supabase } from '../../lib/supabase';
+
+export default async function handler(req, res) {
+  const { method, query: { id } } = req;
+  
+  // Enable CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  
+  if (method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  
+  try {
+    switch (method) {
+      case 'GET':
+        return await getUserById(req, res, id);
+      case 'PUT':
+        return await updateUser(req, res, id);
+      case 'DELETE':
+        return await deleteUser(req, res, id);
+      default:
+        res.setHeader('Allow', ['GET', 'PUT', 'DELETE']);
+        return res.status(405).json({ error: 'Method not allowed' });
+    }
+  } catch (error) {
+    console.error('API Error:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+async function getUserById(req, res, id) {
+  const { data, error } = await supabase
+    .from('users')
+    .select('*')
+    .eq('id', id)
+    .single();
+  
+  if (error) {
+    return res.status(404).json({ error: 'User not found' });
+  }
+  
+  return res.status(200).json(data);
+}
+\`\`\`
+
+### Cloudflare Workers
+\`\`\`javascript
+// functions/api.js
+export async function onRequest(context) {
+  const { request, env } = context;
+  const url = new URL(request.url);
+  const path = url.pathname;
+  
+  // CORS handling
+  const corsHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+  };
+  
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { headers: corsHeaders });
+  }
+  
+  try {
+    if (path.startsWith('/api/auth')) {
+      return handleAuth(request, env);
+    } else if (path.startsWith('/api/data')) {
+      return handleData(request, env);
+    }
+    
+    return new Response('Not Found', { status: 404 });
+    
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json', ...corsHeaders }
+    });
+  }
+}
+
+async function handleAuth(request, env) {
+  const { SUPABASE_URL, SUPABASE_ANON_KEY } = env;
+  
+  // Initialize Supabase client with environment variables
+  const { createClient } = await import('@supabase/supabase-js');
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  
+  // Handle authentication logic
+  const body = await request.json();
+  const { data, error } = await supabase.auth.signInWithPassword(body);
+  
+  if (error) {
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+  
+  return new Response(JSON.stringify(data), {
+    headers: { 'Content-Type': 'application/json' }
+  });
+}
+\`\`\`
+
+## Edge Computing and CDN Optimization
+
+### Global Edge Deployment
+\`\`\`javascript
+// Edge-optimized application architecture
+class EdgeOptimizedApp {
+  constructor() {
+    this.regions = {
+      'us-east-1': 'Virginia',
+      'eu-west-1': 'Ireland',
+      'ap-southeast-1': 'Singapore',
+      'au-southeast-2': 'Sydney'
+    };
+  }
+  
+  async deployToEdge(buildAssets) {
+    const deployments = [];
+    
+    for (const [region, location] of Object.entries(this.regions)) {
+      const deployment = await this.deployToRegion(region, buildAssets);
+      deployments.push({ region, location, ...deployment });
+    }
+    
+    return deployments;
+  }
+  
+  async deployToRegion(region, assets) {
+    // Deploy static assets to CDN edge locations
+    const assetDeployment = await this.deployCDNAssets(region, assets.static);
+    
+    // Deploy serverless functions to edge compute
+    const functionDeployment = await this.deployEdgeFunctions(region, assets.functions);
+    
+    return {
+      assets: assetDeployment,
+      functions: functionDeployment,
+      deployed_at: new Date().toISOString()
+    };
+  }
+  
+  async deployCDNAssets(region, assets) {
+    // Implementation for CDN deployment
+    return {
+      urls: assets.map(asset => \`https://cdn-\${region}.yourapp.com/\${asset}\`),
+      cache_policy: 'max-age=31536000, immutable'
+    };
+  }
+}
+\`\`\`
+
+### Smart Caching Strategies
+\`\`\`javascript
+// Advanced caching with Cloudflare Workers
+export default {
+  async fetch(request, env, ctx) {
+    const cache = caches.default;
+    const cacheKey = new Request(request.url, request);
+    
+    // Try to get from cache first
+    let response = await cache.match(cacheKey);
+    
+    if (!response) {
+      // Generate response
+      response = await generateResponse(request, env);
+      
+      // Cache based on content type
+      const contentType = response.headers.get('Content-Type');
+      
+      if (contentType?.includes('application/json')) {
+        // Cache API responses for 5 minutes
+        response.headers.set('Cache-Control', 'public, max-age=300');
+      } else if (contentType?.includes('text/html')) {
+        // Cache HTML for 1 hour
+        response.headers.set('Cache-Control', 'public, max-age=3600');
+      } else if (contentType?.includes('image/') || contentType?.includes('font/')) {
+        // Cache assets for 1 year
+        response.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+      }
+      
+      // Store in cache
+      ctx.waitUntil(cache.put(cacheKey, response.clone()));
+    }
+    
+    return response;
+  }
+};
+
+async function generateResponse(request, env) {
+  const url = new URL(request.url);
+  
+  // Route to appropriate handler
+  if (url.pathname.startsWith('/api/')) {
+    return handleAPI(request, env);
+  } else {
+    return handleStatic(request, env);
+  }
+}
+\`\`\`
+
+## Container Orchestration
+
+### Docker Production Setup
+\`\`\`dockerfile
+# Multi-stage Dockerfile for production
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production && npm cache clean --force
+
+COPY . .
+RUN npm run build
+
+# Production stage
+FROM node:18-alpine AS production
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nextjs -u 1001
+
+WORKDIR /app
+
+# Copy built application
+COPY --from=builder --chown=nextjs:nodejs /app/dist ./dist
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules ./node_modules
+COPY --from=builder --chown=nextjs:nodejs /app/package.json ./package.json
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV NODE_ENV=production
+ENV PORT=3000
+
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \\
+  CMD curl -f http://localhost:3000/health || exit 1
+
+CMD ["npm", "start"]
+\`\`\`
+
+### Kubernetes Deployment
+\`\`\`yaml
+# k8s/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bolt-app
+  labels:
+    app: bolt-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bolt-app
+  template:
+    metadata:
+      labels:
+        app: bolt-app
+    spec:
+      containers:
+      - name: bolt-app
+        image: your-registry/bolt-app:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: database-url
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bolt-app-service
+spec:
+  selector:
+    app: bolt-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+  type: LoadBalancer
+\`\`\`
+
+## Performance Monitoring and Analytics
+
+### Real User Monitoring (RUM)
+\`\`\`javascript
+// Client-side performance tracking
+class PerformanceTracker {
+  constructor() {
+    this.observer = new PerformanceObserver(this.handlePerformanceEntries.bind(this));
+    this.observer.observe({ entryTypes: ['navigation', 'paint', 'largest-contentful-paint'] });
+  }
+  
+  handlePerformanceEntries(list) {
+    for (const entry of list.getEntries()) {
+      switch (entry.entryType) {
+        case 'navigation':
+          this.trackNavigation(entry);
+          break;
+        case 'paint':
+          this.trackPaint(entry);
+          break;
+        case 'largest-contentful-paint':
+          this.trackLCP(entry);
+          break;
+      }
+    }
+  }
+  
+  trackNavigation(entry) {
+    const metrics = {
+      dns_lookup: entry.domainLookupEnd - entry.domainLookupStart,
+      tcp_connection: entry.connectEnd - entry.connectStart,
+      server_response: entry.responseEnd - entry.requestStart,
+      dom_parse: entry.domContentLoadedEventEnd - entry.responseEnd,
+      total_load: entry.loadEventEnd - entry.navigationStart
+    };
+    
+    this.sendMetrics('navigation', metrics);
+  }
+  
+  trackPaint(entry) {
+    this.sendMetrics('paint', {
+      name: entry.name,
+      start_time: entry.startTime
+    });
+  }
+  
+  trackLCP(entry) {
+    this.sendMetrics('lcp', {
+      start_time: entry.startTime,
+      element: entry.element?.tagName || 'unknown'
+    });
+  }
+  
+  async sendMetrics(type, data) {
+    try {
+      await fetch('/api/analytics', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type,
+          data,
+          timestamp: Date.now(),
+          user_agent: navigator.userAgent,
+          url: window.location.href
+        })
+      });
+    } catch (error) {
+      console.error('Failed to send metrics:', error);
+    }
+  }
+}
+
+// Initialize tracking
+new PerformanceTracker();
+\`\`\`
+
+Remember {{name}}, serverless and edge computing represent the future of web deployment - globally distributed, automatically scaled, and pay-per-use. Master these patterns and you'll build applications that can handle any scale!`,
+        learningObjectives: {
+          0: 'Compare and implement deployments across major cloud platforms',
+          1: 'Design and build serverless function architectures',
+          2: 'Optimize applications for edge computing and global distribution',
+          3: 'Implement container orchestration for scalable deployments',
+          4: 'Monitor application performance across distributed infrastructure'
+        },
+        badgeName: 'Cloud Architect',
+        srcodeCommentary: '{{name}}, you\'ve just mastered the art of making your application available everywhere at once! Serverless is like having an army of invisible minions who appear exactly when needed and disappear when they\'re not. The cloud is your oyster, and you\'ve learned to shuck it properly! 🌩️⚡',
+        quizQuestions: {
+          'q4-2-1': {
+            question: 'What is the main advantage of serverless functions over traditional server deployment?',
+            options: [
+              'They are always faster',
+              'They automatically scale to zero when not in use and scale up based on demand',
+              'They cost less in all scenarios',
+              'They support more programming languages'
+            ],
+            correctAnswer: 1,
+            explanation: 'Serverless functions automatically scale to zero when not in use (saving costs) and scale up automatically based on demand without manual intervention or capacity planning.'
+          },
+          'q4-2-2': {
+            question: 'What is the primary benefit of edge computing for web applications?',
+            options: [
+              'Reduced server costs',
+              'Improved security',
+              'Reduced latency by serving content from locations closer to users',
+              'Easier development process'
+            ],
+            correctAnswer: 2,
+            explanation: 'Edge computing reduces latency by serving content and executing code from locations geographically closer to users, improving performance and user experience globally.'
+          },
+          'q4-2-3': {
+            question: 'In a Kubernetes deployment, what is the purpose of a readiness probe?',
+            options: [
+              'To restart the container if it fails',
+              'To determine when a container is ready to accept traffic',
+              'To scale the number of replicas',
+              'To monitor resource usage'
+            ],
+            correctAnswer: 1,
+            explanation: 'A readiness probe determines when a container is ready to accept traffic, preventing traffic from being routed to containers that are still starting up or not yet ready to handle requests.'
+          },
+          'q4-2-4': {
+            question: 'What metric does Largest Contentful Paint (LCP) measure?',
+            options: [
+              'The time until the page is fully interactive',
+              'The time to render the largest visible content element',
+              'The total page load time',
+              'The time to first byte from the server'
+            ],
+            correctAnswer: 1,
+            explanation: 'Largest Contentful Paint (LCP) measures the time it takes to render the largest visible content element in the viewport, which is a key indicator of perceived loading performance.'
+          }
+        }
+      },
+
+      'lesson-4-3': {
+        title: 'Performance Optimization & Monitoring',
+        objective: 'Master advanced performance optimization techniques, monitoring strategies, and real-time analytics for production applications',
+        content: `# Performance Optimization & Monitoring
+
+{{name}}, performance is not just about making things fast - it's about creating exceptional user experiences that scale. This lesson covers advanced optimization techniques and monitoring strategies that ensure your application performs brilliantly under any condition.
+
+## Core Web Vitals Optimization
+
+### Largest Contentful Paint (LCP) Optimization
+\`\`\`javascript
+// Image optimization strategies
+class ImageOptimizer {
+  constructor() {
+    this.formats = ['webp', 'avif', 'jpeg'];
+    this.sizes = [320, 640, 768, 1024, 1280, 1920];
+  }
+  
+  generateResponsiveImageSet(src, alt) {
+    const baseName = src.split('.').slice(0, -1).join('.');
+    const extension = src.split('.').pop();
+    
+    // Generate srcset for different sizes and formats
+    const webpSrcSet = this.sizes
+      .map(size => \`\${baseName}-\${size}w.webp \${size}w\`)
+      .join(', ');
+    
+    const fallbackSrcSet = this.sizes
+      .map(size => \`\${baseName}-\${size}w.\${extension} \${size}w\`)
+      .join(', ');
+    
+    return \`
+      <picture>
+        <source 
+          type="image/webp" 
+          srcset="\${webpSrcSet}"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
+        <img 
+          src="\${src}" 
+          srcset="\${fallbackSrcSet}"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          alt="\${alt}"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+    \`;
+  }
+  
+  // Preload critical images
+  preloadCriticalImages(images) {
+    images.forEach(({ src, type = 'image/webp' }) => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.type = type;
+      link.href = src;
+      document.head.appendChild(link);
+    });
+  }
+}
+
+// Usage
+const optimizer = new ImageOptimizer();
+optimizer.preloadCriticalImages([
+  { src: '/hero-image-1280w.webp', type: 'image/webp' },
+  { src: '/logo-320w.webp', type: 'image/webp' }
+]);
+\`\`\`
+
+### First Input Delay (FID) Optimization
+\`\`\`javascript
+// Code splitting and lazy loading
+import { lazy, Suspense } from 'react';
+
+// Lazy load heavy components
+const Dashboard = lazy(() => import('./Dashboard'));
+const Analytics = lazy(() => import('./Analytics'));
+const Reports = lazy(() => import('./Reports'));
+
+// Route-based code splitting
+const AppRouter = () => {
+  return (
+    <Router>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/reports" element={<Reports />} />
+        </Routes>
+      </Suspense>
+    </Router>
+  );
+};
+
+// Optimize heavy computations
+class PerformanceOptimizer {
+  constructor() {
+    this.scheduler = this.createScheduler();
+  }
+  
+  createScheduler() {
+    return {
+      postTask: (callback, priority = 'user-blocking') => {
+        if ('scheduler' in window && 'postTask' in window.scheduler) {
+          return window.scheduler.postTask(callback, { priority });
+        }
+        
+        // Fallback for browsers without Scheduler API
+        return new Promise(resolve => {
+          setTimeout(() => resolve(callback()), 0);
+        });
+      }
+    };
+  }
+  
+  async processLargeDataset(data, processor) {
+    const chunkSize = 1000;
+    const results = [];
+    
+    for (let i = 0; i < data.length; i += chunkSize) {
+      const chunk = data.slice(i, i + chunkSize);
+      
+      // Process chunk without blocking the main thread
+      const result = await this.scheduler.postTask(() => {
+        return processor(chunk);
+      }, 'background');
+      
+      results.push(...result);
+      
+      // Yield to browser for other tasks
+      await new Promise(resolve => setTimeout(resolve, 0));
+    }
+    
+    return results;
+  }
+}
+\`\`\`
+
+### Cumulative Layout Shift (CLS) Prevention
+\`\`\`css
+/* Prevent layout shifts with CSS */
+.image-container {
+  /* Reserve space for images */
+  aspect-ratio: 16 / 9;
+  background-color: #f0f0f0;
+  position: relative;
+}
+
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Font loading optimization */
+@font-face {
+  font-family: 'CustomFont';
+  src: url('/fonts/custom-font.woff2') format('woff2');
+  font-display: swap; /* Prevent invisible text during font load */
+}
+
+/* Skeleton loading states */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+\`\`\`
+
+## Advanced Caching Strategies
+
+### Multi-Layer Caching Architecture
+\`\`\`javascript
+// Comprehensive caching system
+class CacheManager {
+  constructor() {
+    this.memoryCache = new Map();
+    this.browserCache = 'cacheStorage' in window ? caches : null;
+    this.serviceWorker = 'serviceWorker' in navigator;
+  }
+  
+  async get(key, options = {}) {
+    const { ttl = 300000, strategy = 'cache-first' } = options;
+    
+    // Try memory cache first (fastest)
+    const memoryResult = this.memoryCache.get(key);
+    if (memoryResult && Date.now() - memoryResult.timestamp < ttl) {
+      return memoryResult.data;
+    }
+    
+    // Try browser cache (medium speed)
+    if (this.browserCache) {
+      const cache = await this.browserCache.open('app-cache-v1');
+      const response = await cache.match(key);
+      
+      if (response) {
+        const data = await response.json();
+        this.memoryCache.set(key, { data, timestamp: Date.now() });
+        return data;
+      }
+    }
+    
+    // Fetch from network (slowest)
+    if (strategy === 'cache-first' || strategy === 'network-first') {
+      const data = await this.fetchFromNetwork(key);
+      await this.set(key, data, ttl);
+      return data;
+    }
+    
+    return null;
+  }
+  
+  async set(key, data, ttl = 300000) {
+    // Store in memory cache
+    this.memoryCache.set(key, { data, timestamp: Date.now() });
+    
+    // Store in browser cache
+    if (this.browserCache) {
+      const cache = await this.browserCache.open('app-cache-v1');
+      const response = new Response(JSON.stringify(data), {
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': \`max-age=\${Math.floor(ttl / 1000)}\`
+        }
+      });
+      await cache.put(key, response);
+    }
+    
+    // Clean up expired entries
+    this.cleanup();
+  }
+  
+  cleanup() {
+    const now = Date.now();
+    for (const [key, value] of this.memoryCache.entries()) {
+      if (now - value.timestamp > 300000) { // 5 minutes default
+        this.memoryCache.delete(key);
+      }
+    }
+  }
+  
+  async fetchFromNetwork(key) {
+    const response = await fetch(key);
+    if (!response.ok) {
+      throw new Error(\`Failed to fetch \${key}\`);
+    }
+    return response.json();
+  }
+}
+
+// Usage with React Query integration
+import { useQuery } from '@tanstack/react-query';
+
+const cacheManager = new CacheManager();
+
+function useOptimizedQuery(queryKey, fetchFn, options = {}) {
+  return useQuery({
+    queryKey,
+    queryFn: async () => {
+      const cacheKey = JSON.stringify(queryKey);
+      
+      try {
+        return await cacheManager.get(cacheKey, options);
+      } catch {
+        const data = await fetchFn();
+        await cacheManager.set(cacheKey, data);
+        return data;
+      }
+    },
+    staleTime: options.ttl || 300000,
+    gcTime: options.ttl || 300000
+  });
+}
+\`\`\`
+
+## Real-Time Performance Monitoring
+
+### Custom Performance Analytics
+\`\`\`javascript
+// Advanced performance monitoring
+class PerformanceAnalytics {
+  constructor(apiEndpoint) {
+    this.apiEndpoint = apiEndpoint;
+    this.metrics = new Map();
+    this.thresholds = {
+      lcp: 2500,      // ms
+      fid: 100,       // ms
+      cls: 0.1,       // score
+      ttfb: 800,      // ms
+      fcp: 1800       // ms
+    };
+    
+    this.initializeObservers();
+  }
+  
+  initializeObservers() {
+    // Largest Contentful Paint
+    new PerformanceObserver((list) => {
+      const entries = list.getEntries();
+      const lcp = entries[entries.length - 1];
+      this.recordMetric('lcp', lcp.startTime);
+    }).observe({ type: 'largest-contentful-paint', buffered: true });
+    
+    // First Input Delay
+    new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) {
+        this.recordMetric('fid', entry.processingStart - entry.startTime);
+      }
+    }).observe({ type: 'first-input', buffered: true });
+    
+    // Cumulative Layout Shift
+    new PerformanceObserver((list) => {
+      let clsScore = 0;
+      for (const entry of list.getEntries()) {
+        if (!entry.hadRecentInput) {
+          clsScore += entry.value;
+        }
+      }
+      this.recordMetric('cls', clsScore);
+    }).observe({ type: 'layout-shift', buffered: true });
+    
+    // Custom metrics
+    this.observeCustomMetrics();
+  }
+  
+  observeCustomMetrics() {
+    // Page load time
+    window.addEventListener('load', () => {
+      const navigation = performance.getEntriesByType('navigation')[0];
+      this.recordMetric('page_load', navigation.loadEventEnd - navigation.navigationStart);
+    });
+    
+    // Time to first byte
+    const navigation = performance.getEntriesByType('navigation')[0];
+    if (navigation) {
+      this.recordMetric('ttfb', navigation.responseStart - navigation.navigationStart);
+    }
+    
+    // API response times
+    this.monitorAPIPerformance();
+  }
+  
+  monitorAPIPerformance() {
+    const originalFetch = window.fetch;
+    window.fetch = async (...args) => {
+      const startTime = performance.now();
+      const url = args[0];
+      
+      try {
+        const response = await originalFetch(...args);
+        const endTime = performance.now();
+        
+        this.recordMetric('api_response', endTime - startTime, {
+          url: url.toString(),
+          status: response.status,
+          success: response.ok
+        });
+        
+        return response;
+      } catch (error) {
+        const endTime = performance.now();
+        
+        this.recordMetric('api_error', endTime - startTime, {
+          url: url.toString(),
+          error: error.message
+        });
+        
+        throw error;
+      }
+    };
+  }
+  
+  recordMetric(name, value, metadata = {}) {
+    const metric = {
+      name,
+      value,
+      timestamp: Date.now(),
+      url: window.location.href,
+      userAgent: navigator.userAgent,
+      viewport: {
+        width: window.innerWidth,
+        height: window.innerHeight
+      },
+      connection: this.getConnectionInfo(),
+      ...metadata
+    };
+    
+    this.metrics.set(\`\${name}_\${Date.now()}\`, metric);
+    
+    // Check if metric exceeds threshold
+    if (this.thresholds[name] && value > this.thresholds[name]) {
+      this.reportPerformanceIssue(metric);
+    }
+    
+    // Send to analytics (batched)
+    this.batchSendMetrics();
+  }
+  
+  getConnectionInfo() {
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    return connection ? {
+      effectiveType: connection.effectiveType,
+      downlink: connection.downlink,
+      rtt: connection.rtt
+    } : null;
+  }
+  
+  batchSendMetrics() {
+    // Batch and send metrics every 10 seconds
+    clearTimeout(this.sendTimeout);
+    this.sendTimeout = setTimeout(() => {
+      const metricsArray = Array.from(this.metrics.values());
+      if (metricsArray.length > 0) {
+        this.sendToAnalytics(metricsArray);
+        this.metrics.clear();
+      }
+    }, 10000);
+  }
+  
+  async sendToAnalytics(metrics) {
+    try {
+      await fetch(this.apiEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ metrics })
+      });
+    } catch (error) {
+      console.error('Failed to send analytics:', error);
+    }
+  }
+  
+  reportPerformanceIssue(metric) {
+    console.warn(\`Performance threshold exceeded: \${metric.name} = \${metric.value}\`);
+    
+    // Send immediate alert for critical issues
+    fetch('/api/alerts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type: 'performance_alert',
+        metric: metric.name,
+        value: metric.value,
+        threshold: this.thresholds[metric.name],
+        url: metric.url,
+        timestamp: metric.timestamp
+      })
+    });
+  }
+}
+
+// Initialize performance monitoring
+const analytics = new PerformanceAnalytics('/api/analytics');
+\`\`\`
+
+## Error Tracking and Monitoring
+
+### Comprehensive Error Handling
+\`\`\`javascript
+// Error tracking and reporting system
+class ErrorTracker {
+  constructor(apiEndpoint, options = {}) {
+    this.apiEndpoint = apiEndpoint;
+    this.options = {
+      maxErrors: 100,
+      batchSize: 10,
+      flushInterval: 30000,
+      ...options
+    };
+    
+    this.errors = [];
+    this.setupErrorHandlers();
+  }
+  
+  setupErrorHandlers() {
+    // Global error handler
+    window.addEventListener('error', (event) => {
+      this.captureError({
+        type: 'javascript',
+        message: event.message,
+        filename: event.filename,
+        lineno: event.lineno,
+        colno: event.colno,
+        error: event.error,
+        stack: event.error?.stack
+      });
+    });
+    
+    // Unhandled promise rejections
+    window.addEventListener('unhandledrejection', (event) => {
+      this.captureError({
+        type: 'promise_rejection',
+        message: event.reason?.message || String(event.reason),
+        stack: event.reason?.stack
+      });
+    });
+    
+    // Resource loading errors
+    window.addEventListener('error', (event) => {
+      if (event.target !== window) {
+        this.captureError({
+          type: 'resource_error',
+          resource: event.target.tagName.toLowerCase(),
+          source: event.target.src || event.target.href,
+          message: 'Resource failed to load'
+        });
+      }
+    }, true);
+    
+    // Network errors in fetch
+    this.monitorNetworkErrors();
+  }
+  
+  monitorNetworkErrors() {
+    const originalFetch = window.fetch;
+    window.fetch = async (...args) => {
+      try {
+        const response = await originalFetch(...args);
+        
+        if (!response.ok) {
+          this.captureError({
+            type: 'network_error',
+            url: args[0],
+            status: response.status,
+            statusText: response.statusText
+          });
+        }
+        
+        return response;
+      } catch (error) {
+        this.captureError({
+          type: 'network_error',
+          url: args[0],
+          message: error.message,
+          stack: error.stack
+        });
+        throw error;
+      }
+    };
+  }
+  
+  captureError(errorData) {
+    const error = {
+      id: this.generateErrorId(),
+      ...errorData,
+      timestamp: Date.now(),
+      url: window.location.href,
+      userAgent: navigator.userAgent,
+      userId: this.getCurrentUserId(),
+      sessionId: this.getSessionId(),
+      breadcrumbs: this.getBreadcrumbs()
+    };
+    
+    this.errors.push(error);
+    
+    // Flush if we have too many errors
+    if (this.errors.length >= this.options.batchSize) {
+      this.flush();
+    }
+    
+    console.error('Error captured:', error);
+  }
+  
+  generateErrorId() {
+    return \`err_\${Date.now()}_\${Math.random().toString(36).substr(2, 9)}\`;
+  }
+  
+  getCurrentUserId() {
+    // Get user ID from your auth system
+    return localStorage.getItem('userId') || 'anonymous';
+  }
+  
+  getSessionId() {
+    // Get or create session ID
+    let sessionId = sessionStorage.getItem('sessionId');
+    if (!sessionId) {
+      sessionId = \`sess_\${Date.now()}_\${Math.random().toString(36).substr(2, 9)}\`;
+      sessionStorage.setItem('sessionId', sessionId);
+    }
+    return sessionId;
+  }
+  
+  getBreadcrumbs() {
+    // Return recent user actions for context
+    return window.errorBreadcrumbs || [];
+  }
+  
+  async flush() {
+    if (this.errors.length === 0) return;
+    
+    const errorsToSend = this.errors.splice(0, this.options.batchSize);
+    
+    try {
+      await fetch(this.apiEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ errors: errorsToSend })
+      });
+    } catch (error) {
+      console.error('Failed to send error reports:', error);
+      // Put errors back in queue
+      this.errors.unshift(...errorsToSend);
+    }
+  }
+}
+
+// Initialize error tracking
+const errorTracker = new ErrorTracker('/api/errors');
+
+// Set up automatic flushing
+setInterval(() => errorTracker.flush(), 30000);
+\`\`\`
+
+## A/B Testing and Feature Flags
+
+### Performance-Aware Feature Flags
+\`\`\`javascript
+// Feature flag system with performance monitoring
+class FeatureFlagManager {
+  constructor() {
+    this.flags = new Map();
+    this.analytics = new PerformanceAnalytics('/api/analytics');
+    this.loadFlags();
+  }
+  
+  async loadFlags() {
+    try {
+      const response = await fetch('/api/feature-flags');
+      const flags = await response.json();
+      
+      flags.forEach(flag => {
+        this.flags.set(flag.name, flag);
+      });
+    } catch (error) {
+      console.error('Failed to load feature flags:', error);
+    }
+  }
+  
+  isEnabled(flagName, userId = null, context = {}) {
+    const flag = this.flags.get(flagName);
+    if (!flag || !flag.enabled) return false;
+    
+    // Performance monitoring for flag usage
+    const startTime = performance.now();
+    
+    let isEnabled = false;
+    
+    // Percentage-based rollout
+    if (flag.percentage !== undefined) {
+      const hash = this.hashString(userId || 'anonymous');
+      isEnabled = (hash % 100) < flag.percentage;
+    }
+    
+    // User-based targeting
+    if (flag.users && userId) {
+      isEnabled = flag.users.includes(userId);
+    }
+    
+    // Context-based targeting
+    if (flag.conditions) {
+      isEnabled = this.evaluateConditions(flag.conditions, context);
+    }
+    
+    // Track flag evaluation performance
+    const evaluationTime = performance.now() - startTime;
+    this.analytics.recordMetric('flag_evaluation', evaluationTime, {
+      flagName,
+      isEnabled,
+      userId
+    });
+    
+    return isEnabled;
+  }
+  
+  hashString(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32-bit integer
+    }
+    return Math.abs(hash);
+  }
+  
+  evaluateConditions(conditions, context) {
+    return conditions.every(condition => {
+      const value = context[condition.key];
+      
+      switch (condition.operator) {
+        case 'equals':
+          return value === condition.value;
+        case 'contains':
+          return Array.isArray(value) && value.includes(condition.value);
+        case 'greater_than':
+          return Number(value) > Number(condition.value);
+        default:
+          return false;
+      }
+    });
+  }
+}
+
+// React hook for feature flags
+function useFeatureFlag(flagName, context = {}) {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const flagManager = useMemo(() => new FeatureFlagManager(), []);
+  
+  useEffect(() => {
+    const enabled = flagManager.isEnabled(flagName, getCurrentUserId(), context);
+    setIsEnabled(enabled);
+  }, [flagName, context, flagManager]);
+  
+  return isEnabled;
+}
+
+// Usage in components
+function Dashboard() {
+  const showNewDashboard = useFeatureFlag('new_dashboard', {
+    subscription: 'premium',
+    region: 'us-east-1'
+  });
+  
+  return showNewDashboard ? <NewDashboard /> : <LegacyDashboard />;
+}
+\`\`\`
+
+Remember {{name}}, performance optimization is an iterative process of measurement, analysis, and improvement. Monitor everything, optimize strategically, and always prioritize user experience over vanity metrics!`,
+        learningObjectives: {
+          0: 'Optimize Core Web Vitals (LCP, FID, CLS) for superior user experience',
+          1: 'Implement advanced caching strategies across multiple layers',
+          2: 'Design comprehensive performance monitoring and analytics systems',
+          3: 'Build robust error tracking and reporting mechanisms',
+          4: 'Integrate performance-aware feature flags and A/B testing'
+        },
+        badgeName: 'Performance Master',
+        srcodeCommentary: '{{name}}, you\'ve just become a performance ninja! You now know how to make applications so fast that users will wonder if they\'re experiencing time travel. Remember: performance is not just about speed - it\'s about creating experiences so smooth that users forget they\'re using technology. Now go forth and make the web blazingly fast! ⚡🚀',
+        quizQuestions: {
+          'q4-3-1': {
+            question: 'What does Largest Contentful Paint (LCP) measure and what is the recommended threshold?',
+            options: [
+              'Time to first interaction, should be under 100ms',
+              'Time to render the largest visible content element, should be under 2.5 seconds',
+              'Total page load time, should be under 3 seconds',
+              'Time to first paint, should be under 1 second'
+            ],
+            correctAnswer: 1,
+            explanation: 'Largest Contentful Paint (LCP) measures the time it takes to render the largest visible content element in the viewport. The recommended threshold is under 2.5 seconds for good user experience.'
+          },
+          'q4-3-2': {
+            question: 'What is the most effective strategy to prevent Cumulative Layout Shift (CLS)?',
+            options: [
+              'Load all content synchronously',
+              'Reserve space for dynamic content using CSS dimensions or aspect ratios',
+              'Use smaller images',
+              'Disable all animations'
+            ],
+            correctAnswer: 1,
+            explanation: 'The most effective strategy to prevent CLS is to reserve space for dynamic content using CSS dimensions, aspect ratios, or skeleton screens, preventing unexpected layout shifts as content loads.'
+          },
+          'q4-3-3': {
+            question: 'Which caching strategy provides the fastest data access?',
+            options: [
+              'Browser cache (Cache API)',
+              'Service Worker cache',
+              'In-memory cache (JavaScript variables)',
+              'CDN cache'
+            ],
+            correctAnswer: 2,
+            explanation: 'In-memory cache (JavaScript variables) provides the fastest data access as the data is already loaded in memory and doesn\'t require any network requests or storage API calls.'
+          },
+          'q4-3-4': {
+            question: 'Why is it important to batch error reports rather than sending them individually?',
+            options: [
+              'To save on server costs',
+              'To reduce network overhead and prevent performance impact from error reporting',
+              'To make debugging easier',
+              'To comply with privacy regulations'
+            ],
+            correctAnswer: 1,
+            explanation: 'Batching error reports reduces network overhead and prevents the error reporting system itself from impacting application performance, especially when multiple errors occur in quick succession.'
+          }
+        }
+      }
+    },
     badges: {
       title: 'Your Achievements',
       earned: 'You have earned {{earned}} out of {{total}} badges',
@@ -251,8 +5685,8 @@ export const translations = {
       question: 'Question {{current}} of {{total}}',
       backToLesson: 'Back to Lesson',
       explanation: 'Explanation',
-      congratulations: 'Congratulations!',
-      keepTrying: 'Keep Trying!',
+      congratulations: 'Congratulations {{name}}!',
+      keepTrying: 'Keep Trying {{name}}!',
       passedMessage: 'You passed {{lessonTitle}} and earned the {{badgeName}} badge!',
       failedMessage: 'You scored {{score}}%. You need at least 85% to pass.',
       badgeEarned: 'Badge Earned: {{badgeName}} (+{{xp}} XP)',
@@ -265,7 +5699,7 @@ export const translations = {
 
     // SrCode
     srcode: {
-      welcomeMessage: 'Hello! I\'m SrCode, your AI mentor. I\'m here to help you master {{lessonTitle}}. What would you like to know?',
+      welcomeMessage: 'Hello {{name}}! I\'m SrCode, your AI mentor. I\'m here to help you master {{lessonTitle}}. What would you like to know?',
       errorMessage: 'Oops! Something went wrong. Can you try again?',
       thinking: 'Thinking...',
       placeholder: 'Type your message to SrCode...'
@@ -418,42 +5852,43 @@ export const translations = {
       srCodeSays: 'SrCode Dice',
       practiceExercise: 'Ejercicio Práctico',
       requiredScore: 'Requerido: {{score}}%',
-      continueNext: '¡Felicidades por completar {{currentLessonTitle}}! ¿Te gustaría continuar con {{nextLessonTitle}}?',
+      continueNext: '¡Felicidades {{name}} por completar {{currentLessonTitle}}! ¿Te gustaría continuar con {{nextLessonTitle}}?',
       status: {
         completed: 'Completado',
         locked: 'Bloqueado',
         score: 'Puntuación: {{score}}%'
       },
       levels: {
-        foundations: 'Fundamentos',
-        databases: 'Bases de Datos y Almacenamiento',
-        authentication: 'Autenticación y Seguridad',
+        foundations: 'Fundamentos de bolt.new',
+        databases: 'Integración de Bases de Datos',
+        authentication: 'Sistemas de Autenticación',
         deployment: 'Despliegue y Hosting',
-        integrations: 'Integraciones y APIs',
-        mastery: 'Maestría y Avanzado'
+        integrations: 'Integraciones de Terceros',
+        mastery: 'Maestría Avanzada'
       },
       descriptions: {
-        foundations: 'Domina los fundamentos del desarrollo con bolt.new',
-        databases: 'Aprende a trabajar con bases de datos y almacenamiento',
-        authentication: 'Implementa sistemas seguros de autenticación',
-        deployment: 'Despliega tus aplicaciones en la nube',
-        integrations: 'Conecta con APIs y servicios externos',
-        mastery: 'Técnicas avanzadas y mejores prácticas'
+        foundations: 'Domina los fundamentos del desarrollo con IA de bolt.new',
+        databases: 'Aprende integración de bases de datos con Supabase y otros proveedores',
+        authentication: 'Implementa autenticación y autorización de usuarios segura',
+        deployment: 'Despliega tus aplicaciones a entornos de producción',
+        integrations: 'Conecta con Figma, GitHub, Stripe y otros servicios',
+        mastery: 'Técnicas avanzadas y patrones de desarrollo profesional'
       },
 
-      // Basic Spanish lesson content
+      // Spanish lesson content with personalization
       'lesson-1-1': {
-        title: 'Introducción a bolt.new',
-        objective: 'Aprende los conceptos básicos de bolt.new',
-        content: 'Bienvenido a bolt.new, una plataforma revolucionaria de desarrollo impulsada por IA.',
+        title: 'Introducción a bolt.new: Tu Compañero de Desarrollo IA',
+        objective: 'Domina los fundamentos de bolt.new y comprende cómo el desarrollo impulsado por IA transforma la experiencia de codificación',
+        content: '¡Hola {{name}}! Bienvenido a bolt.new, la plataforma revolucionaria de desarrollo impulsada por IA que te permite construir aplicaciones full-stack usando conversaciones en lenguaje natural.',
         learningObjectives: {
-          0: 'Entender qué es bolt.new',
-          1: 'Navegar la interfaz básica',
-          2: 'Escribir tu primer prompt',
-          3: 'Reconocer el potencial de la IA'
+          0: 'Entender bolt.new como plataforma de desarrollo impulsada por IA',
+          1: 'Navegar el entorno de desarrollo basado en navegador',
+          2: 'Reconocer capacidades de integración con herramientas modernas',
+          3: 'Identificar habilidades clave para desarrollo asistido por IA exitoso',
+          4: 'Planificar estrategias de aprendizaje efectivas para dominar bolt.new'
         },
-        badgeName: 'Primer Contacto',
-        srcodeCommentary: '¡Bienvenido al futuro de la programación!'
+        badgeName: 'Pionero de bolt.new',
+        srcodeCommentary: '¡Bienvenido al futuro, {{name}}! bolt.new es como tener un genio de la programación, pero en lugar de tres deseos, tienes prompts ilimitados. ¡Piensa en mí como tu susurrador de prompts y proveedor ocasional de sabiduría de programación!'
       }
     },
 
@@ -469,17 +5904,17 @@ export const translations = {
       certificateOf: 'Certificado de Finalización',
       academyName: 'Vibe Coding Academy',
       certifies: 'Esto certifica que',
-      hasCompleted: 'ha completado exitosamente',
-      courseName: 'Curso de Maestría en bolt.new',
+      hasCompleted: 'ha completado exitosamente el curso integral',
+      courseName: 'Dominando bolt.new: Desarrollo Web Impulsado por IA',
       totalXP: 'XP Total Ganado: {{xp}}',
       completionDate: 'Fecha de Finalización: {{date}}',
       certifiedBy: 'Certificado por SrCode',
       seniorMentor: 'Mentor Senior de IA',
       congratulations: '¡Felicidades!',
-      earned: '¡Has ganado tu certificado!',
+      earned: '¡Has ganado tu certificado de maestría en bolt.new!',
       download: 'Descargar Certificado',
       keepLearning: '¡Sigue Aprendiendo!',
-      progress: 'Completa todas las lecciones para ganar tu certificado.',
+      progress: 'Completa todas las lecciones para ganar tu certificado',
       remaining: '{{count}} lecciones restantes',
       studentNamePlaceholder: '[Nombre del Estudiante]',
       editName: 'Editar nombre',
@@ -504,47 +5939,47 @@ export const translations = {
       question: 'Pregunta {{current}} de {{total}}',
       backToLesson: 'Volver a la Lección',
       explanation: 'Explicación',
-      congratulations: '¡Felicidades!',
-      keepTrying: '¡Sigue Intentando!',
-      passedMessage: '¡Pasaste {{lessonTitle}}!',
-      failedMessage: 'Obtuviste {{score}}%. Necesitas al menos 85%.',
-      badgeEarned: 'Insignia Ganada: {{badgeName}}',
+      congratulations: '¡Felicidades {{name}}!',
+      keepTrying: '¡Sigue Intentando {{name}}!',
+      passedMessage: '¡Pasaste {{lessonTitle}} y ganaste la insignia {{badgeName}}!',
+      failedMessage: 'Obtuviste {{score}}%. Necesitas al menos 85% para pasar.',
+      badgeEarned: 'Insignia Ganada: {{badgeName}} (+{{xp}} XP)',
       continueLearning: 'Continuar Aprendiendo',
       reviewLesson: 'Revisar Lección',
       retakeQuiz: 'Repetir Quiz',
       bestScore: 'Mejor Puntuación: {{score}}%',
-      loadError: 'No se pudieron cargar las preguntas.'
+      loadError: 'No se pudieron cargar las preguntas del quiz.'
     },
 
     srcode: {
-      welcomeMessage: '¡Hola! Soy SrCode, tu mentor de IA.',
-      errorMessage: '¡Ups! Algo salió mal.',
+      welcomeMessage: '¡Hola {{name}}! Soy SrCode, tu mentor de IA. Estoy aquí para ayudarte a dominar {{lessonTitle}}. ¿Qué te gustaría saber?',
+      errorMessage: '¡Ups! Algo salió mal. ¿Puedes intentarlo de nuevo?',
       thinking: 'Pensando...',
-      placeholder: 'Escribe tu mensaje...'
+      placeholder: 'Escribe tu mensaje a SrCode...'
     },
 
     landing: {
       hero: {
         title: 'Domina el Desarrollo Web con IA',
-        subtitle: 'Aprende bolt.new con SrCode',
+        subtitle: 'Aprende bolt.new con SrCode, tu mentor de IA sarcástico pero brillante',
         startJourney: 'Comienza Tu Viaje',
         watchDemo: 'Ver Demo',
         aiPowered: 'Aprendizaje con IA'
       },
       features: {
         title: '¿Por qué Aprender con SrCode?',
-        subtitle: 'Experimenta el futuro de la educación',
+        subtitle: 'Experimenta el futuro de la educación en programación',
         aiLearning: {
           title: 'Aprendizaje con IA',
-          description: 'Orientación personalizada y retroalimentación instantánea'
+          description: 'Obtén orientación personalizada y retroalimentación instantánea de tu mentor de IA'
         },
         realProjects: {
           title: 'Proyectos Reales',
-          description: 'Construye aplicaciones reales mientras aprendes'
+          description: 'Construye aplicaciones reales mientras aprendes, no solo ejemplos de juguete'
         },
         certificates: {
           title: 'Gana Certificados',
-          description: 'Reconocimiento por tus logros'
+          description: 'Obtén reconocimiento por tus logros con certificados descargables'
         }
       },
       stats: {
@@ -559,27 +5994,27 @@ export const translations = {
         alex: {
           name: 'Alex Chen',
           role: 'Desarrollador Frontend',
-          content: 'SrCode hizo que aprender fuera divertido.'
+          content: 'SrCode hizo que aprender bolt.new fuera realmente divertido. ¡El sarcasmo te mantiene comprometido!'
         },
         maria: {
           name: 'María Rodríguez',
           role: 'Desarrolladora Full Stack',
-          content: 'Construí mi primera app en 2 semanas.'
+          content: 'Construí mi primera app en solo 2 semanas. La orientación de IA es increíble.'
         },
         david: {
           name: 'David Kim',
           role: 'Fundador de Startup',
-          content: 'Este curso me dio las habilidades necesarias.'
+          content: 'Este curso me dio las habilidades para construir mi MVP sin contratar desarrolladores.'
         }
       },
       cta: {
-        title: '¿Listo para Empezar?',
-        subtitle: 'Únete a nuestra comunidad',
+        title: '¿Listo para Empezar a Programar?',
+        subtitle: 'Únete a nuestra comunidad y comienza a construir aplicaciones increíbles',
         startFree: 'Empezar Gratis',
-        noCreditCard: 'No se requiere tarjeta'
+        noCreditCard: 'No se requiere tarjeta de crédito'
       },
       footer: {
-        tagline: 'Empoderando desarrolladores.'
+        tagline: 'Empoderando a la próxima generación de desarrolladores.'
       }
     }
   }
