@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, CheckCircle, XCircle, RotateCcw } from 'lucide-react';
 import { Lesson, QuizQuestion as QuizQuestionType } from '../data/lessonsData'; // Import QuizQuestionType
 import { useTranslation } from '../contexts/LanguageContext'; // Import useTranslation
+import { useUser } from '@clerk/clerk-react';
 
 interface QuizProps {
   lessonId: string; // Changed from 'lesson' to 'lessonId'
@@ -16,7 +17,11 @@ import { lessonsData } from '../data/lessonsData';
 
 export default function Quiz({ lessonId, onComplete, onBack }: QuizProps) {
   const { t } = useTranslation();
+  const { user } = useUser();
   const lesson = lessonsData[lessonId]; // Get the original lesson structure
+  
+  // Get user's name for personalization
+  const userName = user?.firstName || user?.emailAddresses[0]?.emailAddress?.split('@')[0] || 'Student';
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
@@ -34,11 +39,11 @@ export default function Quiz({ lessonId, onComplete, onBack }: QuizProps) {
       const questionId = currentOriginalQuestion.id;
       // Default values are placeholders in case translations are missing
       setCurrentTranslatedQuestion({
-        question: t(`lessons.${lessonId}.quizQuestions.${questionId}.question`, { defaultValue: `[Q: ${questionId}]` }),
+        question: t(`${lessonId}.quizQuestions.${questionId}.question`, { name: userName }),
         options: Array.from({ length: currentOriginalQuestion.numberOfOptions || 0 }, (_, index) =>
-          t(`lessons.${lessonId}.quizQuestions.${questionId}.options.${index}`, { defaultValue: `[Opt ${index + 1} for ${questionId}]` })
+          t(`${lessonId}.quizQuestions.${questionId}.options.${index}`, { name: userName })
         ),
-        explanation: t(`lessons.${lessonId}.quizQuestions.${questionId}.explanation`, { defaultValue: '' })
+        explanation: t(`${lessonId}.quizQuestions.${questionId}.explanation`, { name: userName })
       });
     }
   }, [lessonId, currentOriginalQuestion, t]);
@@ -93,9 +98,8 @@ export default function Quiz({ lessonId, onComplete, onBack }: QuizProps) {
   if (showResults) {
     const passed = quizScore >= 85;
     // Use lessonId to fetch translated title and badgeName for results screen
-    // DefaultValues use lessonId as a fallback if translation key is missing
-    const translatedLessonTitle = t(`lessons.${lessonId}.title`, { defaultValue: `[${lessonId}]` });
-    const translatedBadgeName = t(`lessons.${lessonId}.badgeName`, { defaultValue: `[Badge for ${lessonId}]` });
+    const translatedLessonTitle = t(`${lessonId}.title`, { name: userName });
+    const translatedBadgeName = t(`${lessonId}.badgeName`, { name: userName });
 
     return (
       <div className="max-w-2xl mx-auto p-6">
@@ -111,7 +115,7 @@ export default function Quiz({ lessonId, onComplete, onBack }: QuizProps) {
           </div>
 
           <h2 className="text-3xl font-bold mb-2">
-            {passed ? t('quiz.congratulations') : t('quiz.keepTrying')}
+            {passed ? t('quiz.congratulations', { name: userName }) : t('quiz.keepTrying', { name: userName })}
           </h2>
 
           <div className="text-6xl font-bold my-4">

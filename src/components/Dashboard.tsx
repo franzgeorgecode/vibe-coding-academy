@@ -10,6 +10,7 @@ import CertificateTab from './CertificateTab';
 import ProfileTab from './ProfileTab';
 import ProgressRing from './ProgressRing';
 import AchievementNotification from './AchievementNotification';
+import DatabaseStatus from './DatabaseStatus';
 import { motion } from 'framer-motion';
 
 interface UserProgress {
@@ -205,6 +206,9 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
+      {/* Database Status - Development Only */}
+      <DatabaseStatus />
+      
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <div>

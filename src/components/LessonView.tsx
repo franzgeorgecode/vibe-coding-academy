@@ -44,23 +44,26 @@ export default function LessonView() {
     }
     checkUserProgress();
 
+    // Get user's name for personalization
+    const userName = user?.firstName || user?.emailAddresses[0]?.emailAddress?.split('@')[0] || 'Student';
+    
     // Set translated content
     const objectivesArray = [];
     if (currentLesson && typeof currentLesson.numberOfLearningObjectives === 'number') {
       for (let i = 0; i < currentLesson.numberOfLearningObjectives; i++) {
-        objectivesArray.push(t(`lessons.${lessonId}.learningObjectives.${i}`, { defaultValue: '' }));
+        objectivesArray.push(t(`${lessonId}.learningObjectives.${i}`, { name: userName }));
       }
     }
 
     setTranslatedLesson({
-      title: t(`lessons.${lessonId}.title`, { defaultValue: `[Title: lessons.${lessonId}.title]` }),
-      objective: t(`lessons.${lessonId}.objective`, { defaultValue: `[Objective: lessons.${lessonId}.objective]` }),
-      content: t(`lessons.${lessonId}.content`, { defaultValue: `[Content for lessons.${lessonId}.content]` }),
+      title: t(`${lessonId}.title`, { name: userName }),
+      objective: t(`${lessonId}.objective`, { name: userName }),
+      content: t(`${lessonId}.content`, { name: userName }),
       learningObjectives: objectivesArray,
-      badgeName: t(`lessons.${lessonId}.badgeName`, { defaultValue: `[Badge: lessons.${lessonId}.badgeName]` }),
-      srcodeCommentary: t(`lessons.${lessonId}.srcodeCommentary`, { defaultValue: '' }),
+      badgeName: t(`${lessonId}.badgeName`, { name: userName }),
+      srcodeCommentary: t(`${lessonId}.srcodeCommentary`, { name: userName }),
       practiceDescription: currentLesson.practiceDescription
-                           ? t(`lessons.${lessonId}.practiceDescription`, { defaultValue: '' })
+                           ? t(`${lessonId}.practiceDescription`, { name: userName })
                            : undefined,
     });
 

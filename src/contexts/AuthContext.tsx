@@ -32,26 +32,24 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       if (isLoaded) {
         if (isSignedIn && clerkUser) {
           try {
-            // Sync user data with Supabase - use upsert with proper conflict resolution
+            // Sync user data with Supabase - use simple upsert
             const { data, error } = await supabase
               .from('users')
               .upsert({
                 id: clerkUser.id,
+                email: clerkUser.emailAddresses[0]?.emailAddress,
+                first_name: clerkUser.firstName,
+                last_name: clerkUser.lastName,
                 username: clerkUser.username || clerkUser.emailAddresses[0]?.emailAddress.split('@')[0],
                 avatar_url: clerkUser.imageUrl,
-                created_at: new Date(clerkUser.createdAt!).toISOString(),
-                total_xp: 0,
-                current_level: 1,
-                streak_days: 0,
-                last_activity: new Date().toISOString().split('T')[0]
+                last_activity: new Date().toISOString().split('T')[0],
+                updated_at: new Date().toISOString()
               }, { 
                 onConflict: 'id',
                 ignoreDuplicates: false 
-              })
-              .select()
-              .single();
+              });
 
-            if (error && error.code !== '23505') { // Ignore duplicate key errors
+            if (error) {
               console.error('Error syncing user with Supabase:', error);
             } else {
               console.log('User synced successfully with Supabase');
