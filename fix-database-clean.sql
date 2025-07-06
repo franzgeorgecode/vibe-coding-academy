@@ -1,14 +1,14 @@
--- Simple database setup without RLS for development
--- This allows the app to work while we figure out Clerk-Supabase integration
---
--- IMPORTANT: If you get a UUID error when running this script, it means you have
--- existing tables with different column types. In that case, run this first:
--- DROP TABLE IF EXISTS user_badges CASCADE;
--- DROP TABLE IF EXISTS badges CASCADE;
--- Then run the rest of this script.
+-- Clean database setup - Use this if you get UUID/type errors
+-- This script drops and recreates all tables to ensure correct types
+
+-- Drop tables in correct order (foreign keys first)
+DROP TABLE IF EXISTS user_badges CASCADE;
+DROP TABLE IF EXISTS badges CASCADE;
+DROP TABLE IF EXISTS user_progress CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
 
 -- Create users table
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE users (
   id text PRIMARY KEY,
   email text UNIQUE,
   first_name text,
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 -- Create user_progress table
-CREATE TABLE IF NOT EXISTS user_progress (
+CREATE TABLE user_progress (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id text NOT NULL,
   lesson_id text NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS user_progress (
 );
 
 -- Create badges table (id must be text, not uuid)
-CREATE TABLE IF NOT EXISTS badges (
+CREATE TABLE badges (
   id text PRIMARY KEY,
   name text NOT NULL,
   description text,
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS badges (
 );
 
 -- Create user_badges table
-CREATE TABLE IF NOT EXISTS user_badges (
+CREATE TABLE user_badges (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id text NOT NULL,
   badge_id text NOT NULL REFERENCES badges(id),
@@ -81,20 +81,14 @@ INSERT INTO badges (id, name, description, icon, xp_reward, rarity) VALUES
   ('lesson-5-3', 'Design Translator', 'Transformed designs into living code', '🎨', 85, 'legendary'),
   ('lesson-6-1', 'Speed Demon', 'Optimized apps for lightning performance', '💨', 90, 'legendary'),
   ('lesson-6-2', 'Vibe Coding Master', 'Achieved advanced development mastery', '🎯', 95, 'legendary'),
-  ('lesson-6-3', 'SrCode Approved', 'Earned the ultimate seal of approval', '✨', 100, 'legendary')
-ON CONFLICT (id) DO UPDATE SET
-  name = EXCLUDED.name,
-  description = EXCLUDED.description,
-  icon = EXCLUDED.icon,
-  xp_reward = EXCLUDED.xp_reward,
-  rarity = EXCLUDED.rarity;
+  ('lesson-6-3', 'SrCode Approved', 'Earned the ultimate seal of approval', '✨', 100, 'legendary');
 
 -- Create indexes for performance
-CREATE INDEX IF NOT EXISTS idx_user_progress_user_id ON user_progress(user_id);
-CREATE INDEX IF NOT EXISTS idx_user_progress_lesson_id ON user_progress(lesson_id);
-CREATE INDEX IF NOT EXISTS idx_user_progress_completed ON user_progress(user_id, completed);
-CREATE INDEX IF NOT EXISTS idx_user_badges_user_id ON user_badges(user_id);
-CREATE INDEX IF NOT EXISTS idx_users_xp ON users(total_xp);
+CREATE INDEX idx_user_progress_user_id ON user_progress(user_id);
+CREATE INDEX idx_user_progress_lesson_id ON user_progress(lesson_id);
+CREATE INDEX idx_user_progress_completed ON user_progress(user_id, completed);
+CREATE INDEX idx_user_badges_user_id ON user_badges(user_id);
+CREATE INDEX idx_users_xp ON users(total_xp);
 
 -- Disable RLS for now (development only)
 ALTER TABLE users DISABLE ROW LEVEL SECURITY;
