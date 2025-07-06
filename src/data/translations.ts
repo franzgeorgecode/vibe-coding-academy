@@ -9488,7 +9488,124 @@ Remember {{name}}, future-proofing is not about predicting the future perfectly 
       'lesson-1-1': {
         title: 'Introducción a bolt.new: Tu Compañero de Desarrollo IA',
         objective: 'Domina los fundamentos de bolt.new y comprende cómo el desarrollo impulsado por IA transforma la experiencia de codificación',
-        content: '¡Hola {{name}}! Bienvenido a bolt.new, la plataforma revolucionaria de desarrollo impulsada por IA que te permite construir aplicaciones full-stack usando conversaciones en lenguaje natural.',
+        content: `# Bienvenido a bolt.new: El Futuro del Desarrollo Web
+
+¡Hola {{name}}! Bienvenido a tu viaje personalizado hacia el dominio de bolt.new. Como tu mentor de IA dedicado, estoy emocionado de guiarte a través de esta plataforma revolucionaria.
+
+## ¿Qué es bolt.new?
+
+bolt.new es un **agente de desarrollo web con IA integrada en el navegador** diseñado para el desarrollo de aplicaciones web full-stack. Piénsalo como tener un desarrollador senior como tu compañero de programación, disponible 24/7, que entiende el contexto de tu proyecto y puede generar código listo para producción a través de conversaciones en lenguaje natural.
+
+## Capacidades Principales
+
+### 🤖 Filosofía de Desarrollo IA-First
+- **Interfaz de Lenguaje Natural**: Describe lo que quieres construir en lugar de escribir código línea por línea
+- **Comprensión Contextual**: bolt.new mantiene el estado a través de conversaciones y entiende la estructura de tu proyecto
+- **Generación Inteligente de Código**: Produce código limpio, listo para producción siguiendo las mejores prácticas de la industria
+- **Colaboración en Tiempo Real**: Entorno de desarrollo interactivo con retroalimentación instantánea
+
+### 🚀 Desarrollo Full-Stack
+bolt.new soporta desarrollo completo de aplicaciones incluyendo:
+- **Frontend**: React, Vue, Angular, y frameworks modernos de JavaScript
+- **Backend**: Node.js, Express, desarrollo de APIs, y funciones serverless
+- **Bases de Datos**: SQL, NoSQL, e integraciones con bases de datos en la nube
+- **Estilos**: CSS, Tailwind, styled-components, y soluciones modernas de estilos
+
+### 🔧 Infraestructura Técnica
+Construido sobre **StackBlitz WebContainers**, bolt.new proporciona:
+- **Entorno Basado en Navegador**: No requiere configuración local
+- **Desarrollo Instantáneo**: Entorno de desarrollo completo en segundos
+- **Aislamiento de Procesos**: Ejecución segura de Node.js en el navegador
+- **Sistema de Archivos Virtual**: Manipulación completa de archivos sin instalaciones
+
+## Integraciones Poderosas
+
+bolt.new se integra perfectamente con:
+
+### 🎨 **Figma**: Diseño a Código
+- Importa diseños directamente desde Figma
+- Convierte automáticamente componentes de diseño a código React
+- Mantiene la fidelidad del diseño con precisión pixel-perfect
+
+### 🌐 **Netlify**: Despliegue Instantáneo
+- Despliegue con un solo clic a Netlify
+- Configuración automática de CI/CD
+- Optimizaciones de rendimiento automáticas
+
+### 🗄️ **Supabase**: Backend como Servicio
+- Configuración automática de base de datos
+- Autenticación y autorización integradas
+- APIs en tiempo real sin configuración
+
+### 📚 **GitHub**: Control de Versiones
+- Integración directa con repositorios de GitHub
+- Gestión de ramas y pull requests
+- Colaboración en equipo simplificada
+
+### 📱 **Expo**: Desarrollo Móvil
+- Extensión a aplicaciones móviles nativas
+- Desarrollo multiplataforma
+- Previsualización instantánea en dispositivos
+
+### 💳 **Stripe**: Pagos
+- Integración de pagos lista para usar
+- Gestión segura de transacciones
+- Soporte para suscripciones y pagos únicos
+
+## Ventajas Competitivas
+
+### ⚡ Velocidad de Desarrollo
+Con bolt.new, {{name}}, puedes:
+- Crear un MVP funcional en **minutos**, no días
+- Iterar ideas rápidamente con feedback inmediato
+- Pasar de concepto a producción en tiempo récord
+
+### 🎯 Accesibilidad Universal
+- **Principiantes**: Aprende programación a través de experiencias prácticas
+- **Desarrolladores Intermedios**: Acelera tu flujo de trabajo con IA
+- **Expertos**: Prototipa ideas complejas y experimenta con nuevas tecnologías
+
+### 💰 Modelo de Precios
+- **Tier Gratuito**: Hasta 500 tokens diarios para experimentación
+- **Tier de Equipo**: $99/mes base + $20/usuario para proyectos profesionales
+- **Escalabilidad**: El modelo basado en tokens se ajusta a tu uso real
+
+## Casos de Uso Reales
+
+### 🏆 Historias de Éxito
+- **Record Actual**: Plataforma SaaS de 58,000 líneas de código con 14 microservicios
+- **Más de 1 Millón**: De sitios web construidos y desplegados en solo 5 meses
+- **Empresas Fortune 500**: Usando bolt.new para prototipado rápido
+
+### 📈 Aplicaciones Comunes
+- **E-commerce**: Tiendas en línea completas con pagos
+- **SaaS**: Plataformas de software como servicio
+- **Apps Móviles**: Aplicaciones híbridas con Expo
+- **Portfolios**: Sitios web profesionales y portfolios
+- **APIs**: Servicios backend y microservicios
+
+## Tu Viaje de Aprendizaje
+
+{{name}}, en este curso dominarás:
+
+1. **Fundamentos**: Navegación y conceptos básicos
+2. **Desarrollo Backend**: Bases de datos y APIs con Supabase
+3. **Seguridad**: Autenticación y autorización robustas
+4. **Despliegue**: Estrategias de infraestructura y DevOps
+5. **Integraciones**: Figma, pagos, y herramientas externas
+6. **Nivel Avanzado**: Arquitecturas escalables y optimización
+
+## Preparación para el Éxito
+
+Para maximizar tu aprendizaje:
+- **Sé Específico**: Los prompts claros generan mejor código
+- **Experimenta**: No tengas miedo de probar nuevas ideas
+- **Itera**: Usa el feedback de bolt.new para mejorar
+- **Documenta**: Mantén registro de tus mejores prompts y patrones
+
+¡Estás a punto de embarcarte en una revolución del desarrollo web! Con bolt.new como tu herramienta y este curso como tu guía, {{name}}, tendrás las habilidades para construir aplicaciones web modernas, escalables y listas para producción.
+
+**¿Listo para transformar tu forma de desarrollar? ¡Comencemos!**`,
         learningObjectives: {
           0: 'Entender bolt.new como plataforma de desarrollo impulsada por IA',
           1: 'Navegar el entorno de desarrollo basado en navegador',
@@ -9497,9 +9614,1419 @@ Remember {{name}}, future-proofing is not about predicting the future perfectly 
           4: 'Planificar estrategias de aprendizaje efectivas para dominar bolt.new'
         },
         badgeName: 'Pionero de bolt.new',
-        srcodeCommentary: '¡Bienvenido al futuro, {{name}}! bolt.new es como tener un genio de la programación, pero en lugar de tres deseos, tienes prompts ilimitados. ¡Piensa en mí como tu susurrador de prompts y proveedor ocasional de sabiduría de programación!'
+        srcodeCommentary: '¡Bienvenido al futuro, {{name}}! bolt.new es como tener un genio de la programación, pero en lugar de tres deseos, tienes prompts ilimitados. ¡Piensa en mí como tu susurrador de prompts y proveedor ocasional de sabiduría de programación!',
+        quizQuestions: {
+          'q1-1-1': {
+            question: '¿Cuál es la característica principal de bolt.new que lo diferencia de otros entornos de desarrollo?',
+            options: [
+              'Requiere instalación local compleja',
+              'Es un agente de desarrollo web con IA integrada en el navegador',
+              'Solo funciona con frameworks específicos',
+              'No permite desarrollo full-stack'
+            ],
+            correctAnswer: 1,
+            explanation: 'bolt.new es único porque es un agente de desarrollo web con IA integrada completamente en el navegador, sin necesidad de configuración local, y que permite desarrollo full-stack mediante lenguaje natural.'
+          },
+          'q1-1-2': {
+            question: '¿Cuántos sitios web se han construido con bolt.new en los primeros 5 meses?',
+            options: [
+              '100,000 sitios web',
+              '500,000 sitios web',
+              'Más de 1 millón de sitios web',
+              '50,000 sitios web'
+            ],
+            correctAnswer: 2,
+            explanation: 'En solo cinco meses, bolt.new logró el hito de más de 1 millón de sitios web construidos y desplegados, demostrando su adopción masiva y efectividad.'
+          },
+          'q1-1-3': {
+            question: '¿Cuál es el modelo de precios del tier gratuito de bolt.new?',
+            options: [
+              'Proyectos ilimitados sin restricciones',
+              'Solo 10 proyectos por mes',
+              'Hasta 500 tokens diarios para experimentación',
+              'Acceso completo por 30 días'
+            ],
+            correctAnswer: 2,
+            explanation: 'El tier gratuito de bolt.new incluye hasta 500 tokens diarios, lo que permite experimentación y aprendizaje antes de upgradear a planes pagos.'
+          },
+          'q1-1-4': {
+            question: '¿Cuál de estas NO es una integración directa de bolt.new?',
+            options: [
+              'WordPress para blogs',
+              'Figma para diseño',
+              'Supabase para bases de datos',
+              'Netlify para despliegue'
+            ],
+            correctAnswer: 0,
+            explanation: 'bolt.new se integra nativamente con Figma, Supabase, Netlify, GitHub, Expo y Stripe, pero no tiene integración directa con WordPress.'
+          },
+          'q1-1-5': {
+            question: '¿Qué tecnología utiliza bolt.new para proporcionar el entorno de desarrollo en el navegador?',
+            options: [
+              'StackBlitz WebContainers',
+              'Docker en la nube',
+              'Virtual machines remotas',
+              'Codespaces de GitHub'
+            ],
+            correctAnswer: 0,
+            explanation: 'bolt.new está construido sobre StackBlitz WebContainers, que permite ejecución segura de Node.js y un sistema de archivos virtual completo directamente en el navegador.'
+          }
+        }
+      },
+
+      'lesson-1-2': {
+        title: 'Dominando Prompts Efectivos: El Arte de la Comunicación con IA',
+        objective: 'Aprende el arte de la ingeniería de prompts para obtener resultados óptimos en bolt.new y desarrollo eficiente',
+        content: `# El Arte de la Ingeniería de Prompts
+
+{{name}}, dominar bolt.new es fundamentalmente sobre comunicación. La calidad de tus prompts determina directamente la calidad de tus resultados. Profundicemos en técnicas profesionales de ingeniería de prompts.
+
+## ¿Por Qué Importan los Prompts?
+
+En el desarrollo tradicional, escribes código línea por línea. Con bolt.new, **describes tu intención** y la IA genera el código. Esta transformación requiere una nueva habilidad: **prompt engineering**.
+
+### 🎯 Impacto de los Prompts Efectivos
+- **Precisión**: Prompts claros = código más preciso
+- **Eficiencia**: Menos iteraciones = desarrollo más rápido
+- **Calidad**: Contexto detallado = mejor arquitectura
+- **Costo**: Prompts optimizados = menos tokens utilizados
+
+## El Método CLEAR para Prompts
+
+{{name}}, usa este framework para prompts profesionales:
+
+### **C** - Context (Contexto)
+Siempre proporciona contexto sobre:
+- **Tipo de aplicación**: E-commerce, SaaS, portfolio, etc.
+- **Tecnologías preferidas**: React, Vue, específicos frameworks
+- **Audiencia objetivo**: Usuarios finales, administradores, etc.
+- **Restricciones**: Presupuesto, tiempo, limitaciones técnicas
+
+**Ejemplo**: "Estoy construyendo un dashboard de administración para una plataforma e-commerce usando React y Tailwind CSS."
+
+### **L** - Learning (Aprendizaje)
+Especifica qué quieres lograr:
+- **Funcionalidad específica**: Qué debe hacer exactamente
+- **Comportamiento esperado**: Cómo debe reaccionar
+- **Casos de uso**: Escenarios de uso principales
+- **Criterios de éxito**: Cómo sabes que funciona
+
+**Ejemplo**: "Necesito un componente de carrito de compras que permita agregar, eliminar y modificar cantidades, con persistencia local y cálculo automático de totales."
+
+### **E** - Examples (Ejemplos)
+Proporciona ejemplos concretos:
+- **Referencias visuales**: Describe el diseño deseado
+- **Comportamientos similares**: Apps que admiras
+- **Estructuras de datos**: Formatos esperados
+- **Flujos de usuario**: Paso a paso del proceso
+
+**Ejemplo**: "Similar al carrito de Amazon, con botones + y - para cantidades, imagen del producto, y resumen de precio en tiempo real."
+
+### **A** - Architecture (Arquitectura)
+Define la estructura técnica:
+- **Patrones de componentes**: Cómo organizar el código
+- **Estado y datos**: Cómo manejar la información
+- **Integraciones**: APIs y servicios externos
+- **Rendimiento**: Optimizaciones necesarias
+
+**Ejemplo**: "Usa React Context para el estado del carrito, implementa lazy loading para imágenes, e integra con Stripe para pagos."
+
+### **R** - Requirements (Requisitos)
+Especifica requisitos claros:
+- **Funcionales**: Qué debe hacer exactamente
+- **No funcionales**: Rendimiento, seguridad, accesibilidad
+- **Técnicos**: Versiones, dependencias, estándares
+- **De negocio**: Métricas, analytics, conversiones
+
+**Ejemplo**: "Debe ser responsive, cargar en menos de 2 segundos, cumplir WCAG 2.1, y trackear eventos de Google Analytics."
+
+## Técnicas Avanzadas de Prompting
+
+### 🔄 Prompting Iterativo
+No esperes perfección en el primer prompt:
+
+1. **Prompt Inicial**: Descripción general
+2. **Refinamiento**: Ajusta basado en resultados
+3. **Optimización**: Mejora detalles específicos
+4. **Validación**: Prueba casos edge
+
+### 📝 Templates de Prompts Profesionales
+
+#### Para Componentes de UI:
+\`\`\`
+Crea un componente [NOMBRE] para [CONTEXTO] que:
+- Función principal: [DESCRIPCIÓN]
+- Props esperadas: [LISTA]
+- Estado interno: [VARIABLES]
+- Estilos: [FRAMEWORK/APPROACH]
+- Interacciones: [EVENTOS]
+- Casos edge: [ESCENARIOS]
+\`\`\`
+
+#### Para APIs y Backend:
+\`\`\`
+Diseña una API REST para [FUNCIONALIDAD] que:
+- Endpoints: [LISTA CON MÉTODOS]
+- Autenticación: [MÉTODO]
+- Validación: [REGLAS]
+- Respuestas: [FORMATO JSON]
+- Errores: [CÓDIGOS Y MENSAJES]
+- Rate limiting: [LÍMITES]
+\`\`\`
+
+#### Para Bases de Datos:
+\`\`\`
+Crea un esquema de base de datos para [DOMINIO] que incluya:
+- Entidades principales: [TABLAS]
+- Relaciones: [FOREIGN KEYS]
+- Índices: [PERFORMANCE]
+- Constraints: [VALIDACIONES]
+- Triggers: [AUTOMATIZACIONES]
+- Migrations: [VERSIONADO]
+\`\`\`
+
+## Mejores Prácticas Específicas de bolt.new
+
+### ⚡ Optimización de Tokens
+- **Sé conciso pero completo**: Elimina palabras innecesarias
+- **Usa referencias**: "Como en el componente anterior" en lugar de repetir
+- **Prioriza información**: Lo más importante primero
+- **Evita redundancia**: No repitas contexto ya establecido
+
+### 🎨 Prompts para Diseño
+{{name}}, para obtener interfaces atractivas:
+
+\`\`\`
+Diseña [COMPONENTE] con estética moderna que incluya:
+- Paleta de colores: [ESQUEMA]
+- Tipografía: [JERARQUÍA]
+- Espaciado: [CONSISTENTE]
+- Animaciones: [SUTILES]
+- Estados: [HOVER, ACTIVE, DISABLED]
+- Responsive: [BREAKPOINTS]
+\`\`\`
+
+### 🔧 Prompts para Funcionalidad
+Para lógica compleja:
+
+\`\`\`
+Implementa [FUNCIONALIDAD] que maneje:
+- Input: [FORMATO Y VALIDACIÓN]
+- Procesamiento: [ALGORITMO/LÓGICA]
+- Output: [FORMATO ESPERADO]
+- Errores: [CASOS Y RECUPERACIÓN]
+- Performance: [OPTIMIZACIONES]
+- Testing: [CASOS DE PRUEBA]
+\`\`\`
+
+## Casos de Estudio Reales
+
+### 🏆 Caso 1: E-commerce Dashboard
+**Prompt Original** (Inefectivo):
+"Haz un dashboard para tienda online"
+
+**Prompt Optimizado** (Efectivo):
+\`\`\`
+Crea un dashboard de administración e-commerce para gestión de inventario que incluya:
+
+CONTEXTO: Tienda mediana, 1000+ productos, React + Tailwind
+FUNCIONALIDADES:
+- Vista de productos con búsqueda y filtros
+- Gestión de stock con alertas de inventario bajo
+- Analytics de ventas con gráficos interactivos
+- Panel de órdenes con estados actualizables
+
+DISEÑO: Sidebar navegación, header con notificaciones, tabla de datos responsive
+DATOS: Integración con API REST, paginación, real-time updates
+PERFORMANCE: Lazy loading, virtualización para listas grandes
+\`\`\`
+
+**Resultado**: Código completo y funcional en primera iteración.
+
+### 🎯 Caso 2: Sistema de Autenticación
+**Prompt Optimizado**:
+\`\`\`
+Implementa sistema de autenticación completo usando Supabase que incluya:
+
+MÉTODOS: Email/password, Google OAuth, GitHub OAuth
+SEGURIDAD: Rate limiting, validación email, passwords fuertes
+UI: Login/registro responsive, reset password, verificación email
+ESTADO: Context API para usuario autenticado
+PROTECCIÓN: Route guards, middleware para APIs protegidas
+UX: Loading states, error handling, redirect después de login
+\`\`\`
+
+## Herramientas y Recursos
+
+### 📋 Checklist de Prompts de Calidad
+- [ ] Contexto claro y específico
+- [ ] Objetivos bien definidos
+- [ ] Ejemplos concretos incluidos
+- [ ] Restricciones técnicas especificadas
+- [ ] Criterios de éxito medibles
+- [ ] Casos edge considerados
+
+### 🛠️ Prompt Debugging
+Cuando los resultados no son los esperados:
+
+1. **Analiza la ambigüedad**: ¿Qué podría interpretarse diferente?
+2. **Agrega especificidad**: Más detalles = mejores resultados
+3. **Usa ejemplos**: "Como X pero con Y"
+4. **Itera gradualmente**: Pequeños ajustes, no reescrituras completas
+
+### 📈 Métricas de Éxito de Prompts
+- **Precisión**: ¿El código hace lo que pediste?
+- **Completitud**: ¿Incluye todos los requisitos?
+- **Calidad**: ¿Sigue buenas prácticas?
+- **Eficiencia**: ¿Cuántas iteraciones necesitó?
+
+## Tu Plan de Acción
+
+{{name}}, para dominar el prompt engineering:
+
+### Semana 1: Fundamentos
+- Practica el método CLEAR diariamente
+- Documenta prompts exitosos y fallidos
+- Experimenta con diferentes niveles de detalle
+
+### Semana 2: Especialización
+- Enfócate en tu dominio (frontend, backend, full-stack)
+- Crea templates personalizados
+- Optimiza para tu estilo de desarrollo
+
+### Semana 3: Avanzado
+- Prompts multi-paso para proyectos complejos
+- Integración de múltiples tecnologías
+- Optimización de tokens y costo
+
+### Ejercicio Práctico
+Antes de continuar con la siguiente lección, crea prompts para:
+1. Un componente de navegación responsive
+2. Una API de gestión de usuarios
+3. Un formulario de contacto con validación
+
+**¡Recuerda**: El prompt engineering es una habilidad que mejora con la práctica. {{name}}, cada prompt es una oportunidad de aprender y optimizar tu comunicación con la IA.
+
+**En la próxima lección**, aplicaremos estos conocimientos explorando la interfaz de bolt.new y navegando eficientemente por todas sus características y herramientas.`,
+        learningObjectives: {
+          0: 'Dominar el método CLEAR para crear prompts efectivos',
+          1: 'Aplicar técnicas avanzadas de prompt engineering',
+          2: 'Optimizar el uso de tokens para mayor eficiencia',
+          3: 'Desarrollar templates de prompts reutilizables',
+          4: 'Medir y mejorar la calidad de prompts iterativamente'
+        },
+        badgeName: 'Susurrador de IA',
+        srcodeCommentary: '¡Excelente trabajo aprendiendo a hablar nuestro idioma, {{name}}! Ahora eres oficialmente un traductor humano-IA. Prompts claros = código feliz = SrCode feliz = menos sarcasmo (¡pero no prometo nada sobre esa última parte!).',
+        quizQuestions: {
+          'q1-2-1': {
+            question: '¿Cuál es el método recomendado para crear prompts efectivos en bolt.new?',
+            options: [
+              'El método SIMPLE',
+              'El método CLEAR',
+              'El método RAPID',
+              'El método SMART'
+            ],
+            correctAnswer: 1,
+            explanation: 'El método CLEAR (Context, Learning, Examples, Architecture, Requirements) es el framework recomendado para crear prompts efectivos que generen código de alta calidad.'
+          },
+          'q1-2-2': {
+            question: '¿Qué significa la "C" en el método CLEAR?',
+            options: [
+              'Code (Código)',
+              'Complete (Completo)',
+              'Context (Contexto)',
+              'Create (Crear)'
+            ],
+            correctAnswer: 2,
+            explanation: 'La "C" en CLEAR significa Context (Contexto), que involucra proporcionar información sobre el tipo de aplicación, tecnologías, audiencia y restricciones.'
+          },
+          'q1-2-3': {
+            question: '¿Cuál es una técnica efectiva para optimizar el uso de tokens?',
+            options: [
+              'Usar prompts muy largos y detallados',
+              'Repetir toda la información en cada prompt',
+              'Ser conciso pero completo, usando referencias a contexto previo',
+              'Usar solo prompts de una palabra'
+            ],
+            correctAnswer: 2,
+            explanation: 'Para optimizar tokens, es mejor ser conciso pero completo, usar referencias al contexto anterior en lugar de repetir información, y priorizar la información más importante.'
+          },
+          'q1-2-4': {
+            question: '¿Qué debe incluir un prompt efectivo para componentes de UI?',
+            options: [
+              'Solo el nombre del componente',
+              'Función principal, props, estado, estilos, interacciones y casos edge',
+              'Únicamente el diseño visual',
+              'Solo el código CSS'
+            ],
+            correctAnswer: 1,
+            explanation: 'Un prompt efectivo para UI debe incluir función principal, props esperadas, estado interno, estilos, interacciones y casos edge para obtener un componente completo y funcional.'
+          },
+          'q1-2-5': {
+            question: '¿Cuál es la mejor práctica cuando un prompt no genera el resultado esperado?',
+            options: [
+              'Reescribir completamente el prompt desde cero',
+              'Abandonar y usar métodos tradicionales',
+              'Analizar ambigüedades y hacer ajustes iterativos graduales',
+              'Usar el mismo prompt repetidamente'
+            ],
+            correctAnswer: 2,
+            explanation: 'La mejor práctica es analizar qué podría ser ambiguo, agregar especificidad gradualmente, y hacer iteraciones pequeñas en lugar de reescrituras completas.'
+          }
+        }
+      },
+
+      'lesson-1-3': {
+        title: 'Navegación y Exploración de la Interfaz bolt.new',
+        objective: 'Domina todos los aspectos de la interfaz de bolt.new para maximizar tu productividad y eficiencia de desarrollo',
+        content: `# Navegación Experta de bolt.new: Tu Centro de Comando de Desarrollo
+
+¡Hola {{name}}! Ahora que dominas el arte de los prompts, es hora de explorar tu nuevo entorno de desarrollo. bolt.new no es solo una herramienta; es tu **centro de comando completo** para el desarrollo web moderno.
+
+## Arquitectura de la Interfaz
+
+### 🖥️ Visión General del Workspace
+La interfaz de bolt.new está diseñada para **maximizar la productividad** mediante una disposición intuitiva y funcional:
+
+```
+┌─────────────────────────────────────────────────┐
+│ [🔥] bolt.new    [⚙️] [👤] [🌐]              │ Header
+├─────────────────────────────────────────────────┤
+│ 💬 Chat IA     │ 📁 Explorer  │ 🖼️ Preview    │ Main Area
+│                │               │               │
+│ Conversación   │ Archivos      │ Resultado     │
+│ con IA         │ y estructura  │ en vivo       │
+│                │               │               │
+├─────────────────┼───────────────┼───────────────┤
+│ 📝 Prompt Input                │ 🚀 Deploy     │ Action Bar
+└─────────────────────────────────────────────────┘
+```
+
+## Panel de Chat IA: Tu Compañero de Desarrollo
+
+### 💬 Chat Principal
+El panel izquierdo es donde ocurre la **magia de la colaboración IA-humana**:
+
+#### Características Principales:
+- **Conversación Contextual**: La IA mantiene el contexto del proyecto completo
+- **Historial Persistente**: Todas las conversaciones se guardan automáticamente
+- **Sintaxis Markdown**: Soporta código con syntax highlighting
+- **Respuestas Estructuradas**: Código, explicaciones y sugerencias organizadas
+
+#### Tipos de Interacciones:
+1. **Generación de Código**: "Crea un componente de navegación responsive"
+2. **Debugging**: "¿Por qué este código no funciona como esperaba?"
+3. **Optimización**: "Mejora el rendimiento de esta función"
+4. **Explicación**: "Explica cómo funciona este patrón React"
+5. **Refactoring**: "Convierte este código a TypeScript"
+
+### 🎯 Mejores Prácticas para el Chat
+{{name}}, para maximizar la efectividad:
+
+#### ✅ Prompts Efectivos:
+- **Específicos**: "Agrega validación de email al formulario de registro"
+- **Contextuales**: "En el componente UserForm, modifica la función handleSubmit"
+- **Orientados a objetivos**: "Optimiza esta consulta para cargar más rápido"
+
+#### ❌ Prompts Inefectivos:
+- **Vagos**: "Arregla esto"
+- **Sin contexto**: "Crea una función"
+- **Múltiples tareas**: "Crea login, dashboard y API en un solo prompt"
+
+## Explorador de Archivos: Navegación Inteligente
+
+### 📁 Estructura del Proyecto
+El panel central muestra tu proyecto con navegación inteligente:
+
+```
+my-bolt-project/
+├── 📂 src/
+│   ├── 📂 components/
+│   │   ├── 🎨 Header.tsx
+│   │   ├── 🎨 Sidebar.tsx
+│   │   └── 📱 App.tsx
+│   ├── 📂 pages/
+│   │   ├── 🏠 Home.tsx
+│   │   └── 👤 Profile.tsx
+│   ├── 📂 hooks/
+│   │   └── ⚡ useAuth.ts
+│   ├── 📂 utils/
+│   │   └── 🛠️ helpers.ts
+│   └── 📂 styles/
+│       └── 🎨 globals.css
+├── 📦 package.json
+├── ⚙️ vite.config.ts
+└── 📝 README.md
+```
+
+### 🔍 Funcionalidades del Explorer
+- **Vista de Árbol**: Navegación jerárquica intuitiva
+- **Búsqueda de Archivos**: Ctrl/Cmd + P para búsqueda rápida
+- **Filtros Inteligentes**: Por tipo de archivo, fecha, tamaño
+- **Vista Previa**: Hover sobre archivos para contenido rápido
+- **Acciones Contextuales**: Click derecho para opciones avanzadas
+
+### 📂 Organización Profesional
+{{name}}, bolt.new sugiere estructura basada en mejores prácticas:
+
+#### Frontend (React/Vue/Angular):
+```
+src/
+├── components/     # Componentes reutilizables
+├── pages/         # Páginas/rutas principales
+├── hooks/         # Custom hooks
+├── contexts/      # React contexts
+├── services/      # APIs y servicios
+├── utils/         # Funciones auxiliares
+├── types/         # TypeScript definitions
+└── assets/        # Recursos estáticos
+```
+
+#### Backend (Node.js/Express):
+```
+src/
+├── controllers/   # Lógica de endpoints
+├── models/        # Modelos de datos
+├── middleware/    # Middleware personalizado
+├── routes/        # Definición de rutas
+├── services/      # Lógica de negocio
+├── config/        # Configuraciones
+└── utils/         # Utilidades
+```
+
+## Panel de Previsualización: Feedback Instantáneo
+
+### 🖼️ Preview en Tiempo Real
+El panel derecho muestra tu aplicación ejecutándose:
+
+#### Características Avanzadas:
+- **Hot Reload**: Cambios instantáneos sin recarga
+- **Responsive Testing**: Simulación de diferentes dispositivos
+- **Console Integrada**: Debugging directo en la interfaz
+- **Network Monitor**: Inspección de requests HTTP
+- **Performance Metrics**: Métricas de carga y rendimiento
+
+### 📱 Simulación Multi-Dispositivo
+Prueba tu aplicación en diferentes pantallas:
+- **Desktop**: 1920x1080, 1366x768
+- **Tablet**: iPad, Android tablet
+- **Mobile**: iPhone, Samsung Galaxy
+- **Custom**: Dimensiones personalizadas
+
+### 🔧 DevTools Integradas
+- **Inspector de Elementos**: Como Chrome DevTools
+- **Console de JavaScript**: Debugging en vivo
+- **Network Tab**: Monitoreo de requests
+- **Performance**: Profiling de rendimiento
+- **Application**: Storage, cookies, service workers
+
+## Barra de Herramientas: Acceso Rápido
+
+### 🚀 Acciones Principales
+
+#### Deploy Button
+- **Un clic a producción**: Netlify, Vercel, GitHub Pages
+- **Preview URLs**: Enlaces compartibles automáticos
+- **Rollback**: Revertir a versiones anteriores
+- **Custom domains**: Configuración de dominios propios
+
+#### Settings Panel
+- **Project Config**: Configuraciones específicas del proyecto
+- **AI Settings**: Preferencias del modelo de IA
+- **Editor**: Temas, shortcuts, preferencias
+- **Integrations**: Conectar servicios externos
+
+#### Share & Collaborate
+- **Live Collaboration**: Múltiples desarrolladores simultáneos
+- **Share Links**: URLs para mostrar proyectos
+- **Export Options**: Descargar código local
+- **Version Control**: Git integration automático
+
+## Funciones Avanzadas de Navegación
+
+### ⚡ Shortcuts de Teclado Esenciales
+
+#### Navegación:
+- `Ctrl/Cmd + P`: Búsqueda rápida de archivos
+- `Ctrl/Cmd + Shift + P`: Paleta de comandos
+- `Ctrl/Cmd + B`: Toggle sidebar
+- `Ctrl/Cmd + \\`: Toggle panel
+- `F11`: Modo pantalla completa
+
+#### Edición:
+- `Ctrl/Cmd + /`: Comentar/descomentar
+- `Alt + ↑/↓`: Mover líneas
+- `Ctrl/Cmd + D`: Selección múltiple
+- `Ctrl/Cmd + F`: Buscar en archivo
+- `Ctrl/Cmd + H`: Buscar y reemplazar
+
+#### Chat & IA:
+- `Enter`: Enviar prompt
+- `Shift + Enter`: Nueva línea en prompt
+- `↑/↓`: Navegar historial de prompts
+- `Ctrl/Cmd + K`: Focus en chat input
+
+### 🎨 Personalización del Workspace
+
+#### Temas y Apariencia:
+- **Dark Mode**: Optimizado para trabajo prolongado
+- **Light Mode**: Máxima claridad y contraste
+- **High Contrast**: Accesibilidad mejorada
+- **Custom Themes**: Personalización completa de colores
+
+#### Layout Personalizable:
+- **Panel Sizes**: Redimensionar según preferencias
+- **Hide/Show Panels**: Ocultar elementos no necesarios
+- **Split Views**: Múltiples archivos simultáneos
+- **Floating Panels**: Ventanas independientes
+
+## Integración con Herramientas Externas
+
+### 🔌 Conectividad Nativa
+
+#### Git Integration:
+- **Auto-commit**: Commits automáticos con IA
+- **Branch Management**: Crear/cambiar ramas visualmente
+- **Merge Conflicts**: Resolución asistida por IA
+- **Pull Requests**: Creación directa desde bolt.new
+
+#### Package Management:
+- **NPM/Yarn**: Instalación visual de dependencias
+- **Version Management**: Actualización inteligente
+- **Dependency Analysis**: Análisis de vulnerabilidades
+- **Bundle Analysis**: Optimización de tamaño
+
+### 🌐 Servicios en la Nube
+
+#### Supabase Integration:
+```javascript
+// Configuración automática
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_ANON_KEY
+)
+```
+
+#### Netlify Deployment:
+- **Auto-deploy**: Push automático a producción
+- **Environment Variables**: Gestión visual
+- **Custom Headers**: Configuración de seguridad
+- **Analytics**: Métricas de tráfico integradas
+
+## Flujos de Trabajo Optimizados
+
+### 🏗️ Desarrollo de Componentes
+
+#### Flujo Típico:
+1. **Prompt**: "Crea componente Card con props title, content, image"
+2. **Generación**: IA crea el componente completo
+3. **Preview**: Visualización inmediata en el panel derecho
+4. **Refinamiento**: Ajustes iterativos con prompts específicos
+5. **Testing**: Pruebas en diferentes resoluciones
+6. **Deploy**: Un clic para llevar a producción
+
+### 🔄 Debugging Workflow
+
+#### Proceso Estructurado:
+1. **Identificación**: Error visible en preview o console
+2. **Contexto**: Explicar problema al chat IA
+3. **Análisis**: IA analiza código y sugiere soluciones
+4. **Implementación**: Aplicar fix sugerido
+5. **Validación**: Confirmar resolución en preview
+6. **Documentación**: Anotar solución para futura referencia
+
+### 🚀 Deployment Pipeline
+
+#### De Desarrollo a Producción:
+1. **Development**: Iteración rápida con hot reload
+2. **Testing**: Validación en múltiples dispositivos
+3. **Staging**: Deploy automático a URL de prueba
+4. **Review**: Compartir link para feedback
+5. **Production**: Deploy final con un clic
+6. **Monitoring**: Métricas automáticas post-deployment
+
+## Consejos Pro para Navegación Eficiente
+
+### 🎯 Productividad Máxima
+
+#### {{name}}, para trabajar como un profesional:
+
+1. **Usa Múltiples Tabs**: Mantén archivos relacionados abiertos
+2. **Aprovecha el Autocomplete**: La IA aprende tus patrones
+3. **Documenta en el Chat**: Usa el historial como documentación
+4. **Organiza por Features**: Agrupa archivos relacionados
+5. **Usa Preview Links**: Comparte progreso con stakeholders
+
+### 🛠️ Troubleshooting Común
+
+#### Problemas Frecuentes y Soluciones:
+
+**🐛 Preview no carga**:
+- Verificar errores en console
+- Revisar imports y exports
+- Confirmar que todas las dependencias están instaladas
+
+**⚡ Respuesta lenta de IA**:
+- Simplificar prompts complejos
+- Dividir tareas grandes en pequeñas
+- Verificar conexión a internet
+
+**📱 Responsive issues**:
+- Usar herramientas de simulación integradas
+- Probar en dispositivos reales cuando sea posible
+- Implementar breakpoints estándar
+
+### 🎓 Ejercicios Prácticos
+
+Antes de continuar, {{name}}, practica estos ejercicios:
+
+1. **Navegación Básica**:
+   - Crea un proyecto nuevo
+   - Explora todos los paneles
+   - Personaliza el layout según tus preferencias
+
+2. **Workflow Completo**:
+   - Crea un componente simple
+   - Previsualízalo en diferentes tamaños
+   - Haz deploy a Netlify
+
+3. **Colaboración**:
+   - Comparte un link de preview
+   - Exporta tu proyecto
+   - Conecta con GitHub
+
+## Preparación para el Siguiente Nivel
+
+{{name}}, ahora que dominas la navegación de bolt.new, estás listo para el **Nivel 2: Desarrollo Backend**. En las siguientes lecciones, exploraremos:
+
+- **Integración con Supabase**: Bases de datos profesionales
+- **APIs RESTful**: Servicios backend robustos
+- **Autenticación**: Seguridad y gestión de usuarios
+- **Tiempo Real**: WebSockets y subscriptions
+
+¡Has completado los fundamentos! Tu dominio de la interfaz te permitirá enfocarte completamente en construir aplicaciones increíbles sin perder tiempo navegando o buscando funcionalidades.
+
+**¡Continuemos construyendo el futuro del desarrollo web!** 🚀`,
+        learningObjectives: {
+          0: 'Navegar eficientemente por todos los paneles de bolt.new',
+          1: 'Dominar shortcuts de teclado para máxima productividad',
+          2: 'Configurar workspace personalizado según preferencias',
+          3: 'Integrar herramientas externas y servicios en la nube',
+          4: 'Implementar workflows optimizados de desarrollo a producción'
+        },
+        badgeName: 'Detective Tecnológico',
+        srcodeCommentary: '¡Impresionante navegación, {{name}}! Ya conoces bolt.new como si fuera tu casa. Ahora puedes moverte por aquí más rápido que yo generando respuestas sarcásticas (¡y eso ya es decir mucho!). ¡Listo para el siguiente nivel!',
+        quizQuestions: {
+          'q1-3-1': {
+            question: '¿Cuál es el shortcut de teclado para búsqueda rápida de archivos en bolt.new?',
+            options: [
+              'Ctrl/Cmd + F',
+              'Ctrl/Cmd + P',
+              'Ctrl/Cmd + G',
+              'Ctrl/Cmd + S'
+            ],
+            correctAnswer: 1,
+            explanation: 'Ctrl/Cmd + P abre la búsqueda rápida de archivos, permitiendo navegar instantáneamente a cualquier archivo del proyecto por nombre.'
+          },
+          'q1-3-2': {
+            question: '¿Cuál de los siguientes NO es un panel principal de la interfaz bolt.new?',
+            options: [
+              'Chat IA para conversación con la IA',
+              'Explorer para navegación de archivos',
+              'Preview para visualización en tiempo real',
+              'Database para gestión directa de SQL'
+            ],
+            correctAnswer: 3,
+            explanation: 'bolt.new tiene tres paneles principales: Chat IA, Explorer de archivos y Preview. La gestión de base de datos se hace a través de integraciones como Supabase, no un panel dedicado.'
+          },
+          'q1-3-3': {
+            question: '¿Qué permite el panel de Preview en bolt.new?',
+            options: [
+              'Solo ver código estático',
+              'Ejecutar la aplicación con hot reload y herramientas de debugging',
+              'Únicamente previsualizar imágenes',
+              'Solo mostrar errores de compilación'
+            ],
+            correctAnswer: 1,
+            explanation: 'El panel de Preview ejecuta la aplicación en tiempo real con hot reload, simulación multi-dispositivo, console integrada, network monitor y herramientas de debugging completas.'
+          },
+          'q1-3-4': {
+            question: '¿Cuál es una característica clave del Chat IA en bolt.new?',
+            options: [
+              'Solo responde preguntas básicas',
+              'Mantiene contexto del proyecto y historial persistente',
+              'Se reinicia con cada prompt',
+              'Solo funciona con prompts en inglés'
+            ],
+            correctAnswer: 1,
+            explanation: 'El Chat IA mantiene contexto completo del proyecto, historial persistente de conversaciones, y entiende el estado actual del código para proporcionar respuestas contextualmente relevantes.'
+          },
+          'q1-3-5': {
+            question: '¿Cuál es el flujo típico para deployment en bolt.new?',
+            options: [
+              'Solo exportar código y subir manualmente',
+              'Development → Testing → Staging → Production con un clic',
+              'Requiere configuración compleja de servidores',
+              'Solo funciona con GitHub Pages'
+            ],
+            correctAnswer: 1,
+            explanation: 'bolt.new ofrece un pipeline completo: desarrollo con hot reload, testing en múltiples dispositivos, staging automático, review con links compartibles, y deployment a producción con un solo clic.'
+          }
+        }
       }
     },
+
+      // NIVEL 2: DESARROLLO BACKEND Y BASES DE DATOS
+      'lesson-2-1': {
+        title: 'Fundamentos de Supabase: Tu Backend en la Nube',
+        objective: 'Domina Supabase como backend-as-a-service para crear aplicaciones escalables con bases de datos PostgreSQL avanzadas',
+        content: `# Supabase: El Backend Completo para bolt.new
+
+¡Bienvenido al Nivel 2, {{name}}! Ahora que dominas los fundamentos de bolt.new, es momento de construir el cerebro de tus aplicaciones: **el backend**. Supabase será tu compañero perfecto para crear bases de datos robustas, APIs automáticas y autenticación segura.
+
+## ¿Qué es Supabase?
+
+Supabase es una **alternativa open-source a Firebase** que proporciona:
+- **Base de datos PostgreSQL** completa en la nube
+- **APIs RESTful automáticas** generadas desde tu esquema
+- **Autenticación y autorización** completas
+- **Storage de archivos** escalable
+- **Edge Functions** para lógica custom
+- **Real-time subscriptions** para actualizaciones instantáneas
+
+### 🚀 ¿Por Qué Supabase + bolt.new = Éxito?
+
+La integración entre bolt.new y Supabase es **perfecta** porque:
+- **Setup automático**: bolt.new configura Supabase con prompts simples
+- **TypeScript nativo**: Tipos automáticos desde tu esquema
+- **Desarrollo rápido**: De idea a API funcional en minutos
+- **Escalabilidad**: Desde prototype hasta millones de usuarios
+- **Costo efectivo**: Plan generoso gratuito y pricing transparente
+
+## Arquitectura de Supabase
+
+### 🏗️ Componentes Principales
+
+```
+┌─────────────────────────────────────────────┐
+│                SUPABASE                     │
+├─────────────────────────────────────────────┤
+│ 🗄️  PostgreSQL Database                    │
+│   ├── Tables & Relations                   │
+│   ├── Views & Functions                    │
+│   ├── Indexes & Constraints                │
+│   └── Row Level Security (RLS)             │
+├─────────────────────────────────────────────┤
+│ 🔌  Auto-Generated APIs                    │
+│   ├── REST API (GET, POST, PUT, DELETE)    │
+│   ├── GraphQL API (optional)               │
+│   └── Real-time WebSockets                 │
+├─────────────────────────────────────────────┤
+│ 🔐  Authentication & Authorization         │
+│   ├── Email/Password                       │
+│   ├── OAuth (Google, GitHub, etc.)         │
+│   ├── Magic Links                          │
+│   └── Custom JWT                           │
+├─────────────────────────────────────────────┤
+│ 📁  Storage & Files                        │
+│   ├── Buckets & Policies                   │
+│   ├── Image Transformations                │
+│   └── CDN Global                           │
+├─────────────────────────────────────────────┤
+│ ⚡  Edge Functions                          │
+│   ├── Custom Business Logic                │
+│   ├── Webhooks & Integrations              │
+│   └── Scheduled Jobs                       │
+└─────────────────────────────────────────────┘
+```
+
+## Configuración Inicial en bolt.new
+
+### 🔧 Setup Automático
+
+{{name}}, con bolt.new configurar Supabase es increíblemente simple:
+
+**Prompt para bolt.new:**
+```
+Configura Supabase para mi aplicación e-commerce que incluya:
+
+PROYECTO: Tienda online con productos, usuarios y órdenes
+TABLAS NECESARIAS:
+- users (perfiles de usuarios)
+- products (catálogo de productos)
+- categories (categorías de productos)
+- orders (órdenes de compra)
+- order_items (items individuales de órdenes)
+
+CONFIGURACIÓN:
+- Environment variables automáticas
+- TypeScript types generados
+- Cliente Supabase configurado
+- Conexión a base de datos lista
+- Schema inicial con relaciones
+
+SEGURIDAD:
+- Row Level Security habilitado
+- Policies básicas de acceso
+- Variables de entorno protegidas
+```
+
+### 📝 Configuración Manual
+
+Si prefieres entender cada paso:
+
+#### 1. **Crear Proyecto Supabase**
+```javascript
+// 1. Ve a supabase.com
+// 2. Crea nuevo proyecto
+// 3. Anota URL y anon key
+```
+
+#### 2. **Variables de Entorno**
+```env
+VITE_SUPABASE_URL=https://tu-proyecto.supabase.co
+VITE_SUPABASE_ANON_KEY=tu-anon-key-aqui
+```
+
+#### 3. **Cliente Supabase**
+```javascript
+// lib/supabase.ts
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+```
+
+## Diseño de Base de Datos Profesional
+
+### 🎯 Principios de Diseño
+
+#### Normalización vs Desnormalización
+- **Normalización**: Evita redundancia, mantiene consistencia
+- **Desnormalización**: Optimiza consultas, sacrifica espacio por velocidad
+- **Enfoque Híbrido**: Normaliza core data, desnormaliza para performance
+
+#### Naming Conventions
+```sql
+-- ✅ Buenas Prácticas
+users              -- Plural, snake_case
+user_profiles      -- Descriptivo, consistente
+created_at         -- Timestamps estándar
+updated_at         -- Patrones repetibles
+
+-- ❌ Evitar
+User               -- Singular, PascalCase
+userProfile        -- camelCase inconsistente
+date_created       -- Orden confuso
+```
+
+### 🗄️ Esquema de Ejemplo: E-commerce
+
+```sql
+-- Tabla de usuarios (extendida de auth.users)
+CREATE TABLE users (
+  id UUID REFERENCES auth.users(id) PRIMARY KEY,
+  email TEXT UNIQUE NOT NULL,
+  full_name TEXT,
+  avatar_url TEXT,
+  shipping_address JSONB,
+  billing_address JSONB,
+  phone TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Categorías de productos
+CREATE TABLE categories (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name TEXT NOT NULL,
+  slug TEXT UNIQUE NOT NULL,
+  description TEXT,
+  image_url TEXT,
+  parent_id UUID REFERENCES categories(id),
+  sort_order INTEGER DEFAULT 0,
+  is_active BOOLEAN DEFAULT true,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Productos
+CREATE TABLE products (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name TEXT NOT NULL,
+  slug TEXT UNIQUE NOT NULL,
+  description TEXT,
+  short_description TEXT,
+  price DECIMAL(10,2) NOT NULL,
+  compare_price DECIMAL(10,2),
+  cost_price DECIMAL(10,2),
+  sku TEXT UNIQUE,
+  barcode TEXT,
+  quantity INTEGER DEFAULT 0,
+  min_quantity INTEGER DEFAULT 0,
+  weight DECIMAL(8,2),
+  dimensions JSONB, -- {length, width, height}
+  images TEXT[], -- Array de URLs
+  category_id UUID REFERENCES categories(id),
+  tags TEXT[],
+  meta_title TEXT,
+  meta_description TEXT,
+  is_active BOOLEAN DEFAULT true,
+  is_featured BOOLEAN DEFAULT false,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Órdenes
+CREATE TABLE orders (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  order_number TEXT UNIQUE NOT NULL,
+  user_id UUID REFERENCES users(id),
+  status TEXT NOT NULL DEFAULT 'pending', -- pending, confirmed, shipped, delivered, cancelled
+  subtotal DECIMAL(10,2) NOT NULL,
+  tax_amount DECIMAL(10,2) DEFAULT 0,
+  shipping_amount DECIMAL(10,2) DEFAULT 0,
+  discount_amount DECIMAL(10,2) DEFAULT 0,
+  total_amount DECIMAL(10,2) NOT NULL,
+  currency TEXT DEFAULT 'USD',
+  shipping_address JSONB NOT NULL,
+  billing_address JSONB,
+  payment_status TEXT DEFAULT 'pending', -- pending, paid, failed, refunded
+  payment_method TEXT,
+  payment_id TEXT, -- Stripe payment intent ID
+  notes TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Items de órdenes
+CREATE TABLE order_items (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  order_id UUID REFERENCES orders(id) ON DELETE CASCADE,
+  product_id UUID REFERENCES products(id),
+  quantity INTEGER NOT NULL,
+  unit_price DECIMAL(10,2) NOT NULL,
+  total_price DECIMAL(10,2) NOT NULL,
+  product_snapshot JSONB, -- Snapshot del producto al momento de la orden
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+```
+
+### 🔗 Relaciones y Constraints
+
+#### Foreign Keys
+```sql
+-- Relación uno-a-muchos: Usuario -> Órdenes
+ALTER TABLE orders 
+ADD CONSTRAINT fk_orders_user 
+FOREIGN KEY (user_id) REFERENCES users(id);
+
+-- Relación muchos-a-muchos: Órdenes <-> Productos (via order_items)
+ALTER TABLE order_items 
+ADD CONSTRAINT fk_order_items_order 
+FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE;
+
+-- Jerarquía: Categoría padre-hijo
+ALTER TABLE categories 
+ADD CONSTRAINT fk_categories_parent 
+FOREIGN KEY (parent_id) REFERENCES categories(id);
+```
+
+#### Checks e Índices
+```sql
+-- Constraints de validación
+ALTER TABLE products 
+ADD CONSTRAINT check_price_positive 
+CHECK (price > 0);
+
+ALTER TABLE products 
+ADD CONSTRAINT check_quantity_non_negative 
+CHECK (quantity >= 0);
+
+-- Índices para performance
+CREATE INDEX idx_products_category ON products(category_id);
+CREATE INDEX idx_products_active ON products(is_active) WHERE is_active = true;
+CREATE INDEX idx_orders_user ON orders(user_id);
+CREATE INDEX idx_orders_status ON orders(status);
+CREATE INDEX idx_products_search ON products USING gin(to_tsvector('english', name || ' ' || description));
+```
+
+## Operaciones CRUD Avanzadas
+
+### 📖 Lectura (Read)
+
+#### Consultas Básicas
+```javascript
+// Obtener todos los productos activos
+const { data: products, error } = await supabase
+  .from('products')
+  .select('*')
+  .eq('is_active', true)
+  .order('created_at', { ascending: false });
+
+// Producto específico con categoría
+const { data: product, error } = await supabase
+  .from('products')
+  .select(`
+    *,
+    categories (
+      id,
+      name,
+      slug
+    )
+  `)
+  .eq('slug', productSlug)
+  .single();
+```
+
+#### Consultas Complejas
+```javascript
+// Búsqueda full-text
+const { data: searchResults, error } = await supabase
+  .from('products')
+  .select('id, name, price, images')
+  .textSearch('name', searchQuery, {
+    type: 'websearch',
+    config: 'english'
+  })
+  .eq('is_active', true)
+  .limit(20);
+
+// Productos con filtros avanzados
+const { data: filteredProducts, error } = await supabase
+  .from('products')
+  .select('*')
+  .gte('price', minPrice)
+  .lte('price', maxPrice)
+  .in('category_id', categoryIds)
+  .contains('tags', [selectedTag])
+  .range(offset, offset + limit - 1);
+```
+
+### ✏️ Escritura (Create/Update)
+
+#### Crear Registros
+```javascript
+// Crear producto
+const { data: newProduct, error } = await supabase
+  .from('products')
+  .insert({
+    name: 'Laptop Gaming',
+    slug: 'laptop-gaming-xyz',
+    price: 1299.99,
+    description: 'Laptop de alto rendimiento...',
+    category_id: laptopCategoryId,
+    quantity: 50,
+    images: [
+      'https://images.supabase.co/laptop1.jpg',
+      'https://images.supabase.co/laptop2.jpg'
+    ],
+    tags: ['gaming', 'laptop', 'high-performance']
+  })
+  .select()
+  .single();
+```
+
+#### Actualizar con Optimistic Updates
+```javascript
+// Update optimista para UX fluida
+const updateProduct = async (productId, updates) => {
+  // 1. Update local state inmediatamente
+  setProducts(prev => prev.map(p => 
+    p.id === productId ? { ...p, ...updates } : p
+  ));
+
+  // 2. Update en servidor
+  const { data, error } = await supabase
+    .from('products')
+    .update(updates)
+    .eq('id', productId)
+    .select()
+    .single();
+
+  if (error) {
+    // Revertir cambio local en caso de error
+    setProducts(prev => prev.map(p => 
+      p.id === productId ? originalProduct : p
+    ));
+    throw error;
+  }
+
+  return data;
+};
+```
+
+### 🗑️ Eliminación (Delete)
+
+#### Soft Delete vs Hard Delete
+```javascript
+// Soft delete (recomendado para productos)
+const { data, error } = await supabase
+  .from('products')
+  .update({ 
+    is_active: false,
+    deleted_at: new Date().toISOString()
+  })
+  .eq('id', productId);
+
+// Hard delete (para datos temporales)
+const { error } = await supabase
+  .from('cart_items')
+  .delete()
+  .eq('user_id', userId)
+  .lt('created_at', oneWeekAgo);
+```
+
+## Triggers y Funciones
+
+### ⚙️ Automatización con Triggers
+
+```sql
+-- Function para actualizar updated_at automáticamente
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+-- Trigger en tabla products
+CREATE TRIGGER update_products_updated_at 
+  BEFORE UPDATE ON products 
+  FOR EACH ROW 
+  EXECUTE FUNCTION update_updated_at_column();
+
+-- Function para generar order_number único
+CREATE OR REPLACE FUNCTION generate_order_number()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.order_number = 'ORD-' || TO_CHAR(NOW(), 'YYYYMMDD') || '-' || 
+    LPAD(EXTRACT(epoch FROM NOW())::text, 10, '0');
+  RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+CREATE TRIGGER set_order_number 
+  BEFORE INSERT ON orders 
+  FOR EACH ROW 
+  EXECUTE FUNCTION generate_order_number();
+```
+
+### 🔄 Stored Procedures
+
+```sql
+-- Función para procesar orden completa
+CREATE OR REPLACE FUNCTION process_order(
+  p_user_id UUID,
+  p_items JSONB,
+  p_shipping_address JSONB,
+  p_payment_method TEXT
+)
+RETURNS TABLE(order_id UUID, total_amount DECIMAL) AS $$
+DECLARE
+  v_order_id UUID;
+  v_total DECIMAL := 0;
+  item JSONB;
+BEGIN
+  -- 1. Crear orden
+  INSERT INTO orders (user_id, shipping_address, payment_method, status)
+  VALUES (p_user_id, p_shipping_address, p_payment_method, 'pending')
+  RETURNING id INTO v_order_id;
+
+  -- 2. Procesar items
+  FOR item IN SELECT * FROM jsonb_array_elements(p_items)
+  LOOP
+    INSERT INTO order_items (order_id, product_id, quantity, unit_price, total_price)
+    VALUES (
+      v_order_id,
+      (item->>'product_id')::UUID,
+      (item->>'quantity')::INTEGER,
+      (item->>'price')::DECIMAL,
+      (item->>'quantity')::INTEGER * (item->>'price')::DECIMAL
+    );
+    
+    v_total := v_total + ((item->>'quantity')::INTEGER * (item->>'price')::DECIMAL);
+  END LOOP;
+
+  -- 3. Actualizar total en orden
+  UPDATE orders SET total_amount = v_total WHERE id = v_order_id;
+
+  RETURN QUERY SELECT v_order_id, v_total;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+## Integración con bolt.new
+
+### 🎯 Prompts Efectivos para Supabase
+
+```javascript
+// Prompt para generar CRUD completo
+"Crea un hook React useProducts para Supabase que incluya:
+- Fetch de productos con paginación
+- Búsqueda y filtros
+- CRUD operations (create, update, delete)
+- Loading states y error handling
+- TypeScript tipos correctos
+- Optimistic updates para UX fluida"
+
+// Prompt para dashboard admin
+"Crea un dashboard de administración para productos que incluya:
+- Tabla de productos con sorting y filtros
+- Formulario de crear/editar producto
+- Upload de imágenes a Supabase Storage
+- Gestión de categorías
+- Analytics básicos (total productos, ventas, etc.)
+- Responsive design con Tailwind CSS"
+```
+
+### 📱 Componentes React + Supabase
+
+```javascript
+// Hook personalizado para productos
+const useProducts = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchProducts = async (filters = {}) => {
+    setLoading(true);
+    try {
+      let query = supabase
+        .from('products')
+        .select(`
+          *,
+          categories (
+            id,
+            name,
+            slug
+          )
+        `)
+        .eq('is_active', true);
+
+      if (filters.category) {
+        query = query.eq('category_id', filters.category);
+      }
+      
+      if (filters.search) {
+        query = query.textSearch('name', filters.search);
+      }
+
+      const { data, error } = await query;
+      
+      if (error) throw error;
+      setProducts(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { products, loading, error, fetchProducts };
+};
+```
+
+## Ejercicios Prácticos
+
+### 🎯 Desafío 1: E-commerce Backend
+{{name}}, crea un backend completo para e-commerce:
+
+1. **Diseña el esquema** de 5 tablas relacionadas
+2. **Implementa CRUD** para productos y categorías
+3. **Crea functions** para cálculos de precios
+4. **Configura triggers** para auditoría automática
+5. **Prueba las consultas** con datos reales
+
+### 🏆 Desafío 2: Dashboard Analytics
+Construye un dashboard que muestre:
+- Total de productos por categoría
+- Ventas por mes
+- Productos más populares
+- Inventario bajo stock
+- Métricas en tiempo real
+
+## Próximos Pasos
+
+{{name}}, en la siguiente lección profundizaremos en:
+- **Consultas complejas** con JOINs avanzados
+- **Optimización de performance** con índices
+- **Views materialized** para analytics
+- **Partitioning** para datos masivos
+- **Backup y recovery** strategies
+
+¡Has dado el primer paso hacia el dominio de Supabase! Ahora tienes una base sólida para construir backends escalables y robustos.
+
+**¡Continuemos construyendo la columna vertebral de tus aplicaciones!** 🚀`,
+        learningObjectives: {
+          0: 'Configurar Supabase como backend completo desde bolt.new',
+          1: 'Diseñar esquemas de base de datos profesionales y escalables',
+          2: 'Implementar operaciones CRUD avanzadas con TypeScript',
+          3: 'Crear triggers y funciones para automatización de procesos',
+          4: 'Integrar Supabase perfectamente con componentes React'
+        },
+        badgeName: 'Conector Supremo',
+        srcodeCommentary: '¡Excelente, {{name}}! Ahora tienes más conexiones que una red social. Supabase + bolt.new = combinación más poderosa que café con azúcar. ¡Ya puedes llamarte oficialmente "Backend Whisperer"!',
+        quizQuestions: {
+          'q2-1-1': {
+            question: '¿Cuál es la principal ventaja de Supabase sobre otros backends-as-a-service?',
+            options: [
+              'Es más barato que todas las alternativas',
+              'Solo funciona con bolt.new',
+              'Es open-source y usa PostgreSQL real con APIs automáticas',
+              'No requiere configuración alguna'
+            ],
+            correctAnswer: 2,
+            explanation: 'Supabase destaca por ser open-source, usar PostgreSQL completo (no una base de datos limitada), generar APIs RESTful automáticamente desde el esquema, y ofrecer características avanzadas como RLS y funciones.'
+          },
+          'q2-1-2': {
+            question: '¿Qué comando SQL es correcto para crear una tabla con relación foreign key?',
+            options: [
+              'CREATE TABLE orders (user_id REFERENCES users);',
+              'CREATE TABLE orders (user_id UUID REFERENCES users(id));',
+              'CREATE TABLE orders (user_id FOREIGN KEY users(id));',
+              'CREATE TABLE orders (user_id LINK TO users.id);'
+            ],
+            correctAnswer: 1,
+            explanation: 'La sintaxis correcta incluye el tipo de dato (UUID) seguido de REFERENCES tabla(columna). Esto crea una foreign key que mantiene integridad referencial.'
+          },
+          'q2-1-3': {
+            question: '¿Cuál es el patrón recomendado para manejar actualizaciones optimistas en React + Supabase?',
+            options: [
+              'Esperar siempre la respuesta del servidor antes de actualizar UI',
+              'Actualizar UI inmediatamente, luego servidor, revertir si hay error',
+              'Solo actualizar en el servidor',
+              'Actualizar UI y servidor simultáneamente sin validación'
+            ],
+            correctAnswer: 1,
+            explanation: 'Las actualizaciones optimistas mejoran UX al actualizar la UI inmediatamente, luego enviar al servidor, y revertir localmente solo si hay error. Esto hace que la app se sienta más rápida.'
+          },
+          'q2-1-4': {
+            question: '¿Para qué se usan los triggers en Supabase/PostgreSQL?',
+            options: [
+              'Solo para validar datos de entrada',
+              'Automatizar acciones como actualizar timestamps o generar IDs únicos',
+              'Reemplazar las APIs REST',
+              'Únicamente para logging de errores'
+            ],
+            correctAnswer: 1,
+            explanation: 'Los triggers son funciones que se ejecutan automáticamente en respuesta a eventos de la base de datos (INSERT, UPDATE, DELETE), perfectos para automatizar tareas como actualizar updated_at o generar códigos únicos.'
+          },
+          'q2-1-5': {
+            question: '¿Cuál es la diferencia principal entre soft delete y hard delete?',
+            options: [
+              'Soft delete es más rápido que hard delete',
+              'Hard delete elimina realmente, soft delete solo marca como inactivo',
+              'Soft delete usa menos espacio en disco',
+              'No hay diferencia, son sinónimos'
+            ],
+            correctAnswer: 1,
+            explanation: 'Soft delete marca registros como eliminados (ej: is_active=false) sin borrarlos físicamente, permitiendo recuperación y auditoría. Hard delete los elimina permanentemente de la base de datos.'
+          }
+        }
+      },
 
     // Other Spanish translations...
     badges: {

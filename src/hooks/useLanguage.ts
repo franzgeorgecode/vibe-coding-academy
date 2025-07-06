@@ -24,7 +24,7 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
 ];
 
 export function useLanguage() {
-  const [currentLanguage, setCurrentLanguage] = useState<SupportedLanguage>('en');
+  const [currentLanguage, setCurrentLanguage] = useState<SupportedLanguage>('es');
   const [isLoading, setIsLoading] = useState(true);
 
   // Detectar idioma del dispositivo

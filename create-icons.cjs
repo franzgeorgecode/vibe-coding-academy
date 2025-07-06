@@ -1,0 +1,27 @@
+// Simple script to create basic PWA icons
+const fs = require('fs');
+
+// Create a simple 192x192 PNG icon using a data URL approach
+// This creates a basic icon with the app colors
+const createBasicIcon = () => {
+  // SVG content for our app icon
+  const svgContent = `
+<svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="24" fill="url(#grad)"/>
+  <text x="96" y="110" font-family="Arial, sans-serif" font-size="80" font-weight="bold" text-anchor="middle" fill="white">VC</text>
+  <text x="96" y="140" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#E5E7EB">Academy</text>
+</svg>`;
+
+  // Write the SVG file
+  fs.writeFileSync('/home/geo/VibeCodingAcademy/public/icon.svg', svgContent.trim());
+  
+  console.log('Basic icon created as SVG');
+};
+
+createBasicIcon();
