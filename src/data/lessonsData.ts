@@ -27,11 +27,11 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 1,
     numberOfLearningObjectives: 5,
     quizQuestions: [
-      { id: "q1-1-1", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q1-1-2", correctAnswer: 2, numberOfOptions: 4 },
-      { id: "q1-1-3", correctAnswer: 2, numberOfOptions: 4 },
-      { id: "q1-1-4", correctAnswer: 0, numberOfOptions: 4 },
-      { id: "q1-1-5", correctAnswer: 0, numberOfOptions: 4 }
+      { id: "q1-1-1", correctAnswer: 1, numberOfOptions: 4 }, // StackBlitz WebContainers - CORRECTO
+      { id: "q1-1-2", correctAnswer: 1, numberOfOptions: 4 }, // AI-first with natural language interface - CORREGIDO
+      { id: "q1-1-3", correctAnswer: 2, numberOfOptions: 4 }, // Supabase - CORRECTO
+      { id: "q1-1-4", correctAnswer: 2, numberOfOptions: 4 }, // Figma - CORREGIDO
+      { id: "q1-1-5", correctAnswer: 2, numberOfOptions: 4 }  // Token-based usage - CORREGIDO
     ],
     badgeXp: 15,
     readingTime: "8-12"
@@ -43,10 +43,10 @@ export const lessonsData: Record<string, Lesson> = {
     numberOfLearningObjectives: 5,
     quizQuestions: [
       { id: "q1-2-1", correctAnswer: 1, numberOfOptions: 4 }, // Context - CORRECTO
-      { id: "q1-2-2", correctAnswer: 1, numberOfOptions: 4 }, // Iterative development - CORREGIDO
-      { id: "q1-2-3", correctAnswer: 2, numberOfOptions: 4 }, // Describe visual direction - CORREGIDO
+      { id: "q1-2-2", correctAnswer: 1, numberOfOptions: 4 }, // Iterative development - CORRECTO
+      { id: "q1-2-3", correctAnswer: 2, numberOfOptions: 4 }, // Describe visual direction - CORRECTO
       { id: "q1-2-4", correctAnswer: 2, numberOfOptions: 4 }, // Asking for vague generic solutions - CORRECTO
-      { id: "q1-2-5", correctAnswer: 1, numberOfOptions: 4 }  // To specify technical stack - CORREGIDO
+      { id: "q1-2-5", correctAnswer: 1, numberOfOptions: 4 }  // To specify technical stack - CORRECTO
     ],
     badgeXp: 20,
     readingTime: "10-15"
@@ -58,9 +58,9 @@ export const lessonsData: Record<string, Lesson> = {
     numberOfLearningObjectives: 4,
     quizQuestions: [
       { id: "q1-3-1", correctAnswer: 1, numberOfOptions: 4 }, // Chat interface, code editor, and preview window - CORRECTO
-      { id: "q1-3-2", correctAnswer: 0, numberOfOptions: 4 }, // Ctrl+Shift+P - CORREGIDO
-      { id: "q1-3-3", correctAnswer: 2, numberOfOptions: 4 }, // Preview window - CORREGIDO
-      { id: "q1-3-4", correctAnswer: 1, numberOfOptions: 4 }  // To communicate with the AI - CORREGIDO
+      { id: "q1-3-2", correctAnswer: 0, numberOfOptions: 4 }, // Ctrl+Shift+P - CORRECTO
+      { id: "q1-3-3", correctAnswer: 2, numberOfOptions: 4 }, // Preview window - CORRECTO
+      { id: "q1-3-4", correctAnswer: 1, numberOfOptions: 4 }  // To communicate with the AI - CORRECTO
     ],
     badgeXp: 20,
     readingTime: "8-12"
