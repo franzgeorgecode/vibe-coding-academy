@@ -113,7 +113,9 @@ export default function Quiz({ lessonId, onComplete, onBack }: QuizProps) {
         correctAnswer,
         isCorrect,
         userAnswerType: typeof userAnswer,
-        correctAnswerType: typeof correctAnswer
+        correctAnswerType: typeof correctAnswer,
+        strictEquality: userAnswer === correctAnswer,
+        looseEquality: userAnswer == correctAnswer
       });
       
       if (isCorrect) {
