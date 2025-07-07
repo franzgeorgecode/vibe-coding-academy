@@ -9988,19 +9988,14 @@ Antes de continuar con la siguiente lección, crea prompts para:
 ### 🖥️ Visión General del Workspace
 La interfaz de bolt.new está diseñada para **maximizar la productividad** mediante una disposición intuitiva y funcional:
 
-```
-┌─────────────────────────────────────────────────┐
-│ [🔥] bolt.new    [⚙️] [👤] [🌐]              │ Header
-├─────────────────────────────────────────────────┤
-│ 💬 Chat IA     │ 📁 Explorer  │ 🖼️ Preview    │ Main Area
-│                │               │               │
-│ Conversación   │ Archivos      │ Resultado     │
-│ con IA         │ y estructura  │ en vivo       │
-│                │               │               │
-├─────────────────┼───────────────┼───────────────┤
-│ 📝 Prompt Input                │ 🚀 Deploy     │ Action Bar
-└─────────────────────────────────────────────────┘
-```
+**Interfaz de bolt.new:**
+
+- **Header**: [🔥] bolt.new [⚙️] [👤] [🌐]
+- **Main Area**: 
+  - 💬 Chat IA (Conversación con IA)
+  - 📁 Explorer (Archivos y estructura)  
+  - 🖼️ Preview (Resultado en vivo)
+- **Action Bar**: 📝 Prompt Input | 🚀 Deploy
 
 ## Panel de Chat IA: Tu Compañero de Desarrollo
 
@@ -10038,26 +10033,18 @@ El panel izquierdo es donde ocurre la **magia de la colaboración IA-humana**:
 ### 📁 Estructura del Proyecto
 El panel central muestra tu proyecto con navegación inteligente:
 
-```
-my-bolt-project/
-├── 📂 src/
-│   ├── 📂 components/
-│   │   ├── 🎨 Header.tsx
-│   │   ├── 🎨 Sidebar.tsx
-│   │   └── 📱 App.tsx
-│   ├── 📂 pages/
-│   │   ├── 🏠 Home.tsx
-│   │   └── 👤 Profile.tsx
-│   ├── 📂 hooks/
-│   │   └── ⚡ useAuth.ts
-│   ├── 📂 utils/
-│   │   └── 🛠️ helpers.ts
-│   └── 📂 styles/
-│       └── 🎨 globals.css
-├── 📦 package.json
-├── ⚙️ vite.config.ts
-└── 📝 README.md
-```
+**Estructura del Proyecto:**
+
+- **my-bolt-project/**
+  - **📂 src/**
+    - **📂 components/** (🎨 Header.tsx, 🎨 Sidebar.tsx, 📱 App.tsx)
+    - **📂 pages/** (🏠 Home.tsx, 👤 Profile.tsx)  
+    - **📂 hooks/** (⚡ useAuth.ts)
+    - **📂 utils/** (🛠️ helpers.ts)
+    - **📂 styles/** (🎨 globals.css)
+  - **📦 package.json**
+  - **⚙️ vite.config.ts**
+  - **📝 README.md**
 
 ### 🔍 Funcionalidades del Explorer
 - **Vista de Árbol**: Navegación jerárquica intuitiva
@@ -10374,7 +10361,7 @@ Antes de continuar, {{name}}, practica estos ejercicios:
           }
         }
       }
-    },
+    }`,
 
       // NIVEL 2: DESARROLLO BACKEND Y BASES DE DATOS
       'lesson-2-1': {
