@@ -42,11 +42,11 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 2,
     numberOfLearningObjectives: 5,
     quizQuestions: [
-      { id: "q1-2-1", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q1-2-2", correctAnswer: 2, numberOfOptions: 4 },
-      { id: "q1-2-3", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q1-2-4", correctAnswer: 2, numberOfOptions: 4 },
-      { id: "q1-2-5", correctAnswer: 0, numberOfOptions: 4 }
+      { id: "q1-2-1", correctAnswer: 1, numberOfOptions: 4 }, // Context - CORRECTO
+      { id: "q1-2-2", correctAnswer: 1, numberOfOptions: 4 }, // Iterative development - CORREGIDO
+      { id: "q1-2-3", correctAnswer: 2, numberOfOptions: 4 }, // Describe visual direction - CORREGIDO
+      { id: "q1-2-4", correctAnswer: 2, numberOfOptions: 4 }, // Asking for vague generic solutions - CORRECTO
+      { id: "q1-2-5", correctAnswer: 1, numberOfOptions: 4 }  // To specify technical stack - CORREGIDO
     ],
     badgeXp: 20,
     readingTime: "10-15"
@@ -57,10 +57,10 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 3,
     numberOfLearningObjectives: 4,
     quizQuestions: [
-      { id: "q1-3-1", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q1-3-2", correctAnswer: 2, numberOfOptions: 4 },
-      { id: "q1-3-3", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q1-3-4", correctAnswer: 2, numberOfOptions: 4 }
+      { id: "q1-3-1", correctAnswer: 1, numberOfOptions: 4 }, // Chat interface, code editor, and preview window - CORRECTO
+      { id: "q1-3-2", correctAnswer: 0, numberOfOptions: 4 }, // Ctrl+Shift+P - CORREGIDO
+      { id: "q1-3-3", correctAnswer: 2, numberOfOptions: 4 }, // Preview window - CORREGIDO
+      { id: "q1-3-4", correctAnswer: 1, numberOfOptions: 4 }  // To communicate with the AI - CORREGIDO
     ],
     badgeXp: 20,
     readingTime: "8-12"
@@ -71,10 +71,10 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 1,
     numberOfLearningObjectives: 4,
     quizQuestions: [
-      { id: "q2-1-1", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q2-1-2", correctAnswer: 2, numberOfOptions: 4 },
-      { id: "q2-1-3", correctAnswer: 2, numberOfOptions: 4 },
-      { id: "q2-1-4", correctAnswer: 1, numberOfOptions: 4 }
+      { id: "q2-1-1", correctAnswer: 1, numberOfOptions: 4 }, // PostgreSQL (SQL) - CORRECTO
+      { id: "q2-1-2", correctAnswer: 1, numberOfOptions: 4 }, // A security feature that controls access - CORREGIDO
+      { id: "q2-1-3", correctAnswer: 2, numberOfOptions: 4 }, // Realtime subscriptions - CORRECTO
+      { id: "q2-1-4", correctAnswer: 2, numberOfOptions: 4 }  // It provides instant database setup - CORREGIDO
     ],
     badgeXp: 25,
     readingTime: "10-15"
@@ -85,10 +85,10 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 2,
     numberOfLearningObjectives: 4,
     quizQuestions: [
-      { id: "q2-2-1", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q2-2-2", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q2-2-3", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q2-2-4", correctAnswer: 1, numberOfOptions: 4 }
+      { id: "q2-2-1", correctAnswer: 1, numberOfOptions: 4 }, // Server-side TypeScript functions - CORRECTO
+      { id: "q2-2-2", correctAnswer: 2, numberOfOptions: 4 }, // Supabase Storage - CORREGIDO
+      { id: "q2-2-3", correctAnswer: 1, numberOfOptions: 4 }, // To monitor user activity - CORRECTO
+      { id: "q2-2-4", correctAnswer: 1, numberOfOptions: 4 }  // It automatically resizes - CORRECTO
     ],
     badgeXp: 30,
     readingTime: "10-15"
@@ -99,10 +99,10 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 3,
     numberOfLearningObjectives: 4,
     quizQuestions: [
-      { id: "q2-3-1", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q2-3-2", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q2-3-3", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q2-3-4", correctAnswer: 2, numberOfOptions: 4 }
+      { id: "q2-3-1", correctAnswer: 1, numberOfOptions: 4 }, // To analyze and understand query execution - CORRECTO
+      { id: "q2-3-2", correctAnswer: 2, numberOfOptions: 4 }, // GIN index - CORREGIDO
+      { id: "q2-3-3", correctAnswer: 1, numberOfOptions: 4 }, // It performs consistently well - CORRECTO
+      { id: "q2-3-4", correctAnswer: 2, numberOfOptions: 4 }  // When you need to index only specific rows - CORRECTO
     ],
     badgeXp: 40,
     readingTime: "12-18"
@@ -113,10 +113,10 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 1,
     numberOfLearningObjectives: 4,
     quizQuestions: [
-      { id: "q3-1-1", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q3-1-2", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q3-1-3", correctAnswer: 2, numberOfOptions: 4 },
-      { id: "q3-1-4", correctAnswer: 1, numberOfOptions: 4 }
+      { id: "q3-1-1", correctAnswer: 1, numberOfOptions: 4 }, // Authentication verifies who you are - CORRECTO
+      { id: "q3-1-2", correctAnswer: 2, numberOfOptions: 4 }, // Multi-factor authentication (MFA) - CORREGIDO
+      { id: "q3-1-3", correctAnswer: 1, numberOfOptions: 4 }, // It allows users to authenticate using existing accounts - CORREGIDO
+      { id: "q3-1-4", correctAnswer: 2, numberOfOptions: 4 }  // Securely transmitting user identity - CORREGIDO
     ],
     badgeXp: 35,
     readingTime: "10-15"
@@ -127,10 +127,10 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 2,
     numberOfLearningObjectives: 4,
     quizQuestions: [
-      { id: "q3-2-1", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q3-2-2", correctAnswer: 2, numberOfOptions: 4 },
-      { id: "q3-2-3", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q3-2-4", correctAnswer: 1, numberOfOptions: 4 }
+      { id: "q3-2-1", correctAnswer: 1, numberOfOptions: 4 }, // It provides granular permissions management - CORRECTO
+      { id: "q3-2-2", correctAnswer: 1, numberOfOptions: 4 }, // Before sessions expire to maintain seamless user experience - CORREGIDO
+      { id: "q3-2-3", correctAnswer: 0, numberOfOptions: 4 }, // Time-based One-Time Password - CORREGIDO
+      { id: "q3-2-4", correctAnswer: 1, numberOfOptions: 4 }  // To prevent brute force attacks and abuse - CORRECTO
     ],
     badgeXp: 45,
     readingTime: "10-15"
