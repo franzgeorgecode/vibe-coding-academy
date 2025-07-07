@@ -210,7 +210,7 @@ export default function LessonsTab({ userProgress, onProgressUpdate }: LessonsTa
                             <h3 className={`font-semibold ${
                               isUnlocked ? 'text-gray-900' : 'text-gray-500'
                             }`}>
-                              {t(lesson.lessonTitleKey)}
+                              {t(`lessons.${lesson.lessonTitleKey}`)}
                             </h3>
                             <div className="flex items-center space-x-4 text-sm">
                               <span className={`flex items-center ${
