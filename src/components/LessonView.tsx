@@ -51,19 +51,19 @@ export default function LessonView() {
     const objectivesArray = [];
     if (currentLesson && typeof currentLesson.numberOfLearningObjectives === 'number') {
       for (let i = 0; i < currentLesson.numberOfLearningObjectives; i++) {
-        objectivesArray.push(t(`${lessonId}.learningObjectives.${i}`, { name: userName }));
+        objectivesArray.push(t(`lessons.${lessonId}.learningObjectives.${i}`, { name: userName }));
       }
     }
 
     setTranslatedLesson({
-      title: t(`${lessonId}.title`, { name: userName }),
-      objective: t(`${lessonId}.objective`, { name: userName }),
-      content: t(`${lessonId}.content`, { name: userName }),
+      title: t(`lessons.${lessonId}.title`, { name: userName }),
+      objective: t(`lessons.${lessonId}.objective`, { name: userName }),
+      content: t(`lessons.${lessonId}.content`, { name: userName }),
       learningObjectives: objectivesArray,
-      badgeName: t(`${lessonId}.badgeName`, { name: userName }),
-      srcodeCommentary: t(`${lessonId}.srcodeCommentary`, { name: userName }),
+      badgeName: t(`lessons.${lessonId}.badgeName`, { name: userName }),
+      srcodeCommentary: t(`lessons.${lessonId}.srcodeCommentary`, { name: userName }),
       practiceDescription: currentLesson.practiceDescription
-                           ? t(`${lessonId}.practiceDescription`, { name: userName })
+                           ? t(`lessons.${lessonId}.practiceDescription`, { name: userName })
                            : undefined,
     });
 
@@ -224,7 +224,7 @@ export default function LessonView() {
 
         const nextLessonId = getNextLessonId(currentLesson);
         if (nextLessonId) {
-          const nextLessonTitle = t(`lessons.${nextLessonId}.title`, { defaultValue: 'the next lesson' });
+          const nextLessonTitle = t(`lessons.lessons.${nextLessonId}.title`, { defaultValue: 'the next lesson' });
           const currentLessonTranslatedTitle = translatedLesson.title;
 
           setTimeout(() => {

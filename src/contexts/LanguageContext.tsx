@@ -44,6 +44,11 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
         fallbackValue = fallbackValue?.[k];
       }
       value = fallbackValue || key;
+      
+      // Log missing translations in development
+      if (process.env.NODE_ENV === 'development' && value === key) {
+        console.warn(`Translation missing for key: "${key}" in language: "${languageHook.currentLanguage}"`);
+      }
     }
 
     // Interpolación de parámetros

@@ -39,11 +39,11 @@ export default function Quiz({ lessonId, onComplete, onBack }: QuizProps) {
       const questionId = currentOriginalQuestion.id;
       // Default values are placeholders in case translations are missing
       setCurrentTranslatedQuestion({
-        question: t(`${lessonId}.quizQuestions.${questionId}.question`, { name: userName }),
+        question: t(`lessons.${lessonId}.quizQuestions.${questionId}.question`, { name: userName }),
         options: Array.from({ length: currentOriginalQuestion.numberOfOptions || 0 }, (_, index) =>
-          t(`${lessonId}.quizQuestions.${questionId}.options.${index}`, { name: userName })
+          t(`lessons.${lessonId}.quizQuestions.${questionId}.options.${index}`, { name: userName })
         ),
-        explanation: t(`${lessonId}.quizQuestions.${questionId}.explanation`, { name: userName })
+        explanation: t(`lessons.${lessonId}.quizQuestions.${questionId}.explanation`, { name: userName })
       });
     }
   }, [lessonId, currentOriginalQuestion, t]);
@@ -98,8 +98,8 @@ export default function Quiz({ lessonId, onComplete, onBack }: QuizProps) {
   if (showResults) {
     const passed = quizScore >= 85;
     // Use lessonId to fetch translated title and badgeName for results screen
-    const translatedLessonTitle = t(`${lessonId}.title`, { name: userName });
-    const translatedBadgeName = t(`${lessonId}.badgeName`, { name: userName });
+    const translatedLessonTitle = t(`lessons.${lessonId}.title`, { name: userName });
+    const translatedBadgeName = t(`lessons.${lessonId}.badgeName`, { name: userName });
 
     return (
       <div className="max-w-2xl mx-auto p-6">
