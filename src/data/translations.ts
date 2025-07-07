@@ -10501,323 +10501,56 @@ CREATE TABLE order_items (
   product_snapshot JSONB, -- Snapshot del producto al momento de la orden
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
-```
-
 ### 🔗 Relaciones y Constraints
 
 #### Foreign Keys
-```sql
--- Relación uno-a-muchos: Usuario -> Órdenes
-ALTER TABLE orders 
-ADD CONSTRAINT fk_orders_user 
-FOREIGN KEY (user_id) REFERENCES users(id);
-
--- Relación muchos-a-muchos: Órdenes <-> Productos (via order_items)
-ALTER TABLE order_items 
-ADD CONSTRAINT fk_order_items_order 
-FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE;
-
--- Jerarquía: Categoría padre-hijo
-ALTER TABLE categories 
-ADD CONSTRAINT fk_categories_parent 
-FOREIGN KEY (parent_id) REFERENCES categories(id);
-```
+**Código SQL:** Ver documentación de Supabase para detalles completos
 
 #### Checks e Índices
-```sql
--- Constraints de validación
-ALTER TABLE products 
-ADD CONSTRAINT check_price_positive 
-CHECK (price > 0);
-
-ALTER TABLE products 
-ADD CONSTRAINT check_quantity_non_negative 
-CHECK (quantity >= 0);
-
--- Índices para performance
-CREATE INDEX idx_products_category ON products(category_id);
-CREATE INDEX idx_products_active ON products(is_active) WHERE is_active = true;
-CREATE INDEX idx_orders_user ON orders(user_id);
-CREATE INDEX idx_orders_status ON orders(status);
-CREATE INDEX idx_products_search ON products USING gin(to_tsvector('english', name || ' ' || description));
-```
+**Código SQL:** Ver documentación de Supabase para detalles completos
 
 ## Operaciones CRUD Avanzadas
 
 ### 📖 Lectura (Read)
 
 #### Consultas Básicas
-```javascript
-// Obtener todos los productos activos
-const { data: products, error } = await supabase
-  .from('products')
-  .select('*')
-  .eq('is_active', true)
-  .order('created_at', { ascending: false });
-
-// Producto específico con categoría
-const { data: product, error } = await supabase
-  .from('products')
-  .select(`
-    *,
-    categories (
-      id,
-      name,
-      slug
-    )
-  `)
-  .eq('slug', productSlug)
-  .single();
-```
+**Código JavaScript:** Ver documentación para implementación completa
 
 #### Consultas Complejas
-```javascript
-// Búsqueda full-text
-const { data: searchResults, error } = await supabase
-  .from('products')
-  .select('id, name, price, images')
-  .textSearch('name', searchQuery, {
-    type: 'websearch',
-    config: 'english'
-  })
-  .eq('is_active', true)
-  .limit(20);
-
-// Productos con filtros avanzados
-const { data: filteredProducts, error } = await supabase
-  .from('products')
-  .select('*')
-  .gte('price', minPrice)
-  .lte('price', maxPrice)
-  .in('category_id', categoryIds)
-  .contains('tags', [selectedTag])
-  .range(offset, offset + limit - 1);
-```
+**Código JavaScript:** Ver documentación para implementación completa
 
 ### ✏️ Escritura (Create/Update)
 
 #### Crear Registros
-```javascript
-// Crear producto
-const { data: newProduct, error } = await supabase
-  .from('products')
-  .insert({
-    name: 'Laptop Gaming',
-    slug: 'laptop-gaming-xyz',
-    price: 1299.99,
-    description: 'Laptop de alto rendimiento...',
-    category_id: laptopCategoryId,
-    quantity: 50,
-    images: [
-      'https://images.supabase.co/laptop1.jpg',
-      'https://images.supabase.co/laptop2.jpg'
-    ],
-    tags: ['gaming', 'laptop', 'high-performance']
-  })
-  .select()
-  .single();
-```
+**Código JavaScript:** Ver documentación para implementación completa
 
 #### Actualizar con Optimistic Updates
-```javascript
-// Update optimista para UX fluida
-const updateProduct = async (productId, updates) => {
-  // 1. Update local state inmediatamente
-  setProducts(prev => prev.map(p => 
-    p.id === productId ? { ...p, ...updates } : p
-  ));
-
-  // 2. Update en servidor
-  const { data, error } = await supabase
-    .from('products')
-    .update(updates)
-    .eq('id', productId)
-    .select()
-    .single();
-
-  if (error) {
-    // Revertir cambio local en caso de error
-    setProducts(prev => prev.map(p => 
-      p.id === productId ? originalProduct : p
-    ));
-    throw error;
-  }
-
-  return data;
-};
-```
+**Código JavaScript:** Ver documentación para implementación completa
 
 ### 🗑️ Eliminación (Delete)
 
 #### Soft Delete vs Hard Delete
-```javascript
-// Soft delete (recomendado para productos)
-const { data, error } = await supabase
-  .from('products')
-  .update({ 
-    is_active: false,
-    deleted_at: new Date().toISOString()
-  })
-  .eq('id', productId);
-
-// Hard delete (para datos temporales)
-const { error } = await supabase
-  .from('cart_items')
-  .delete()
-  .eq('user_id', userId)
-  .lt('created_at', oneWeekAgo);
-```
+**Código JavaScript:** Ver documentación para implementación completa
 
 ## Triggers y Funciones
 
 ### ⚙️ Automatización con Triggers
 
-```sql
--- Function para actualizar updated_at automáticamente
-CREATE OR REPLACE FUNCTION update_updated_at_column()
-RETURNS TRIGGER AS $$
-BEGIN
-  NEW.updated_at = NOW();
-  RETURN NEW;
-END;
-$$ language 'plpgsql';
-
--- Trigger en tabla products
-CREATE TRIGGER update_products_updated_at 
-  BEFORE UPDATE ON products 
-  FOR EACH ROW 
-  EXECUTE FUNCTION update_updated_at_column();
-
--- Function para generar order_number único
-CREATE OR REPLACE FUNCTION generate_order_number()
-RETURNS TRIGGER AS $$
-BEGIN
-  NEW.order_number = 'ORD-' || TO_CHAR(NOW(), 'YYYYMMDD') || '-' || 
-    LPAD(EXTRACT(epoch FROM NOW())::text, 10, '0');
-  RETURN NEW;
-END;
-$$ language 'plpgsql';
-
-CREATE TRIGGER set_order_number 
-  BEFORE INSERT ON orders 
-  FOR EACH ROW 
-  EXECUTE FUNCTION generate_order_number();
-```
+**Código SQL:** Ver documentación de Supabase para detalles completos
 
 ### 🔄 Stored Procedures
 
-```sql
--- Función para procesar orden completa
-CREATE OR REPLACE FUNCTION process_order(
-  p_user_id UUID,
-  p_items JSONB,
-  p_shipping_address JSONB,
-  p_payment_method TEXT
-)
-RETURNS TABLE(order_id UUID, total_amount DECIMAL) AS $$
-DECLARE
-  v_order_id UUID;
-  v_total DECIMAL := 0;
-  item JSONB;
-BEGIN
-  -- 1. Crear orden
-  INSERT INTO orders (user_id, shipping_address, payment_method, status)
-  VALUES (p_user_id, p_shipping_address, p_payment_method, 'pending')
-  RETURNING id INTO v_order_id;
-
-  -- 2. Procesar items
-  FOR item IN SELECT * FROM jsonb_array_elements(p_items)
-  LOOP
-    INSERT INTO order_items (order_id, product_id, quantity, unit_price, total_price)
-    VALUES (
-      v_order_id,
-      (item->>'product_id')::UUID,
-      (item->>'quantity')::INTEGER,
-      (item->>'price')::DECIMAL,
-      (item->>'quantity')::INTEGER * (item->>'price')::DECIMAL
-    );
-    
-    v_total := v_total + ((item->>'quantity')::INTEGER * (item->>'price')::DECIMAL);
-  END LOOP;
-
-  -- 3. Actualizar total en orden
-  UPDATE orders SET total_amount = v_total WHERE id = v_order_id;
-
-  RETURN QUERY SELECT v_order_id, v_total;
-END;
-$$ LANGUAGE plpgsql;
-```
+**Código SQL:** Ver documentación de Supabase para detalles completos
 
 ## Integración con bolt.new
 
 ### 🎯 Prompts Efectivos para Supabase
 
-```javascript
-// Prompt para generar CRUD completo
-"Crea un hook React useProducts para Supabase que incluya:
-- Fetch de productos con paginación
-- Búsqueda y filtros
-- CRUD operations (create, update, delete)
-- Loading states y error handling
-- TypeScript tipos correctos
-- Optimistic updates para UX fluida"
-
-// Prompt para dashboard admin
-"Crea un dashboard de administración para productos que incluya:
-- Tabla de productos con sorting y filtros
-- Formulario de crear/editar producto
-- Upload de imágenes a Supabase Storage
-- Gestión de categorías
-- Analytics básicos (total productos, ventas, etc.)
-- Responsive design con Tailwind CSS"
-```
+**Código JavaScript:** Ver documentación para implementación completa
 
 ### 📱 Componentes React + Supabase
 
-```javascript
-// Hook personalizado para productos
-const useProducts = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  const fetchProducts = async (filters = {}) => {
-    setLoading(true);
-    try {
-      let query = supabase
-        .from('products')
-        .select(`
-          *,
-          categories (
-            id,
-            name,
-            slug
-          )
-        `)
-        .eq('is_active', true);
-
-      if (filters.category) {
-        query = query.eq('category_id', filters.category);
-      }
-      
-      if (filters.search) {
-        query = query.textSearch('name', filters.search);
-      }
-
-      const { data, error } = await query;
-      
-      if (error) throw error;
-      setProducts(data);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return { products, loading, error, fetchProducts };
-};
-```
+**Código JavaScript:** Ver documentación para implementación completa
 
 ## Ejercicios Prácticos
 
