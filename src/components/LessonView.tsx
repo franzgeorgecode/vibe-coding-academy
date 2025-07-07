@@ -9,6 +9,8 @@ import { lessonsData } from '../data/lessonsData';
 import { useTranslation } from '../contexts/LanguageContext';
 import Quiz from './Quiz';
 import SrCodeChat from './SrCodeChat';
+import Confetti from './Confetti';
+import LessonCompletionModal from './LessonCompletionModal';
 import { motion } from 'framer-motion';
 
 interface UserProgress {
@@ -33,6 +35,9 @@ export default function LessonView() {
   const [userProgress, setUserProgress] = useState<UserProgress | null>(null);
   const { completeLesson, incrementStreak, syncWithDatabase, addBadge } = useUserProgressStore();
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [showCompletionModal, setShowCompletionModal] = useState(false);
+  const [completionData, setCompletionData] = useState<{score: number; nextLessonTitle?: string; nextLessonId?: string} | null>(null);
 
   const currentLesson = lessonId ? lessonsData[lessonId] : null;
 
@@ -182,27 +187,24 @@ export default function LessonView() {
           console.error('[LessonView] Failed to sync with database:', syncError);
         }
         
-        // Navigate to next lesson if available
+        // Show confetti and completion modal
+        setShowConfetti(true);
+        setShowQuiz(false);
+        
+        // Prepare completion data
         const nextLessonId = getNextLessonId(currentLesson);
-        if (nextLessonId) {
-          console.log(`Next lesson available: ${nextLessonId}. User can continue.`);
-          
-          // Show success message and option to continue
-          const nextLessonTitle = t(`lessons.lessons.${nextLessonId}.title`, { defaultValue: 'the next lesson' });
-          const currentLessonTranslatedTitle = translatedLesson.title;
-          
-          setTimeout(() => {
-            const continueMessage = t('lessons.continueNext', {
-              currentLessonTitle: currentLessonTranslatedTitle,
-              nextLessonTitle: nextLessonTitle
-            });
-            if (confirm(continueMessage)) {
-              navigate(`/lesson/${nextLessonId}`);
-            }
-          }, 1000);
-        } else {
-          console.log('This was the last lesson in sequence. No next lesson available.');
-        }
+        const nextLessonTitle = nextLessonId ? t(`lessons.lessons.${nextLessonId}.title`, { defaultValue: 'the next lesson' }) : undefined;
+        
+        setCompletionData({
+          score: quizScore,
+          nextLessonTitle,
+          nextLessonId
+        });
+        
+        // Show completion modal after a brief delay for confetti effect
+        setTimeout(() => {
+          setShowCompletionModal(true);
+        }, 1000);
       } else {
         console.log('[LessonView] Quiz not passed. Score:', quizScore, '(needed 85%)');
       }
@@ -291,6 +293,19 @@ export default function LessonView() {
       return firstLessonNextLevel ? firstLessonNextLevel.id : null;
     }
     return null;
+  };
+
+  const handleContinueToNext = () => {
+    if (completionData?.nextLessonId) {
+      navigate(`/lesson/${completionData.nextLessonId}`);
+    }
+    handleCloseCompletionModal();
+  };
+
+  const handleCloseCompletionModal = () => {
+    setShowCompletionModal(false);
+    setShowConfetti(false);
+    setCompletionData(null);
   };
 
   const renderContent = (contentStr: string | undefined) => {
@@ -508,6 +523,25 @@ export default function LessonView() {
           }}
           isOpen={isChatOpen}
           onToggle={() => setIsChatOpen(!isChatOpen)}
+        />
+      )}
+
+      {/* Confetti Effect */}
+      <Confetti
+        show={showConfetti}
+        onComplete={() => setShowConfetti(false)}
+      />
+
+      {/* Lesson Completion Modal */}
+      {completionData && (
+        <LessonCompletionModal
+          show={showCompletionModal}
+          userName={user?.firstName || user?.emailAddresses[0]?.emailAddress?.split('@')[0] || 'Estudiante'}
+          currentLessonTitle={translatedLesson?.title || 'Lección'}
+          nextLessonTitle={completionData.nextLessonTitle}
+          score={completionData.score}
+          onContinue={handleContinueToNext}
+          onClose={handleCloseCompletionModal}
         />
       )}
     </div>
