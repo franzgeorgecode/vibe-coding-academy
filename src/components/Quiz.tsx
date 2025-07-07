@@ -93,11 +93,16 @@ export default function Quiz({ lessonId, onComplete, onBack }: QuizProps) {
       return;
     }
     
-    if (selectedAnswers.length !== originalQuestions.length) {
-      console.warn('[Quiz] Selected answers length mismatch:', {
-        selectedLength: selectedAnswers.length,
-        questionsLength: originalQuestions.length
+    // Check that we have all answers
+    const answeredQuestions = selectedAnswers.filter(answer => answer !== undefined).length;
+    if (answeredQuestions !== originalQuestions.length) {
+      console.error('[Quiz] Not all questions answered!', {
+        answeredQuestions,
+        totalQuestions: originalQuestions.length,
+        selectedAnswers
       });
+      alert('Por favor responde todas las preguntas antes de finalizar');
+      return;
     }
     
     let correctAnswers = 0;
@@ -105,17 +110,24 @@ export default function Quiz({ lessonId, onComplete, onBack }: QuizProps) {
     originalQuestions.forEach((question, index) => {
       const userAnswer = selectedAnswers[index];
       const correctAnswer = question.correctAnswer;
-      const isCorrect = userAnswer === correctAnswer;
+      
+      // Ensure both values are numbers for comparison
+      const userAnswerNum = typeof userAnswer === 'number' ? userAnswer : parseInt(userAnswer);
+      const correctAnswerNum = typeof correctAnswer === 'number' ? correctAnswer : parseInt(correctAnswer);
+      const isCorrect = userAnswerNum === correctAnswerNum;
       
       console.log(`[Quiz] Question ${index + 1} (${question.id}):`, {
         questionObject: question,
         userAnswer,
         correctAnswer,
+        userAnswerNum,
+        correctAnswerNum,
         isCorrect,
         userAnswerType: typeof userAnswer,
         correctAnswerType: typeof correctAnswer,
         strictEquality: userAnswer === correctAnswer,
-        looseEquality: userAnswer == correctAnswer
+        looseEquality: userAnswer == correctAnswer,
+        numberEquality: userAnswerNum === correctAnswerNum
       });
       
       if (isCorrect) {

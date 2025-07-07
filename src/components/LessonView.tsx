@@ -193,7 +193,7 @@ export default function LessonView() {
         
         // Prepare completion data
         const nextLessonId = getNextLessonId(currentLesson);
-        const nextLessonTitle = nextLessonId ? t(`lessons.lessons.${nextLessonId}.title`, { defaultValue: 'the next lesson' }) : undefined;
+        const nextLessonTitle = nextLessonId ? t(`lessons.${nextLessonId}.title`, { defaultValue: 'the next lesson' }) : undefined;
         
         setCompletionData({
           score: quizScore,
