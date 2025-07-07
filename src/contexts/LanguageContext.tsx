@@ -30,6 +30,8 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
 
   // Función de traducción con interpolación
   const t = (key: string, params?: Record<string, string>): string => {
+    console.log(`[Translation] Current language: ${languageHook.currentLanguage}, Key: ${key}`);
+    
     const keys = key.split('.');
     let value: any = translations[languageHook.currentLanguage];
 
@@ -49,6 +51,12 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
       if (process.env.NODE_ENV === 'development' && value === key) {
         console.warn(`Translation missing for key: "${key}" in language: "${languageHook.currentLanguage}"`);
       }
+      
+      if (value !== key) {
+        console.log(`[Translation] Using fallback (EN) for key: ${key} -> ${value}`);
+      }
+    } else {
+      console.log(`[Translation] Found translation for key: ${key} -> ${value}`);
     }
 
     // Interpolación de parámetros

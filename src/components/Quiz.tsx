@@ -20,6 +20,11 @@ export default function Quiz({ lessonId, onComplete, onBack }: QuizProps) {
   const { user } = useUser();
   const lesson = lessonsData[lessonId]; // Get the original lesson structure
   
+  // Debug logging
+  console.log('[Quiz] Component initialized with lessonId:', lessonId);
+  console.log('[Quiz] Lesson data:', lesson);
+  console.log('[Quiz] Quiz questions:', lesson?.quizQuestions);
+  
   // Get user's name for personalization
   const userName = user?.firstName || user?.emailAddresses[0]?.emailAddress?.split('@')[0] || 'Student';
 
@@ -31,7 +36,7 @@ export default function Quiz({ lessonId, onComplete, onBack }: QuizProps) {
   // State for translated question content
   const [currentTranslatedQuestion, setCurrentTranslatedQuestion] = useState<any>(null);
 
-  const originalQuestions = lesson.quizQuestions; // Array of original question structures
+  const originalQuestions = lesson?.quizQuestions || []; // Array of original question structures
   const currentOriginalQuestion = originalQuestions[currentQuestionIndex]; // Original structure for logic
 
   useEffect(() => {
@@ -73,16 +78,58 @@ export default function Quiz({ lessonId, onComplete, onBack }: QuizProps) {
   };
 
   const calculateAndShowResults = () => {
+    console.log('[Quiz] Calculating results...');
+    console.log('[Quiz] Lesson ID:', lessonId);
+    console.log('[Quiz] Lesson object:', lesson);
+    console.log('[Quiz] Original questions:', originalQuestions);
+    console.log('[Quiz] Total questions:', originalQuestions.length);
+    console.log('[Quiz] Selected answers:', selectedAnswers);
+    console.log('[Quiz] Selected answers length:', selectedAnswers.length);
+    
+    // Ensure we have the right data
+    if (!originalQuestions || originalQuestions.length === 0) {
+      console.error('[Quiz] No questions found!');
+      alert('Error: No quiz questions found');
+      return;
+    }
+    
+    if (selectedAnswers.length !== originalQuestions.length) {
+      console.warn('[Quiz] Selected answers length mismatch:', {
+        selectedLength: selectedAnswers.length,
+        questionsLength: originalQuestions.length
+      });
+    }
+    
     let correctAnswers = 0;
+    
     originalQuestions.forEach((question, index) => {
-      if (selectedAnswers[index] === question.correctAnswer) {
+      const userAnswer = selectedAnswers[index];
+      const correctAnswer = question.correctAnswer;
+      const isCorrect = userAnswer === correctAnswer;
+      
+      console.log(`[Quiz] Question ${index + 1} (${question.id}):`, {
+        questionObject: question,
+        userAnswer,
+        correctAnswer,
+        isCorrect,
+        userAnswerType: typeof userAnswer,
+        correctAnswerType: typeof correctAnswer
+      });
+      
+      if (isCorrect) {
         correctAnswers++;
       }
     });
 
-    const score = originalQuestions.length > 0
-                  ? Math.round((correctAnswers / originalQuestions.length) * 100)
-                  : 0;
+    console.log('[Quiz] Final correct answers count:', correctAnswers);
+    console.log('[Quiz] Total questions for calculation:', originalQuestions.length);
+    
+    const percentage = (correctAnswers / originalQuestions.length) * 100;
+    const score = Math.round(percentage);
+    
+    console.log('[Quiz] Percentage calculation:', percentage);
+    console.log('[Quiz] Final rounded score:', score);
+    
     setQuizScore(score);
     setShowResults(true);
     onComplete(score); // Call onComplete with the calculated score
@@ -159,9 +206,21 @@ export default function Quiz({ lessonId, onComplete, onBack }: QuizProps) {
   }
 
   if (!currentOriginalQuestion || !currentTranslatedQuestion) {
+    console.error('[Quiz] Missing data:', {
+      currentOriginalQuestion,
+      currentTranslatedQuestion,
+      originalQuestions,
+      currentQuestionIndex,
+      lessonId,
+      lesson
+    });
+    
     return (
         <div className="max-w-2xl mx-auto p-6 text-center">
             <p className="text-red-500">{t('common.error')}: {t('quiz.loadError', 'Quiz questions could not be loaded.')}</p>
+            <p className="text-sm text-gray-600 mt-2">
+              Debug: Question {currentQuestionIndex + 1} of {originalQuestions.length} for lesson {lessonId}
+            </p>
             <button onClick={onBack} className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
                 {t('quiz.backToLesson')}
             </button>
