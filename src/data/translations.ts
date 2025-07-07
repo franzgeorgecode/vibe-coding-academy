@@ -10336,13 +10336,13 @@ Antes de continuar, {{name}}, practica estos ejercicios:
           }
         }
       }
-    }`,
+    },
 
       // NIVEL 2: DESARROLLO BACKEND Y BASES DE DATOS
       'lesson-2-1': {
         title: 'Fundamentos de Supabase: Tu Backend en la Nube',
         objective: 'Domina Supabase como backend-as-a-service para crear aplicaciones escalables con bases de datos PostgreSQL avanzadas',
-        content: \`# Supabase: El Backend Completo para bolt.new
+        content: `# Supabase: El Backend Completo para bolt.new
 
 ¡Bienvenido al Nivel 2, {{name}}! Ahora que dominas los fundamentos de bolt.new, es momento de construir el cerebro de tus aplicaciones: **el backend**. Supabase será tu compañero perfecto para crear bases de datos robustas, APIs automáticas y autenticación segura.
 
