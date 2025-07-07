@@ -57,10 +57,10 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 3,
     numberOfLearningObjectives: 4,
     quizQuestions: [
-      { id: "q1-3-1", correctAnswer: 1, numberOfOptions: 4 }, // Chat interface, code editor, and preview window - CORRECTO
-      { id: "q1-3-2", correctAnswer: 0, numberOfOptions: 4 }, // Ctrl+Shift+P - CORREGIDO
-      { id: "q1-3-3", correctAnswer: 2, numberOfOptions: 4 }, // Preview window - CORREGIDO
-      { id: "q1-3-4", correctAnswer: 1, numberOfOptions: 4 }  // To communicate with the AI - CORREGIDO
+      { id: "q1-3-1", correctAnswer: 1, numberOfOptions: 4 }, // Ctrl/Cmd + P - CORRECTO
+      { id: "q1-3-2", correctAnswer: 3, numberOfOptions: 4 }, // Database NO es panel principal - CORREGIDO PARA ESPAÑOL
+      { id: "q1-3-3", correctAnswer: 1, numberOfOptions: 4 }, // Ejecutar con hot reload y debugging - CORREGIDO PARA ESPAÑOL
+      { id: "q1-3-4", correctAnswer: 1, numberOfOptions: 4 }  // Mantiene contexto del proyecto - CORRECTO
     ],
     badgeXp: 20,
     readingTime: "8-12"
@@ -71,10 +71,10 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 1,
     numberOfLearningObjectives: 4,
     quizQuestions: [
-      { id: "q2-1-1", correctAnswer: 1, numberOfOptions: 4 }, // PostgreSQL (SQL) - CORRECTO
-      { id: "q2-1-2", correctAnswer: 1, numberOfOptions: 4 }, // A security feature that controls access - CORREGIDO
-      { id: "q2-1-3", correctAnswer: 2, numberOfOptions: 4 }, // Realtime subscriptions - CORRECTO
-      { id: "q2-1-4", correctAnswer: 2, numberOfOptions: 4 }  // It provides instant database setup - CORREGIDO
+      { id: "q2-1-1", correctAnswer: 2, numberOfOptions: 4 }, // Es open-source y usa PostgreSQL real - CORREGIDO PARA ESPAÑOL
+      { id: "q2-1-2", correctAnswer: 1, numberOfOptions: 4 }, // UUID REFERENCES users(id) - CORRECTO
+      { id: "q2-1-3", correctAnswer: 1, numberOfOptions: 4 }, // Actualizar UI inmediatamente, luego servidor - CORREGIDO PARA ESPAÑOL
+      { id: "q2-1-4", correctAnswer: 1, numberOfOptions: 4 }  // Automatizar acciones como timestamps - CORREGIDO PARA ESPAÑOL
     ],
     badgeXp: 25,
     readingTime: "10-15"
