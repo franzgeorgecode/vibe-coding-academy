@@ -34,11 +34,6 @@ export const translations = {
       selectLanguage: 'Select Language'
     },
 
-    // Language Selector
-    languageSelector: {
-      selectLanguage: 'Select Language'
-    },
-
     // Authentication
     auth: {
       login: 'Login',
@@ -73,8 +68,6 @@ export const translations = {
         totalXP: 'Total XP',
         badgesEarned: 'Badges Earned',
         progress: 'Progress',
-        learningStreak: 'Learning Streak',
-        days: 'days',
         learningStreak: 'Learning Streak',
         days: 'days'
       },
@@ -272,7 +265,6 @@ Ready to transform how you build applications? Let's begin your bolt.new mastery
               'AWS Lambda',
               'Google Cloud Run'
             ],
-            correctAnswer: 1,
             explanation: 'bolt.new is built on StackBlitz WebContainers, which provides a browser-based development environment that can run full-stack applications entirely in the browser without any local setup.'
           },
           'q1-1-2': {
@@ -283,7 +275,6 @@ Ready to transform how you build applications? Let's begin your bolt.new mastery
               'Template-based with predefined structures',
               'Visual drag-and-drop development'
             ],
-            correctAnswer: 1,
             explanation: 'bolt.new follows an AI-first development philosophy where you can describe what you want to build using natural language, and the AI generates production-ready code based on your requirements.'
           },
           'q1-1-3': {
@@ -294,7 +285,6 @@ Ready to transform how you build applications? Let's begin your bolt.new mastery
               'Supabase',
               'PlanetScale'
             ],
-            correctAnswer: 2,
             explanation: 'bolt.new integrates with Supabase, which provides PostgreSQL database with real-time features, authentication, and edge functions for comprehensive backend functionality.'
           },
           'q1-1-4': {
@@ -305,7 +295,6 @@ Ready to transform how you build applications? Let's begin your bolt.new mastery
               'Figma',
               'InVision'
             ],
-            correctAnswer: 2,
             explanation: 'bolt.new has direct integration with Figma, allowing you to convert designs directly to functional code, streamlining the design-to-development workflow.'
           },
           'q1-1-5': {
@@ -316,7 +305,6 @@ Ready to transform how you build applications? Let's begin your bolt.new mastery
               'Token-based usage',
               'Completely free'
             ],
-            correctAnswer: 2,
             explanation: 'bolt.new uses a token-based pricing model where costs depend on the complexity of AI interactions, amount of code generated, project size, and integration requirements.'
           }
         }
@@ -480,7 +468,6 @@ Remember {{name}}, great prompts lead to great results. The time you invest in c
               'Completion criteria',
               'Conditional logic'
             ],
-            correctAnswer: 1,
             explanation: 'The "C" in the CLEAR framework stands for "Context" - always establish the big picture including project type, user base, purpose, and industry before making specific requests.'
           },
           'q1-2-2': {
@@ -491,7 +478,6 @@ Remember {{name}}, great prompts lead to great results. The time you invest in c
               'Comparative analysis',
               'Technical specification'
             ],
-            correctAnswer: 1,
             explanation: 'Iterative development involves breaking down complex requests into smaller, manageable parts, allowing for better results and easier debugging when issues arise.'
           },
           'q1-2-3': {
@@ -502,7 +488,6 @@ Remember {{name}}, great prompts lead to great results. The time you invest in c
               'Describe visual direction with specific examples and references',
               'Let the AI choose the design automatically'
             ],
-            correctAnswer: 2,
             explanation: 'The most effective approach is to describe the visual direction with specific examples and references, including design style, color scheme, layout preferences, and responsive requirements.'
           },
           'q1-2-4': {
@@ -513,7 +498,6 @@ Remember {{name}}, great prompts lead to great results. The time you invest in c
               'Asking for vague generic solutions',
               'Including technical constraints'
             ],
-            correctAnswer: 2,
             explanation: 'Asking for vague generic solutions is a common mistake. Specific, detailed prompts with clear requirements and constraints produce much better results than generic requests.'
           },
           'q1-2-5': {
@@ -524,7 +508,6 @@ Remember {{name}}, great prompts lead to great results. The time you invest in c
               'To reduce development time',
               'To avoid using modern technologies'
             ],
-            correctAnswer: 1,
             explanation: 'Requirements and Constraints specify technical specifications like technology stack, database choice, authentication methods, deployment targets, and performance requirements to ensure the solution meets your specific needs.'
           }
         }
@@ -749,7 +732,6 @@ src/
               'File explorer, chat interface, and terminal',
               'Preview window, settings, and file manager'
             ],
-            correctAnswer: 1,
             explanation: 'The three main panels in bolt.new are the Chat interface (where you communicate with the AI), the Code editor (where you can review and edit generated code), and the Preview window (where you see your application running in real-time).'
           },
           'q1-3-2': {
@@ -760,7 +742,6 @@ src/
               'Ctrl+K',
               'Ctrl+Shift+K'
             ],
-            correctAnswer: 0,
             explanation: 'Ctrl+Shift+P (or Cmd+Shift+P on Mac) opens the command palette, which provides quick access to all available commands and actions within the bolt.new interface.'
           },
           'q1-3-3': {
@@ -771,7 +752,6 @@ src/
               'Preview window',
               'File explorer'
             ],
-            correctAnswer: 2,
             explanation: 'The Preview window shows your application running in real-time, allowing you to test functionality, see visual changes, and interact with your application as users would.'
           },
           'q1-3-4': {
@@ -782,7 +762,6 @@ src/
               'To manage project settings',
               'To browse file contents'
             ],
-            correctAnswer: 1,
             explanation: 'The chat interface is where you communicate with the AI, make requests for new features, ask for modifications, and engage in natural language conversations about your project development.'
           }
         }
@@ -1159,7 +1138,6 @@ const presence = supabase.channel("project:" + projectId)
               'SQLite (Embedded)',
               'Redis (Key-Value)'
             ],
-            correctAnswer: 1,
             explanation: 'Supabase provides PostgreSQL, a powerful open-source SQL database that supports advanced features like JSON operations, full-text search, and complex queries.'
           },
           'q2-1-2': {
@@ -1170,7 +1148,6 @@ const presence = supabase.channel("project:" + projectId)
               'A method to backup database rows',
               'A tool for monitoring database performance'
             ],
-            correctAnswer: 1,
             explanation: 'Row Level Security (RLS) is a PostgreSQL feature that allows you to control which rows users can see and modify based on their authentication and authorization rules, providing fine-grained access control.'
           },
           'q2-1-3': {
@@ -1181,7 +1158,6 @@ const presence = supabase.channel("project:" + projectId)
               'Realtime subscriptions',
               'Database triggers'
             ],
-            correctAnswer: 2,
             explanation: 'Supabase Realtime subscriptions allow you to listen to database changes in real-time, enabling features like live chat, collaborative editing, and instant data updates across connected clients.'
           },
           'q2-1-4': {
@@ -1192,7 +1168,6 @@ const presence = supabase.channel("project:" + projectId)
               'It provides instant database setup with built-in authentication and real-time features',
               'It only works with React applications'
             ],
-            correctAnswer: 2,
             explanation: 'Supabase integrates seamlessly with bolt.new by providing instant database setup, built-in authentication, real-time subscriptions, and Edge Functions, eliminating the need for complex backend configuration.'
           }
         }
@@ -1790,7 +1765,6 @@ const safeCreateTask = async (taskData) => {
               'Client-side JavaScript functions',
               'Database optimization tools'
             ],
-            correctAnswer: 1,
             explanation: 'Supabase Edge Functions are server-side TypeScript functions that run on the edge (close to users) using Deno runtime, providing low-latency serverless compute for custom business logic.'
           },
           'q2-2-2': {
@@ -1801,7 +1775,6 @@ const safeCreateTask = async (taskData) => {
               'Supabase Storage',
               'Realtime Storage'
             ],
-            correctAnswer: 2,
             explanation: 'Supabase Storage is a S3-compatible object storage solution that allows you to store and manage files with features like automatic image optimization, CDN distribution, and access control.'
           },
           'q2-2-3': {
@@ -1812,7 +1785,6 @@ const safeCreateTask = async (taskData) => {
               'To backup user data',
               'To optimize database queries'
             ],
-            correctAnswer: 1,
             explanation: 'Presence tracking allows you to monitor user activity and show who is currently online in your application, enabling features like "user is typing" indicators, online status, and collaborative cursor tracking.'
           },
           'q2-2-4': {
@@ -1823,7 +1795,6 @@ const safeCreateTask = async (taskData) => {
               'It encrypts images for security',
               'It converts all images to vector format'
             ],
-            correctAnswer: 1,
             explanation: 'Supabase\'s built-in image optimization automatically resizes and optimizes images for different devices and formats, reducing bandwidth usage and improving loading times without requiring manual image processing.'
           }
         }
@@ -2530,7 +2501,6 @@ const SSOManager = {
               'Authorization verifies who you are, authentication determines what you can do',
               'Authentication is for passwords, authorization is for OAuth'
             ],
-            correctAnswer: 1,
             explanation: 'Authentication verifies the identity of a user (who you are), while authorization determines what actions that authenticated user is allowed to perform (what you can do).'
           },
           'q3-1-2': {
@@ -2541,7 +2511,6 @@ const SSOManager = {
               'Multi-factor authentication (MFA)',
               'Email-based authentication'
             ],
-            correctAnswer: 2,
             explanation: 'Multi-factor authentication (MFA) provides the highest security by requiring multiple forms of verification, typically combining something you know (password), something you have (phone/token), and/or something you are (biometrics).'
           },
           'q3-1-3': {
@@ -2552,7 +2521,6 @@ const SSOManager = {
               'It makes authentication faster',
               'It works only with social media platforms'
             ],
-            correctAnswer: 1,
             explanation: 'OAuth allows users to authenticate using existing accounts from trusted providers (like Google, GitHub, Facebook) without sharing their passwords with your application, improving both security and user experience.'
           },
           'q3-1-4': {
@@ -2563,7 +2531,6 @@ const SSOManager = {
               'Securely transmitting user identity and claims between parties',
               'Managing file uploads'
             ],
-            correctAnswer: 2,
             explanation: 'JWT (JSON Web Token) is used for securely transmitting user identity and claims between parties. It contains encoded user information and can be verified without requiring server-side session storage.'
           }
         }
@@ -2808,7 +2775,6 @@ Remember {{name}}, optimization is an ongoing process. Start with measuring curr
               'To manage user permissions',
               'To optimize database storage'
             ],
-            correctAnswer: 1,
             explanation: 'EXPLAIN ANALYZE shows the actual execution plan of a query, including execution time, rows processed, and index usage, helping identify performance bottlenecks.'
           },
           'q2-3-2': {
@@ -2819,7 +2785,6 @@ Remember {{name}}, optimization is an ongoing process. Start with measuring curr
               'GIN index',
               'Partial index'
             ],
-            correctAnswer: 2,
             explanation: 'GIN (Generalized Inverted Index) indexes are specifically designed for full-text search operations and complex data types like JSON, providing efficient text search capabilities.'
           },
           'q2-3-3': {
@@ -2830,7 +2795,6 @@ Remember {{name}}, optimization is an ongoing process. Start with measuring curr
               'It requires fewer database connections',
               'It works better with real-time data'
             ],
-            correctAnswer: 1,
             explanation: 'Cursor-based pagination maintains consistent performance regardless of dataset size, while offset-based pagination becomes slower with large offsets as the database must skip many rows.'
           },
           'q2-3-4': {
@@ -2841,7 +2805,6 @@ Remember {{name}}, optimization is an ongoing process. Start with measuring curr
               'When you need to index only specific rows that match certain conditions',
               'For foreign key relationships only'
             ],
-            correctAnswer: 2,
             explanation: 'Partial indexes are useful when you frequently query only a subset of rows (e.g., active users, published posts), reducing index size and improving performance for specific conditions.'
           }
         }
@@ -3211,7 +3174,6 @@ Remember {{name}}, advanced authentication is about building trust through multi
               'It makes authentication faster',
               'It reduces database storage requirements'
             ],
-            correctAnswer: 1,
             explanation: 'RBAC provides granular permissions management by allowing you to assign specific roles to users and define permissions for each role, making it easier to manage access control at scale.'
           },
           'q3-2-2': {
@@ -3222,7 +3184,6 @@ Remember {{name}}, advanced authentication is about building trust through multi
               'After users log out',
               'Only for admin users'
             ],
-            correctAnswer: 1,
             explanation: 'Automatic session refresh should be implemented before sessions expire to maintain seamless user experience, preventing users from being logged out unexpectedly during active use.'
           },
           'q3-2-3': {
@@ -3233,7 +3194,6 @@ Remember {{name}}, advanced authentication is about building trust through multi
               'Trusted OAuth Token Provider',
               'Two-factor Online Transaction Protocol'
             ],
-            correctAnswer: 0,
             explanation: 'TOTP stands for Time-based One-Time Password, which generates unique codes that change every 30 seconds, commonly used in authenticator apps for multi-factor authentication.'
           },
           'q3-2-4': {
@@ -3244,7 +3204,6 @@ Remember {{name}}, advanced authentication is about building trust through multi
               'To reduce server costs',
               'To improve user experience'
             ],
-            correctAnswer: 1,
             explanation: 'Rate limiting prevents brute force attacks and abuse by limiting the number of authentication attempts from a single IP address or user within a specified time window.'
           }
         }
@@ -3734,7 +3693,6 @@ Remember {{name}}, security is not a destination but a journey. Stay informed ab
               'Focusing only on perimeter security',
               'Relying on third-party security services'
             ],
-            correctAnswer: 1,
             explanation: 'Defense in depth means implementing multiple layers of security controls so that if one layer fails, other layers continue to provide protection, creating a comprehensive security posture.'
           },
           'q3-3-2': {
@@ -3745,7 +3703,6 @@ Remember {{name}}, security is not a destination but a journey. Stay informed ab
               'The right to forget passwords',
               'The right to hide user activity'
             ],
-            correctAnswer: 1,
             explanation: 'The "Right to be Forgotten" is a GDPR provision that allows individuals to request the deletion of their personal data from an organization\'s systems, requiring comprehensive data removal procedures.'
           },
           'q3-3-3': {
@@ -3756,7 +3713,6 @@ Remember {{name}}, security is not a destination but a journey. Stay informed ab
               'It makes the application slower',
               'It\'s not useful for business purposes'
             ],
-            correctAnswer: 1,
             explanation: 'Storing payment card details violates PCI DSS compliance requirements and creates significant security and legal risks. Instead, use tokenization services provided by payment processors.'
           },
           'q3-3-4': {
@@ -3767,7 +3723,6 @@ Remember {{name}}, security is not a destination but a journey. Stay informed ab
               'To provide compliance evidence and incident investigation capabilities',
               'To reduce database storage costs'
             ],
-            correctAnswer: 2,
             explanation: 'Security audit logs provide evidence of compliance with regulations and enable investigation of security incidents by tracking who accessed what resources, when, and with what result.'
           }
         }
@@ -4252,7 +4207,6 @@ Remember {{name}}, successful deployment is not just about getting your code liv
               'It reduces server costs',
               'It eliminates the need for monitoring'
             ],
-            correctAnswer: 1,
             explanation: 'Infrastructure as Code ensures consistent, reproducible infrastructure across different environments by defining infrastructure requirements in version-controlled code rather than manual configuration.'
           },
           'q4-1-2': {
@@ -4263,7 +4217,6 @@ Remember {{name}}, successful deployment is not just about getting your code liv
               'During the deployment process, before starting the new application version',
               'Only when manually triggered'
             ],
-            correctAnswer: 2,
             explanation: 'Database migrations should be executed during the deployment process, before starting the new application version, to ensure the database schema is compatible with the new code.'
           },
           'q4-1-3': {
@@ -4274,7 +4227,6 @@ Remember {{name}}, successful deployment is not just about getting your code liv
               'To backup the database',
               'To update application configuration'
             ],
-            correctAnswer: 1,
             explanation: 'Health check endpoints monitor application and dependency status, allowing load balancers, monitoring systems, and orchestrators to determine if an instance is healthy and ready to serve traffic.'
           },
           'q4-1-4': {
@@ -4285,7 +4237,6 @@ Remember {{name}}, successful deployment is not just about getting your code liv
               'It requires less configuration',
               'It uses less memory'
             ],
-            correctAnswer: 1,
             explanation: 'Horizontal scaling provides better fault tolerance (if one instance fails, others continue running) and can handle larger scale increases by adding more instances rather than being limited by the maximum capacity of a single machine.'
           }
         }
@@ -4836,7 +4787,6 @@ Remember {{name}}, serverless and edge computing represent the future of web dep
               'They cost less in all scenarios',
               'They support more programming languages'
             ],
-            correctAnswer: 1,
             explanation: 'Serverless functions automatically scale to zero when not in use (saving costs) and scale up automatically based on demand without manual intervention or capacity planning.'
           },
           'q4-2-2': {
@@ -4847,7 +4797,6 @@ Remember {{name}}, serverless and edge computing represent the future of web dep
               'Reduced latency by serving content from locations closer to users',
               'Easier development process'
             ],
-            correctAnswer: 2,
             explanation: 'Edge computing reduces latency by serving content and executing code from locations geographically closer to users, improving performance and user experience globally.'
           },
           'q4-2-3': {
@@ -4858,7 +4807,6 @@ Remember {{name}}, serverless and edge computing represent the future of web dep
               'To scale the number of replicas',
               'To monitor resource usage'
             ],
-            correctAnswer: 1,
             explanation: 'A readiness probe determines when a container is ready to accept traffic, preventing traffic from being routed to containers that are still starting up or not yet ready to handle requests.'
           },
           'q4-2-4': {
@@ -4869,7 +4817,6 @@ Remember {{name}}, serverless and edge computing represent the future of web dep
               'The total page load time',
               'The time to first byte from the server'
             ],
-            correctAnswer: 1,
             explanation: 'Largest Contentful Paint (LCP) measures the time it takes to render the largest visible content element in the viewport, which is a key indicator of perceived loading performance.'
           }
         }
@@ -5629,7 +5576,6 @@ Remember {{name}}, performance optimization is an iterative process of measureme
               'Total page load time, should be under 3 seconds',
               'Time to first paint, should be under 1 second'
             ],
-            correctAnswer: 1,
             explanation: 'Largest Contentful Paint (LCP) measures the time it takes to render the largest visible content element in the viewport. The recommended threshold is under 2.5 seconds for good user experience.'
           },
           'q4-3-2': {
@@ -5640,7 +5586,6 @@ Remember {{name}}, performance optimization is an iterative process of measureme
               'Use smaller images',
               'Disable all animations'
             ],
-            correctAnswer: 1,
             explanation: 'The most effective strategy to prevent CLS is to reserve space for dynamic content using CSS dimensions, aspect ratios, or skeleton screens, preventing unexpected layout shifts as content loads.'
           },
           'q4-3-3': {
@@ -5651,7 +5596,6 @@ Remember {{name}}, performance optimization is an iterative process of measureme
               'In-memory cache (JavaScript variables)',
               'CDN cache'
             ],
-            correctAnswer: 2,
             explanation: 'In-memory cache (JavaScript variables) provides the fastest data access as the data is already loaded in memory and doesn\'t require any network requests or storage API calls.'
           },
           'q4-3-4': {
@@ -5662,7 +5606,6 @@ Remember {{name}}, performance optimization is an iterative process of measureme
               'To make debugging easier',
               'To comply with privacy regulations'
             ],
-            correctAnswer: 1,
             explanation: 'Batching error reports reduces network overhead and prevents the error reporting system itself from impacting application performance, especially when multiple errors occur in quick succession.'
           }
         }
@@ -5916,7 +5859,6 @@ Remember {{name}}, the key to successful Figma-to-code integration is preparatio
               'Organizing components with consistent naming and proper Auto Layout',
               'Including Lorem Ipsum text'
             ],
-            correctAnswer: 2,
             explanation: 'Organizing components with consistent naming conventions and proper Auto Layout structure helps bolt.new understand design intent and generate semantic, maintainable code.'
           },
           'q5-1-2': {
@@ -5927,7 +5869,6 @@ Remember {{name}}, the key to successful Figma-to-code integration is preparatio
               'Interactive prototyping features',
               'Version control markers'
             ],
-            correctAnswer: 1,
             explanation: 'Design tokens are standardized values for colors, typography, spacing, and other design elements that ensure consistency between design and code implementation.'
           },
           'q5-1-3': {
@@ -5938,7 +5879,6 @@ Remember {{name}}, the key to successful Figma-to-code integration is preparatio
               'It improves accessibility and SEO while maintaining proper document structure',
               'It makes the code look prettier'
             ],
-            correctAnswer: 2,
             explanation: 'Semantic HTML improves accessibility for screen readers, enhances SEO by providing meaningful document structure, and makes the code more maintainable and standards-compliant.'
           },
           'q5-1-4': {
@@ -5949,7 +5889,6 @@ Remember {{name}}, the key to successful Figma-to-code integration is preparatio
               'Review and improve Figma layer organization, naming, and provide more specific prompts',
               'Use a different tool'
             ],
-            correctAnswer: 2,
             explanation: 'When design fidelity doesn\'t match, the best approach is to review Figma organization, improve layer naming and structure, and provide more specific prompts to guide the AI toward better results.'
           }
         }
@@ -6461,7 +6400,6 @@ Remember {{name}}, payment integration is about trust and security. Users trust 
               'It makes the application slower',
               'It\'s not useful for business purposes'
             ],
-            correctAnswer: 1,
             explanation: 'Storing credit card details violates PCI DSS compliance requirements and creates significant security and legal risks. Instead, use Stripe\'s secure tokenization system to handle sensitive payment data.'
           },
           'q5-2-2': {
@@ -6472,7 +6410,6 @@ Remember {{name}}, payment integration is about trust and security. Users trust 
               'To reduce payment fees',
               'To handle payment form styling'
             ],
-            correctAnswer: 1,
             explanation: 'Stripe webhooks provide real-time notifications about payment events (success, failure, disputes) allowing your application to update order status and trigger business logic immediately.'
           },
           'q5-2-3': {
@@ -6483,7 +6420,6 @@ Remember {{name}}, payment integration is about trust and security. Users trust 
               'A client-side payment form',
               'A webhook notification'
             ],
-            correctAnswer: 1,
             explanation: 'A Payment Intent is a server-side Stripe object that represents a single payment attempt and tracks its entire lifecycle from creation through completion, including handling authentication requirements.'
           },
           'q5-2-4': {
@@ -6494,7 +6430,6 @@ Remember {{name}}, payment integration is about trust and security. Users trust 
               'Sending invoices to customers',
               'Handling failed payments'
             ],
-            correctAnswer: 1,
             explanation: 'Proration is the fair billing practice of automatically adjusting charges when customers change subscription plans mid-billing cycle, ensuring they only pay for what they use.'
           }
         }
@@ -7018,7 +6953,6 @@ Remember {{name}}, version control is your safety net and collaboration superpow
               'They automatically fix merge conflicts',
               'They reduce the need for testing'
             ],
-            correctAnswer: 1,
             explanation: 'Feature branches allow developers to work on different features simultaneously without affecting the main codebase, enabling parallel development and reducing conflicts when multiple team members are working on the same project.'
           },
           'q5-3-2': {
@@ -7029,7 +6963,6 @@ Remember {{name}}, version control is your safety net and collaboration superpow
               'To manage user accounts',
               'To design user interfaces'
             ],
-            correctAnswer: 1,
             explanation: 'CI/CD (Continuous Integration/Continuous Deployment) pipelines automatically build, test, and deploy code changes, ensuring code quality and enabling rapid, reliable releases while catching issues early in the development process.'
           },
           'q5-3-3': {
@@ -7040,7 +6973,6 @@ Remember {{name}}, version control is your safety net and collaboration superpow
               'They reduce repository size',
               'They automatically merge pull requests'
             ],
-            correctAnswer: 1,
             explanation: 'Branch protection rules prevent direct pushes to important branches (like main), require pull requests and code reviews, ensure status checks pass, and maintain code quality standards before changes are merged.'
           },
           'q5-3-4': {
@@ -7051,7 +6983,6 @@ Remember {{name}}, version control is your safety net and collaboration superpow
               'The developer\'s name only',
               'Random text'
             ],
-            correctAnswer: 1,
             explanation: 'A good commit message should include a clear, descriptive summary of what changed and why, helping team members understand the purpose of the change and making it easier to track project history and debug issues.'
           }
         }
@@ -7737,7 +7668,6 @@ Remember {{name}}, advanced patterns are tools for solving complex problems. Use
               'It reduces the amount of code needed',
               'It eliminates the need for testing'
             ],
-            correctAnswer: 1,
             explanation: 'Micro-frontend architecture allows teams to develop, test, and deploy frontend modules independently, enabling better team autonomy, technology diversity, and reduced deployment risks.'
           },
           'q6-1-2': {
@@ -7748,7 +7678,6 @@ Remember {{name}}, advanced patterns are tools for solving complex problems. Use
               'To enable loose coupling between application components',
               'To simplify the user interface'
             ],
-            correctAnswer: 2,
             explanation: 'Event-driven architecture enables loose coupling between components by allowing them to communicate through events rather than direct calls, making the system more flexible, scalable, and maintainable.'
           },
           'q6-1-3': {
@@ -7759,7 +7688,6 @@ Remember {{name}}, advanced patterns are tools for solving complex problems. Use
               'When you want to cache everything permanently',
               'When you don\'t want to use caching at all'
             ],
-            correctAnswer: 1,
             explanation: 'Stale-while-revalidate serves cached content immediately for fast user experience while updating the cache in the background, providing a balance between performance and data freshness.'
           },
           'q6-1-4': {
@@ -7770,7 +7698,6 @@ Remember {{name}}, advanced patterns are tools for solving complex problems. Use
               'It improves application performance',
               'It reduces the amount of code needed'
             ],
-            correctAnswer: 1,
             explanation: 'Visual regression testing automatically detects unintended changes to the user interface by comparing screenshots across different versions, helping maintain visual consistency and catch UI bugs.'
           }
         }
@@ -8411,7 +8338,6 @@ Remember {{name}}, enterprise scale is not just about handling more users - it's
               'It requires less configuration',
               'It uses less memory'
             ],
-            correctAnswer: 1,
             explanation: 'Horizontal scaling provides unlimited scaling potential by adding more servers rather than being limited by single machine capacity, and offers better fault tolerance since failure of one server doesn\'t bring down the entire system.'
           },
           'q6-2-2': {
@@ -8422,7 +8348,6 @@ Remember {{name}}, enterprise scale is not just about handling more users - it's
               'To improve user interface design',
               'To manage database connections'
             ],
-            correctAnswer: 1,
             explanation: 'The circuit breaker pattern prevents cascading failures by monitoring service calls and stopping requests to failing services, allowing them time to recover while providing fallback responses.'
           },
           'q6-2-3': {
@@ -8433,7 +8358,6 @@ Remember {{name}}, enterprise scale is not just about handling more users - it's
               'To improve security',
               'To reduce costs'
             ],
-            correctAnswer: 1,
             explanation: 'Database sharding distributes data across multiple database instances, allowing the system to handle larger datasets and higher query volumes by parallelizing operations across multiple servers.'
           },
           'q6-2-4': {
@@ -8444,7 +8368,6 @@ Remember {{name}}, enterprise scale is not just about handling more users - it's
               'Making the user interface simpler',
               'Reducing the number of users'
             ],
-            correctAnswer: 1,
             explanation: 'Graceful degradation reduces functionality to maintain core services when system components fail, ensuring users can still access essential features even when some advanced features are unavailable.'
           }
         }
@@ -9214,7 +9137,6 @@ Remember {{name}}, future-proofing is not about predicting the future perfectly 
               'It reduces the amount of code needed',
               'It improves SEO rankings'
             ],
-            correctAnswer: 1,
             explanation: 'WebAssembly provides near-native performance for computationally intensive tasks by allowing languages like C, C++, and Rust to run in the browser with performance close to native applications.'
           },
           'q6-3-2': {
@@ -9225,7 +9147,6 @@ Remember {{name}}, future-proofing is not about predicting the future perfectly 
               'It makes the application slower but more secure',
               'It only works for image processing'
             ],
-            correctAnswer: 1,
             explanation: 'Client-side machine learning enables real-time, personalized experiences without server round-trips, reduces latency, protects user privacy by keeping data local, and reduces server computational costs.'
           },
           'q6-3-3': {
@@ -9236,7 +9157,6 @@ Remember {{name}}, future-proofing is not about predicting the future perfectly 
               'It reduces the amount of code needed',
               'It improves the user interface design'
             ],
-            correctAnswer: 1,
             explanation: 'Modular architecture allows independent updates and technology migrations of different parts of the application, making it easier to adopt new technologies, fix issues, and scale different components independently.'
           },
           'q6-3-4': {
@@ -9247,7 +9167,6 @@ Remember {{name}}, future-proofing is not about predicting the future perfectly 
               'How popular it is on social media',
               'Whether it\'s used by large companies'
             ],
-            correctAnswer: 1,
             explanation: 'The primary consideration should be whether the technology solves real problems and fits the project requirements, team capabilities, and long-term maintenance needs, rather than just novelty or popularity.'
           }
         }
@@ -9394,11 +9313,6 @@ Remember {{name}}, future-proofing is not about predicting the future perfectly 
 
     // Language Selector
     languageSelector: {
-      selectLanguage: 'Sprache auswählen'
-    },
-
-    // Language Selector
-    languageSelector: {
       selectLanguage: 'Seleccionar Idioma'
     },
 
@@ -9436,8 +9350,6 @@ Remember {{name}}, future-proofing is not about predicting the future perfectly 
         totalXP: 'XP Total',
         badgesEarned: 'Insignias Ganadas',
         progress: 'Progreso',
-        learningStreak: 'Lernstreak',
-        days: 'Tage',
         learningStreak: 'Racha de Aprendizaje',
         days: 'días'
       },
@@ -9624,7 +9536,6 @@ Para maximizar tu aprendizaje:
               'Solo funciona con frameworks específicos',
               'No permite desarrollo full-stack'
             ],
-            correctAnswer: 1,
             explanation: 'bolt.new es único porque es un agente de desarrollo web con IA integrada completamente en el navegador, sin necesidad de configuración local, y que permite desarrollo full-stack mediante lenguaje natural.'
           },
           'q1-1-2': {
@@ -9635,7 +9546,6 @@ Para maximizar tu aprendizaje:
               'Más de 1 millón de sitios web',
               '50,000 sitios web'
             ],
-            correctAnswer: 2,
             explanation: 'En solo cinco meses, bolt.new logró el hito de más de 1 millón de sitios web construidos y desplegados, demostrando su adopción masiva y efectividad.'
           },
           'q1-1-3': {
@@ -9646,7 +9556,6 @@ Para maximizar tu aprendizaje:
               'Hasta 500 tokens diarios para experimentación',
               'Acceso completo por 30 días'
             ],
-            correctAnswer: 2,
             explanation: 'El tier gratuito de bolt.new incluye hasta 500 tokens diarios, lo que permite experimentación y aprendizaje antes de upgradear a planes pagos.'
           },
           'q1-1-4': {
@@ -9657,7 +9566,6 @@ Para maximizar tu aprendizaje:
               'Supabase para bases de datos',
               'Netlify para despliegue'
             ],
-            correctAnswer: 0,
             explanation: 'bolt.new se integra nativamente con Figma, Supabase, Netlify, GitHub, Expo y Stripe, pero no tiene integración directa con WordPress.'
           },
           'q1-1-5': {
@@ -9668,7 +9576,6 @@ Para maximizar tu aprendizaje:
               'Virtual machines remotas',
               'Codespaces de GitHub'
             ],
-            correctAnswer: 0,
             explanation: 'bolt.new está construido sobre StackBlitz WebContainers, que permite ejecución segura de Node.js y un sistema de archivos virtual completo directamente en el navegador.'
           }
         }
@@ -9926,7 +9833,6 @@ Antes de continuar con la siguiente lección, crea prompts para:
               'El método RAPID',
               'El método SMART'
             ],
-            correctAnswer: 1,
             explanation: 'El método CLEAR (Context, Learning, Examples, Architecture, Requirements) es el framework recomendado para crear prompts efectivos que generen código de alta calidad.'
           },
           'q1-2-2': {
@@ -9937,7 +9843,6 @@ Antes de continuar con la siguiente lección, crea prompts para:
               'Context (Contexto)',
               'Create (Crear)'
             ],
-            correctAnswer: 2,
             explanation: 'La "C" en CLEAR significa Context (Contexto), que involucra proporcionar información sobre el tipo de aplicación, tecnologías, audiencia y restricciones.'
           },
           'q1-2-3': {
@@ -9948,7 +9853,6 @@ Antes de continuar con la siguiente lección, crea prompts para:
               'Ser conciso pero completo, usando referencias a contexto previo',
               'Usar solo prompts de una palabra'
             ],
-            correctAnswer: 2,
             explanation: 'Para optimizar tokens, es mejor ser conciso pero completo, usar referencias al contexto anterior en lugar de repetir información, y priorizar la información más importante.'
           },
           'q1-2-4': {
@@ -9959,7 +9863,6 @@ Antes de continuar con la siguiente lección, crea prompts para:
               'Únicamente el diseño visual',
               'Solo el código CSS'
             ],
-            correctAnswer: 1,
             explanation: 'Un prompt efectivo para UI debe incluir función principal, props esperadas, estado interno, estilos, interacciones y casos edge para obtener un componente completo y funcional.'
           },
           'q1-2-5': {
@@ -9970,7 +9873,6 @@ Antes de continuar con la siguiente lección, crea prompts para:
               'Analizar ambigüedades y hacer ajustes iterativos graduales',
               'Usar el mismo prompt repetidamente'
             ],
-            correctAnswer: 2,
             explanation: 'La mejor práctica es analizar qué podría ser ambiguo, agregar especificidad gradualmente, y hacer iteraciones pequeñas en lugar de reescrituras completas.'
           }
         }
@@ -10287,7 +10189,6 @@ Antes de continuar, {{name}}, practica estos ejercicios:
               'Ctrl/Cmd + G',
               'Ctrl/Cmd + S'
             ],
-            correctAnswer: 1,
             explanation: 'Ctrl/Cmd + P abre la búsqueda rápida de archivos, permitiendo navegar instantáneamente a cualquier archivo del proyecto por nombre.'
           },
           'q1-3-2': {
@@ -10298,7 +10199,6 @@ Antes de continuar, {{name}}, practica estos ejercicios:
               'Preview para visualización en tiempo real',
               'Database para gestión directa de SQL'
             ],
-            correctAnswer: 3,
             explanation: 'bolt.new tiene tres paneles principales: Chat IA, Explorer de archivos y Preview. La gestión de base de datos se hace a través de integraciones como Supabase, no un panel dedicado.'
           },
           'q1-3-3': {
@@ -10309,7 +10209,6 @@ Antes de continuar, {{name}}, practica estos ejercicios:
               'Únicamente previsualizar imágenes',
               'Solo mostrar errores de compilación'
             ],
-            correctAnswer: 1,
             explanation: 'El panel de Preview ejecuta la aplicación en tiempo real con hot reload, simulación multi-dispositivo, console integrada, network monitor y herramientas de debugging completas.'
           },
           'q1-3-4': {
@@ -10320,7 +10219,6 @@ Antes de continuar, {{name}}, practica estos ejercicios:
               'Se reinicia con cada prompt',
               'Solo funciona con prompts en inglés'
             ],
-            correctAnswer: 1,
             explanation: 'El Chat IA mantiene contexto completo del proyecto, historial persistente de conversaciones, y entiende el estado actual del código para proporcionar respuestas contextualmente relevantes.'
           },
           'q1-3-5': {
@@ -10331,7 +10229,6 @@ Antes de continuar, {{name}}, practica estos ejercicios:
               'Requiere configuración compleja de servidores',
               'Solo funciona con GitHub Pages'
             ],
-            correctAnswer: 1,
             explanation: 'bolt.new ofrece un pipeline completo: desarrollo con hot reload, testing en múltiples dispositivos, staging automático, review con links compartibles, y deployment a producción con un solo clic.'
           }
         }
@@ -10601,7 +10498,6 @@ Construye un dashboard que muestre:
               'Es open-source y usa PostgreSQL real con APIs automáticas',
               'No requiere configuración alguna'
             ],
-            correctAnswer: 2,
             explanation: 'Supabase destaca por ser open-source, usar PostgreSQL completo (no una base de datos limitada), generar APIs RESTful automáticamente desde el esquema, y ofrecer características avanzadas como RLS y funciones.'
           },
           'q2-1-2': {
@@ -10612,7 +10508,6 @@ Construye un dashboard que muestre:
               'CREATE TABLE orders (user_id FOREIGN KEY users(id));',
               'CREATE TABLE orders (user_id LINK TO users.id);'
             ],
-            correctAnswer: 1,
             explanation: 'La sintaxis correcta incluye el tipo de dato (UUID) seguido de REFERENCES tabla(columna). Esto crea una foreign key que mantiene integridad referencial.'
           },
           'q2-1-3': {
@@ -10623,7 +10518,6 @@ Construye un dashboard que muestre:
               'Solo actualizar en el servidor',
               'Actualizar UI y servidor simultáneamente sin validación'
             ],
-            correctAnswer: 1,
             explanation: 'Las actualizaciones optimistas mejoran UX al actualizar la UI inmediatamente, luego enviar al servidor, y revertir localmente solo si hay error. Esto hace que la app se sienta más rápida.'
           },
           'q2-1-4': {
@@ -10634,7 +10528,6 @@ Construye un dashboard que muestre:
               'Reemplazar las APIs REST',
               'Únicamente para logging de errores'
             ],
-            correctAnswer: 1,
             explanation: 'Los triggers son funciones que se ejecutan automáticamente en respuesta a eventos de la base de datos (INSERT, UPDATE, DELETE), perfectos para automatizar tareas como actualizar updated_at o generar códigos únicos.'
           },
           'q2-1-5': {
@@ -10645,7 +10538,6 @@ Construye un dashboard que muestre:
               'Soft delete usa menos espacio en disco',
               'No hay diferencia, son sinónimos'
             ],
-            correctAnswer: 1,
             explanation: 'Soft delete marca registros como eliminados (ej: is_active=false) sin borrarlos físicamente, permitiendo recuperación y auditoría. Hard delete los elimina permanentemente de la base de datos.'
           }
         }
