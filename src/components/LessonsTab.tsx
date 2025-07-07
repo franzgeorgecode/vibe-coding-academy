@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, CheckCircle, Lock, Award } from 'lucide-react';
-import { useTranslation } from '../contexts/LanguageContext'; // Added
+import { useTranslation } from '../contexts/LanguageContext';
+import { useUserProgressStore } from '../stores/userProgressStore';
 
 // Updated LESSON_STRUCTURE with keys for translation
 const LESSON_STRUCTURE = [
@@ -80,10 +81,19 @@ interface LessonsTabProps {
 
 export default function LessonsTab({ userProgress, onProgressUpdate }: LessonsTabProps) {
   const navigate = useNavigate();
-  const { t } = useTranslation(); // Added
+  const { t } = useTranslation();
+  const { completedLessons } = useUserProgressStore();
 
   const getProgressForLesson = (lessonId: string) => {
-    return userProgress.find(p => p.lesson_id === lessonId);
+    // Try to get from props first (database), then fall back to store
+    const dbProgress = userProgress.find(p => p.lesson_id === lessonId);
+    if (dbProgress) {
+      return dbProgress;
+    }
+    
+    // Check if it's in the store's completed lessons
+    const isCompletedInStore = completedLessons.includes(lessonId);
+    return isCompletedInStore ? { lesson_id: lessonId, completed: true } : null;
   };
 
   // lessonIndex is 0-based index within the level's lessons array
@@ -127,7 +137,7 @@ export default function LessonsTab({ userProgress, onProgressUpdate }: LessonsTa
       {LESSON_STRUCTURE.map((level) => {
         const completedCount = level.lessons.filter(lesson => {
           const progress = getProgressForLesson(lesson.id);
-          return progress?.completed;
+          return progress?.completed || completedLessons.includes(lesson.id);
         }).length;
 
         const progressPercentage = level.lessons.length > 0
@@ -169,7 +179,7 @@ export default function LessonsTab({ userProgress, onProgressUpdate }: LessonsTa
                   const lessonProgress = getProgressForLesson(lesson.id);
                   // Use lesson.orderInLevel for isLessonUnlocked, which is 1-based
                   const isUnlocked = isLessonUnlocked(level.level, lesson.orderInLevel);
-                  const isCompleted = lessonProgress?.completed || false;
+                  const isCompleted = lessonProgress?.completed || completedLessons.includes(lesson.id);
                   const score = lessonProgress?.quiz_score || 0;
 
                   return (

@@ -31,6 +31,8 @@ interface UserProgressState extends UserProgress {
   incrementStreak: () => void;
   incrementHintsUsed: () => void;
   syncWithDatabase: () => Promise<void>;
+  loadFromDatabase: () => Promise<void>;
+  reset: () => void;
 }
 
 export const useUserProgressStore = create<UserProgressState>()(
@@ -102,28 +104,124 @@ export const useUserProgressStore = create<UserProgressState>()(
       incrementHintsUsed: () => set((state) => ({ hintsUsed: state.hintsUsed + 1 })),
       
       syncWithDatabase: async () => {
-        const { user } = await supabase.auth.getUser();
+        const { data: { user } } = await supabase.auth.getUser();
         
         if (user) {
           const state = get();
           
-          // Update user profile with current progress
-          await supabase
-            .from('users')
-            .upsert({
-              id: user.id,
-              total_xp: state.xp,
-              current_level: state.level,
-              streak_days: state.streak,
-              last_activity: state.lastActive
-            }, { onConflict: 'id' });
-            
-          // We could also sync completed lessons, badges, etc.
+          try {
+            // Update user profile with current progress
+            const { error: userUpdateError } = await supabase
+              .from('users')
+              .upsert({
+                id: user.id,
+                total_xp: state.xp,
+                current_level: state.level,
+                streak_days: state.streak,
+                last_activity: state.lastActive
+              }, { onConflict: 'id' });
+              
+            if (userUpdateError) {
+              console.error('[UserProgressStore] Error updating user profile:', userUpdateError);
+            } else {
+              console.log('[UserProgressStore] Successfully synced with database');
+            }
+          } catch (error) {
+            console.error('[UserProgressStore] Error in syncWithDatabase:', error);
+          }
         }
+      },
+      
+      loadFromDatabase: async () => {
+        const { data: { user } } = await supabase.auth.getUser();
+        
+        if (user) {
+          try {
+            // Load user profile data
+            const { data: userProfile, error: userError } = await supabase
+              .from('users')
+              .select('*')
+              .eq('id', user.id)
+              .single();
+              
+            if (userProfile && !userError) {
+              set({
+                xp: userProfile.total_xp || 0,
+                level: userProfile.current_level || 1,
+                streak: userProfile.streak_days || 0,
+                lastActive: userProfile.last_activity
+              });
+            }
+            
+            // Load completed lessons
+            const { data: progressData, error: progressError } = await supabase
+              .from('user_progress')
+              .select('lesson_id')
+              .eq('user_id', user.id)
+              .eq('completed', true);
+              
+            if (progressData && !progressError) {
+              const completedLessonIds = progressData.map(p => p.lesson_id);
+              set({ completedLessons: completedLessonIds });
+            }
+            
+            // Load badges
+            const { data: badgesData, error: badgesError } = await supabase
+              .from('user_badges')
+              .select(`
+                badge_id,
+                earned_at,
+                badges(
+                  id,
+                  name,
+                  description,
+                  icon,
+                  rarity
+                )
+              `)
+              .eq('user_id', user.id);
+              
+            if (badgesData && !badgesError) {
+              const loadedBadges = badgesData.map(ub => ({
+                id: ub.badge_id,
+                name: ub.badges.name,
+                description: ub.badges.description,
+                icon: ub.badges.icon,
+                rarity: ub.badges.rarity,
+                unlockedAt: new Date(ub.earned_at)
+              }));
+              set({ badges: loadedBadges });
+            }
+            
+            console.log('[UserProgressStore] Successfully loaded from database');
+          } catch (error) {
+            console.error('[UserProgressStore] Error loading from database:', error);
+          }
+        }
+      },
+      
+      reset: () => {
+        set({
+          xp: 0,
+          level: 1,
+          currentLessonId: null,
+          completedLessons: [],
+          badges: [],
+          streak: 0,
+          lastActive: null,
+          hintsUsed: 0,
+          isLoading: false
+        });
       }
     }),
     {
       name: 'user-progress-storage',
+      onRehydrateStorage: () => (state) => {
+        // Auto-sync with database when store is rehydrated
+        if (state) {
+          state.loadFromDatabase();
+        }
+      }
     }
   )
 );

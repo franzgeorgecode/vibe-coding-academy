@@ -4,6 +4,8 @@ import { ArrowLeft, ArrowRight, Award, BookOpen } from 'lucide-react';
 import { useUser } from '@clerk/clerk-react';
 import { lessonsData } from '../data/lessonsData';
 import { supabase } from '../lib/supabase';
+import { useUserProgressStore } from '../stores/userProgressStore';
+import { lessonsData } from '../data/lessonsData';
 import { useTranslation } from '../contexts/LanguageContext';
 import Quiz from './Quiz';
 import SrCodeChat from './SrCodeChat';
@@ -29,6 +31,7 @@ export default function LessonView() {
   const [showQuiz, setShowQuiz] = useState(false);
   const [lessonCompleted, setLessonCompleted] = useState(false);
   const [userProgress, setUserProgress] = useState<UserProgress | null>(null);
+  const { completeLesson, incrementStreak, syncWithDatabase, addBadge } = useUserProgressStore();
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   const currentLesson = lessonId ? lessonsData[lessonId] : null;
@@ -163,10 +166,40 @@ export default function LessonView() {
       if (isCompleted) {
         console.log('[LessonView] Quiz passed! Score:', quizScore);
         
+        // Update the Zustand store with the completion
+        const xpReward = currentLesson.badgeXp || 10;
+        completeLesson(currentLesson.id, xpReward);
+        incrementStreak();
+        
+        // Award badge for lesson completion
+        await awardLessonBadge(currentLesson.id, user.id);
+        
+        // Sync with database
+        try {
+          await syncWithDatabase();
+          console.log('[LessonView] Progress synced with database');
+        } catch (syncError) {
+          console.error('[LessonView] Failed to sync with database:', syncError);
+        }
+        
         // Navigate to next lesson if available
         const nextLessonId = getNextLessonId(currentLesson);
         if (nextLessonId) {
           console.log(`Next lesson available: ${nextLessonId}. User can continue.`);
+          
+          // Show success message and option to continue
+          const nextLessonTitle = t(`lessons.lessons.${nextLessonId}.title`, { defaultValue: 'the next lesson' });
+          const currentLessonTranslatedTitle = translatedLesson.title;
+          
+          setTimeout(() => {
+            const continueMessage = t('lessons.continueNext', {
+              currentLessonTitle: currentLessonTranslatedTitle,
+              nextLessonTitle: nextLessonTitle
+            });
+            if (confirm(continueMessage)) {
+              navigate(`/lesson/${nextLessonId}`);
+            }
+          }, 1000);
         } else {
           console.log('This was the last lesson in sequence. No next lesson available.');
         }
@@ -178,12 +211,66 @@ export default function LessonView() {
       window.dispatchEvent(new CustomEvent('progressUpdated', {
         detail: { lessonId: currentLesson.id, completed: isCompleted, score: quizScore }
       }));
+      
+      // Force a page refresh for Dashboard to update
+      window.dispatchEvent(new CustomEvent('forceProgressRefresh'));
 
     } catch (error) {
       console.error('Error in markLessonComplete:', error);
       // Don't show error to user, just log it
       console.log('[LessonView] Continuing with local completion despite error');
       setLessonCompleted(quizScore >= 85);
+    }
+  };
+  
+  const awardLessonBadge = async (lessonId: string, userId: string) => {
+    try {
+      // Create badge if it doesn't exist
+      const lesson = lessonsData[lessonId];
+      if (!lesson) return;
+      
+      const badgeData = {
+        id: lessonId,
+        name: translatedLesson.badgeName || `Lesson ${lesson.level}-${lesson.orderInLevel} Badge`,
+        description: translatedLesson.objective || 'Lesson completed successfully',
+        icon: '🏆',
+        xp_reward: lesson.badgeXp || 10,
+        rarity: 'common' as const
+      };
+      
+      // Ensure badge exists in badges table
+      const { error: badgeUpsertError } = await supabase
+        .from('badges')
+        .upsert(badgeData, { onConflict: 'id' });
+        
+      if (badgeUpsertError) {
+        console.error('[LessonView] Error creating badge:', badgeUpsertError);
+      }
+      
+      // Award badge to user
+      const { error: userBadgeError } = await supabase
+        .from('user_badges')
+        .upsert({
+          user_id: userId,
+          badge_id: lessonId,
+          earned_at: new Date().toISOString()
+        }, { onConflict: 'user_id,badge_id' });
+        
+      if (userBadgeError) {
+        console.error('[LessonView] Error awarding badge to user:', userBadgeError);
+      } else {
+        console.log('[LessonView] Badge awarded successfully:', lessonId);
+        // Add badge to store
+        addBadge({
+          id: lessonId,
+          name: badgeData.name,
+          description: badgeData.description,
+          icon: badgeData.icon,
+          rarity: badgeData.rarity
+        });
+      }
+    } catch (error) {
+      console.error('[LessonView] Error in badge awarding process:', error);
     }
   };
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BookOpen, Award, User, LogOut, Zap, Target, TrendingUp, Clock } from 'lucide-react';
 import { useAuth, useUser } from '@clerk/clerk-react';
 import { supabase } from '../lib/supabase';
+import { useUserProgressStore } from '../stores/userProgressStore';
 import { useTranslation } from '../contexts/LanguageContext';
 import { lessonsData } from '../data/lessonsData';
 import LessonsTab from './LessonsTab';
@@ -50,6 +51,14 @@ export default function Dashboard() {
   const [streakDays, setStreakDays] = useState(0);
   const { signOut } = useAuth();
   const { user } = useUser();
+  const { 
+    xp, 
+    level, 
+    completedLessons, 
+    badges, 
+    streak, 
+    syncWithDatabase 
+  } = useUserProgressStore();
 
   useEffect(() => {
     fetchUserData();
@@ -60,6 +69,15 @@ export default function Dashboard() {
       fetchUserData();
     };
     window.addEventListener('progressUpdated', handleProgressUpdate as EventListener);
+    
+    // Listener for forced refresh
+    const handleForceRefresh = () => {
+      console.log('[Dashboard] Force refresh requested');
+      syncWithDatabase().then(() => {
+        fetchUserData();
+      });
+    };
+    window.addEventListener('forceProgressRefresh', handleForceRefresh);
 
     // Supabase Real-time Subscriptions
     console.log('[Dashboard] Setting up Supabase real-time subscriptions.');
@@ -104,6 +122,7 @@ export default function Dashboard() {
     return () => {
       console.log('[Dashboard] Cleaning up real-time subscriptions and event listener.');
       window.removeEventListener('progressUpdated', handleProgressUpdate);
+      window.removeEventListener('forceProgressRefresh', handleForceRefresh);
       progressSubscription.unsubscribe();
       badgesSubscription.unsubscribe();
     };
@@ -198,9 +217,12 @@ export default function Dashboard() {
   };
 
   const totalLessonsCount = Object.keys(lessonsData).length;
-  const totalXP = userBadges.reduce((sum, badge) => sum + (badge.badge_xp || 0), 0);
-  const completedLessons = userProgress.filter(p => p.completed).length;
-  const progressPercentage = totalLessonsCount > 0 ? Math.round((completedLessons / totalLessonsCount) * 100) : 0;
+  // Use store data as primary source, fall back to database data
+  const totalXP = xp > 0 ? xp : userBadges.reduce((sum, badge) => sum + (badge.badge_xp || 0), 0);
+  const completedLessonsCount = completedLessons.length > 0 ? completedLessons.length : userProgress.filter(p => p.completed).length;
+  const progressPercentage = totalLessonsCount > 0 ? Math.round((completedLessonsCount / totalLessonsCount) * 100) : 0;
+  const currentStreak = streak > 0 ? streak : streakDays;
+  const totalBadges = badges.length > 0 ? badges.length : userBadges.length;
 
   if (loading) {
     console.log('[Dashboard] Render: Displaying loading indicator.');
@@ -250,7 +272,7 @@ export default function Dashboard() {
                 {t('dashboard.stats.completedLessons')}
               </p>
               <p className="text-2xl font-bold text-gray-900">
-                {completedLessons}/{totalLessonsCount}
+                {completedLessonsCount}/{totalLessonsCount}
               </p>
             </div>
           </div>
@@ -285,7 +307,7 @@ export default function Dashboard() {
               <p className="text-sm font-medium text-gray-600">
                 {t('dashboard.stats.badgesEarned')}
               </p>
-              <p className="text-2xl font-bold text-gray-900">{userBadges.length}</p>
+              <p className="text-2xl font-bold text-gray-900">{totalBadges}</p>
             </div>
           </div>
         </motion.div>
@@ -328,7 +350,7 @@ export default function Dashboard() {
               <p className="text-sm font-medium text-orange-100">
                 {t('dashboard.stats.learningStreak')}
               </p>
-              <p className="text-2xl font-bold">{streakDays} {t('dashboard.stats.days')}</p>
+              <p className="text-2xl font-bold">{currentStreak} {t('dashboard.stats.days')}</p>
             </div>
           </div>
         </motion.div>
