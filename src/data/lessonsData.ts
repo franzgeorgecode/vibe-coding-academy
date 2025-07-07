@@ -141,10 +141,10 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 3,
     numberOfLearningObjectives: 4,
     quizQuestions: [
-      { id: "q3-3-1", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q3-3-2", correctAnswer: 2, numberOfOptions: 4 },
-      { id: "q3-3-3", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q3-3-4", correctAnswer: 2, numberOfOptions: 4 }
+      { id: "q3-3-1", correctAnswer: 1, numberOfOptions: 4 }, // Implementing multiple layers of security controls - CORRECTO
+      { id: "q3-3-2", correctAnswer: 1, numberOfOptions: 4 }, // The right to have personal data deleted - CORREGIDO
+      { id: "q3-3-3", correctAnswer: 1, numberOfOptions: 4 }, // It violates PCI DSS compliance - CORRECTO
+      { id: "q3-3-4", correctAnswer: 2, numberOfOptions: 4 }  // To provide compliance evidence - CORRECTO
     ],
     badgeXp: 50,
     readingTime: "10-15"
@@ -169,10 +169,10 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 2,
     numberOfLearningObjectives: 4,
     quizQuestions: [
-      { id: "q4-2-1", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q4-2-2", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q4-2-3", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q4-2-4", correctAnswer: 1, numberOfOptions: 4 }
+      { id: "q4-2-1", correctAnswer: 1, numberOfOptions: 4 }, // They automatically scale to zero - CORRECTO
+      { id: "q4-2-2", correctAnswer: 2, numberOfOptions: 4 }, // Reduced latency by serving content closer - CORREGIDO
+      { id: "q4-2-3", correctAnswer: 1, numberOfOptions: 4 }, // To determine when container is ready - CORRECTO
+      { id: "q4-2-4", correctAnswer: 1, numberOfOptions: 4 }  // The time to render largest content element - CORRECTO
     ],
     badgeXp: 60,
     readingTime: "8-12"
@@ -183,10 +183,10 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 3,
     numberOfLearningObjectives: 4,
     quizQuestions: [
-      { id: "q4-3-1", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q4-3-2", correctAnswer: 2, numberOfOptions: 4 },
-      { id: "q4-3-3", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q4-3-4", correctAnswer: 1, numberOfOptions: 4 }
+      { id: "q4-3-1", correctAnswer: 1, numberOfOptions: 4 }, // Time to render largest element, under 2.5s - CORRECTO
+      { id: "q4-3-2", correctAnswer: 1, numberOfOptions: 4 }, // Reserve space for dynamic content - CORREGIDO
+      { id: "q4-3-3", correctAnswer: 2, numberOfOptions: 4 }, // In-memory cache provides fastest access - CORREGIDO
+      { id: "q4-3-4", correctAnswer: 1, numberOfOptions: 4 }  // To reduce network overhead - CORRECTO
     ],
     badgeXp: 70,
     readingTime: "10-15"
@@ -197,10 +197,10 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 1,
     numberOfLearningObjectives: 4,
     quizQuestions: [
-      { id: "q5-1-1", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q5-1-2", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q5-1-3", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q5-1-4", correctAnswer: 1, numberOfOptions: 4 }
+      { id: "q5-1-1", correctAnswer: 2, numberOfOptions: 4 }, // Organizing components with consistent naming - CORREGIDO
+      { id: "q5-1-2", correctAnswer: 1, numberOfOptions: 4 }, // Standardized values for design elements - CORRECTO
+      { id: "q5-1-3", correctAnswer: 2, numberOfOptions: 4 }, // It improves accessibility and SEO - CORREGIDO
+      { id: "q5-1-4", correctAnswer: 2, numberOfOptions: 4 }  // Review and improve Figma organization - CORREGIDO
     ],
     badgeXp: 65,
     readingTime: "10-15"
@@ -211,10 +211,10 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 2,
     numberOfLearningObjectives: 4,
     quizQuestions: [
-      { id: "q5-2-1", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q5-2-2", correctAnswer: 2, numberOfOptions: 4 },
-      { id: "q5-2-3", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q5-2-4", correctAnswer: 1, numberOfOptions: 4 }
+      { id: "q5-2-1", correctAnswer: 1, numberOfOptions: 4 }, // It violates PCI DSS compliance - CORRECTO
+      { id: "q5-2-2", correctAnswer: 1, numberOfOptions: 4 }, // To receive real-time notifications - CORREGIDO
+      { id: "q5-2-3", correctAnswer: 1, numberOfOptions: 4 }, // A server-side object that represents payment - CORRECTO
+      { id: "q5-2-4", correctAnswer: 1, numberOfOptions: 4 }  // Automatically adjusting billing amounts - CORRECTO
     ],
     badgeXp: 75,
     readingTime: "10-15"
@@ -239,10 +239,10 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 1,
     numberOfLearningObjectives: 4,
     quizQuestions: [
-      { id: "q6-1-1", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q6-1-2", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q6-1-3", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q6-1-4", correctAnswer: 1, numberOfOptions: 4 }
+      { id: "q6-1-1", correctAnswer: 1, numberOfOptions: 4 }, // It allows independent development - CORRECTO
+      { id: "q6-1-2", correctAnswer: 2, numberOfOptions: 4 }, // To enable loose coupling between components - CORREGIDO
+      { id: "q6-1-3", correctAnswer: 1, numberOfOptions: 4 }, // Serve cached content quickly while updating - CORRECTO
+      { id: "q6-1-4", correctAnswer: 1, numberOfOptions: 4 }  // It automatically detects unintended UI changes - CORRECTO
     ],
     badgeXp: 100,
     readingTime: "15-20"
@@ -253,7 +253,7 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 2,
     numberOfLearningObjectives: 4,
     quizQuestions: [
-      { id: "q6-2-1", correctAnswer: 0, numberOfOptions: 4 }, // Note: correctAnswer was 0 in original data for this one.
+      { id: "q6-2-1", correctAnswer: 1, numberOfOptions: 4 }, // It provides unlimited scaling potential - CORREGIDO
       { id: "q6-2-2", correctAnswer: 1, numberOfOptions: 4 },
       { id: "q6-2-3", correctAnswer: 1, numberOfOptions: 4 },
       { id: "q6-2-4", correctAnswer: 1, numberOfOptions: 4 }
