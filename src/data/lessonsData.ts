@@ -42,11 +42,11 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 2,
     numberOfLearningObjectives: 5,
     quizQuestions: [
-      { id: "q1-2-1", correctAnswer: 1, numberOfOptions: 4 }, // Context - CORRECTO
-      { id: "q1-2-2", correctAnswer: 1, numberOfOptions: 4 }, // Iterative development - CORREGIDO
-      { id: "q1-2-3", correctAnswer: 2, numberOfOptions: 4 }, // Describe visual direction - CORREGIDO
-      { id: "q1-2-4", correctAnswer: 2, numberOfOptions: 4 }, // Asking for vague generic solutions - CORRECTO
-      { id: "q1-2-5", correctAnswer: 1, numberOfOptions: 4 }  // To specify technical stack - CORREGIDO
+      { id: "q1-2-1", correctAnswer: 1, numberOfOptions: 4 }, // El método CLEAR - CORRECTO
+      { id: "q1-2-2", correctAnswer: 2, numberOfOptions: 4 }, // Context (Contexto) - CORREGIDO PARA ESPAÑOL
+      { id: "q1-2-3", correctAnswer: 2, numberOfOptions: 4 }, // Ser conciso pero completo - CORRECTO
+      { id: "q1-2-4", correctAnswer: 1, numberOfOptions: 4 }, // Función principal, props, estado - CORREGIDO PARA ESPAÑOL
+      { id: "q1-2-5", correctAnswer: 2, numberOfOptions: 4 }  // Analizar ambigüedades y ajustes iterativos - CORREGIDO PARA ESPAÑOL
     ],
     badgeXp: 20,
     readingTime: "10-15"
