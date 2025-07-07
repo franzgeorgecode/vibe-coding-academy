@@ -10057,29 +10057,10 @@ El panel central muestra tu proyecto con navegación inteligente:
 {{name}}, bolt.new sugiere estructura basada en mejores prácticas:
 
 #### Frontend (React/Vue/Angular):
-```
-src/
-├── components/     # Componentes reutilizables
-├── pages/         # Páginas/rutas principales
-├── hooks/         # Custom hooks
-├── contexts/      # React contexts
-├── services/      # APIs y servicios
-├── utils/         # Funciones auxiliares
-├── types/         # TypeScript definitions
-└── assets/        # Recursos estáticos
-```
+**src/** - Componentes reutilizables, páginas principales, custom hooks, React contexts, APIs y servicios, funciones auxiliares, TypeScript definitions, recursos estáticos
 
 #### Backend (Node.js/Express):
-```
-src/
-├── controllers/   # Lógica de endpoints
-├── models/        # Modelos de datos
-├── middleware/    # Middleware personalizado
-├── routes/        # Definición de rutas
-├── services/      # Lógica de negocio
-├── config/        # Configuraciones
-└── utils/         # Utilidades
-```
+**src/** - Lógica de endpoints (controllers), modelos de datos, middleware personalizado, definición de rutas, lógica de negocio (services), configuraciones, utilidades
 
 ## Panel de Previsualización: Feedback Instantáneo
 
@@ -10134,24 +10115,24 @@ Prueba tu aplicación en diferentes pantallas:
 ### ⚡ Shortcuts de Teclado Esenciales
 
 #### Navegación:
-- `Ctrl/Cmd + P`: Búsqueda rápida de archivos
-- `Ctrl/Cmd + Shift + P`: Paleta de comandos
-- `Ctrl/Cmd + B`: Toggle sidebar
-- `Ctrl/Cmd + \\`: Toggle panel
-- `F11`: Modo pantalla completa
+- **Ctrl/Cmd + P**: Búsqueda rápida de archivos
+- **Ctrl/Cmd + Shift + P**: Paleta de comandos
+- **Ctrl/Cmd + B**: Toggle sidebar
+- **Ctrl/Cmd + \\**: Toggle panel
+- **F11**: Modo pantalla completa
 
 #### Edición:
-- `Ctrl/Cmd + /`: Comentar/descomentar
-- `Alt + ↑/↓`: Mover líneas
-- `Ctrl/Cmd + D`: Selección múltiple
-- `Ctrl/Cmd + F`: Buscar en archivo
-- `Ctrl/Cmd + H`: Buscar y reemplazar
+- **Ctrl/Cmd + /**: Comentar/descomentar
+- **Alt + ↑/↓**: Mover líneas
+- **Ctrl/Cmd + D**: Selección múltiple
+- **Ctrl/Cmd + F**: Buscar en archivo
+- **Ctrl/Cmd + H**: Buscar y reemplazar
 
 #### Chat & IA:
-- `Enter`: Enviar prompt
-- `Shift + Enter`: Nueva línea en prompt
-- `↑/↓`: Navegar historial de prompts
-- `Ctrl/Cmd + K`: Focus en chat input
+- **Enter**: Enviar prompt
+- **Shift + Enter**: Nueva línea en prompt
+- **↑/↓**: Navegar historial de prompts
+- **Ctrl/Cmd + K**: Focus en chat input
 
 ### 🎨 Personalización del Workspace
 
@@ -10186,13 +10167,7 @@ Prueba tu aplicación en diferentes pantallas:
 ### 🌐 Servicios en la Nube
 
 #### Supabase Integration:
-```javascript
-// Configuración automática
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_ANON_KEY
-)
-```
+**Configuración automática de Supabase:** createClient con variables de entorno
 
 #### Netlify Deployment:
 - **Auto-deploy**: Push automático a producción
@@ -10367,7 +10342,7 @@ Antes de continuar, {{name}}, practica estos ejercicios:
       'lesson-2-1': {
         title: 'Fundamentos de Supabase: Tu Backend en la Nube',
         objective: 'Domina Supabase como backend-as-a-service para crear aplicaciones escalables con bases de datos PostgreSQL avanzadas',
-        content: `# Supabase: El Backend Completo para bolt.new
+        content: \`# Supabase: El Backend Completo para bolt.new
 
 ¡Bienvenido al Nivel 2, {{name}}! Ahora que dominas los fundamentos de bolt.new, es momento de construir el cerebro de tus aplicaciones: **el backend**. Supabase será tu compañero perfecto para crear bases de datos robustas, APIs automáticas y autenticación segura.
 
@@ -10394,38 +10369,13 @@ La integración entre bolt.new y Supabase es **perfecta** porque:
 
 ### 🏗️ Componentes Principales
 
-```
-┌─────────────────────────────────────────────┐
-│                SUPABASE                     │
-├─────────────────────────────────────────────┤
-│ 🗄️  PostgreSQL Database                    │
-│   ├── Tables & Relations                   │
-│   ├── Views & Functions                    │
-│   ├── Indexes & Constraints                │
-│   └── Row Level Security (RLS)             │
-├─────────────────────────────────────────────┤
-│ 🔌  Auto-Generated APIs                    │
-│   ├── REST API (GET, POST, PUT, DELETE)    │
-│   ├── GraphQL API (optional)               │
-│   └── Real-time WebSockets                 │
-├─────────────────────────────────────────────┤
-│ 🔐  Authentication & Authorization         │
-│   ├── Email/Password                       │
-│   ├── OAuth (Google, GitHub, etc.)         │
-│   ├── Magic Links                          │
-│   └── Custom JWT                           │
-├─────────────────────────────────────────────┤
-│ 📁  Storage & Files                        │
-│   ├── Buckets & Policies                   │
-│   ├── Image Transformations                │
-│   └── CDN Global                           │
-├─────────────────────────────────────────────┤
-│ ⚡  Edge Functions                          │
-│   ├── Custom Business Logic                │
-│   ├── Webhooks & Integrations              │
-│   └── Scheduled Jobs                       │
-└─────────────────────────────────────────────┘
-```
+**SUPABASE - Características principales:**
+
+- **🗄️ PostgreSQL Database:** Tables & Relations, Views & Functions, Indexes & Constraints, Row Level Security (RLS)
+- **🔌 Auto-Generated APIs:** REST API (GET, POST, PUT, DELETE), GraphQL API (optional), Real-time WebSockets  
+- **🔐 Authentication & Authorization:** Email/Password, OAuth (Google, GitHub, etc.), Magic Links, Custom JWT
+- **📁 Storage & Files:** Buckets & Policies, Image Transformations, CDN Global
+- **⚡ Edge Functions:** Custom Business Logic, Webhooks & Integrations, Scheduled Jobs
 
 ## Configuración Inicial en bolt.new
 
@@ -10433,58 +10383,20 @@ La integración entre bolt.new y Supabase es **perfecta** porque:
 
 {{name}}, con bolt.new configurar Supabase es increíblemente simple:
 
-**Prompt para bolt.new:**
-```
-Configura Supabase para mi aplicación e-commerce que incluya:
-
-PROYECTO: Tienda online con productos, usuarios y órdenes
-TABLAS NECESARIAS:
-- users (perfiles de usuarios)
-- products (catálogo de productos)
-- categories (categorías de productos)
-- orders (órdenes de compra)
-- order_items (items individuales de órdenes)
-
-CONFIGURACIÓN:
-- Environment variables automáticas
-- TypeScript types generados
-- Cliente Supabase configurado
-- Conexión a base de datos lista
-- Schema inicial con relaciones
-
-SEGURIDAD:
-- Row Level Security habilitado
-- Policies básicas de acceso
-- Variables de entorno protegidas
-```
+**Prompt para bolt.new:** "Configura Supabase para mi aplicación e-commerce con tablas para users, products, categories, orders y order_items. Incluye environment variables automáticas, TypeScript types, Row Level Security y policies básicas."
 
 ### 📝 Configuración Manual
 
 Si prefieres entender cada paso:
 
 #### 1. **Crear Proyecto Supabase**
-```javascript
-// 1. Ve a supabase.com
-// 2. Crea nuevo proyecto
-// 3. Anota URL y anon key
-```
+**Pasos:** Ve a supabase.com, crea nuevo proyecto, anota URL y anon key
 
 #### 2. **Variables de Entorno**
-```env
-VITE_SUPABASE_URL=https://tu-proyecto.supabase.co
-VITE_SUPABASE_ANON_KEY=tu-anon-key-aqui
-```
+**Variables de entorno:** VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY
 
 #### 3. **Cliente Supabase**
-```javascript
-// lib/supabase.ts
-import { createClient } from '@supabase/supabase-js'
-
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
-```
+**Cliente Supabase:** Crear en lib/supabase.ts usando createClient con las variables de entorno
 
 ## Diseño de Base de Datos Profesional
 
@@ -10496,24 +10408,15 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 - **Enfoque Híbrido**: Normaliza core data, desnormaliza para performance
 
 #### Naming Conventions
-```sql
--- ✅ Buenas Prácticas
-users              -- Plural, snake_case
-user_profiles      -- Descriptivo, consistente
-created_at         -- Timestamps estándar
-updated_at         -- Patrones repetibles
+**Buenas Prácticas:** Usar nombres en plural, snake_case (users, user_profiles), timestamps estándar (created_at, updated_at)
 
--- ❌ Evitar
-User               -- Singular, PascalCase
-userProfile        -- camelCase inconsistente
-date_created       -- Orden confuso
-```
+**Evitar:** Nombres singulares, PascalCase o camelCase, órdenes confusos
 
 ### 🗄️ Esquema de Ejemplo: E-commerce
 
-```sql
--- Tabla de usuarios (extendida de auth.users)
-CREATE TABLE users (
+**Esquema E-commerce completo:**
+
+**users:** Perfiles extendidos (
   id UUID REFERENCES auth.users(id) PRIMARY KEY,
   email TEXT UNIQUE NOT NULL,
   full_name TEXT,
