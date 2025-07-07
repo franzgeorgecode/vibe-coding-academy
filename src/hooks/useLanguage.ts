@@ -41,16 +41,10 @@ export function useLanguage() {
 
   // Inicializar idioma
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('preferred_language') as SupportedLanguage;
-
-    if (savedLanguage && SUPPORTED_LANGUAGES.some(lang => lang.code === savedLanguage)) {
-      setCurrentLanguage(savedLanguage);
-    } else {
-      const deviceLanguage = detectDeviceLanguage();
-      setCurrentLanguage(deviceLanguage);
-      localStorage.setItem('preferred_language', deviceLanguage);
-    }
-
+    // Force Spanish for now to fix the language issue
+    setCurrentLanguage('es');
+    localStorage.setItem('preferred_language', 'es');
+    
     setIsLoading(false);
   }, []);
 

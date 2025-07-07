@@ -28,10 +28,10 @@ export const lessonsData: Record<string, Lesson> = {
     numberOfLearningObjectives: 5,
     quizQuestions: [
       { id: "q1-1-1", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q1-1-2", correctAnswer: 2, numberOfOptions: 4 },
+      { id: "q1-1-2", correctAnswer: 1, numberOfOptions: 4 },
       { id: "q1-1-3", correctAnswer: 2, numberOfOptions: 4 },
-      { id: "q1-1-4", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q1-1-5", correctAnswer: 0, numberOfOptions: 4 }
+      { id: "q1-1-4", correctAnswer: 2, numberOfOptions: 4 },
+      { id: "q1-1-5", correctAnswer: 2, numberOfOptions: 4 }
     ],
     badgeXp: 15,
     readingTime: "8-12"

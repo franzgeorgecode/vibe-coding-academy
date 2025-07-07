@@ -122,19 +122,27 @@ export default function Dashboard() {
 
       console.log('[Dashboard] fetchUserData: User found:', user.emailAddresses[0]?.emailAddress);
 
-      // Fetch user progress
-      const { data: progress, error: progressError } = await supabase
-        .from('user_progress')
-        .select('lesson_id, completed, score, attempts')
-        .eq('user_id', user.id);
-
-      if (progressError) {
-        console.error('[Dashboard] fetchUserData: Error fetching user_progress.', progressError);
-        setUserProgress([]);
-      } else {
-        console.log('[Dashboard] fetchUserData: User progress data received:', progress);
-        setUserProgress(progress || []);
+      // Fetch user progress with error handling
+      let progress = [];
+      try {
+        const { data, error: progressError } = await supabase
+          .from('user_progress')
+          .select('lesson_id, completed, score, attempts')
+          .eq('user_id', user.id);
+        
+        if (progressError) {
+          console.error('[Dashboard] fetchUserData: Error fetching user_progress.', progressError);
+          progress = [];
+        } else {
+          progress = data || [];
+        }
+      } catch (err) {
+        console.error('[Dashboard] fetchUserData: Exception in user_progress query:', err);
+        progress = [];
       }
+
+      console.log('[Dashboard] fetchUserData: User progress data received:', progress);
+      setUserProgress(progress);
 
       // Fetch user badges with a JOIN to the badges table
       const { data: fetchedBadgesData, error: badgesError } = await supabase

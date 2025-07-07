@@ -44,9 +44,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 avatar_url: clerkUser.imageUrl,
                 last_activity: new Date().toISOString().split('T')[0],
                 updated_at: new Date().toISOString()
-              }, { 
-                onConflict: 'id',
-                ignoreDuplicates: false 
               });
 
             if (error) {
