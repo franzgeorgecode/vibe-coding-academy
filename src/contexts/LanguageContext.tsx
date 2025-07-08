@@ -41,14 +41,20 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
       const property = keys[2]; // Extract property like 'title', 'content', etc.
       
       console.log(`[Translation] Special lesson key handling: ${lessonKey}.${property}`);
+      console.log(`[Translation] Looking for: translations.es['${lessonKey}']['${property}']`);
       
       // Look directly in the root for the lesson
       const lessonData = translations[languageHook.currentLanguage][lessonKey];
+      console.log(`[Translation] Lesson data found:`, !!lessonData);
+      console.log(`[Translation] Available lesson keys:`, Object.keys(translations[languageHook.currentLanguage]).filter(k => k.startsWith('lesson-1')));
+      
       if (lessonData && lessonData[property]) {
         value = lessonData[property];
         console.log(`[Translation] Found Spanish lesson translation: ${key} -> ${value.substring(0, 50)}...`);
       } else {
         console.warn(`[Translation] Spanish lesson not found, falling back to English`);
+        console.warn(`[Translation] LessonData:`, lessonData);
+        console.warn(`[Translation] Property '${property}' exists:`, lessonData ? !!lessonData[property] : false);
         value = undefined; // Will trigger fallback
       }
     } else {
