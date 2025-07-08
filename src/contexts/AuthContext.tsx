@@ -32,24 +32,36 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       if (isLoaded) {
         if (isSignedIn && clerkUser) {
           try {
-            // Sync user data with Supabase - use simple upsert
+            // Sync user data with Supabase - use simple upsert with proper error handling
+            const userData = {
+              id: clerkUser.id,
+              email: clerkUser.emailAddresses[0]?.emailAddress,
+              first_name: clerkUser.firstName,
+              last_name: clerkUser.lastName,
+              username: clerkUser.username || clerkUser.emailAddresses[0]?.emailAddress.split('@')[0],
+              avatar_url: clerkUser.imageUrl,
+              last_activity: new Date().toISOString().split('T')[0],
+              updated_at: new Date().toISOString()
+            };
+
+            console.log('Attempting to sync user with Supabase:', userData);
+            
             const { data, error } = await supabase
               .from('users')
-              .upsert({
-                id: clerkUser.id,
-                email: clerkUser.emailAddresses[0]?.emailAddress,
-                first_name: clerkUser.firstName,
-                last_name: clerkUser.lastName,
-                username: clerkUser.username || clerkUser.emailAddresses[0]?.emailAddress.split('@')[0],
-                avatar_url: clerkUser.imageUrl,
-                last_activity: new Date().toISOString().split('T')[0],
-                updated_at: new Date().toISOString()
+              .upsert(userData, {
+                onConflict: 'id'
               });
 
             if (error) {
               console.error('Error syncing user with Supabase:', error);
+              console.error('Error details:', {
+                message: error.message,
+                details: error.details,
+                hint: error.hint,
+                code: error.code
+              });
             } else {
-              console.log('User synced successfully with Supabase');
+              console.log('User synced successfully with Supabase:', data);
             }
           } catch (error) {
             console.error('Error in user sync:', error);
