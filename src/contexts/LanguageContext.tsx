@@ -35,28 +35,12 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     const keys = key.split('.');
     let value: any = translations[languageHook.currentLanguage];
     
-    // Special handling for lesson keys that are directly in the root for Spanish
-    if (key.startsWith('lessons.lesson-') && languageHook.currentLanguage === 'es') {
-      const lessonKey = keys[1]; // Extract 'lesson-X-Y' from 'lessons.lesson-X-Y.property'
-      const property = keys[2]; // Extract property like 'title', 'content', etc.
-      
-      console.log(`[Translation] Special lesson key handling: ${lessonKey}.${property}`);
-      
-      // Look directly in the root for the lesson
-      const lessonData = translations[languageHook.currentLanguage][lessonKey];
-      if (lessonData && lessonData[property]) {
-        value = lessonData[property];
-        console.log(`[Translation] Found Spanish lesson translation: ${key} -> ${value.substring(0, 50)}...`);
-      } else {
-        console.warn(`[Translation] Spanish lesson not found, falling back to English`);
-        value = undefined; // Will trigger fallback
-      }
-    } else {
-      // Normal key lookup
-      for (const k of keys) {
-        value = value?.[k];
-        console.log(`[Translation] After key "${k}": ${typeof value === 'string' ? value.substring(0, 50) + '...' : typeof value}`);
-      }
+    console.log(`[Translation] Looking for key: ${key} in language: ${languageHook.currentLanguage}`);
+    console.log(`[Translation] Available languages:`, Object.keys(translations));
+
+    for (const k of keys) {
+      value = value?.[k];
+      console.log(`[Translation] After key "${k}": ${typeof value === 'string' ? value.substring(0, 50) + '...' : typeof value}`);
     }
 
     if (typeof value !== 'string') {
