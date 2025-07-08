@@ -10543,6 +10543,3277 @@ Construye un dashboard que muestre:
         }
       },
 
+      // Level 2 - Lesson 2
+      'lesson-2-2': {
+        title: 'Funciones Edge y Características Avanzadas de Supabase',
+        objective: 'Dominar las capacidades avanzadas de Supabase incluyendo Edge Functions, Storage, y consultas complejas',
+        content: `# Funciones Edge y Características Avanzadas de Supabase
+
+¡Hola {{name}}! Continuemos profundizando en las capacidades avanzadas de Supabase. Es hora de explorar las herramientas que realmente distinguen a los desarrolladores profesionales.
+
+## Supabase Edge Functions
+
+Las **Edge Functions** son funciones TypeScript del lado del servidor que se ejecutan en el edge (cerca de los usuarios) usando el runtime de Deno. Proporcionan computación serverless de baja latencia para lógica de negocio personalizada.
+
+### Características Clave:
+- **Ejecución en el Edge**: Latencia ultra-baja al ejecutarse cerca de los usuarios
+- **Runtime de Deno**: Seguro y moderno, con soporte nativo para TypeScript
+- **Integración con Supabase**: Acceso completo a tu base de datos y APIs
+- **Escalabilidad Automática**: Se escalan automáticamente según la demanda
+
+### Ejemplo de Edge Function:
+\`\`\`typescript
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey',
+}
+
+serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders })
+  }
+
+  const { userId } = await req.json()
+  const supabase = createClient(
+    Deno.env.get('SUPABASE_URL') ?? '',
+    Deno.env.get('SUPABASE_ANON_KEY') ?? ''
+  )
+
+  const { data, error } = await supabase
+    .from('user_analytics')
+    .select('*')
+    .eq('user_id', userId)
+
+  return new Response(
+    JSON.stringify({ data, error }),
+    { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+  )
+})
+\`\`\`
+
+## Supabase Storage
+
+Supabase Storage es una solución de almacenamiento de objetos compatible con S3 que permite almacenar y gestionar archivos con características como optimización automática de imágenes, distribución CDN y control de acceso.
+
+### Características Principales:
+- **Almacenamiento Escalable**: Almacena archivos de cualquier tamaño
+- **Optimización de Imágenes**: Redimensionamiento y optimización automáticos
+- **CDN Global**: Distribución rápida de contenido mundial
+- **Políticas de Seguridad**: Control granular de acceso
+
+### Implementación de Storage:
+\`\`\`typescript
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(url, key)
+
+// Subir archivo
+const uploadFile = async (file: File, bucketName: string) => {
+  const { data, error } = await supabase.storage
+    .from(bucketName)
+    .upload(\`uploads/\${Date.now()}-\${file.name}\`, file, {
+      cacheControl: '3600',
+      upsert: false
+    })
+
+  return { data, error }
+}
+
+// Optimización de imagen
+const getOptimizedImage = (bucket: string, path: string) => {
+  return supabase.storage
+    .from(bucket)
+    .getPublicUrl(path, {
+      transform: {
+        width: 800,
+        height: 600,
+        resize: 'contain'
+      }
+    })
+}
+\`\`\`
+
+## Consultas Complejas y Joins
+
+Supabase permite realizar consultas complejas con relaciones anidadas y agregaciones usando PostgREST:
+
+\`\`\`typescript
+// Consulta con relaciones múltiples
+const { data: posts } = await supabase
+  .from('posts')
+  .select(\`
+    *,
+    author:profiles(name, avatar_url),
+    comments(
+      content,
+      author:profiles(name)
+    ),
+    likes:post_likes(count)
+  \`)
+  .eq('published', true)
+  .order('created_at', { ascending: false })
+
+// Agregaciones complejas
+const { data: stats } = await supabase
+  .from('user_stats')
+  .select('user_id, total_posts:posts(count), avg_likes:posts(likes.avg())')
+  .eq('active', true)
+\`\`\`
+
+## Características en Tiempo Real
+
+### Presence Tracking
+El seguimiento de presencia permite monitorear la actividad del usuario y mostrar quién está actualmente en línea:
+
+\`\`\`typescript
+const channel = supabase.channel('room-1')
+
+// Unirse a un canal con presencia
+channel
+  .on('presence', { event: 'sync' }, () => {
+    const newState = channel.presenceState()
+    console.log('Usuario en línea:', newState)
+  })
+  .on('presence', { event: 'join' }, ({ key, newPresences }) => {
+    console.log('Usuario se unió:', key, newPresences)
+  })
+  .on('presence', { event: 'leave' }, ({ key, leftPresences }) => {
+    console.log('Usuario se fue:', key, leftPresences)
+  })
+  .subscribe(async (status) => {
+    if (status === 'SUBSCRIBED') {
+      await channel.track({
+        user_id: currentUser.id,
+        username: currentUser.name,
+        cursor_position: { x: 0, y: 0 }
+      })
+    }
+  })
+\`\`\`
+
+## Optimización para Producción
+
+### Patrones de Rendimiento:
+1. **Connection Pooling**: Usar pgBouncer para gestión eficiente de conexiones
+2. **Caching**: Implementar Redis para caché de consultas frecuentes
+3. **Índices Estratégicos**: Crear índices basados en patrones de consulta
+4. **Preparación de Consultas**: Usar consultas preparadas para mejor rendimiento
+
+### Ejemplo de Optimización:
+\`\`\`typescript
+// Implementar caché con Redis
+const getCachedUser = async (userId: string) => {
+  const cached = await redis.get(\`user:\${userId}\`)
+  if (cached) return JSON.parse(cached)
+
+  const { data } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', userId)
+    .single()
+
+  await redis.setex(\`user:\${userId}\`, 3600, JSON.stringify(data))
+  return data
+}
+\`\`\`
+
+¡Excelente trabajo {{name}}! Has dominado las características avanzadas de Supabase. Estas herramientas te permiten construir aplicaciones robustas y escalables con funcionalidad de nivel empresarial.`,
+        learningObjectives: {
+          0: 'Implementar Edge Functions serverless para lógica de backend compleja',
+          1: 'Dominar el almacenamiento de archivos con políticas de seguridad y optimización',
+          2: 'Construir consultas complejas con relaciones anidadas y agregaciones',
+          3: 'Crear características colaborativas en tiempo real con seguimiento de presencia',
+          4: 'Aplicar patrones de optimización para producción y confiabilidad'
+        },
+        badgeName: 'Experto en Supabase',
+        srcodeCommentary: '¡{{name}}, acabas de desbloquear los niveles secretos de Supabase! Las Edge Functions son como tener un asistente personal que trabaja a la velocidad de la luz, Storage es tu ático digital ilimitado (pero organizado), y las características en tiempo real hacen que tu app se sienta como magia. Recuerda: con gran poder de Supabase viene gran responsabilidad... ¡de construir cosas increíbles! 🚀⚡',
+        quizQuestions: {
+          'q2-2-1': {
+            question: '¿Qué son las Edge Functions de Supabase?',
+            options: [
+              'Triggers de base de datos que se ejecutan en cambios de datos',
+              'Funciones TypeScript del lado del servidor que se ejecutan en el edge',
+              'Funciones JavaScript del lado del cliente',
+              'Herramientas de optimización de base de datos'
+            ],
+            explanation: 'Las Edge Functions de Supabase son funciones TypeScript del lado del servidor que se ejecutan en el edge (cerca de los usuarios) usando el runtime de Deno, proporcionando computación serverless de baja latencia para lógica de negocio personalizada.'
+          },
+          'q2-2-2': {
+            question: '¿Cuál característica te permite almacenar y gestionar archivos en Supabase?',
+            options: [
+              'Database Storage',
+              'Edge Functions',
+              'Supabase Storage',
+              'Realtime Storage'
+            ],
+            explanation: 'Supabase Storage es una solución de almacenamiento de objetos compatible con S3 que permite almacenar y gestionar archivos con características como optimización automática de imágenes, distribución CDN y control de acceso.'
+          },
+          'q2-2-3': {
+            question: '¿Cuál es el propósito del seguimiento de presencia en Supabase Realtime?',
+            options: [
+              'Rastrear el rendimiento de la base de datos',
+              'Monitorear la actividad del usuario y mostrar quién está actualmente en línea',
+              'Hacer backup de datos del usuario',
+              'Optimizar consultas de base de datos'
+            ],
+            explanation: 'El seguimiento de presencia permite monitorear la actividad del usuario y mostrar quién está actualmente en línea en tu aplicación, habilitando características como indicadores de "usuario escribiendo", estado en línea, y seguimiento de cursor colaborativo.'
+          },
+          'q2-2-4': {
+            question: '¿Cuál es la principal ventaja de usar la optimización de imágenes integrada de Supabase?',
+            options: [
+              'Reduce el uso de almacenamiento de la base de datos',
+              'Redimensiona y optimiza automáticamente imágenes para diferentes dispositivos y formatos',
+              'Encripta imágenes para seguridad',
+              'Convierte todas las imágenes a formato vectorial'
+            ],
+            explanation: 'La optimización de imágenes integrada de Supabase redimensiona y optimiza automáticamente imágenes para diferentes dispositivos y formatos, reduciendo el uso de ancho de banda y mejorando los tiempos de carga sin requerir procesamiento manual de imágenes.'
+          }
+        }
+      },
+
+      // Level 2 - Lesson 3
+      'lesson-2-3': {
+        title: 'Optimización de Base de Datos y Rendimiento',
+        objective: 'Dominar la optimización del rendimiento de bases de datos, estrategias de indexación y optimización de consultas para aplicaciones de producción',
+        content: `# Optimización de Base de Datos y Rendimiento
+
+¡Hola {{name}}! Ahora vamos a sumergirnos en el mundo de la optimización de bases de datos. Es hora de hacer que tus consultas vuelen más rápido que el café desapareciendo un lunes por la mañana.
+
+## Fundamentos de Optimización de Consultas
+
+La optimización de consultas es el arte y la ciencia de hacer que tu base de datos funcione de manera eficiente. PostgreSQL proporciona herramientas poderosas para analizar y mejorar el rendimiento.
+
+### EXPLAIN ANALYZE: Tu Mejor Amigo
+
+\`EXPLAIN ANALYZE\` es la herramienta más importante para entender cómo PostgreSQL ejecuta tus consultas:
+
+\`\`\`sql
+-- Análisis básico de consulta
+EXPLAIN ANALYZE
+SELECT u.name, COUNT(p.id) as post_count
+FROM users u
+LEFT JOIN posts p ON u.id = p.user_id
+WHERE u.created_at > '2023-01-01'
+GROUP BY u.id, u.name
+ORDER BY post_count DESC
+LIMIT 10;
+
+-- Resultados de ejemplo:
+-- Limit (cost=1234.56..1234.58 rows=10 width=64) (actual time=15.123..15.125 rows=10 loops=1)
+-- -> Sort (cost=1234.56..1234.58 rows=100 width=64) (actual time=15.120..15.122 rows=100 loops=1)
+-- Sort Key: (count(p.id)) DESC
+-- -> GroupAggregate (cost=1000.00..1200.00 rows=100 width=64) (actual time=10.000..12.000 rows=100 loops=1)
+\`\`\`
+
+### Interpretación de Planes de Ejecución:
+- **Cost**: Estimación del costo de la operación
+- **Rows**: Número estimado de filas
+- **Width**: Ancho promedio de fila en bytes
+- **Actual time**: Tiempo real de ejecución
+- **Loops**: Número de veces que se ejecutó la operación
+
+## Estrategias de Indexación
+
+Los índices son como el índice de un libro: hacen que encontrar información sea muchísimo más rápido.
+
+### Tipos de Índices:
+
+#### 1. B-Tree Index (Por defecto)
+\`\`\`sql
+-- Índice simple para búsquedas de igualdad y rango
+CREATE INDEX idx_users_email ON users(email);
+CREATE INDEX idx_posts_created_at ON posts(created_at);
+
+-- Índice compuesto para consultas múltiples
+CREATE INDEX idx_posts_user_status ON posts(user_id, status, created_at);
+\`\`\`
+
+#### 2. GIN Index (Para búsqueda de texto completo)
+\`\`\`sql
+-- Índice para búsqueda de texto completo
+CREATE INDEX idx_posts_content_gin ON posts USING gin(to_tsvector('english', content));
+
+-- Índice para datos JSON
+CREATE INDEX idx_user_metadata_gin ON users USING gin(metadata);
+\`\`\`
+
+#### 3. Índices Parciales (Para subconjuntos específicos)
+\`\`\`sql
+-- Índice solo para posts publicados
+CREATE INDEX idx_published_posts ON posts(created_at) WHERE status = 'published';
+
+-- Índice solo para usuarios activos
+CREATE INDEX idx_active_users ON users(last_login) WHERE active = true;
+\`\`\`
+
+### Estrategias de Indexación Avanzadas:
+
+\`\`\`sql
+-- Índice de expresión para búsquedas insensibles a mayúsculas
+CREATE INDEX idx_users_email_lower ON users(lower(email));
+
+-- Índice parcial con múltiples condiciones
+CREATE INDEX idx_recent_active_posts ON posts(created_at, user_id) 
+WHERE status = 'published' AND created_at > '2023-01-01';
+\`\`\`
+
+## Patrones de Consulta Avanzados
+
+### Paginación Eficiente con Cursores
+
+La paginación basada en cursores es mucho más eficiente que OFFSET para grandes conjuntos de datos:
+
+\`\`\`sql
+-- Paginación tradicional (LENTA para grandes offsets)
+SELECT * FROM posts 
+ORDER BY created_at DESC 
+LIMIT 20 OFFSET 10000;
+
+-- Paginación con cursor (RÁPIDA independientemente del tamaño)
+SELECT * FROM posts 
+WHERE created_at < '2023-05-01 10:30:00'
+ORDER BY created_at DESC 
+LIMIT 20;
+\`\`\`
+
+### Subconsultas Optimizadas
+
+\`\`\`sql
+-- Subconsulta con EXISTS (más eficiente que IN para grandes datasets)
+SELECT u.* FROM users u
+WHERE EXISTS (
+    SELECT 1 FROM posts p 
+    WHERE p.user_id = u.id 
+    AND p.status = 'published'
+);
+
+-- Common Table Expressions (CTE) para consultas complejas
+WITH user_stats AS (
+    SELECT 
+        user_id,
+        COUNT(*) as post_count,
+        AVG(likes_count) as avg_likes
+    FROM posts 
+    WHERE created_at > '2023-01-01'
+    GROUP BY user_id
+)
+SELECT u.name, us.post_count, us.avg_likes
+FROM users u
+JOIN user_stats us ON u.id = us.user_id
+WHERE us.post_count > 10;
+\`\`\`
+
+## Monitoreo y Resolución de Problemas
+
+### Identificación de Consultas Lentas
+
+\`\`\`sql
+-- Habilitar logging de consultas lentas
+-- En postgresql.conf:
+-- log_min_duration_statement = 1000  -- Log queries taking > 1 second
+
+-- Consultar estadísticas de rendimiento
+SELECT 
+    query,
+    calls,
+    total_time,
+    mean_time,
+    min_time,
+    max_time
+FROM pg_stat_statements
+ORDER BY total_time DESC
+LIMIT 10;
+\`\`\`
+
+### Análisis de Bloqueos
+
+\`\`\`sql
+-- Verificar bloqueos activos
+SELECT 
+    blocked_locks.pid AS blocked_pid,
+    blocked_activity.usename AS blocked_user,
+    blocking_locks.pid AS blocking_pid,
+    blocking_activity.usename AS blocking_user,
+    blocked_activity.query AS blocked_statement
+FROM pg_catalog.pg_locks blocked_locks
+JOIN pg_catalog.pg_stat_activity blocked_activity ON blocked_activity.pid = blocked_locks.pid
+JOIN pg_catalog.pg_locks blocking_locks ON blocking_locks.locktype = blocked_locks.locktype
+JOIN pg_catalog.pg_stat_activity blocking_activity ON blocking_activity.pid = blocking_locks.pid
+WHERE NOT blocked_locks.granted;
+\`\`\`
+
+## Arquitecturas de Base de Datos Escalables
+
+### Connection Pooling con pgBouncer
+
+\`\`\`ini
+# pgbouncer.ini
+[databases]
+mydb = host=localhost port=5432 dbname=mydb
+
+[pgbouncer]
+listen_port = 6432
+listen_addr = *
+auth_type = md5
+auth_file = userlist.txt
+pool_mode = transaction
+server_reset_query = DISCARD ALL
+max_client_conn = 100
+default_pool_size = 20
+\`\`\`
+
+### Implementación de Caché con Redis
+
+\`\`\`typescript
+import Redis from 'ioredis'
+
+const redis = new Redis(process.env.REDIS_URL)
+
+// Estrategia de caché con TTL
+const getCachedData = async (key: string, fetcher: () => Promise<any>, ttl = 3600) => {
+  const cached = await redis.get(key)
+  if (cached) {
+    return JSON.parse(cached)
+  }
+
+  const data = await fetcher()
+  await redis.setex(key, ttl, JSON.stringify(data))
+  return data
+}
+
+// Invalidación de caché inteligente
+const invalidateUserCache = async (userId: string) => {
+  const keys = await redis.keys(\`user:\${userId}:*\`)
+  if (keys.length > 0) {
+    await redis.del(...keys)
+  }
+}
+\`\`\`
+
+### Optimización en Tiempo Real
+
+\`\`\`typescript
+// Implementar métricas de rendimiento
+const trackQueryPerformance = (query: string, duration: number) => {
+  if (duration > 1000) { // Log slow queries
+    console.warn(\`Slow query detected: \${query} took \${duration}ms\`)
+  }
+  
+  // Enviar métricas a sistema de monitoreo
+  metrics.timing('db.query.duration', duration, ['query_type:' + getQueryType(query)])
+}
+
+// Auto-optimización basada en patrones
+const optimizeBasedOnUsage = async () => {
+  const slowQueries = await getSlowQueries()
+  
+  for (const query of slowQueries) {
+    const suggestedIndex = await suggestIndex(query)
+    if (suggestedIndex) {
+      console.log(\`Consider creating index: \${suggestedIndex}\`)
+    }
+  }
+}
+\`\`\`
+
+## Estrategias de Optimización para Producción
+
+### 1. Mantenimiento Automático
+\`\`\`sql
+-- Configurar auto-vacuum para mantenimiento automático
+-- En postgresql.conf:
+-- autovacuum = on
+-- autovacuum_max_workers = 3
+-- autovacuum_naptime = 1min
+
+-- Vacuum manual para tablas críticas
+VACUUM ANALYZE posts;
+REINDEX INDEX idx_posts_created_at;
+\`\`\`
+
+### 2. Particionado de Tablas
+\`\`\`sql
+-- Particionado por fecha para tablas grandes
+CREATE TABLE posts_2023 PARTITION OF posts
+FOR VALUES FROM ('2023-01-01') TO ('2024-01-01');
+
+CREATE TABLE posts_2024 PARTITION OF posts
+FOR VALUES FROM ('2024-01-01') TO ('2025-01-01');
+\`\`\`
+
+### 3. Monitoreo y Alertas
+\`\`\`typescript
+// Sistema de alertas para rendimiento
+const monitorPerformance = () => {
+  setInterval(async () => {
+    const activeConnections = await getActiveConnections()
+    const avgQueryTime = await getAverageQueryTime()
+    
+    if (activeConnections > 80 || avgQueryTime > 2000) {
+      await sendAlert('Database performance alert', {
+        connections: activeConnections,
+        avgQueryTime: avgQueryTime
+      })
+    }
+  }, 60000) // Check every minute
+}
+\`\`\`
+
+¡Increíble trabajo {{name}}! Has dominado las técnicas de optimización de bases de datos. Tu base de datos ahora funcionará como una máquina bien engrasada, y tus usuarios nunca tendrán que esperar. ¡Eres oficialmente un mago de la optimización!`,
+        learningObjectives: {
+          0: 'Analizar y optimizar el rendimiento de consultas de base de datos usando planes de ejecución',
+          1: 'Implementar indexación estratégica para mejorar la velocidad de consultas',
+          2: 'Aplicar patrones de consulta avanzados para recuperación eficiente de datos',
+          3: 'Monitorear y solucionar problemas de rendimiento de base de datos',
+          4: 'Diseñar arquitecturas de base de datos escalables para aplicaciones de producción'
+        },
+        badgeName: 'Optimizador de Rendimiento',
+        srcodeCommentary: '¡{{name}}, la optimización de bases de datos es como afinar un auto de carreras - cada milisegundo cuenta! Has aprendido a hacer que tus consultas ronroneen como un motor bien engrasado. Recuerda: la optimización prematura es la raíz de todo mal, ¡pero la optimización oportuna es la raíz de todo lo increíble! Ahora tu base de datos será más rápida que un desarrollador alcanzando el café un lunes por la mañana! 🏎️⚡',
+        quizQuestions: {
+          'q2-3-1': {
+            question: '¿Cuál es el propósito principal de usar EXPLAIN ANALYZE en PostgreSQL?',
+            options: [
+              'Crear backups de la base de datos',
+              'Analizar y entender los planes de ejecución de consultas y el rendimiento',
+              'Gestionar permisos de usuario',
+              'Optimizar el almacenamiento de la base de datos'
+            ],
+            explanation: 'EXPLAIN ANALYZE muestra el plan de ejecución real de una consulta, incluyendo tiempo de ejecución, filas procesadas y uso de índices, ayudando a identificar cuellos de botella de rendimiento.'
+          },
+          'q2-3-2': {
+            question: '¿Qué tipo de índice es más efectivo para operaciones de búsqueda de texto completo?',
+            options: [
+              'Índice B-Tree',
+              'Índice único',
+              'Índice GIN',
+              'Índice parcial'
+            ],
+            explanation: 'Los índices GIN (Generalized Inverted Index) están específicamente diseñados para operaciones de búsqueda de texto completo y tipos de datos complejos como JSON, proporcionando capacidades eficientes de búsqueda de texto.'
+          },
+          'q2-3-3': {
+            question: '¿Cuál es la principal ventaja de la paginación basada en cursores sobre la paginación basada en offset?',
+            options: [
+              'Es más fácil de implementar',
+              'Funciona consistentemente bien incluso con grandes conjuntos de datos',
+              'Requiere menos conexiones a la base de datos',
+              'Funciona mejor con datos en tiempo real'
+            ],
+            explanation: 'La paginación basada en cursores mantiene un rendimiento consistente independientemente del tamaño del conjunto de datos, mientras que la paginación basada en offset se vuelve más lenta con offsets grandes ya que la base de datos debe saltar muchas filas.'
+          },
+          'q2-3-4': {
+            question: '¿Cuándo deberías usar un índice parcial en PostgreSQL?',
+            options: [
+              'Para todas las columnas en una tabla',
+              'Solo para columnas de clave primaria',
+              'Cuando necesitas indexar solo filas específicas que coinciden con ciertas condiciones',
+              'Solo para relaciones de clave foránea'
+            ],
+            explanation: 'Los índices parciales son útiles cuando consultas frecuentemente solo un subconjunto de filas (ej: usuarios activos, posts publicados), reduciendo el tamaño del índice y mejorando el rendimiento para condiciones específicas.'
+          }
+        }
+      },
+
+      // Level 3 - Lesson 1
+      'lesson-3-1': {
+        title: 'Fundamentos de Autenticación',
+        objective: 'Dominar la autenticación de usuarios, autorización y mejores prácticas de seguridad en aplicaciones bolt.new',
+        content: `# Fundamentos de Autenticación
+
+¡Hola {{name}}! Bienvenido al mundo de la seguridad digital. Es hora de aprender cómo proteger tus aplicaciones y usuarios de manera profesional.
+
+## Entendiendo Autenticación vs Autorización
+
+La **autenticación** verifica quién eres, mientras que la **autorización** determina qué puedes hacer. Piensa en la autenticación como mostrar tu identificación, y la autorización como verificar tu pase de acceso.
+
+### Conceptos Fundamentales:
+
+#### Autenticación
+- **Definición**: Proceso de verificar la identidad de un usuario
+- **Métodos**: Contraseñas, OAuth, biometría, tokens
+- **Pregunta**: "¿Quién es este usuario?"
+
+#### Autorización
+- **Definición**: Proceso de determinar qué acciones puede realizar un usuario
+- **Mecanismos**: Roles, permisos, ACL (Access Control Lists)
+- **Pregunta**: "¿Qué puede hacer este usuario?"
+
+## Métodos de Autenticación en bolt.new
+
+### 1. Autenticación por Email/Contraseña
+
+\`\`\`typescript
+import { useAuth } from '@/hooks/useAuth'
+
+const LoginComponent = () => {
+  const { signIn, signUp, isLoading } = useAuth()
+
+  const handleLogin = async (email: string, password: string) => {
+    try {
+      await signIn(email, password)
+      // Redireccionar al dashboard
+    } catch (error) {
+      console.error('Error de autenticación:', error)
+    }
+  }
+
+  const handleSignup = async (email: string, password: string) => {
+    try {
+      await signUp(email, password)
+      // Enviar email de confirmación
+    } catch (error) {
+      console.error('Error de registro:', error)
+    }
+  }
+
+  return (
+    <div className="auth-container">
+      <form onSubmit={handleLogin}>
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Contraseña" required />
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? 'Iniciando...' : 'Iniciar Sesión'}
+        </button>
+      </form>
+    </div>
+  )
+}
+\`\`\`
+
+### 2. OAuth con Proveedores Sociales
+
+OAuth permite a los usuarios autenticarse usando cuentas existentes de proveedores confiables:
+
+\`\`\`typescript
+// Configuración de OAuth
+const authConfig = {
+  providers: [
+    {
+      name: 'google',
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      scopes: ['email', 'profile']
+    },
+    {
+      name: 'github',
+      clientId: process.env.GITHUB_CLIENT_ID,
+      scopes: ['user:email']
+    }
+  ]
+}
+
+// Implementación de OAuth
+const handleOAuthLogin = async (provider: string) => {
+  try {
+    await signInWithOAuth(provider)
+  } catch (error) {
+    console.error(\`Error con \${provider}:\`, error)
+  }
+}
+\`\`\`
+
+### 3. Autenticación Sin Contraseña
+
+La autenticación sin contraseña usa enlaces mágicos o códigos OTP:
+
+\`\`\`typescript
+const handleMagicLink = async (email: string) => {
+  await sendMagicLink(email)
+  // Mostrar mensaje de confirmación
+}
+
+const handleOTPLogin = async (phone: string) => {
+  await sendOTPCode(phone)
+  // Mostrar campo de verificación
+}
+\`\`\`
+
+## Gestión de Sesiones de Usuario
+
+### Tokens JWT (JSON Web Tokens)
+
+\`\`\`typescript
+interface JWTPayload {
+  userId: string
+  email: string
+  role: string
+  permissions: string[]
+  exp: number
+  iat: number
+}
+
+// Verificar token
+const verifyToken = (token: string): JWTPayload | null => {
+  try {
+    return jwt.verify(token, process.env.JWT_SECRET) as JWTPayload
+  } catch (error) {
+    return null
+  }
+}
+
+// Refrescar token automáticamente
+const useTokenRefresh = () => {
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      const token = getStoredToken()
+      if (token && isTokenExpiringSoon(token)) {
+        await refreshToken()
+      }
+    }, 60000) // Verificar cada minuto
+
+    return () => clearInterval(interval)
+  }, [])
+}
+\`\`\`
+
+## Control de Acceso Basado en Roles (RBAC)
+
+\`\`\`typescript
+interface Role {
+  id: string
+  name: string
+  permissions: Permission[]
+}
+
+interface Permission {
+  action: string
+  resource: string
+  conditions?: Record<string, any>
+}
+
+// Middleware de autorización
+const authorize = (requiredPermission: string) => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    const user = req.user
+    const hasPermission = user.permissions.includes(requiredPermission)
+    
+    if (!hasPermission) {
+      return res.status(403).json({ error: 'Acceso denegado' })
+    }
+    
+    next()
+  }
+}
+
+// Uso del middleware
+app.get('/admin/users', authorize('users:read'), getUsersHandler)
+app.post('/admin/users', authorize('users:create'), createUserHandler)
+\`\`\`
+
+## Mejores Prácticas de Seguridad
+
+### 1. Validación de Entrada
+
+\`\`\`typescript
+import { z } from 'zod'
+
+const loginSchema = z.object({
+  email: z.string().email('Email inválido'),
+  password: z.string().min(8, 'Contraseña debe tener al menos 8 caracteres')
+})
+
+const validateLogin = (data: any) => {
+  return loginSchema.safeParse(data)
+}
+\`\`\`
+
+### 2. Rate Limiting
+
+\`\`\`typescript
+const rateLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutos
+  max: 5, // Máximo 5 intentos
+  message: 'Demasiados intentos de login. Intenta en 15 minutos.',
+  standardHeaders: true,
+  legacyHeaders: false
+})
+
+app.post('/auth/login', rateLimiter, loginHandler)
+\`\`\`
+
+### 3. Encriptación de Contraseñas
+
+\`\`\`typescript
+import bcrypt from 'bcryptjs'
+
+const hashPassword = async (password: string): Promise<string> => {
+  const saltRounds = 12
+  return await bcrypt.hash(password, saltRounds)
+}
+
+const verifyPassword = async (password: string, hash: string): Promise<boolean> => {
+  return await bcrypt.compare(password, hash)
+}
+\`\`\`
+
+## Patrones de Autenticación Avanzados
+
+### 1. Autenticación Multifactor (MFA)
+
+\`\`\`typescript
+const setupMFA = async (userId: string) => {
+  const secret = speakeasy.generateSecret({
+    name: 'Tu App',
+    account: user.email,
+    issuer: 'bolt.new'
+  })
+
+  // Guardar secret en la base de datos
+  await saveMFASecret(userId, secret.base32)
+  
+  // Retornar QR code para configuración
+  return {
+    qrCode: secret.otpauth_url,
+    backupCodes: generateBackupCodes()
+  }
+}
+
+const verifyMFA = async (userId: string, token: string) => {
+  const secret = await getMFASecret(userId)
+  return speakeasy.totp.verify({
+    secret: secret,
+    token: token,
+    window: 2
+  })
+}
+\`\`\`
+
+### 2. Single Sign-On (SSO)
+
+\`\`\`typescript
+const configureSAML = {
+  issuer: 'https://tuapp.com',
+  callbackUrl: 'https://tuapp.com/auth/saml/callback',
+  entryPoint: 'https://sso.empresa.com/saml/login',
+  cert: process.env.SAML_CERT
+}
+
+const handleSAMLResponse = async (response: any) => {
+  // Procesar respuesta SAML
+  const userInfo = parseSAMLResponse(response)
+  
+  // Crear o actualizar usuario
+  const user = await createOrUpdateUser(userInfo)
+  
+  // Generar token JWT
+  const token = generateJWT(user)
+  
+  return { user, token }
+}
+\`\`\`
+
+## Monitoreo y Auditoría
+
+\`\`\`typescript
+const logAuthEvent = async (event: AuthEvent) => {
+  await saveToAuditLog({
+    event: event.type,
+    userId: event.userId,
+    ip: event.ipAddress,
+    userAgent: event.userAgent,
+    timestamp: new Date(),
+    success: event.success,
+    metadata: event.metadata
+  })
+}
+
+// Detectar actividad sospechosa
+const detectSuspiciousActivity = async (userId: string) => {
+  const recentLogins = await getRecentLogins(userId, 24) // Últimas 24 horas
+  
+  const suspiciousPatterns = [
+    multipleFailedAttempts(recentLogins),
+    unusualLocation(recentLogins),
+    rapidSuccessiveLogins(recentLogins)
+  ]
+  
+  return suspiciousPatterns.some(pattern => pattern.detected)
+}
+\`\`\`
+
+¡Excelente trabajo {{name}}! Has construido una base sólida en autenticación y seguridad. Recuerda: la seguridad no es un destino, es un viaje continuo. Mantente actualizado con las últimas amenazas y mejores prácticas.`,
+        learningObjectives: {
+          0: 'Implementar autenticación segura con múltiples métodos (email, OAuth, sin contraseña)',
+          1: 'Diseñar e implementar sistemas de control de acceso basado en roles (RBAC)',
+          2: 'Aplicar mejores prácticas de seguridad incluyendo validación de entrada y rate limiting',
+          3: 'Gestionar sesiones de usuario y tokens de forma segura',
+          4: 'Integrar características avanzadas como MFA y SSO para aplicaciones empresariales'
+        },
+        badgeName: 'Guardián de Seguridad',
+        srcodeCommentary: '¡{{name}}, la autenticación es como ser un portero para tu app, pero mucho más genial! No solo estás verificando identificaciones en la puerta - estás construyendo todo un ecosistema de seguridad. Piensa en las contraseñas como llaves, OAuth como tarjetas de acceso VIP, y MFA como esa cerradura extra-segura de la bóveda. Recuerda: ¡una app segura es una app feliz, y las apps felices no son hackeadas! 🔐✨',
+        quizQuestions: {
+          'q3-1-1': {
+            question: '¿Cuál es la principal diferencia entre autenticación y autorización?',
+            options: [
+              'Son lo mismo',
+              'La autenticación verifica quién eres, la autorización determina qué puedes hacer',
+              'La autorización verifica quién eres, la autenticación determina qué puedes hacer',
+              'La autenticación es para contraseñas, la autorización es para OAuth'
+            ],
+            explanation: 'La autenticación verifica la identidad de un usuario (quién eres), mientras que la autorización determina qué acciones puede realizar ese usuario autenticado (qué puedes hacer).'
+          },
+          'q3-1-2': {
+            question: '¿Cuál método de autenticación proporciona la mayor seguridad?',
+            options: [
+              'Autenticación simple por contraseña',
+              'OAuth con proveedores sociales',
+              'Autenticación multifactor (MFA)',
+              'Autenticación basada en email'
+            ],
+            explanation: 'La autenticación multifactor (MFA) proporciona la mayor seguridad al requerir múltiples formas de verificación, típicamente combinando algo que sabes (contraseña), algo que tienes (teléfono/token), y/o algo que eres (biometría).'
+          },
+          'q3-1-3': {
+            question: '¿Cuál es la principal ventaja de usar OAuth para autenticación?',
+            options: [
+              'Elimina completamente la necesidad de contraseñas',
+              'Permite a los usuarios autenticarse usando cuentas existentes de proveedores confiables',
+              'Hace que la autenticación sea más rápida',
+              'Funciona solo con plataformas de redes sociales'
+            ],
+            explanation: 'OAuth permite a los usuarios autenticarse usando cuentas existentes de proveedores confiables (como Google, GitHub, Facebook) sin compartir sus contraseñas con tu aplicación, mejorando tanto la seguridad como la experiencia del usuario.'
+          },
+          'q3-1-4': {
+            question: '¿Para qué se usa principalmente un JWT (JSON Web Token)?',
+            options: [
+              'Almacenar contraseñas de usuario',
+              'Encriptar conexiones de base de datos',
+              'Transmitir de forma segura identidad y claims de usuario entre partes',
+              'Gestionar cargas de archivos'
+            ],
+            explanation: 'JWT (JSON Web Token) se usa para transmitir de forma segura identidad y claims de usuario entre partes. Contiene información codificada del usuario y puede ser verificado sin requerir almacenamiento de sesión del lado del servidor.'
+          }
+        }
+      },
+
+      // Level 3 - Lesson 2
+      'lesson-3-2': {
+        title: 'Patrones de Autenticación Avanzados',
+        objective: 'Implementar estrategias de autenticación sofisticadas incluyendo control de acceso basado en roles, gestión de sesiones y mejores prácticas de seguridad',
+        content: `# Patrones de Autenticación Avanzados
+
+¡Hola {{name}}! Ahora vamos a profundizar en técnicas avanzadas de autenticación que usan las aplicaciones de nivel empresarial.
+
+## Control de Acceso Basado en Roles (RBAC)
+
+RBAC es un método fundamental para gestionar permisos en aplicaciones empresariales. En lugar de asignar permisos directamente a usuarios, asignas roles que contienen conjuntos de permisos.
+
+### Diseño del Sistema RBAC
+
+\`\`\`typescript
+interface User {
+  id: string
+  email: string
+  roles: Role[]
+  isActive: boolean
+  createdAt: Date
+  lastLogin?: Date
+}
+
+interface Role {
+  id: string
+  name: string
+  description: string
+  permissions: Permission[]
+  isSystemRole: boolean
+}
+
+interface Permission {
+  id: string
+  action: string // 'create', 'read', 'update', 'delete'
+  resource: string // 'users', 'posts', 'settings'
+  conditions?: Record<string, any>
+}
+
+// Ejemplo de roles del sistema
+const SystemRoles = {
+  ADMIN: {
+    name: 'admin',
+    permissions: ['*:*'] // Todos los permisos
+  },
+  MODERATOR: {
+    name: 'moderator',
+    permissions: ['posts:read', 'posts:update', 'posts:delete', 'users:read']
+  },
+  USER: {
+    name: 'user',
+    permissions: ['posts:read', 'posts:create', 'profile:update']
+  }
+}
+\`\`\`
+
+### Implementación de Middleware de Autorización
+
+\`\`\`typescript
+const authorize = (requiredPermission: string) => {
+  return async (req: Request, res: Response, next: NextFunction) => {
+    const user = req.user
+    
+    if (!user) {
+      return res.status(401).json({ error: 'No autenticado' })
+    }
+
+    const hasPermission = await checkUserPermission(user.id, requiredPermission)
+    
+    if (!hasPermission) {
+      await logUnauthorizedAccess(user.id, requiredPermission, req.ip)
+      return res.status(403).json({ error: 'Acceso denegado' })
+    }
+    
+    next()
+  }
+}
+
+const checkUserPermission = async (userId: string, permission: string): Promise<boolean> => {
+  const user = await getUserWithRoles(userId)
+  const [action, resource] = permission.split(':')
+  
+  return user.roles.some(role => 
+    role.permissions.some(p => 
+      (p.action === action || p.action === '*') &&
+      (p.resource === resource || p.resource === '*')
+    )
+  )
+}
+
+// Uso del middleware
+app.get('/admin/users', authorize('users:read'), getUsersHandler)
+app.post('/admin/users', authorize('users:create'), createUserHandler)
+app.put('/admin/users/:id', authorize('users:update'), updateUserHandler)
+app.delete('/admin/users/:id', authorize('users:delete'), deleteUserHandler)
+\`\`\`
+
+## Gestión Avanzada de Sesiones
+
+### Refrescamiento Automático de Tokens
+
+\`\`\`typescript
+interface TokenPair {
+  accessToken: string
+  refreshToken: string
+  expiresAt: Date
+}
+
+const TokenService = {
+  async generateTokenPair(userId: string): Promise<TokenPair> {
+    const accessToken = jwt.sign(
+      { userId, type: 'access' },
+      process.env.JWT_SECRET!,
+      { expiresIn: '15m' }
+    )
+    
+    const refreshToken = jwt.sign(
+      { userId, type: 'refresh' },
+      process.env.REFRESH_SECRET!,
+      { expiresIn: '7d' }
+    )
+    
+    // Almacenar refresh token en base de datos
+    await saveRefreshToken(userId, refreshToken)
+    
+    return {
+      accessToken,
+      refreshToken,
+      expiresAt: new Date(Date.now() + 15 * 60 * 1000)
+    }
+  },
+
+  async refreshTokens(refreshToken: string): Promise<TokenPair | null> {
+    try {
+      const decoded = jwt.verify(refreshToken, process.env.REFRESH_SECRET!) as any
+      const isValid = await validateRefreshToken(decoded.userId, refreshToken)
+      
+      if (!isValid) return null
+      
+      // Invalidar token anterior
+      await invalidateRefreshToken(refreshToken)
+      
+      // Generar nuevo par de tokens
+      return await this.generateTokenPair(decoded.userId)
+    } catch (error) {
+      return null
+    }
+  }
+}
+
+// Hook para refrescamiento automático
+const useAutoRefresh = () => {
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      const tokenData = getStoredTokens()
+      if (tokenData && isTokenExpiringSoon(tokenData.accessToken)) {
+        const newTokens = await TokenService.refreshTokens(tokenData.refreshToken)
+        if (newTokens) {
+          storeTokens(newTokens)
+        } else {
+          // Refresh token expirado, redirigir a login
+          redirectToLogin()
+        }
+      }
+    }, 60000) // Verificar cada minuto
+
+    return () => clearInterval(interval)
+  }, [])
+}
+\`\`\`
+
+## Autenticación Multifactor (MFA)
+
+### Configuración TOTP (Time-based One-Time Password)
+
+\`\`\`typescript
+import speakeasy from 'speakeasy'
+import QRCode from 'qrcode'
+
+const MFAService = {
+  async setupTOTP(userId: string): Promise<{
+    secret: string
+    qrCode: string
+    backupCodes: string[]
+  }> {
+    const secret = speakeasy.generateSecret({
+      name: \`Tu App (\${user.email})\`,
+      issuer: 'bolt.new Academy',
+      length: 32
+    })
+
+    const qrCode = await QRCode.toDataURL(secret.otpauth_url!)
+    const backupCodes = generateBackupCodes()
+
+    // Guardar secret temporalmente (no activar hasta verificación)
+    await saveTempMFASecret(userId, secret.base32)
+    await saveBackupCodes(userId, backupCodes)
+
+    return {
+      secret: secret.base32,
+      qrCode,
+      backupCodes
+    }
+  },
+
+  async verifyTOTP(userId: string, token: string): Promise<boolean> {
+    const secret = await getMFASecret(userId)
+    
+    const verified = speakeasy.totp.verify({
+      secret: secret,
+      token: token,
+      time: Date.now() / 1000,
+      window: 2 // Permitir 2 períodos de tiempo (±1 minuto)
+    })
+
+    if (verified) {
+      await logMFASuccess(userId)
+    } else {
+      await logMFAFailure(userId)
+    }
+
+    return verified
+  },
+
+  async verifyBackupCode(userId: string, code: string): Promise<boolean> {
+    const backupCodes = await getBackupCodes(userId)
+    const isValid = backupCodes.includes(code)
+
+    if (isValid) {
+      await useBackupCode(userId, code) // Marcar como usado
+      await logBackupCodeUsed(userId)
+    }
+
+    return isValid
+  }
+}
+
+const generateBackupCodes = (): string[] => {
+  return Array.from({ length: 10 }, () => 
+    Math.random().toString(36).substring(2, 10).toUpperCase()
+  )
+}
+\`\`\`
+
+## Patrones de Seguridad Avanzados
+
+### Rate Limiting Inteligente
+
+\`\`\`typescript
+const createSmartRateLimit = (options: {
+  windowMs: number
+  maxAttempts: number
+  skipSuccessfulRequests?: boolean
+}) => {
+  const attempts = new Map()
+  
+  return async (req: Request, res: Response, next: NextFunction) => {
+    const identifier = req.ip + ':' + (req.user?.id || 'anonymous')
+    const now = Date.now()
+    const windowStart = now - options.windowMs
+    
+    // Limpiar intentos antiguos
+    const userAttempts = attempts.get(identifier) || []
+    const recentAttempts = userAttempts.filter((time: number) => time > windowStart)
+    
+    if (recentAttempts.length >= options.maxAttempts) {
+      const resetTime = recentAttempts[0] + options.windowMs
+      
+      res.set({
+        'Retry-After': Math.ceil((resetTime - now) / 1000).toString(),
+        'X-RateLimit-Limit': options.maxAttempts.toString(),
+        'X-RateLimit-Remaining': '0',
+        'X-RateLimit-Reset': resetTime.toString()
+      })
+      
+      return res.status(429).json({
+        error: 'Demasiados intentos',
+        retryAfter: Math.ceil((resetTime - now) / 1000)
+      })
+    }
+    
+    // Registrar intento
+    recentAttempts.push(now)
+    attempts.set(identifier, recentAttempts)
+    
+    // Middleware para limpiar en caso de éxito
+    if (options.skipSuccessfulRequests) {
+      res.on('finish', () => {
+        if (res.statusCode < 400) {
+          attempts.delete(identifier)
+        }
+      })
+    }
+    
+    next()
+  }
+}
+
+// Uso con diferentes configuraciones
+const loginRateLimit = createSmartRateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutos
+  maxAttempts: 5,
+  skipSuccessfulRequests: true
+})
+
+const apiRateLimit = createSmartRateLimit({
+  windowMs: 60 * 1000, // 1 minuto
+  maxAttempts: 100
+})
+\`\`\`
+
+### Detección de Anomalías
+
+\`\`\`typescript
+const AnomalyDetector = {
+  async analyzeLoginAttempt(userId: string, loginData: LoginAttempt): Promise<{
+    riskScore: number
+    flags: string[]
+    shouldChallenge: boolean
+  }> {
+    const flags: string[] = []
+    let riskScore = 0
+    
+    // Verificar ubicación inusual
+    const userLocations = await getUserLocationHistory(userId)
+    if (!userLocations.some(loc => isSimilarLocation(loc, loginData.location))) {
+      flags.push('unusual_location')
+      riskScore += 30
+    }
+    
+    // Verificar dispositivo/navegador
+    const userDevices = await getUserDeviceHistory(userId)
+    if (!userDevices.some(device => device.fingerprint === loginData.deviceFingerprint)) {
+      flags.push('new_device')
+      riskScore += 20
+    }
+    
+    // Verificar patrones de tiempo
+    const loginTimes = await getRecentLoginTimes(userId)
+    if (isUnusualTime(loginTimes, loginData.timestamp)) {
+      flags.push('unusual_time')
+      riskScore += 15
+    }
+    
+    // Verificar intentos fallidos recientes
+    const recentFailures = await getRecentFailedLogins(userId)
+    if (recentFailures.length > 3) {
+      flags.push('recent_failures')
+      riskScore += 25
+    }
+    
+    return {
+      riskScore,
+      flags,
+      shouldChallenge: riskScore > 50
+    }
+  },
+
+  async handleHighRiskLogin(userId: string, riskAnalysis: any): Promise<ChallengeResponse> {
+    // Requerir MFA adicional
+    if (riskAnalysis.flags.includes('unusual_location')) {
+      await sendLocationVerificationEmail(userId)
+      return { type: 'email_verification', message: 'Verifica tu email para continuar' }
+    }
+    
+    // Requerir verificación por SMS
+    if (riskAnalysis.riskScore > 70) {
+      await sendSMSVerification(userId)
+      return { type: 'sms_verification', message: 'Código enviado a tu teléfono' }
+    }
+    
+    // Requerir MFA estándar
+    return { type: 'mfa_required', message: 'Ingresa tu código de autenticación' }
+  }
+}
+\`\`\`
+
+## Integración SSO Empresarial
+
+### Configuración SAML
+
+\`\`\`typescript
+const samlConfig = {
+  issuer: 'https://tuapp.com',
+  callbackUrl: 'https://tuapp.com/auth/saml/callback',
+  entryPoint: 'https://sso.empresa.com/saml/sso',
+  cert: process.env.SAML_CERT,
+  
+  // Configuración adicional
+  identifierFormat: 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
+  signatureAlgorithm: 'sha256',
+  digestAlgorithm: 'sha256'
+}
+
+const handleSAMLResponse = async (profile: any, done: any) => {
+  try {
+    const {
+      nameID: email,
+      'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name': displayName,
+      'http://schemas.microsoft.com/ws/2008/06/identity/claims/groups': groups
+    } = profile
+
+    // Buscar o crear usuario
+    let user = await findUserByEmail(email)
+    if (!user) {
+      user = await createUser({
+        email,
+        displayName,
+        provider: 'saml',
+        emailVerified: true
+      })
+    }
+
+    // Sincronizar roles basados en grupos SAML
+    await syncUserRoles(user.id, groups)
+
+    done(null, user)
+  } catch (error) {
+    done(error, null)
+  }
+}
+\`\`\`
+
+¡Increíble trabajo {{name}}! Has dominado los patrones avanzados de autenticación. Ahora puedes implementar sistemas de seguridad de nivel empresarial con confianza.`,
+        learningObjectives: {
+          0: 'Diseñar e implementar sistemas de control de acceso basado en roles',
+          1: 'Gestionar sesiones complejas de usuario con refrescamiento automático y monitoreo de seguridad',
+          2: 'Integrar autenticación multifactor para seguridad mejorada',
+          3: 'Aplicar patrones de seguridad avanzados incluyendo rate limiting y detección de anomalías',
+          4: 'Implementar autenticación de nivel empresarial con integración SSO'
+        },
+        badgeName: 'Arquitecto de Seguridad',
+        srcodeCommentary: '¡{{name}}, acabas de graduarte de lo básico de seguridad a convertirte en un arquitecto de Fort Knox digital! Has dominado el arte de mantener alejados a los malos mientras haces que los buenos se sientan bienvenidos. Recuerda: la seguridad es como una cebolla - tiene muchas capas, y a veces te hace llorar (especialmente cuando debuggeas flujos de autenticación). ¡Pero hey, mejor lágrimas de seguridad que lágrimas de arrepentimiento! 🔒👑',
+        quizQuestions: {
+          'q3-2-1': {
+            question: '¿Cuál es el principal beneficio del Control de Acceso Basado en Roles (RBAC)?',
+            options: [
+              'Elimina la necesidad de contraseñas',
+              'Proporciona gestión granular de permisos a través de asignación de roles',
+              'Hace que la autenticación sea más rápida',
+              'Reduce los requisitos de almacenamiento de la base de datos'
+            ],
+            explanation: 'RBAC proporciona gestión granular de permisos al permitir asignar roles específicos a usuarios y definir permisos para cada rol, facilitando la gestión de control de acceso a escala.'
+          },
+          'q3-2-2': {
+            question: '¿Cuándo deberías implementar refrescamiento automático de sesión?',
+            options: [
+              'Solo cuando los usuarios lo soliciten',
+              'Antes de que las sesiones expiren para mantener una experiencia de usuario fluida',
+              'Después de que los usuarios cierren sesión',
+              'Solo para usuarios administradores'
+            ],
+            explanation: 'El refrescamiento automático de sesión debería implementarse antes de que las sesiones expiren para mantener una experiencia de usuario fluida, evitando que los usuarios sean desconectados inesperadamente durante el uso activo.'
+          },
+          'q3-2-3': {
+            question: '¿Qué significa TOTP en autenticación multifactor?',
+            options: [
+              'Time-based One-Time Password',
+              'Token-based Online Transfer Protocol',
+              'Trusted OAuth Token Provider',
+              'Two-factor Online Transaction Protocol'
+            ],
+            explanation: 'TOTP significa Time-based One-Time Password, que genera códigos únicos que cambian cada 30 segundos, comúnmente usado en aplicaciones autenticadoras para autenticación multifactor.'
+          },
+          'q3-2-4': {
+            question: '¿Cuál es el propósito del rate limiting en sistemas de autenticación?',
+            options: [
+              'Hacer que la autenticación sea más rápida',
+              'Prevenir ataques de fuerza bruta y abuso',
+              'Reducir costos del servidor',
+              'Mejorar la experiencia del usuario'
+            ],
+            explanation: 'El rate limiting previene ataques de fuerza bruta y abuso al limitar el número de intentos de autenticación desde una sola dirección IP o usuario dentro de una ventana de tiempo especificada.'
+          }
+        }
+      },
+
+      // Level 3 - Lesson 3
+      'lesson-3-3': {
+        title: 'Mejores Prácticas de Seguridad y Cumplimiento',
+        objective: 'Dominar las mejores prácticas de seguridad, requisitos de cumplimiento y estrategias avanzadas de mitigación de amenazas para aplicaciones de producción',
+        content: `# Mejores Prácticas de Seguridad y Cumplimiento
+
+¡Hola {{name}}! Bienvenido al nivel más alto de seguridad digital. Aquí aprenderás a proteger aplicaciones como lo hacen las grandes empresas.
+
+## Arquitectura de Seguridad First
+
+### Defensa en Profundidad
+
+La defensa en profundidad implementa múltiples capas de seguridad para que si una falla, otras continúen protegiendo:
+
+\`\`\`typescript
+// Arquitectura de seguridad multicapa
+const SecurityLayers = {
+  // Capa 1: Perímetro de red
+  network: {
+    firewall: 'Bloquear tráfico malicioso',
+    ddosProtection: 'Protección contra ataques DDoS',
+    ipWhitelist: 'Lista blanca de IPs confiables'
+  },
+  
+  // Capa 2: Aplicación
+  application: {
+    inputValidation: 'Validación estricta de entrada',
+    outputEncoding: 'Codificación de salida para prevenir XSS',
+    csrfProtection: 'Protección contra CSRF',
+    contentSecurityPolicy: 'CSP para prevenir inyección de código'
+  },
+  
+  // Capa 3: Autenticación y autorización
+  auth: {
+    mfa: 'Autenticación multifactor',
+    rbac: 'Control de acceso basado en roles',
+    sessionManagement: 'Gestión segura de sesiones'
+  },
+  
+  // Capa 4: Base de datos
+  database: {
+    encryption: 'Encriptación de datos en reposo',
+    accessControl: 'Control de acceso granular',
+    auditLogging: 'Logging de auditoría completo'
+  },
+  
+  // Capa 5: Monitoreo
+  monitoring: {
+    anomalyDetection: 'Detección de anomalías',
+    alerting: 'Alertas en tiempo real',
+    incidentResponse: 'Respuesta automatizada a incidentes'
+  }
+}
+
+// Implementación de CSP
+const cspPolicy = {
+  'default-src': ["'self'"],
+  'script-src': ["'self'", "'unsafe-inline'", 'https://apis.google.com'],
+  'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+  'img-src': ["'self'", 'data:', 'https:'],
+  'font-src': ["'self'", 'https://fonts.gstatic.com'],
+  'connect-src': ["'self'", 'https://api.tuapp.com'],
+  'frame-ancestors': ["'none'"]
+}
+
+app.use((req, res, next) => {
+  res.setHeader('Content-Security-Policy', formatCSP(cspPolicy))
+  next()
+})
+\`\`\`
+
+## Protección de Datos y Privacidad
+
+### Encriptación de Datos
+
+\`\`\`typescript
+import crypto from 'crypto'
+
+class DataEncryption {
+  private static readonly algorithm = 'aes-256-gcm'
+  private static readonly keyLength = 32
+  private static readonly ivLength = 16
+
+  static encrypt(data: string, key?: string): {
+    encrypted: string
+    iv: string
+    tag: string
+    key: string
+  } {
+    const encryptionKey = key ? Buffer.from(key, 'hex') : crypto.randomBytes(this.keyLength)
+    const iv = crypto.randomBytes(this.ivLength)
+    
+    const cipher = crypto.createCipher(this.algorithm, encryptionKey, iv)
+    
+    let encrypted = cipher.update(data, 'utf8', 'hex')
+    encrypted += cipher.final('hex')
+    
+    const tag = cipher.getAuthTag()
+    
+    return {
+      encrypted,
+      iv: iv.toString('hex'),
+      tag: tag.toString('hex'),
+      key: encryptionKey.toString('hex')
+    }
+  }
+
+  static decrypt(encryptedData: {
+    encrypted: string
+    iv: string
+    tag: string
+    key: string
+  }): string {
+    const key = Buffer.from(encryptedData.key, 'hex')
+    const iv = Buffer.from(encryptedData.iv, 'hex')
+    const tag = Buffer.from(encryptedData.tag, 'hex')
+    
+    const decipher = crypto.createDecipher(this.algorithm, key, iv)
+    decipher.setAuthTag(tag)
+    
+    let decrypted = decipher.update(encryptedData.encrypted, 'hex', 'utf8')
+    decrypted += decipher.final('utf8')
+    
+    return decrypted
+  }
+}
+
+// Encriptación de datos sensibles antes de almacenar
+const encryptSensitiveData = async (userId: string, data: any) => {
+  const userKey = await getUserEncryptionKey(userId)
+  const encryptedData = DataEncryption.encrypt(JSON.stringify(data), userKey)
+  
+  return {
+    ...encryptedData,
+    encrypted_at: new Date().toISOString()
+  }
+}
+\`\`\`
+
+### Cumplimiento GDPR
+
+\`\`\`typescript
+interface GDPRCompliance {
+  // Derecho a ser olvidado
+  rightToBeErasure: (userId: string) => Promise<void>
+  
+  // Portabilidad de datos
+  dataPortability: (userId: string) => Promise<UserDataExport>
+  
+  // Consentimiento
+  consentManagement: (userId: string, purposes: string[]) => Promise<void>
+  
+  // Acceso a datos
+  rightToAccess: (userId: string) => Promise<PersonalDataReport>
+}
+
+const GDPRService: GDPRCompliance = {
+  async rightToBeErasure(userId: string): Promise<void> {
+    // 1. Validar solicitud
+    const user = await User.findById(userId)
+    if (!user) throw new Error('Usuario no encontrado')
+    
+    // 2. Anonimizar datos que no pueden ser eliminados (facturas, etc.)
+    await anonymizeUserData(userId)
+    
+    // 3. Eliminar datos personales
+    await User.deleteOne({ _id: userId })
+    await UserProfile.deleteOne({ userId })
+    await UserPreferences.deleteOne({ userId })
+    
+    // 4. Eliminar de sistemas externos
+    await deleteFromAnalytics(userId)
+    await deleteFromEmailService(userId)
+    
+    // 5. Registrar en audit log
+    await logGDPRAction('data_deletion', userId)
+    
+    // 6. Notificar sistemas dependientes
+    await notifySystemsOfDeletion(userId)
+  },
+
+  async dataPortability(userId: string): Promise<UserDataExport> {
+    const userData = await getUserCompleteData(userId)
+    
+    return {
+      exportDate: new Date().toISOString(),
+      format: 'JSON',
+      data: {
+        profile: userData.profile,
+        preferences: userData.preferences,
+        activityHistory: userData.activities,
+        createdContent: userData.content
+      }
+    }
+  },
+
+  async consentManagement(userId: string, purposes: string[]): Promise<void> {
+    const existingConsent = await getConsentRecord(userId)
+    
+    await updateConsentRecord(userId, {
+      purposes,
+      timestamp: new Date(),
+      ipAddress: getCurrentIP(),
+      userAgent: getCurrentUserAgent()
+    })
+    
+    // Aplicar cambios basados en consentimiento
+    await applyConsentChanges(userId, purposes)
+  },
+
+  async rightToAccess(userId: string): Promise<PersonalDataReport> {
+    return {
+      personalData: await getPersonalData(userId),
+      processingPurposes: await getProcessingPurposes(userId),
+      dataRetentionPeriod: await getRetentionPeriod(userId),
+      dataRecipients: await getDataRecipients(userId),
+      dataSource: await getDataSource(userId)
+    }
+  }
+}
+\`\`\`
+
+## Cumplimiento y Auditoría
+
+### Logging de Auditoría Completo
+
+\`\`\`typescript
+interface AuditLog {
+  id: string
+  timestamp: Date
+  userId?: string
+  action: string
+  resource: string
+  oldValue?: any
+  newValue?: any
+  ipAddress: string
+  userAgent: string
+  sessionId?: string
+  result: 'success' | 'failure' | 'partial'
+  metadata?: Record<string, any>
+}
+
+class AuditLogger {
+  static async logAction(action: {
+    userId?: string
+    action: string
+    resource: string
+    oldValue?: any
+    newValue?: any
+    result: 'success' | 'failure' | 'partial'
+    metadata?: Record<string, any>
+  }): Promise<void> {
+    const auditEntry: AuditLog = {
+      id: generateUUID(),
+      timestamp: new Date(),
+      ipAddress: getCurrentIP(),
+      userAgent: getCurrentUserAgent(),
+      sessionId: getCurrentSessionId(),
+      ...action
+    }
+    
+    // Almacenar en base de datos segura
+    await saveAuditLog(auditEntry)
+    
+    // Enviar a sistema de monitoreo
+    await sendToMonitoring(auditEntry)
+    
+    // Alertar si es una acción crítica
+    if (isCriticalAction(action.action)) {
+      await sendSecurityAlert(auditEntry)
+    }
+  }
+  
+  static async generateComplianceReport(
+    startDate: Date,
+    endDate: Date,
+    userId?: string
+  ): Promise<ComplianceReport> {
+    const logs = await getAuditLogs(startDate, endDate, userId)
+    
+    return {
+      period: { start: startDate, end: endDate },
+      totalActions: logs.length,
+      successfulActions: logs.filter(l => l.result === 'success').length,
+      failedActions: logs.filter(l => l.result === 'failure').length,
+      criticalActions: logs.filter(l => isCriticalAction(l.action)),
+      userActivity: groupBy(logs, 'userId'),
+      complianceViolations: detectComplianceViolations(logs)
+    }
+  }
+}
+
+// Middleware de auditoría automática
+const auditMiddleware = (req: Request, res: Response, next: NextFunction) => {
+  const originalSend = res.send
+  
+  res.send = function(data) {
+    AuditLogger.logAction({
+      userId: req.user?.id,
+      action: \`\${req.method} \${req.path}\`,
+      resource: req.path,
+      result: res.statusCode < 400 ? 'success' : 'failure',
+      metadata: {
+        statusCode: res.statusCode,
+        requestBody: req.body,
+        responseSize: data ? data.length : 0
+      }
+    })
+    
+    return originalSend.call(this, data)
+  }
+  
+  next()
+}
+\`\`\`
+
+## Detección y Respuesta a Amenazas
+
+### Sistema de Detección de Intrusiones
+
+\`\`\`typescript
+class ThreatDetector {
+  private static readonly suspiciousPatterns = [
+    /union.*select/i, // SQL injection
+    /<script/i,       // XSS
+    /\\.\\./,          // Path traversal
+    /eval\\s*\\(/i,    // Code injection
+  ]
+  
+  static async analyzeRequest(req: Request): Promise<ThreatAnalysis> {
+    const threats: string[] = []
+    let riskScore = 0
+    
+    // Verificar patrones sospechosos en parámetros
+    const allParams = { ...req.query, ...req.body, ...req.params }
+    Object.values(allParams).forEach(value => {
+      if (typeof value === 'string') {
+        this.suspiciousPatterns.forEach(pattern => {
+          if (pattern.test(value)) {
+            threats.push(\`Suspicious pattern: \${pattern.source}\`)
+            riskScore += 50
+          }
+        })
+      }
+    })
+    
+    // Verificar rate limiting
+    const recentRequests = await getRecentRequests(req.ip)
+    if (recentRequests.length > 100) {
+      threats.push('Excessive requests')
+      riskScore += 30
+    }
+    
+    // Verificar geolocalización
+    const location = await getIPLocation(req.ip)
+    if (location.country && isHighRiskCountry(location.country)) {
+      threats.push('High-risk location')
+      riskScore += 20
+    }
+    
+    return {
+      riskScore,
+      threats,
+      shouldBlock: riskScore > 70,
+      shouldAlert: riskScore > 40
+    }
+  }
+  
+  static async handleThreat(threat: ThreatAnalysis, req: Request): Promise<void> {
+    if (threat.shouldBlock) {
+      await blockIP(req.ip, '24h')
+      await logSecurityEvent('IP_BLOCKED', req.ip, threat.threats)
+    }
+    
+    if (threat.shouldAlert) {
+      await sendSecurityAlert({
+        type: 'SUSPICIOUS_ACTIVITY',
+        ip: req.ip,
+        threats: threat.threats,
+        riskScore: threat.riskScore,
+        timestamp: new Date()
+      })
+    }
+  }
+}
+
+// Middleware de detección de amenazas
+const threatDetectionMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+  const analysis = await ThreatDetector.analyzeRequest(req)
+  
+  if (analysis.shouldBlock) {
+    return res.status(403).json({ error: 'Acceso denegado' })
+  }
+  
+  if (analysis.shouldAlert) {
+    await ThreatDetector.handleThreat(analysis, req)
+  }
+  
+  next()
+}
+\`\`\`
+
+## Pruebas y Validación de Seguridad
+
+### Pruebas de Seguridad Automatizadas
+
+\`\`\`typescript
+describe('Security Tests', () => {
+  test('SQL Injection Protection', async () => {
+    const maliciousInput = "'; DROP TABLE users; --"
+    const response = await request(app)
+      .post('/api/search')
+      .send({ query: maliciousInput })
+    
+    expect(response.status).toBe(400)
+    expect(response.body.error).toContain('Invalid input')
+  })
+  
+  test('XSS Prevention', async () => {
+    const xssPayload = '<script>alert("XSS")</script>'
+    const response = await request(app)
+      .post('/api/comments')
+      .send({ content: xssPayload })
+    
+    expect(response.status).toBe(400)
+    expect(response.body.error).toContain('Invalid content')
+  })
+  
+  test('Authentication Required', async () => {
+    const response = await request(app)
+      .get('/api/protected')
+    
+    expect(response.status).toBe(401)
+  })
+  
+  test('Rate Limiting Works', async () => {
+    const promises = Array(10).fill(0).map(() => 
+      request(app).post('/api/login').send({ email: 'test@test.com', password: 'wrong' })
+    )
+    
+    const responses = await Promise.all(promises)
+    const rateLimitedResponses = responses.filter(r => r.status === 429)
+    
+    expect(rateLimitedResponses.length).toBeGreaterThan(0)
+  })
+})
+
+// Pruebas de penetración automatizadas
+const runPenetrationTests = async () => {
+  const results = await Promise.all([
+    testSQLInjection(),
+    testXSSVulnerabilities(),
+    testCSRFProtection(),
+    testAuthenticationBypass(),
+    testPrivilegeEscalation(),
+    testSessionManagement()
+  ])
+  
+  return {
+    passed: results.filter(r => r.passed).length,
+    failed: results.filter(r => !r.passed).length,
+    results: results
+  }
+}
+\`\`\`
+
+## Gestión de Incidentes de Seguridad
+
+\`\`\`typescript
+interface SecurityIncident {
+  id: string
+  severity: 'low' | 'medium' | 'high' | 'critical'
+  type: string
+  description: string
+  detectedAt: Date
+  resolvedAt?: Date
+  status: 'detected' | 'investigating' | 'contained' | 'resolved'
+  affectedSystems: string[]
+  responseActions: string[]
+}
+
+class IncidentResponseSystem {
+  static async handleIncident(incident: Partial<SecurityIncident>): Promise<void> {
+    const fullIncident: SecurityIncident = {
+      id: generateUUID(),
+      detectedAt: new Date(),
+      status: 'detected',
+      responseActions: [],
+      ...incident
+    } as SecurityIncident
+    
+    // Guardar incidente
+    await saveIncident(fullIncident)
+    
+    // Respuesta automática basada en severidad
+    switch (fullIncident.severity) {
+      case 'critical':
+        await this.handleCriticalIncident(fullIncident)
+        break
+      case 'high':
+        await this.handleHighIncident(fullIncident)
+        break
+      default:
+        await this.handleStandardIncident(fullIncident)
+    }
+  }
+  
+  private static async handleCriticalIncident(incident: SecurityIncident): Promise<void> {
+    // Notificar inmediatamente al equipo de seguridad
+    await notifySecurityTeam(incident, 'IMMEDIATE')
+    
+    // Activar modo de emergencia
+    await activateEmergencyMode()
+    
+    // Bloquear tráfico sospechoso
+    await implementEmergencyBlocking()
+    
+    // Crear sala de crisis
+    await createCrisisRoom(incident.id)
+  }
+  
+  private static async handleHighIncident(incident: SecurityIncident): Promise<void> {
+    // Notificar al equipo de seguridad
+    await notifySecurityTeam(incident, 'HIGH_PRIORITY')
+    
+    // Aumentar monitoreo
+    await increaseMonitoring(incident.affectedSystems)
+    
+    // Implementar contramedidas
+    await implementCountermeasures(incident)
+  }
+}
+\`\`\`
+
+¡Felicitaciones {{name}}! Has completado el entrenamiento de seguridad más avanzado. Ahora tienes las habilidades para proteger aplicaciones de nivel empresarial contra las amenazas más sofisticadas.`,
+        learningObjectives: {
+          0: 'Implementar arquitectura de seguridad completa con estrategias de defensa en profundidad',
+          1: 'Aplicar requisitos de protección de datos y cumplimiento de privacidad (GDPR, SOC 2, PCI DSS)',
+          2: 'Diseñar sistemas de detección y respuesta a amenazas en tiempo real',
+          3: 'Integrar procesos de pruebas y validación de seguridad automatizadas',
+          4: 'Gestionar incidentes de seguridad y mantener documentación de cumplimiento'
+        },
+        badgeName: 'Maestro de Seguridad',
+        srcodeCommentary: '¡{{name}}, felicitaciones! ¡Acabas de ganar tu cinturón negro en seguridad digital! Has aprendido a pensar como protector y atacante - la mentalidad de seguridad definitiva. Recuerda: la seguridad es como usar hilo dental - nadie quiere hacerlo, pero las consecuencias de no hacerlo son realmente, realmente malas. ¡Ahora ve y asegura el mundo digital! 🥋🔐',
+        quizQuestions: {
+          'q3-3-1': {
+            question: '¿Qué significa "defensa en profundidad" en arquitectura de seguridad?',
+            options: [
+              'Usar solo una medida de seguridad fuerte',
+              'Implementar múltiples capas de controles de seguridad',
+              'Enfocarse solo en seguridad perimetral',
+              'Confiar en servicios de seguridad de terceros'
+            ],
+            explanation: 'Defensa en profundidad significa implementar múltiples capas de controles de seguridad para que si una capa falla, otras capas continúen proporcionando protección, creando una postura de seguridad completa.'
+          },
+          'q3-3-2': {
+            question: '¿Qué es el "Derecho al Olvido" en el cumplimiento GDPR?',
+            options: [
+              'El derecho a usar cuentas anónimas',
+              'El derecho a que se eliminen los datos personales bajo solicitud',
+              'El derecho a olvidar contraseñas',
+              'El derecho a ocultar la actividad del usuario'
+            ],
+            explanation: 'El "Derecho al Olvido" es una disposición del GDPR que permite a los individuos solicitar la eliminación de sus datos personales de los sistemas de una organización, requiriendo procedimientos completos de eliminación de datos.'
+          },
+          'q3-3-3': {
+            question: '¿Por qué nunca deberían almacenarse los detalles de tarjetas de pago en la base de datos de tu aplicación?',
+            options: [
+              'Toma demasiado espacio de almacenamiento',
+              'Viola los requisitos de cumplimiento PCI DSS',
+              'Hace que la aplicación sea más lenta',
+              'No es útil para propósitos de negocio'
+            ],
+            explanation: 'Almacenar detalles de tarjetas de pago viola los requisitos de cumplimiento PCI DSS y crea riesgos significativos de seguridad y legales. En su lugar, usa servicios de tokenización proporcionados por procesadores de pagos.'
+          },
+          'q3-3-4': {
+            question: '¿Cuál es el propósito principal de los logs de auditoría de seguridad?',
+            options: [
+              'Mejorar el rendimiento de la aplicación',
+              'Rastrear el comportamiento del usuario para marketing',
+              'Proporcionar evidencia de cumplimiento y capacidades de investigación de incidentes',
+              'Reducir costos de almacenamiento de base de datos'
+            ],
+            explanation: 'Los logs de auditoría de seguridad proporcionan evidencia de cumplimiento con regulaciones y permiten la investigación de incidentes de seguridad al rastrear quién accedió a qué recursos, cuándo y con qué resultado.'
+          }
+        }
+      },
+
+      // Level 4 - Lesson 1
+      'lesson-4-1': {
+        title: 'Estrategias de Despliegue en Producción',
+        objective: 'Dominar patrones de despliegue, gestión de entornos y configuraciones listas para producción en aplicaciones bolt.new',
+        content: `# Estrategias de Despliegue en Producción
+
+¡Hola {{name}}! Bienvenido al mundo del despliegue profesional. Es hora de hacer que tus aplicaciones funcionen perfectamente en producción.
+
+## Pipelines de CI/CD
+
+### Configuración de GitHub Actions
+
+\`\`\`yaml
+name: Deployment Pipeline
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run type-check
+      - run: npm test -- --coverage
+      
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Deploy to production
+        env:
+          NETLIFY_AUTH_TOKEN: \${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: \${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          npm run build
+          npx netlify-cli deploy --prod --dir=dist
+\`\`\`
+
+## Infraestructura como Código
+
+\`\`\`typescript
+// terraform/main.tf (usando Terraform)
+resource "aws_s3_bucket" "app_storage" {
+  bucket = "mi-app-storage-\${var.environment}"
+  
+  versioning {
+    enabled = true
+  }
+  
+  lifecycle_rule {
+    enabled = true
+    
+    noncurrent_version_expiration {
+      days = 30
+    }
+  }
+}
+
+resource "aws_cloudfront_distribution" "app_cdn" {
+  origin {
+    domain_name = aws_s3_bucket.app_storage.bucket_regional_domain_name
+    origin_id   = "S3-\${aws_s3_bucket.app_storage.id}"
+  }
+  
+  enabled             = true
+  default_root_object = "index.html"
+  
+  default_cache_behavior {
+    target_origin_id = "S3-\${aws_s3_bucket.app_storage.id}"
+    compress         = true
+    
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    
+    viewer_protocol_policy = "redirect-to-https"
+  }
+}
+\`\`\`
+
+## Configuración de Entornos
+
+\`\`\`typescript
+// config/environments.ts
+interface EnvironmentConfig {
+  api: {
+    baseUrl: string
+    timeout: number
+  }
+  database: {
+    url: string
+    maxConnections: number
+  }
+  monitoring: {
+    enabled: boolean
+    sampleRate: number
+  }
+  features: Record<string, boolean>
+}
+
+const environments: Record<string, EnvironmentConfig> = {
+  development: {
+    api: {
+      baseUrl: 'http://localhost:3000',
+      timeout: 10000
+    },
+    database: {
+      url: process.env.DEV_DATABASE_URL!,
+      maxConnections: 5
+    },
+    monitoring: {
+      enabled: false,
+      sampleRate: 1.0
+    },
+    features: {
+      enableNewFeature: true,
+      enableDebugMode: true
+    }
+  },
+  
+  staging: {
+    api: {
+      baseUrl: 'https://staging-api.miapp.com',
+      timeout: 5000
+    },
+    database: {
+      url: process.env.STAGING_DATABASE_URL!,
+      maxConnections: 10
+    },
+    monitoring: {
+      enabled: true,
+      sampleRate: 0.5
+    },
+    features: {
+      enableNewFeature: true,
+      enableDebugMode: false
+    }
+  },
+  
+  production: {
+    api: {
+      baseUrl: 'https://api.miapp.com',
+      timeout: 5000
+    },
+    database: {
+      url: process.env.DATABASE_URL!,
+      maxConnections: 20
+    },
+    monitoring: {
+      enabled: true,
+      sampleRate: 0.1
+    },
+    features: {
+      enableNewFeature: false,
+      enableDebugMode: false
+    }
+  }
+}
+
+export const config = environments[process.env.NODE_ENV || 'development']
+\`\`\`
+
+## Health Checks y Monitoreo
+
+\`\`\`typescript
+// routes/health.ts
+export const healthCheck = async (req: Request, res: Response) => {
+  const checks = await Promise.allSettled([
+    checkDatabase(),
+    checkRedis(),
+    checkExternalAPIs(),
+    checkFileSystem()
+  ])
+
+  const results = checks.map((check, index) => ({
+    name: ['database', 'redis', 'external-apis', 'filesystem'][index],
+    status: check.status === 'fulfilled' ? 'healthy' : 'unhealthy',
+    error: check.status === 'rejected' ? check.reason : null
+  }))
+
+  const allHealthy = results.every(r => r.status === 'healthy')
+
+  res.status(allHealthy ? 200 : 503).json({
+    status: allHealthy ? 'healthy' : 'unhealthy',
+    timestamp: new Date().toISOString(),
+    checks: results
+  })
+}
+
+const checkDatabase = async () => {
+  const start = Date.now()
+  await db.raw('SELECT 1')
+  const duration = Date.now() - start
+  
+  if (duration > 5000) {
+    throw new Error(\`Database query took \${duration}ms\`)
+  }
+}
+\`\`\`
+
+## Estrategias de Escalamiento
+
+\`\`\`typescript
+// Auto-escalamiento horizontal
+const autoScaler = {
+  async checkMetrics() {
+    const metrics = await getSystemMetrics()
+    
+    if (metrics.cpu > 80 || metrics.memory > 85) {
+      await this.scaleUp()
+    } else if (metrics.cpu < 20 && metrics.memory < 30) {
+      await this.scaleDown()
+    }
+  },
+
+  async scaleUp() {
+    const currentInstances = await getCurrentInstanceCount()
+    const maxInstances = process.env.MAX_INSTANCES || 10
+    
+    if (currentInstances < maxInstances) {
+      await createNewInstance()
+      console.log(\`Scaled up to \${currentInstances + 1} instances\`)
+    }
+  },
+
+  async scaleDown() {
+    const currentInstances = await getCurrentInstanceCount()
+    const minInstances = process.env.MIN_INSTANCES || 2
+    
+    if (currentInstances > minInstances) {
+      await terminateInstance()
+      console.log(\`Scaled down to \${currentInstances - 1} instances\`)
+    }
+  }
+}
+
+// Ejecutar cada 30 segundos
+setInterval(() => autoScaler.checkMetrics(), 30000)
+\`\`\`
+
+¡Excelente trabajo {{name}}! Has dominado las estrategias de despliegue profesional. Tu aplicación ahora está lista para el mundo real.`,
+        learningObjectives: {
+          0: 'Diseñar e implementar pipelines de despliegue robustos con automatización CI/CD',
+          1: 'Configurar entornos de producción con optimizaciones adecuadas de seguridad y rendimiento',
+          2: 'Implementar monitoreo y observabilidad completos para sistemas de producción',
+          3: 'Aplicar estrategias de escalamiento para manejar tráfico y carga aumentados',
+          4: 'Gestionar migraciones de base de datos y configuraciones de entorno de forma segura'
+        },
+        badgeName: 'Ingeniero de Despliegue',
+        srcodeCommentary: '¡{{name}}, acabas de subir de nivel de "funciona en mi máquina" a "funciona en todas partes, todo el tiempo"! El despliegue es como lanzar un cohete - necesitas múltiples sistemas de respaldo, pruebas exhaustivas y la capacidad de abortar la misión si las cosas salen mal. Recuerda: ¡el mejor despliegue es el que tus usuarios nunca notan que pasó! 🚀🛠️',
+        quizQuestions: {
+          'q4-1-1': {
+            question: '¿Cuál es el principal beneficio de usar Infraestructura como Código (IaC)?',
+            options: [
+              'Hace que los despliegues sean más rápidos',
+              'Asegura infraestructura consistente y reproducible entre entornos',
+              'Reduce los costos del servidor',
+              'Elimina la necesidad de monitoreo'
+            ],
+            explanation: 'La Infraestructura como Código asegura infraestructura consistente y reproducible entre diferentes entornos al definir los requisitos de infraestructura en código controlado por versiones en lugar de configuración manual.'
+          },
+          'q4-1-2': {
+            question: 'En un pipeline de CI/CD, ¿cuándo deberían ejecutarse las migraciones de base de datos?',
+            options: [
+              'Antes de ejecutar las pruebas',
+              'Después de desplegar en producción',
+              'Durante el proceso de despliegue, antes de iniciar la nueva versión de la aplicación',
+              'Solo cuando se activen manualmente'
+            ],
+            explanation: 'Las migraciones de base de datos deberían ejecutarse durante el proceso de despliegue, antes de iniciar la nueva versión de la aplicación, para asegurar que el esquema de la base de datos sea compatible con el nuevo código.'
+          },
+          'q4-1-3': {
+            question: '¿Cuál es el propósito de un endpoint de health check?',
+            options: [
+              'Probar la autenticación del usuario',
+              'Monitorear el estado de la aplicación y dependencias para balanceadores de carga y sistemas de monitoreo',
+              'Hacer backup de la base de datos',
+              'Actualizar la configuración de la aplicación'
+            ],
+            explanation: 'Los endpoints de health check monitorean el estado de la aplicación y dependencias, permitiendo a los balanceadores de carga, sistemas de monitoreo y orquestadores determinar si una instancia está saludable y lista para servir tráfico.'
+          },
+          'q4-1-4': {
+            question: '¿Por qué generalmente se prefiere el escalamiento horizontal sobre el escalamiento vertical?',
+            options: [
+              'Siempre es más barato',
+              'Proporciona mejor tolerancia a fallos y puede manejar aumentos de escala más grandes',
+              'Requiere menos configuración',
+              'Usa menos memoria'
+            ],
+            explanation: 'El escalamiento horizontal proporciona mejor tolerancia a fallos (si una instancia falla, otras continúan funcionando) y puede manejar aumentos de escala más grandes añadiendo más instancias en lugar de estar limitado por la capacidad máxima de una sola máquina.'
+          }
+        }
+      },
+
+      // Level 4 - Lesson 2
+      'lesson-4-2': {
+        title: 'Plataformas en la Nube y Arquitectura Serverless',
+        objective: 'Dominar estrategias de despliegue en la nube, funciones serverless y plataformas de hosting modernas para aplicaciones escalables',
+        content: `# Plataformas en la Nube y Arquitectura Serverless
+
+¡Hola {{name}}! Vamos a explorar el mundo de la computación en la nube y las arquitecturas modernas que hacen que las aplicaciones escalen automáticamente.
+
+## Comparación de Plataformas en la Nube
+
+### AWS (Amazon Web Services)
+\`\`\`typescript
+// Configuración de Lambda Functions
+export const handler = async (event: APIGatewayEvent) => {
+  try {
+    const body = JSON.parse(event.body || '{}')
+    
+    // Procesar la solicitud
+    const result = await processRequest(body)
+    
+    return {
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: JSON.stringify(result)
+    }
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Error interno del servidor' })
+    }
+  }
+}
+\`\`\`
+
+### Vercel
+\`\`\`typescript
+// api/users.ts (Vercel API Routes)
+import { NextApiRequest, NextApiResponse } from 'next'
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (req.method === 'GET') {
+    const users = await getUsers()
+    res.status(200).json(users)
+  } else if (req.method === 'POST') {
+    const user = await createUser(req.body)
+    res.status(201).json(user)
+  } else {
+    res.setHeader('Allow', ['GET', 'POST'])
+    res.status(405).end(\`Method \${req.method} Not Allowed\`)
+  }
+}
+
+// vercel.json
+{
+  "functions": {
+    "app/api/**/*.ts": {
+      "maxDuration": 30
+    }
+  },
+  "env": {
+    "DATABASE_URL": "@database-url"
+  }
+}
+\`\`\`
+
+### Netlify
+\`\`\`typescript
+// netlify/functions/api.ts
+import { Handler } from '@netlify/functions'
+
+export const handler: Handler = async (event, context) => {
+  const { path, httpMethod, body } = event
+  
+  // Enrutamiento simple
+  if (path === '/api/health' && httpMethod === 'GET') {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ status: 'ok', timestamp: new Date().toISOString() })
+    }
+  }
+  
+  return {
+    statusCode: 404,
+    body: JSON.stringify({ error: 'Not found' })
+  }
+}
+
+// netlify.toml
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+\`\`\`
+
+## Arquitectura Serverless
+
+### Edge Functions
+\`\`\`typescript
+// Cloudflare Workers
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    const url = new URL(request.url)
+    
+    // Caché inteligente basado en ubicación
+    const country = request.cf?.country || 'US'
+    const cacheKey = \`\${url.pathname}-\${country}\`
+    
+    // Verificar caché
+    const cached = await env.CACHE.get(cacheKey)
+    if (cached) {
+      return new Response(cached, {
+        headers: { 'Content-Type': 'application/json' }
+      })
+    }
+    
+    // Generar respuesta personalizada por país
+    const data = await generateCountrySpecificData(country)
+    
+    // Cachear por 1 hora
+    await env.CACHE.put(cacheKey, JSON.stringify(data), {
+      expirationTtl: 3600
+    })
+    
+    return new Response(JSON.stringify(data), {
+      headers: { 'Content-Type': 'application/json' }
+    })
+  }
+}
+\`\`\`
+
+### Microservicios con Funciones
+\`\`\`typescript
+// Arquitectura de microservicios
+const services = {
+  auth: {
+    login: async (credentials: LoginCredentials) => {
+      // Función serverless para autenticación
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        body: JSON.stringify(credentials)
+      })
+      return response.json()
+    }
+  },
+  
+  users: {
+    create: async (userData: UserData) => {
+      const response = await fetch('/api/users', {
+        method: 'POST',
+        body: JSON.stringify(userData)
+      })
+      return response.json()
+    }
+  },
+  
+  notifications: {
+    send: async (notification: Notification) => {
+      // Function que escala automáticamente
+      const response = await fetch('/api/notifications/send', {
+        method: 'POST',
+        body: JSON.stringify(notification)
+      })
+      return response.json()
+    }
+  }
+}
+
+// Orquestación de servicios
+const processUserSignup = async (userData: UserData) => {
+  try {
+    // 1. Crear usuario
+    const user = await services.users.create(userData)
+    
+    // 2. Enviar email de bienvenida
+    await services.notifications.send({
+      type: 'welcome',
+      userId: user.id,
+      email: user.email
+    })
+    
+    // 3. Configurar sesión
+    const session = await services.auth.createSession(user.id)
+    
+    return { user, session }
+  } catch (error) {
+    console.error('Error en signup:', error)
+    throw error
+  }
+}
+\`\`\`
+
+## Contenedores y Orquestación
+
+### Docker
+\`\`\`dockerfile
+# Dockerfile multi-stage
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+
+FROM node:18-alpine AS runner
+WORKDIR /app
+
+# Crear usuario no-root
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# Copiar archivos necesarios
+COPY --from=builder /app/node_modules ./node_modules
+COPY --chown=nextjs:nodejs . .
+
+USER nextjs
+
+EXPOSE 3000
+ENV PORT 3000
+ENV NODE_ENV production
+
+CMD ["npm", "start"]
+\`\`\`
+
+### Kubernetes
+\`\`\`yaml
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mi-app
+  template:
+    metadata:
+      labels:
+        app: mi-app
+    spec:
+      containers:
+      - name: app
+        image: mi-app:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: database-url
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mi-app-service
+spec:
+  selector:
+    app: mi-app
+  ports:
+  - port: 80
+    targetPort: 3000
+  type: LoadBalancer
+\`\`\`
+
+## Edge Computing y CDN
+
+\`\`\`typescript
+// Configuración de CDN inteligente
+const edgeConfig = {
+  regions: ['us-east', 'eu-west', 'ap-southeast'],
+  
+  rules: [
+    {
+      pattern: '/api/static/*',
+      cache: {
+        ttl: 86400, // 24 horas
+        vary: ['Accept-Encoding']
+      }
+    },
+    {
+      pattern: '/api/dynamic/*',
+      cache: {
+        ttl: 300, // 5 minutos
+        vary: ['Authorization', 'Accept-Language']
+      }
+    }
+  ],
+  
+  geolocation: {
+    '/api/localized/*': {
+      'US': 'us-east',
+      'GB': 'eu-west',
+      'JP': 'ap-southeast'
+    }
+  }
+}
+
+// Worker para optimización automática
+class EdgeOptimizer {
+  static async optimizeResponse(request: Request, response: Response) {
+    const userAgent = request.headers.get('User-Agent') || ''
+    const acceptWebp = request.headers.get('Accept')?.includes('image/webp')
+    
+    // Optimizar imágenes automáticamente
+    if (response.headers.get('Content-Type')?.startsWith('image/')) {
+      if (acceptWebp && !userAgent.includes('Safari')) {
+        return this.convertToWebP(response)
+      }
+    }
+    
+    // Comprimir respuestas grandes
+    if (parseInt(response.headers.get('Content-Length') || '0') > 1024) {
+      return this.compressResponse(response)
+    }
+    
+    return response
+  }
+}
+\`\`\`
+
+¡Increíble trabajo {{name}}! Has dominado las arquitecturas modernas en la nube. Tu aplicación ahora puede escalar globalmente y responder instantáneamente.`,
+        learningObjectives: {
+          0: 'Comparar e implementar despliegues en las principales plataformas en la nube',
+          1: 'Diseñar y construir arquitecturas de funciones serverless',
+          2: 'Optimizar aplicaciones para edge computing y distribución global',
+          3: 'Implementar orquestación de contenedores para despliegues escalables',
+          4: 'Monitorear el rendimiento de aplicaciones en infraestructura distribuida'
+        },
+        badgeName: 'Arquitecto de la Nube',
+        srcodeCommentary: '¡{{name}}, acabas de dominar el arte de hacer que tu aplicación esté disponible en todas partes a la vez! Serverless es como tener un ejército de minions invisibles que aparecen exactamente cuando se necesitan y desaparecen cuando no. ¡La nube es tu ostra, y has aprendido a abrirla correctamente! 🌩️⚡',
+        quizQuestions: {
+          'q4-2-1': {
+            question: '¿Cuál es la principal ventaja de las funciones serverless sobre el despliegue tradicional de servidores?',
+            options: [
+              'Siempre son más rápidas',
+              'Escalan automáticamente a cero cuando no se usan y escalan hacia arriba basado en la demanda',
+              'Cuestan menos en todos los escenarios',
+              'Soportan más lenguajes de programación'
+            ],
+            explanation: 'Las funciones serverless escalan automáticamente a cero cuando no se usan (ahorrando costos) y escalan hacia arriba automáticamente basado en la demanda sin intervención manual o planificación de capacidad.'
+          },
+          'q4-2-2': {
+            question: '¿Cuál es el principal beneficio del edge computing para aplicaciones web?',
+            options: [
+              'Costos reducidos del servidor',
+              'Mejor seguridad',
+              'Latencia reducida al servir contenido desde ubicaciones más cercanas a los usuarios',
+              'Proceso de desarrollo más fácil'
+            ],
+            explanation: 'El edge computing reduce la latencia al servir contenido y ejecutar código desde ubicaciones geográficamente más cercanas a los usuarios, mejorando el rendimiento y la experiencia del usuario globalmente.'
+          },
+          'q4-2-3': {
+            question: 'En un despliegue de Kubernetes, ¿cuál es el propósito de una readiness probe?',
+            options: [
+              'Reiniciar el contenedor si falla',
+              'Determinar cuándo un contenedor está listo para aceptar tráfico',
+              'Escalar el número de réplicas',
+              'Monitorear el uso de recursos'
+            ],
+            explanation: 'Una readiness probe determina cuándo un contenedor está listo para aceptar tráfico, evitando que el tráfico se enrute a contenedores que aún se están iniciando o no están listos para manejar solicitudes.'
+          },
+          'q4-2-4': {
+            question: '¿Qué métrica mide Largest Contentful Paint (LCP)?',
+            options: [
+              'El tiempo hasta que la página sea completamente interactiva',
+              'El tiempo para renderizar el elemento de contenido visible más grande',
+              'El tiempo total de carga de la página',
+              'El tiempo hasta el primer byte del servidor'
+            ],
+            explanation: 'Largest Contentful Paint (LCP) mide el tiempo que toma renderizar el elemento de contenido visible más grande en el viewport, que es un indicador clave del rendimiento de carga percibido.'
+          }
+        }
+      },
+
+      // Level 4 - Lesson 3
+      'lesson-4-3': {
+        title: 'Optimización de Rendimiento y Monitoreo',
+        objective: 'Dominar técnicas avanzadas de optimización de rendimiento, estrategias de monitoreo y análisis en tiempo real para aplicaciones de producción',
+        content: `# Optimización de Rendimiento y Monitoreo
+
+¡Hola {{name}}! Vamos a convertirte en un ninja del rendimiento. Aprenderás a hacer que las aplicaciones vuelen y a monitorear cada milisegundo.
+
+## Core Web Vitals
+
+### Largest Contentful Paint (LCP)
+\`\`\`typescript
+// Optimización de LCP
+const optimizeLCP = {
+  // 1. Precargar recursos críticos
+  preloadCriticalResources() {
+    const link = document.createElement('link')
+    link.rel = 'preload'
+    link.href = '/images/hero-image.webp'
+    link.as = 'image'
+    document.head.appendChild(link)
+  },
+
+  // 2. Lazy loading inteligente
+  implementIntelligentLazyLoading() {
+    const images = document.querySelectorAll('img[data-src]')
+    
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target as HTMLImageElement
+          img.src = img.dataset.src!
+          img.removeAttribute('data-src')
+          observer.unobserve(img)
+        }
+      })
+    }, {
+      rootMargin: '50px 0px' // Cargar 50px antes de ser visible
+    })
+
+    images.forEach(img => imageObserver.observe(img))
+  },
+
+  // 3. Optimización de fuentes
+  optimizeFonts() {
+    const fontLink = document.createElement('link')
+    fontLink.rel = 'preload'
+    fontLink.href = '/fonts/main-font.woff2'
+    fontLink.as = 'font'
+    fontLink.type = 'font/woff2'
+    fontLink.crossOrigin = 'anonymous'
+    document.head.appendChild(fontLink)
+  }
+}
+\`\`\`
+
+### Cumulative Layout Shift (CLS)
+\`\`\`typescript
+// Prevenir CLS
+const preventLayoutShift = {
+  // 1. Dimensiones de imagen reservadas
+  reserveImageSpace() {
+    const style = document.createElement('style')
+    style.textContent = \`
+      .responsive-image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9; /* Reservar espacio */
+      }
+      
+      .image-container {
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .image-container::before {
+        content: '';
+        display: block;
+        padding-top: 56.25%; /* 16:9 aspect ratio */
+      }
+    \`
+    document.head.appendChild(style)
+  },
+
+  // 2. Skeleton screens
+  createSkeletonScreen() {
+    return \`
+      <div class="skeleton-container">
+        <div class="skeleton-header"></div>
+        <div class="skeleton-content">
+          <div class="skeleton-line"></div>
+          <div class="skeleton-line short"></div>
+        </div>
+      </div>
+      
+      <style>
+        .skeleton-container {
+          animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        .skeleton-header {
+          height: 200px;
+          background: #e2e8f0;
+          margin-bottom: 16px;
+        }
+        
+        .skeleton-line {
+          height: 16px;
+          background: #e2e8f0;
+          margin-bottom: 8px;
+        }
+        
+        .skeleton-line.short {
+          width: 70%;
+        }
+        
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+      </style>
+    \`
+  },
+
+  // 3. Reservar espacio para contenido dinámico
+  reserveDynamicContentSpace() {
+    const observer = new ResizeObserver(entries => {
+      entries.forEach(entry => {
+        const element = entry.target
+        const height = entry.contentRect.height
+        element.style.minHeight = \`\${height}px\`
+      })
+    })
+
+    // Observar contenedores de contenido dinámico
+    document.querySelectorAll('[data-dynamic-content]')
+      .forEach(el => observer.observe(el))
+  }
+}
+\`\`\`
+
+## Estrategias de Caché Avanzadas
+
+### Caché Multicapa
+\`\`\`typescript
+class MultiLayerCache {
+  private memoryCache = new Map()
+  private storage: Cache | null = null
+
+  constructor() {
+    if ('caches' in window) {
+      caches.open('app-cache-v1').then(cache => {
+        this.storage = cache
+      })
+    }
+  }
+
+  async get(key: string): Promise<any> {
+    // 1. Verificar memoria (más rápido)
+    if (this.memoryCache.has(key)) {
+      return this.memoryCache.get(key)
+    }
+
+    // 2. Verificar Cache API
+    if (this.storage) {
+      const response = await this.storage.match(key)
+      if (response) {
+        const data = await response.json()
+        // Almacenar en memoria para próxima vez
+        this.memoryCache.set(key, data)
+        return data
+      }
+    }
+
+    // 3. No encontrado
+    return null
+  }
+
+  async set(key: string, data: any, options: {
+    memoryTTL?: number
+    storageTTL?: number
+  } = {}): Promise<void> {
+    // Almacenar en memoria
+    this.memoryCache.set(key, data)
+    
+    // TTL para memoria
+    if (options.memoryTTL) {
+      setTimeout(() => {
+        this.memoryCache.delete(key)
+      }, options.memoryTTL)
+    }
+
+    // Almacenar en Cache API
+    if (this.storage) {
+      const response = new Response(JSON.stringify(data), {
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': \`max-age=\${options.storageTTL || 3600}\`
+        }
+      })
+      await this.storage.put(key, response)
+    }
+  }
+
+  async invalidate(pattern: string): Promise<void> {
+    // Limpiar memoria
+    for (const key of this.memoryCache.keys()) {
+      if (key.includes(pattern)) {
+        this.memoryCache.delete(key)
+      }
+    }
+
+    // Limpiar Cache API
+    if (this.storage) {
+      const keys = await this.storage.keys()
+      for (const request of keys) {
+        if (request.url.includes(pattern)) {
+          await this.storage.delete(request)
+        }
+      }
+    }
+  }
+}
+
+// Uso del caché multicapa
+const cache = new MultiLayerCache()
+
+// Almacenar con diferentes TTLs
+await cache.set('user:123', userData, {
+  memoryTTL: 5 * 60 * 1000,    // 5 minutos en memoria
+  storageTTL: 60 * 60          // 1 hora en storage
+})
+\`\`\`
+
+## Monitoreo de Rendimiento
+
+### Real User Monitoring (RUM)
+\`\`\`typescript
+class PerformanceMonitor {
+  private metrics: Map<string, number[]> = new Map()
+  private observer: PerformanceObserver
+
+  constructor() {
+    this.setupObservers()
+    this.trackPageLoad()
+    this.trackUserInteractions()
+  }
+
+  private setupObservers() {
+    // Observer para métricas de navegación
+    this.observer = new PerformanceObserver((list) => {
+      list.getEntries().forEach(entry => {
+        if (entry.entryType === 'navigation') {
+          this.recordMetric('page_load', entry.loadEventEnd - entry.loadEventStart)
+        }
+        
+        if (entry.entryType === 'paint') {
+          this.recordMetric(entry.name, entry.startTime)
+        }
+        
+        if (entry.entryType === 'largest-contentful-paint') {
+          this.recordMetric('lcp', entry.startTime)
+        }
+      })
+    })
+
+    this.observer.observe({ entryTypes: ['navigation', 'paint', 'largest-contentful-paint'] })
+  }
+
+  private trackPageLoad() {
+    window.addEventListener('load', () => {
+      // Obtener métricas de Core Web Vitals
+      this.getCLS()
+      this.getFID()
+      this.getTTFB()
+    })
+  }
+
+  private getCLS() {
+    let clsValue = 0
+    let clsEntries: PerformanceEntry[] = []
+
+    const observer = new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) {
+        if (!entry.hadRecentInput) {
+          clsValue += (entry as any).value
+          clsEntries.push(entry)
+        }
+      }
+    })
+
+    observer.observe({ type: 'layout-shift', buffered: true })
+
+    // Enviar CLS después de 5 segundos
+    setTimeout(() => {
+      this.recordMetric('cls', clsValue)
+      observer.disconnect()
+    }, 5000)
+  }
+
+  private getFID() {
+    const observer = new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) {
+        this.recordMetric('fid', (entry as any).processingStart - entry.startTime)
+      }
+    })
+
+    observer.observe({ type: 'first-input', buffered: true })
+  }
+
+  private getTTFB() {
+    const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming
+    const ttfb = navigation.responseStart - navigation.requestStart
+    this.recordMetric('ttfb', ttfb)
+  }
+
+  private recordMetric(name: string, value: number) {
+    if (!this.metrics.has(name)) {
+      this.metrics.set(name, [])
+    }
+    this.metrics.get(name)!.push(value)
+    
+    // Enviar métrica inmediatamente si es crítica
+    if (this.isCriticalMetric(name)) {
+      this.sendMetric(name, value)
+    }
+  }
+
+  private isCriticalMetric(name: string): boolean {
+    const criticalMetrics = ['lcp', 'fid', 'cls']
+    return criticalMetrics.includes(name)
+  }
+
+  private async sendMetric(name: string, value: number) {
+    try {
+      await fetch('/api/metrics', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          metric: name,
+          value,
+          timestamp: Date.now(),
+          url: window.location.pathname,
+          userAgent: navigator.userAgent
+        })
+      })
+    } catch (error) {
+      console.error('Error enviando métrica:', error)
+    }
+  }
+
+  // Enviar todas las métricas en batch
+  async sendBatchMetrics() {
+    const allMetrics: any[] = []
+    
+    this.metrics.forEach((values, name) => {
+      allMetrics.push({
+        metric: name,
+        values,
+        count: values.length,
+        average: values.reduce((a, b) => a + b, 0) / values.length,
+        min: Math.min(...values),
+        max: Math.max(...values)
+      })
+    })
+
+    if (allMetrics.length > 0) {
+      await this.sendMetric('batch', allMetrics as any)
+    }
+  }
+}
+
+// Inicializar monitoreo
+const monitor = new PerformanceMonitor()
+
+// Enviar métricas antes de que el usuario se vaya
+window.addEventListener('beforeunload', () => {
+  monitor.sendBatchMetrics()
+})
+\`\`\`
+
+## Error Tracking y Reporting
+
+\`\`\`typescript
+class ErrorTracker {
+  private errorQueue: ErrorReport[] = []
+  private maxQueueSize = 50
+  private flushInterval = 10000 // 10 segundos
+
+  constructor() {
+    this.setupErrorHandlers()
+    this.startPeriodicFlush()
+  }
+
+  private setupErrorHandlers() {
+    // Errores JavaScript globales
+    window.addEventListener('error', (event) => {
+      this.captureError({
+        type: 'javascript',
+        message: event.message,
+        filename: event.filename,
+        lineno: event.lineno,
+        colno: event.colno,
+        stack: event.error?.stack,
+        timestamp: Date.now()
+      })
+    })
+
+    // Promesas rechazadas no manejadas
+    window.addEventListener('unhandledrejection', (event) => {
+      this.captureError({
+        type: 'promise',
+        message: event.reason?.message || 'Unhandled promise rejection',
+        stack: event.reason?.stack,
+        timestamp: Date.now()
+      })
+    })
+
+    // Errores de recursos
+    window.addEventListener('error', (event) => {
+      if (event.target !== window) {
+        this.captureError({
+          type: 'resource',
+          message: \`Failed to load resource: \${(event.target as any)?.src || 'unknown'}\`,
+          timestamp: Date.now()
+        })
+      }
+    }, true)
+  }
+
+  captureError(error: Partial<ErrorReport>) {
+    const errorReport: ErrorReport = {
+      id: this.generateId(),
+      url: window.location.href,
+      userAgent: navigator.userAgent,
+      timestamp: Date.now(),
+      ...error
+    } as ErrorReport
+
+    this.errorQueue.push(errorReport)
+
+    // Flush inmediato si la cola está llena
+    if (this.errorQueue.length >= this.maxQueueSize) {
+      this.flushErrors()
+    }
+  }
+
+  private async flushErrors() {
+    if (this.errorQueue.length === 0) return
+
+    const errors = [...this.errorQueue]
+    this.errorQueue = []
+
+    try {
+      await fetch('/api/errors', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ errors })
+      })
+    } catch (error) {
+      // Si falla el envío, devolver errores a la cola
+      this.errorQueue.unshift(...errors)
+      console.error('Failed to send error reports:', error)
+    }
+  }
+
+  private startPeriodicFlush() {
+    setInterval(() => {
+      this.flushErrors()
+    }, this.flushInterval)
+  }
+
+  private generateId(): string {
+    return Date.now().toString(36) + Math.random().toString(36).substr(2)
+  }
+}
+
+interface ErrorReport {
+  id: string
+  type: 'javascript' | 'promise' | 'resource' | 'network'
+  message: string
+  filename?: string
+  lineno?: number
+  colno?: number
+  stack?: string
+  url: string
+  userAgent: string
+  timestamp: number
+}
+
+// Inicializar error tracking
+const errorTracker = new ErrorTracker()
+\`\`\`
+
+¡Excelente trabajo {{name}}! Te has convertido en un ninja del rendimiento. Ahora sabes cómo hacer aplicaciones tan rápidas que los usuarios pensarán que están experimentando viajes en el tiempo.`,
+        learningObjectives: {
+          0: 'Optimizar Core Web Vitals (LCP, FID, CLS) para experiencia de usuario superior',
+          1: 'Implementar estrategias de caché avanzadas en múltiples capas',
+          2: 'Diseñar sistemas completos de monitoreo de rendimiento y análisis',
+          3: 'Construir mecanismos robustos de seguimiento y reporte de errores',
+          4: 'Integrar feature flags conscientes del rendimiento y pruebas A/B'
+        },
+        badgeName: 'Maestro del Rendimiento',
+        srcodeCommentary: '¡{{name}}, acabas de convertirte en un ninja del rendimiento! Ahora sabes cómo hacer aplicaciones tan rápidas que los usuarios se preguntarán si están experimentando viajes en el tiempo. Recuerda: el rendimiento no es solo sobre velocidad - es sobre crear experiencias tan fluidas que los usuarios olviden que están usando tecnología. ¡Ahora ve y haz que la web sea increíblemente rápida! ⚡🚀',
+        quizQuestions: {
+          'q4-3-1': {
+            question: '¿Qué mide Largest Contentful Paint (LCP) y cuál es el umbral recomendado?',
+            options: [
+              'Tiempo hasta la primera interacción, debería ser menor a 100ms',
+              'Tiempo para renderizar el elemento de contenido visible más grande, debería ser menor a 2.5 segundos',
+              'Tiempo total de carga de página, debería ser menor a 3 segundos',
+              'Tiempo hasta el primer paint, debería ser menor a 1 segundo'
+            ],
+            explanation: 'Largest Contentful Paint (LCP) mide el tiempo que toma renderizar el elemento de contenido visible más grande en el viewport. El umbral recomendado es menor a 2.5 segundos para una buena experiencia de usuario.'
+          },
+          'q4-3-2': {
+            question: '¿Cuál es la estrategia más efectiva para prevenir Cumulative Layout Shift (CLS)?',
+            options: [
+              'Cargar todo el contenido sincrónicamente',
+              'Reservar espacio para contenido dinámico usando dimensiones CSS o aspect ratios',
+              'Usar imágenes más pequeñas',
+              'Deshabilitar todas las animaciones'
+            ],
+            explanation: 'La estrategia más efectiva para prevenir CLS es reservar espacio para contenido dinámico usando dimensiones CSS, aspect ratios o skeleton screens, previniendo cambios inesperados de layout mientras se carga el contenido.'
+          },
+          'q4-3-3': {
+            question: '¿Cuál estrategia de caché proporciona el acceso más rápido a los datos?',
+            options: [
+              'Caché del navegador (Cache API)',
+              'Caché del Service Worker',
+              'Caché en memoria (variables JavaScript)',
+              'Caché CDN'
+            ],
+            explanation: 'El caché en memoria (variables JavaScript) proporciona el acceso más rápido a los datos ya que los datos ya están cargados en memoria y no requieren solicitudes de red o llamadas a APIs de almacenamiento.'
+          },
+          'q4-3-4': {
+            question: '¿Por qué es importante agrupar los reportes de errores en lugar de enviarlos individualmente?',
+            options: [
+              'Para ahorrar en costos del servidor',
+              'Para reducir la sobrecarga de red y prevenir impacto en el rendimiento del reporte de errores',
+              'Para facilitar la depuración',
+              'Para cumplir con regulaciones de privacidad'
+            ],
+            explanation: 'Agrupar los reportes de errores reduce la sobrecarga de red y previene que el sistema de reporte de errores impacte el rendimiento de la aplicación, especialmente cuando ocurren múltiples errores en rápida sucesión.'
+          }
+        }
+      },
+
     // Other Spanish translations...
     badges: {
       title: 'Tus Logros',
