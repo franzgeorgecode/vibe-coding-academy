@@ -35,18 +35,18 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     const keys = key.split('.');
     let value: any = translations[languageHook.currentLanguage];
     
-    // Special handling for lesson keys that are inside the lessons object for Spanish
+    // Special handling for lesson keys that are directly in the root for Spanish
     if (key.startsWith('lessons.lesson-') && languageHook.currentLanguage === 'es') {
       const lessonKey = keys[1]; // Extract 'lesson-X-Y' from 'lessons.lesson-X-Y.property'
       const property = keys[2]; // Extract property like 'title', 'content', etc.
       
       console.log(`[Translation] Special lesson key handling: ${lessonKey}.${property}`);
-      console.log(`[Translation] Looking for: translations.es.lessons['${lessonKey}']['${property}']`);
+      console.log(`[Translation] Looking for: translations.es['${lessonKey}']['${property}']`);
       
-      // Look inside the lessons object for Spanish translations
-      const lessonData = translations[languageHook.currentLanguage].lessons[lessonKey];
+      // Look directly in the root for the lesson
+      const lessonData = translations[languageHook.currentLanguage][lessonKey];
       console.log(`[Translation] Lesson data found:`, !!lessonData);
-      console.log(`[Translation] Available lesson keys:`, Object.keys(translations[languageHook.currentLanguage].lessons).filter(k => k.startsWith('lesson-1')));
+      console.log(`[Translation] Available lesson keys:`, Object.keys(translations[languageHook.currentLanguage]).filter(k => k.startsWith('lesson-1')));
       
       if (lessonData && lessonData[property]) {
         value = lessonData[property];
