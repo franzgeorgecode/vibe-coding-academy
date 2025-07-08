@@ -42,7 +42,6 @@ export function useLanguage() {
   // Inicializar idioma
   useEffect(() => {
     // Force Spanish for now to fix the language issue
-    console.log('🔧 Forcing Spanish language');
     setCurrentLanguage('es');
     localStorage.setItem('preferred_language', 'es');
     
