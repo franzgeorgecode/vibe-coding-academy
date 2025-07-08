@@ -13900,7 +13900,7 @@ TOKENS DE DISEÑO:
 - Espaciado: ${designAnalysis.tokens.spacing}
 
 COMPONENTES IDENTIFICADOS:
-\${designAnalysis.components.map(c => \`- \${c}\`).join('\\n')}
+${designAnalysis.components.map(c => \`- \${c}\`).join('\\n')}
 
 REQUERIMIENTOS TÉCNICOS:
 - Accesibilidad (ARIA labels, navegación por teclado)
