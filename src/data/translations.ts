@@ -13895,16 +13895,12 @@ ESTRUCTURA:
 - Mantén la fidelidad visual exacta
 
 TOKENS DE DISEÑO:
-- Colores: [extraídos del diseño]
-- Tipografía: [familia y tamaños de fuente]
-- Espaciado: [sistema de espaciado]
+- Colores: ${designAnalysis.tokens.colors}
+- Tipografía: ${designAnalysis.tokens.typography}
+- Espaciado: ${designAnalysis.tokens.spacing}
 
 COMPONENTES IDENTIFICADOS:
-- Header/Navigation
-- Card Components
-- Button Variants
-- Form Elements
-- Footer
+\${designAnalysis.components.map(c => \`- \${c}\`).join('\\n')}
 
 REQUERIMIENTOS TÉCNICOS:
 - Accesibilidad (ARIA labels, navegación por teclado)
