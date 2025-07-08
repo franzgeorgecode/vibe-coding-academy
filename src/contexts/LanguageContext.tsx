@@ -34,17 +34,12 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     
     const keys = key.split('.');
     let value: any = translations[languageHook.currentLanguage];
-    
-    console.log(`[Translation] Looking for key: ${key} in language: ${languageHook.currentLanguage}`);
-    console.log(`[Translation] Available languages:`, Object.keys(translations));
 
     for (const k of keys) {
       value = value?.[k];
-      console.log(`[Translation] After key "${k}": ${typeof value === 'string' ? value.substring(0, 50) + '...' : typeof value}`);
     }
 
     if (typeof value !== 'string') {
-      console.warn(`[Translation] No Spanish translation found for: ${key}, falling back to English`);
       // Fallback a inglés si no existe la traducción
       let fallbackValue: any = translations.en;
       for (const k of keys) {
@@ -61,7 +56,7 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
         console.log(`[Translation] Using fallback (EN) for key: ${key} -> ${value}`);
       }
     } else {
-      console.log(`[Translation] Found Spanish translation for key: ${key} -> ${value.substring(0, 50)}...`);
+      console.log(`[Translation] Found translation for key: ${key} -> ${value}`);
     }
 
     // Interpolación de parámetros
