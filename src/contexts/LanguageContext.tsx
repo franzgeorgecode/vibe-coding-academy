@@ -35,25 +35,40 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     const keys = key.split('.');
     let value: any = translations[languageHook.currentLanguage];
     
-    // Special handling for ALL lesson keys that are directly in the root for Spanish
+    // Special handling for ALL lesson keys - prioritize Spanish translations
     if (key.startsWith('lessons.lesson-') && languageHook.currentLanguage === 'es') {
       const lessonKey = keys[1]; // Extract 'lesson-X-Y' from 'lessons.lesson-X-Y.property'
       const property = keys[2]; // Extract property like 'title', 'content', etc.
       
       console.log(`[Translation] Special lesson key handling: ${lessonKey}.${property}`);
-      console.log(`[Translation] Looking for: translations.es['${lessonKey}']['${property}']`);
       
-      // Look directly in the root for Spanish lesson translations
-      const lessonData = translations[languageHook.currentLanguage][lessonKey];
-      console.log(`[Translation] Lesson data found:`, !!lessonData);
+      // For Spanish, look for the LAST occurrence of the lesson key (which is the Spanish version)
+      const spanishTranslations = translations[languageHook.currentLanguage];
+      const allKeys = Object.keys(spanishTranslations);
       
-      if (lessonData && lessonData[property]) {
-        value = lessonData[property];
+      // Find all occurrences of this lesson key
+      const lessonKeyOccurrences = allKeys.filter(k => k === lessonKey);
+      console.log(`[Translation] Found ${lessonKeyOccurrences.length} occurrences of ${lessonKey}`);
+      
+      // Use reverse iteration to find the LAST (Spanish) version
+      let spanishLessonData = null;
+      for (let i = allKeys.length - 1; i >= 0; i--) {
+        if (allKeys[i] === lessonKey) {
+          spanishLessonData = spanishTranslations[allKeys[i]];
+          console.log(`[Translation] Using Spanish version at index ${i}`);
+          break;
+        }
+      }
+      
+      console.log(`[Translation] Spanish lesson data found:`, !!spanishLessonData);
+      
+      if (spanishLessonData && spanishLessonData[property]) {
+        value = spanishLessonData[property];
         console.log(`[Translation] Found Spanish lesson translation: ${key} -> ${typeof value === 'string' ? value.substring(0, 50) + '...' : typeof value}`);
       } else {
         console.warn(`[Translation] Spanish lesson not found, falling back to English`);
-        console.warn(`[Translation] LessonData:`, lessonData);
-        console.warn(`[Translation] Property '${property}' exists:`, lessonData ? !!lessonData[property] : false);
+        console.warn(`[Translation] SpanishLessonData:`, spanishLessonData);
+        console.warn(`[Translation] Property '${property}' exists:`, spanishLessonData ? !!spanishLessonData[property] : false);
         value = undefined; // Will trigger fallback
       }
     } else {
