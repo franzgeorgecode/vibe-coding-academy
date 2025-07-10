@@ -27,11 +27,11 @@ export const lessonsData: Record<string, Lesson> = {
     orderInLevel: 1,
     numberOfLearningObjectives: 5,
     quizQuestions: [
-      { id: "q1-1-1", correctAnswer: 1, numberOfOptions: 4 },
-      { id: "q1-1-2", correctAnswer: 2, numberOfOptions: 4 },
-      { id: "q1-1-3", correctAnswer: 2, numberOfOptions: 4 },
-      { id: "q1-1-4", correctAnswer: 0, numberOfOptions: 4 },
-      { id: "q1-1-5", correctAnswer: 0, numberOfOptions: 4 }
+      { id: "q1-1-1", correctAnswer: 1, numberOfOptions: 4 }, // Es un agente de desarrollo web con IA integrada en el navegador
+      { id: "q1-1-2", correctAnswer: 2, numberOfOptions: 4 }, // Más de 1 millón de sitios web
+      { id: "q1-1-3", correctAnswer: 2, numberOfOptions: 4 }, // Hasta 500 tokens diarios para experimentación
+      { id: "q1-1-4", correctAnswer: 0, numberOfOptions: 4 }, // Figma to Code
+      { id: "q1-1-5", correctAnswer: 0, numberOfOptions: 4 } // Crear un MVP funcional en minutos
     ],
     badgeXp: 15,
     readingTime: "8-12"
